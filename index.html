@@ -17,6 +17,10 @@
   a:hover, a:focus-visible { border-color: var(--turquesa) }
   a b { color: var(--turquesa) }
   a span { color: var(--texto-2); font-size: 14px; font-variant-numeric: tabular-nums }
+  h2 { font-size: 20px; margin: 40px 0 6px }
+  .strava { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start }
+  .strava iframe { border: 0; max-width: 100%; background: var(--cartao); border-radius: 10px }
+  .clube { display: inline-block; margin-top: 14px; padding: 0; border: 0; background: none; color: var(--turquesa); font-weight: 600 }
 </style>
 </head>
 <body>
@@ -30,6 +34,14 @@
       <li><a href="ubi-25k.html"><b>Volcanoes 25K</b><span>26,7 km · 854 m D+ · partida 11:00</span></a></li>
       <li><a href="ubi-10k.html"><b>Family Race 10K</b><span>11,2 km · 402 m D+ · partida 15:00</span></a></li>
     </ul>
+    <h2>A comunidade no Strava</h2>
+    <p>O clube Azores Trail Run no Strava: o resumo da semana e as atividades mais recentes dos membros.</p>
+    <!-- embeds oficiais do clube (página do clube no Strava, «Partilhar»); só funcionam num site a sério, não nas páginas de amostra do Claude -->
+    <div class="strava">
+      <iframe title="Resumo do clube Azores Trail Run no Strava" allowtransparency="true" height="160" scrolling="no" src="https://www.strava.com/clubs/271402/latest-rides/e0459a79502d7bd2dcca539b99dfd6acc5ce00ce?show_rides=false" width="300" loading="lazy"></iframe>
+      <iframe title="Atividades recentes do clube Azores Trail Run no Strava" allowtransparency="true" height="454" scrolling="no" src="https://www.strava.com/clubs/271402/latest-rides/e0459a79502d7bd2dcca539b99dfd6acc5ce00ce?show_rides=true" width="300" loading="lazy"></iframe>
+    </div>
+    <a class="clube" href="https://www.strava.com/clubs/271402">Junta-te ao clube no Strava</a>
   </main>
 </body>
 </html>
