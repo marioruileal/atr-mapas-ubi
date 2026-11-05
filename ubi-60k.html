@@ -1028,7 +1028,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </main>
 
 <footer class="largura rodape">
-  Protótipo para estudo (relatório 69). Perfil, mapa e contas feitos na própria página a partir do GPX do Trace de Trail; os totais e os desníveis de cada troço seguem os valores oficiais do Trace de Trail (63,4 km, 2 611 m D+, 2 618 m D−). Pontos, barreiras, programa e material do regulamento UBI 2026. O fundo «Mapa» usa o OpenStreetMap em ficheiros nossos; o «Relevo», os «Trilhos» e a «Fotografia aérea» vêm diretamente do OpenTopoMap, do CyclOSM e da IDE Açores.
+  Protótipo para estudo (relatório 69). Perfil, mapa e contas feitos na própria página a partir do GPX do Trace de Trail; os totais e os desníveis de cada troço seguem os valores oficiais do Trace de Trail (63,4 km, 2 611 m D+, 2 618 m D−). Pontos, barreiras, programa e material do regulamento UBI 2026. Os fundos «Relevo», «Trilhos» e «Fotografia aérea» vêm diretamente do OpenTopoMap, do CyclOSM e da IDE Açores; o contorno da ilha, os caminhos e os nomes sobre a fotografia são do OpenStreetMap, em ficheiros nossos.
 </footer>
 
 <dialog id="dlg-inclinacoes" aria-labelledby="t-incl">
@@ -1430,7 +1430,9 @@ new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
-// Fundo «Mapa»: o OpenStreetMap da ilha em ficheiros pequenos nossos (terra, água, caminhos, lugares), na pasta CFG.mapa.pasta.
+// Fundos (decisão do Mário, 05-11-2026): «Relevo» (OpenTopoMap, abre por omissão), «Trilhos» (CyclOSM) e «Fotografia aérea», todos ligados à origem.
+// O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
+// e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
 // Fundo «Fotografia aérea»: ligada diretamente ao serviço da IDE Açores (WMS), com a definição toda; nada fica guardado por nós.
 // O serviço devolve a branco o mar sem fotografia: a camada da fotografia «multiplica» sobre um fundo branco na terra e azul no mar,
 // e assim o branco fica da cor do mar e a fotografia fica igual.
@@ -1548,7 +1550,7 @@ window.MAPA = (() => {
       foto = L.tileLayer.wms(CFG.mapa.orto.wms, { pane: 'foto', layers: CFG.mapa.orto.camada, format: 'image/jpeg', version: '1.3.0', tileSize: 512, maxZoom: 19, bounds: limites, attribution: CFG.mapa.orto.credito });
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
-    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou volta ao fundo «Mapa».`); }));
+    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
     const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
     json('terra.geojson').then(g => terra.addData(g));
     json('agua.geojson').then(g => agua.addData(g));
@@ -1576,7 +1578,7 @@ window.MAPA = (() => {
     visibilidade();
 
     painel = document.createElement('div'); painel.className = 'painel-mapa';
-    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="mapa" aria-pressed="true">Mapa</button><button type="button" data-fundo="relevo" aria-pressed="false">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
+    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="relevo" aria-pressed="true">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
       + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`;
     L.DomEvent.disableClickPropagation(painel); L.DomEvent.disableScrollPropagation(painel);
     caixa.appendChild(painel);
@@ -1585,7 +1587,8 @@ window.MAPA = (() => {
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
     const pedido = (location.hash.match(/^#(mapa|relevo|trilhos|foto)/) || [])[1];
-    if (pedido && (pedido !== 'foto' || foto)) mudarFundo(pedido);
+    // decisão do Mário (05-11-2026): sem o fundo «Mapa»; abre no «Relevo»
+    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) ? pedido : 'relevo');
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
     if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
   }
