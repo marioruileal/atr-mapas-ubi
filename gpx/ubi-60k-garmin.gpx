@@ -37,7 +37,7 @@
   </wpt>
   <wpt lat="38.56521" lon="-28.63809">
     <ele>234</ele>
-    <name>Império Chão Frio</name>
+    <name>Império do Canto do Chão Frio</name>
     <desc>Km 55,3 · água, comida · barreira 23:00</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
