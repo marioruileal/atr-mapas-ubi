@@ -99,6 +99,11 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .totais { display: grid; gap: 0; width: 170px }
 .totais b { font-family: var(--f-mono); font-size: 22px; font-weight: 500 }
 .totais span { font-family: var(--f-mono); font-size: 13px; color: var(--texto-2) }
+.dica-mini { margin: 6px 0 0; font-size: 13.5px; color: var(--texto-2) }
+.dica-mini b { color: var(--texto) }
+.janela.convite { animation: convite 1.6s ease-in-out 2 }
+@keyframes convite { 0%, 100% { transform: translateX(0) } 25% { transform: translateX(10px) } 75% { transform: translateX(-6px) } }
+@media (prefers-reduced-motion: reduce) { .janela.convite { animation: none } }
 .repor { font-size: 13px }
 
 .mapa-e-ponto { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 14px; align-items: start }
@@ -934,8 +939,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button type="button" class="pega dir" id="pega-dir" aria-label="Fim do troço">›</button>
           </div>
         </div>
-        <div class="totais"><b id="tot-km">25,1 km</b><span id="tot-d">1 388 m+ · 161 m−</span><button type="button" class="ligacao repor" id="repor" hidden>Ver a etapa inteira</button></div>
+        <div class="totais"><b id="tot-km">25,1 km</b><span id="tot-d">1 388 m+ · 161 m−</span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a prova inteira</button></div>
       </div>
+      <p class="dica-mini" id="dica-mini"><span aria-hidden="true">↔</span> <b>Arrasta a janela</b> (ou as pegas ‹ ›) no perfil pequeno para escolher o troço que queres ver em pormenor. Também podes tocar noutro sítio do perfil pequeno, ou arrastar no perfil grande.</p>
       <div class="mapa-e-ponto">
         <div class="mapa"><svg id="mapa" role="img" aria-label="Traçado da prova"></svg><span class="nota">Traçado sem mapa de fundo · N ↑</span></div>
         <div class="ponto-cartao" id="ponto-cartao" aria-live="polite"><p class="vazio">Toca num ponto do perfil ou do mapa para ver o que há lá.</p></div>
@@ -1334,6 +1340,12 @@ document.getElementById('pega-esq').addEventListener('pointerdown', arrastar('es
 document.getElementById('pega-dir').addEventListener('pointerdown', arrastar('dir'));
 janela.addEventListener('pointerdown', arrastar('meio'));
 mini.addEventListener('dblclick', () => definirTroco(0, KM_TOTAL));
+// tocar fora da janela leva a janela para lá (mantém a largura)
+mini.addEventListener('pointerdown', ev => { if (ev.target.closest('.janela')) return; const r = mini.getBoundingClientRect(), km = (ev.clientX - r.left) / r.width * KM_TOTAL;
+  const w = (E.ate - E.de) >= KM_TOTAL - 1e-6 ? KM_TOTAL * 0.25 : E.ate - E.de; E.de = Math.min(Math.max(0, km - w / 2), KM_TOTAL - w); E.ate = E.de + w; desenharPerfil(); });
+// convite a mexer: a janela abana duas vezes quando aparece; pára ao primeiro toque
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { janela.classList.add('convite'); o.disconnect(); } }), { threshold: 0.6 }).observe(mini);
+mini.addEventListener('pointerdown', () => janela.classList.remove('convite'));
 [['pega-esq', 'esq'], ['pega-dir', 'dir']].forEach(([id, lado]) => document.getElementById(id).addEventListener('keydown', ev => {
   if (!['ArrowLeft', 'ArrowRight'].includes(ev.key)) return; ev.preventDefault(); const d = ev.key === 'ArrowRight' ? 0.5 : -0.5;
   if (lado === 'esq') E.de = Math.min(Math.max(0, E.de + d), E.ate - KM_TOTAL * 0.08); else E.ate = Math.max(Math.min(KM_TOTAL, E.ate + d), E.de + KM_TOTAL * 0.08);
@@ -1343,7 +1355,8 @@ document.getElementById('repor').addEventListener('click', () => definirTroco(0,
 function atualizarTotais() {
   const ia = iPorKm(E.de), ib = iPorKm(E.ate), inteiro = E.de <= 0.01 && E.ate >= KM_TOTAL - 0.01;
   document.getElementById('tot-km').textContent = fmt(inteiro && CFG.oficial ? CFG.oficial.km : E.ate - E.de, 1) + ' km';
-  document.getElementById('tot-d').textContent = fmt(P[ib][4] - P[ia][4]) + ' m+ · ' + fmt(P[ib][5] - P[ia][5]) + ' m−' + (inteiro ? '' : ' · km ' + fmt(E.de, 1) + '–' + fmt(E.ate, 1));
+  document.getElementById('tot-d').textContent = '+' + fmt(P[ib][4] - P[ia][4]) + ' m · −' + fmt(P[ib][5] - P[ia][5]) + ' m';
+  document.getElementById('tot-onde').textContent = inteiro ? 'a prova inteira' : 'do km ' + fmt(E.de, 1) + ' ao km ' + fmt(E.ate, 1);
   document.getElementById('repor').hidden = inteiro;
 }
 
