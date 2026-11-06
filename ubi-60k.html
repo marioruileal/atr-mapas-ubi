@@ -963,7 +963,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
     <div class="tabela-caixa">
       <table>
-        <thead><tr><th>Ponto</th><th>Troço</th><th>Distância</th><th>Até ao próximo abastecimento</th><th>Desnível</th><th>Altitude</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
+        <thead><tr><th>Ponto</th><th>Troço</th><th>Distância</th><th>Próximo abastecimento</th><th>Desnível</th><th>Altitude</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
         <tbody id="corpo-tabela"></tbody>
       </table>
     </div>
@@ -1415,7 +1415,7 @@ function ateProximo(a, b, comHora) {
 const linkMaps = (p, txt) => p.gps ? `<a class="maps" href="https://www.google.com/maps/search/?api=1&query=${p.gps[0]},${p.gps[1]}" target="_blank" rel="noopener">${txt}</a>` : '';
 function abrirPonto(id) {
   const n = PONTOS.findIndex(p => p.id === id), p = PONTOS[n], ant = PONTOS[n - 1];
-  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Até ao próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
+  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
   document.getElementById('ponto-cartao').innerHTML = `<h3>${p.nome}</h3><span style="color:var(--texto-2)">${p.local}</span>${p.gps ? ' · ' + linkMaps(p, 'Abrir no Google Maps') : ''}<dl>${linhas.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>` + (p.servicos.length ? `<div class="icones" style="gap:10px;flex-wrap:wrap">${p.servicos.map(s => `<span style="display:inline-flex;gap:4px;align-items:center;font-size:14px">${ICONES[s]}${SERVICOS[s].nome}</span>`).join('')}</div>` : '');
   E.ponto = id; mostrarCursor(p.km >= E.de && p.km <= E.ate ? p.km : E.de);
 }
