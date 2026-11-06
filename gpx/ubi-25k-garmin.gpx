@@ -4,7 +4,7 @@
   <wpt lat="38.61881" lon="-28.73136">
     <ele>302</ele>
     <name>Igreja de Nossa Senhora de Fátima</name>
-    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 11,0 km (+701 m)</desc>
+    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 11,0 km (+676 m)</desc>
     <sym>Flag, Green</sym>
   </wpt>
   <wpt lat="38.59905" lon="-28.68162">
@@ -17,7 +17,7 @@
   <wpt lat="38.56522" lon="-28.6381">
     <ele>235</ele>
     <name>Império do Canto do Chão Frio</name>
-    <desc>Km 18,8 · água, comida · barreira 16:00 · meta a 7,9 km (+181 m)</desc>
+    <desc>Km 18,8 · água, comida · barreira 16:00 · meta a 7,9 km (+175 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>

@@ -4,41 +4,41 @@
   <wpt lat="38.59254" lon="-28.8267">
     <ele>14</ele>
     <name>Porto do Comprido</name>
-    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 8,4 km (+360 m)</desc>
+    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 8,4 km (+344 m)</desc>
     <sym>Flag, Green</sym>
   </wpt>
   <wpt lat="38.61026" lon="-28.7642">
     <ele>48</ele>
     <name>Fajã da Praia do Norte</name>
-    <desc>Km 8,4 · água, comida · barreira 10:00 · próximo abastecimento a 11,4 km (+535 m)</desc>
+    <desc>Km 8,4 · água, comida · barreira 10:00 · próximo abastecimento a 11,4 km (+511 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.6356" lon="-28.7135">
     <ele>142</ele>
     <name>Império do Cascalho</name>
-    <desc>Km 19,8 · água, comida · barreira 13:00 · próximo abastecimento a 13,1 km (+864 m)</desc>
+    <desc>Km 19,8 · água, comida · barreira 13:00 · próximo abastecimento a 13,1 km (+825 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.59905" lon="-28.68162">
     <ele>515</ele>
     <name>Reserva do Cabouco Velho</name>
-    <desc>Km 32,8 · água, comida · barreira 17:00 · próximo abastecimento a 12,5 km (+346 m)</desc>
+    <desc>Km 32,8 · água, comida · barreira 17:00 · próximo abastecimento a 12,5 km (+330 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.59087" lon="-28.61285">
     <ele>110</ele>
     <name>Casa do Povo da Ribeirinha</name>
-    <desc>Km 45,3 · água, comida · barreira 20:00 · próximo abastecimento a 10,0 km (+460 m)</desc>
+    <desc>Km 45,3 · água, comida · barreira 20:00 · próximo abastecimento a 10,0 km (+439 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.56521" lon="-28.63809">
     <ele>234</ele>
     <name>Império do Canto do Chão Frio</name>
-    <desc>Km 55,3 · água, comida · barreira 23:00 · meta a 8,1 km (+169 m)</desc>
+    <desc>Km 55,3 · água, comida · barreira 23:00 · meta a 8,1 km (+161 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
