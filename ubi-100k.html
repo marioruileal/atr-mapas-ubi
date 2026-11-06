@@ -1459,7 +1459,7 @@ function desenharTabela() {
     if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
     h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td><td>${spark}</td>`
       + `<td class="num">${fmt(p.kmVer, 1)} km${ant ? `<span class="peq">${fmt(p.kmVer - ant.kmVer, 1)} km</span>` : ''}</td>`
-      + `<td class="prox">${p.tipo !== 'meta' && proximoDe(p.km) ? (b => `<b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m · ${b.tipo === 'meta' ? 'Meta' : (b.nomeCurto || b.nome)}</span>`)(proximoDe(p.km)) : ''}</td>`
+      + `<td class="prox">${p.tipo !== 'meta' && proximoDe(p.km) ? (b => `<b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m</span>`)(proximoDe(p.km)) : ''}</td>`
       + `<td class="num">+${fmt(p.dmais)} m${ant ? `<span class="peq">+${fmt(p.dmais - ant.dmais)} | −${fmt(p.dmenos - ant.dmenos)} m</span>` : ''}</td>`
       + `<td class="num">${fmt(p.alt)} m</td><td class="carril"><span style="background:${faixaCeu(minutos)}" title="${minutos >= SOL.nascer && minutos < SOL.por ? 'De dia' : 'De noite'}"></span></td>`
       + `<td class="num">${hora(minutos)}${estado}</td><td class="barreira">${p.barreira ? hora(p.barreira) : ''}</td>`
