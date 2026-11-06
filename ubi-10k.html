@@ -1506,6 +1506,12 @@ window.MAPA = (() => {
     const aviso = caixa.querySelector('.aviso-foto'); if (aviso) aviso.hidden = true;
     const sobreFoto = qual === 'foto';
     if (foto) { if (sobreFoto) foto.addTo(mapa); else foto.remove(); }
+    // há redes onde o pedido fica parado sem dar erro (por exemplo a rede interna do Governo dos Açores): avisa ao fim de 12 s sem nenhuma imagem
+    clearTimeout(mudarFundo.espera);
+    if (sobreFoto && foto) {
+      let chegou = false; foto.once('tileload', () => { chegou = true; });
+      mudarFundo.espera = setTimeout(() => { if (!chegou && fundo === 'foto') avisar('A fotografia aérea está a demorar a chegar do serviço da IDE Açores. Se estás na rede interna do Governo dos Açores, o navegador não a deixa carregar aqui; fora dessa rede funciona. Entretanto, escolhe outro fundo.'); }, 12000);
+    }
     Object.entries(outros).forEach(([k, c]) => { if (k === qual) c.addTo(mapa); else c.remove(); });
     terra.setStyle({ fillColor: sobreFoto ? '#ffffff' : cor('--terra') }); // a ilha fica sempre por baixo: se um fundo de fora não chegar, vê-se a ilha
     agua.setStyle({ fillOpacity: qual === 'mapa' ? 1 : 0 });
