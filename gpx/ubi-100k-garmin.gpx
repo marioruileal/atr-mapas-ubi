@@ -37,7 +37,7 @@
   </wpt>
   <wpt lat="38.63561" lon="-28.71369">
     <ele>142</ele>
-    <name>Cedros</name>
+    <name>Império do Cascalho</name>
     <desc>Km 58,3 · água, comida · barreira 13:15</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
