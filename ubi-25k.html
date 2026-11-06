@@ -957,7 +957,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
     <div class="tabela-caixa">
       <table>
-        <thead><tr><th>Ponto</th><th>Troço</th><th>Distância</th><th>Desnível</th><th>Altitude</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
+        <thead><tr><th>Ponto</th><th>Troço</th><th>Distância</th><th>Até ao próximo abastecimento</th><th>Desnível</th><th>Altitude</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
         <tbody id="corpo-tabela"></tbody>
       </table>
     </div>
@@ -1284,7 +1284,7 @@ function mostrarCursor(km) {
   l.setAttribute('x1', px); l.setAttribute('x2', px); l.setAttribute('visibility', 'visible');
   c.setAttribute('cx', px); c.setAttribute('cy', py); c.setAttribute('visibility', 'visible');
   dica.hidden = false;
-  dica.innerHTML = `<b>${fmt(p[0], 1)} km</b> · <b>${fmt(p[1])} m</b><br>Subida até aqui <b>${fmt(p[4])} m</b> · descida <b>${fmt(p[5])} m</b><br>Inclinação <b>${p[6] > 0 ? '+' : ''}${fmt(p[6], 0)} %</b>${TERRENO ? `<br>Piso <b>${TERRENO[D.t[i]].nome}</b>` : ''}<br>A tua hora prevista <b>${hora(horaPrevista(i))}</b>`;
+  dica.innerHTML = `<b>${fmt(p[0], 1)} km</b> · <b>${fmt(p[1])} m</b><br>Subida até aqui <b>${fmt(p[4])} m</b> · descida <b>${fmt(p[5])} m</b><br>Inclinação <b>${p[6] > 0 ? '+' : ''}${fmt(p[6], 0)} %</b>${TERRENO ? `<br>Piso <b>${TERRENO[D.t[i]].nome}</b>` : ''}<br>A tua hora prevista <b>${hora(horaPrevista(i))}</b>${(b => b ? `<br>Próximo abastecimento: <b>${fmt(b.km - p[0], 1)} km</b> (${b.tipo === 'meta' ? 'Meta' : b.nome})` : '')(proximoDe(p[0]))}`;
   const lw = dica.offsetWidth; dica.style.left = Math.min(Math.max(px, lw / 2 + 4), G.W - lw / 2 - 4) + 'px'; dica.style.top = '24px';
   E.cursor = i; marcarMapa(i);
 }
@@ -1386,10 +1386,19 @@ mapa.addEventListener('pointermove', ev => { if (ev.target.closest('.alvo-ponto'
 mapa.addEventListener('pointerleave', esconderCursor);
 
 // ---------- cartão do ponto ----------
+const artigo = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+// distância até ao próximo abastecimento (ou à meta): a pergunta que todos fazem
+const ehAbast = p => p.tipo === 'abastecimento' || p.tipo === 'meta';
+function proximoDe(km) { return PONTOS.find(p => ehAbast(p) && p.km > km + 1e-6) || null; }
+function ateProximo(a, b, comHora) {
+  if (!b) return '';
+  const nome = b.tipo === 'meta' ? 'Meta' : b.nome, t = comHora ? horaPrevista(b.i) - (a.i != null ? horaPrevista(a.i) : 0) : 0;
+  return `${fmt(b.kmVer - a.kmVer, 1)} km · +${fmt(b.dmais - a.dmais)} m · −${fmt(b.dmenos - a.dmenos)} m, até ${artigo(nome)[1]} ${nome}${comHora && t > 0 ? ` (cerca de ${duracao(t)} com o teu tempo)` : ''}`;
+}
 const linkMaps = (p, txt) => p.gps ? `<a class="maps" href="https://www.google.com/maps/search/?api=1&query=${p.gps[0]},${p.gps[1]}" target="_blank" rel="noopener">${txt}</a>` : '';
 function abrirPonto(id) {
   const n = PONTOS.findIndex(p => p.id === id), p = PONTOS[n], ant = PONTOS[n - 1];
-  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)]].filter(Boolean);
+  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Até ao próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
   document.getElementById('ponto-cartao').innerHTML = `<h3>${p.nome}</h3><span style="color:var(--texto-2)">${p.local}</span>${p.gps ? ' · ' + linkMaps(p, 'Abrir no Google Maps') : ''}<dl>${linhas.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>` + (p.servicos.length ? `<div class="icones" style="gap:10px;flex-wrap:wrap">${p.servicos.map(s => `<span style="display:inline-flex;gap:4px;align-items:center;font-size:14px">${ICONES[s]}${SERVICOS[s].nome}</span>`).join('')}</div>` : '');
   E.ponto = id; mostrarCursor(p.km >= E.de && p.km <= E.ate ? p.km : E.de);
 }
@@ -1429,6 +1438,7 @@ function desenharTabela() {
     if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
     h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td><td>${spark}</td>`
       + `<td class="num">${fmt(p.kmVer, 1)} km${ant ? `<span class="peq">${fmt(p.kmVer - ant.kmVer, 1)} km</span>` : ''}</td>`
+      + `<td class="prox">${p.tipo !== 'meta' && proximoDe(p.km) ? (b => `<b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m · ${b.tipo === 'meta' ? 'Meta' : (b.nomeCurto || b.nome)}</span>`)(proximoDe(p.km)) : ''}</td>`
       + `<td class="num">+${fmt(p.dmais)} m${ant ? `<span class="peq">+${fmt(p.dmais - ant.dmais)} | −${fmt(p.dmenos - ant.dmenos)} m</span>` : ''}</td>`
       + `<td class="num">${fmt(p.alt)} m</td><td class="carril"><span style="background:${faixaCeu(minutos)}" title="${minutos >= SOL.nascer && minutos < SOL.por ? 'De dia' : 'De noite'}"></span></td>`
       + `<td class="num">${hora(minutos)}${estado}</td><td class="barreira">${p.barreira ? hora(p.barreira) : ''}</td>`

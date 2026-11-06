@@ -4,22 +4,22 @@
   <wpt lat="38.59239" lon="-28.82714">
     <ele>8</ele>
     <name>Porto do Comprido</name>
-    <desc>Km 0,0 · autocarro, saco</desc>
+    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 12,0 km (+1021 m)</desc>
   </wpt>
   <wpt lat="38.58347" lon="-28.7457">
     <ele>670</ele>
     <name>CP1 Depósito de Água Levada</name>
-    <desc>Km 12,0 · água, comida · barreira 12:00</desc>
+    <desc>Km 12,0 · água, comida · barreira 12:00 · próximo abastecimento a 13,1 km (+603 m)</desc>
   </wpt>
   <wpt lat="38.59905" lon="-28.68165">
     <ele>515</ele>
     <name>CP2 Reserva do Cabouco Velho</name>
-    <desc>Km 25,1 · água, comida · barreira 16:00</desc>
+    <desc>Km 25,1 · água, comida · barreira 16:00 · próximo abastecimento a 7,8 km (+7 m)</desc>
   </wpt>
   <wpt lat="38.56524" lon="-28.63813">
     <ele>235</ele>
     <name>CP3 Império do Canto do Chão Frio</name>
-    <desc>Km 32,9 · água, comida · barreira 19:00</desc>
+    <desc>Km 32,9 · água, comida · barreira 19:00 · meta a 8,0 km (+178 m)</desc>
   </wpt>
   <wpt lat="38.53618" lon="-28.62596">
     <ele>7</ele>
