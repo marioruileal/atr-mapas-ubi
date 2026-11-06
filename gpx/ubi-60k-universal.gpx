@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>Ultra Blue Island 63 km · UBI 2026</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-60k.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Ultra Blue Island 63 km · UBI 2027</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-60k.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.59254" lon="-28.8267">
     <ele>14</ele>
     <name>Porto do Comprido</name>
@@ -37,7 +37,7 @@
     <desc>Km 63,4 · saco · barreira 00:00</desc>
   </wpt>
   <trk>
-    <name>Ultra Blue Island 63 km · UBI 2026</name>
+    <name>Ultra Blue Island 63 km · UBI 2027</name>
     <trkseg>
       <trkpt lat="38.59254" lon="-28.8267"><ele>14</ele></trkpt>
       <trkpt lat="38.59259" lon="-28.82655"><ele>14</ele></trkpt>

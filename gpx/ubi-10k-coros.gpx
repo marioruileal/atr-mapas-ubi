@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>Family Race 11 km · UBI 2026</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-10k.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Family Race 11 km · UBI 2027</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-10k.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.55626" lon="-28.61005">
     <ele>7</ele>
     <name>Partida</name>
@@ -10,7 +10,7 @@
     <name>Meta</name>
   </wpt>
   <trk>
-    <name>Family Race 11 km · UBI 2026</name>
+    <name>Family Race 11 km · UBI 2027</name>
     <trkseg>
       <trkpt lat="38.55626" lon="-28.61005"><ele>7</ele></trkpt>
       <trkpt lat="38.5561" lon="-28.61006"><ele>7</ele></trkpt>

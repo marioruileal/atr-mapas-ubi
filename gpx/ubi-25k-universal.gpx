@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>Volcanoes 26 km · UBI 2026</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-25k.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Volcanoes 26 km · UBI 2027</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-25k.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.61881" lon="-28.73136">
     <ele>302</ele>
     <name>Ribeira Funda</name>
@@ -22,7 +22,7 @@
     <desc>Km 26,6 · saco · barreira 00:00</desc>
   </wpt>
   <trk>
-    <name>Volcanoes 26 km · UBI 2026</name>
+    <name>Volcanoes 26 km · UBI 2027</name>
     <trkseg>
       <trkpt lat="38.61881" lon="-28.73136"><ele>302</ele></trkpt>
       <trkpt lat="38.61877" lon="-28.73139"><ele>304</ele></trkpt>
