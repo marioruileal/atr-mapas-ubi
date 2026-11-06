@@ -16,7 +16,7 @@
   </wpt>
   <wpt lat="38.59905" lon="-28.68165">
     <ele>515</ele>
-    <name>Parque do Cabouco</name>
+    <name>Reserva do Cabouco Velho</name>
     <desc>Km 25,1 · água, comida · barreira 16:00</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>

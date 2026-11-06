@@ -39,13 +39,13 @@
   </wpt>
   <wpt lat="38.59903" lon="-28.68148">
     <ele>516</ele>
-    <name>Parque do Cabouco</name>
+    <name>Reserva do Cabouco Velho</name>
     <desc>Km 71,3 · água, comida · barreira 16:45</desc>
     <type>Aid_station</type>
   </wpt>
   <wpt lat="38.59086" lon="-28.61286">
     <ele>110</ele>
-    <name>Império Vermelho da Ribeirinha</name>
+    <name>Casa do Povo da Ribeirinha</name>
     <desc>Km 83,5 · água, comida, drop bag · barreira 19:45</desc>
     <type>Aid_station</type>
   </wpt>
