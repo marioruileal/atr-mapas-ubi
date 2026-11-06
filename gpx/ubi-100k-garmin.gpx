@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-  <metadata><name>Whalers' Great Route 100K · UBI 2026</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-100k.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Whalers' Great Route 102 km · UBI 2026</name><desc>Percurso oficial (Trace de Trail), com os pontos do regulamento 2026.</desc><link href="https://mapas.myazorestrailrun.com/ubi-100k.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.59677" lon="-28.82571">
     <ele>57</ele>
     <name>Porto do Comprido</name>
@@ -70,7 +70,7 @@
     <sym>Flag, Red</sym>
   </wpt>
   <trk>
-    <name>Whalers' Great Route 100K · UBI 2026</name>
+    <name>Whalers' Great Route 102 km · UBI 2026</name>
     <trkseg>
       <trkpt lat="38.59677" lon="-28.82571"><ele>57</ele></trkpt>
       <trkpt lat="38.59671" lon="-28.82573"><ele>57</ele></trkpt>
