@@ -963,7 +963,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
     <div class="tabela-caixa">
       <table>
-        <thead><tr><th>Ponto</th><th>Troço</th><th>Distância</th><th>Próximo abastecimento</th><th>Desnível</th><th>Altitude</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
+        <thead><tr><th>Ponto</th><th>Altitude</th><th>Desde a partida</th><th colspan="2">Próximo abastecimento</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
         <tbody id="corpo-tabela"></tbody>
       </table>
     </div>
@@ -1448,20 +1448,20 @@ function faixaCeu(m) { const nasc = SOL.nascer, por = SOL.por; return (m >= nasc
 function desenharTabela() {
   const linhas = PONTOS.filter((p, n) => n === 0 || !E.filtroTabela.size || p.servicos.some(s => E.filtroTabela.has(s)));
   let h = '';
+  // cada linha: onde estou (ponto, altitude), quanto já fiz (desde a partida), o que vem a seguir (perfil, km e desnível até ao próximo abastecimento), horas
+  const mini = (ia, ib) => { let amin = Infinity, amax = -Infinity; for (let i = ia; i <= ib; i++) { amin = Math.min(amin, P[i][1]); amax = Math.max(amax, P[i][1]); }
+    let d = ''; for (let i = ia; i <= ib; i += 2) d += (i === ia ? 'M' : 'L') + ((P[i][0] - P[ia][0]) / (P[ib][0] - P[ia][0]) * 120).toFixed(1) + ',' + (36 - (P[i][1] - amin) / Math.max(1, amax - amin) * 30).toFixed(1);
+    return `<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true"><path d="${d}L120,40L0,40Z" fill="${cor('--turquesa')}" fill-opacity=".15"/><path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="1.5"/></svg>`; };
   linhas.forEach((p, n) => {
-    const ant = n ? linhas[n - 1] : null;
-    let spark = '';
-    if (ant) { const ia = ant.i, ib = p.i; let amin = Infinity, amax = -Infinity; for (let i = ia; i <= ib; i++) { amin = Math.min(amin, P[i][1]); amax = Math.max(amax, P[i][1]); }
-      let d = ''; for (let i = ia; i <= ib; i += 2) d += (i === ia ? 'M' : 'L') + ((P[i][0] - P[ia][0]) / (P[ib][0] - P[ia][0]) * 120).toFixed(1) + ',' + (36 - (P[i][1] - amin) / Math.max(1, amax - amin) * 30).toFixed(1);
-      spark = `<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true"><path d="${d}L120,40L0,40Z" fill="${cor('--turquesa')}" fill-opacity=".15"/><path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="1.5"/></svg>`; }
+    const b = p.tipo !== 'meta' ? proximoDe(p.km) : null;
     const minutos = n === 0 ? PARTIDA_MIN : horaPrevista(p.i);
     let estado = '';
     if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
-    h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td><td>${spark}</td>`
-      + `<td class="num">${fmt(p.kmVer, 1)} km${ant ? `<span class="peq">${fmt(p.kmVer - ant.kmVer, 1)} km</span>` : ''}</td>`
-      + `<td class="prox">${p.tipo !== 'meta' && proximoDe(p.km) ? (b => `<b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m</span>`)(proximoDe(p.km)) : ''}</td>`
-      + `<td class="num">+${fmt(p.dmais)} m${ant ? `<span class="peq">+${fmt(p.dmais - ant.dmais)} | −${fmt(p.dmenos - ant.dmenos)} m</span>` : ''}</td>`
-      + `<td class="num">${fmt(p.alt)} m</td><td class="carril"><span style="background:${faixaCeu(minutos)}" title="${minutos >= SOL.nascer && minutos < SOL.por ? 'De dia' : 'De noite'}"></span></td>`
+    h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td>`
+      + `<td class="num">${fmt(p.alt)} m</td>`
+      + `<td class="num">${fmt(p.kmVer, 1)} km${n ? `<span class="peq">+${fmt(p.dmais)} | −${fmt(p.dmenos)} m</span>` : ''}</td>`
+      + (b ? `<td>${mini(p.i, b.i)}</td><td class="prox"><b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m</span></td>` : '<td></td><td class="prox"><b>Chegada</b></td>')
+      + `<td class="carril"><span style="background:${faixaCeu(minutos)}" title="${minutos >= SOL.nascer && minutos < SOL.por ? 'De dia' : 'De noite'}"></span></td>`
       + `<td class="num">${hora(minutos)}${estado}</td><td class="barreira">${p.barreira ? hora(p.barreira) : ''}</td>`
       + `<td><span class="icones">${p.servicos.map(s => `<span title="${SERVICOS[s].nome}">${ICONES[s]}</span>`).join('')}</span></td></tr>`;
   });
