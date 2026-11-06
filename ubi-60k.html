@@ -1175,7 +1175,7 @@ document.getElementById('sol').innerHTML = hora(SOL.nascer) + ' <small>· ' + ho
     let best = null; for (let n = 1; n < PONTOS.length; n++) { const a = PONTOS[n - 1], b = PONTOS[n], s = b.dmais - a.dmais; if (!best || s > best.s) best = { a, b, s }; }
     el.textContent = fmt(best.s) + ' m+';
     // «do Porto», «da Fajã», «dos Cedros»: o artigo certo antes do nome do lugar
-    const art = n => /^(Porto|Parque|Império|Tanque|Pico|Cabeço)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+    const art = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
     txt.textContent = art(best.a.nome)[0] + ' ' + best.a.nome + ' ' + art(best.b.nome)[1] + ' ' + best.b.nome + ': ' + fmt(best.b.kmVer - best.a.kmVer, 1) + ' km, com ' + fmt(best.s) + ' m de subida e ' + fmt(best.b.dmenos - best.a.dmenos) + ' m de descida.';
     return;
   }

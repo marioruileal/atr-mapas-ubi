@@ -9,7 +9,7 @@
   </wpt>
   <wpt lat="38.58347" lon="-28.7457">
     <ele>670</ele>
-    <name>Tanque da Levada</name>
+    <name>Depósito de Água Levada</name>
     <desc>Km 12,0 · água, comida · barreira 12:00</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
