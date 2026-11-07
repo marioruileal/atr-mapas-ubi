@@ -107,6 +107,14 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .aperto-lista small { display: block; color: var(--texto-2); font-size: 13px; font-family: inherit }
 .aperto-lista .num { text-align: right; font-family: var(--f-mono) }
 .subida[hidden] { display: none }
+.sitios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px }
+.sitio { margin: 0; background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 14px; overflow: hidden }
+.sitio img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover }
+.sitio figcaption { padding: 14px 16px 16px }
+.sitio figcaption b { font-family: var(--f-display); font-size: 18px }
+.sitio .km-ilha { margin-left: 8px; font-family: var(--f-mono); font-size: 13px; color: var(--turquesa) }
+.sitio p { margin: 6px 0 8px; color: var(--texto-2); font-size: 15px }
+.sitio small { color: var(--texto-2); font-size: 12px }
 dialog.plano { width: min(720px, calc(100vw - 32px)) }
 #plano h3 { margin: 0 0 2px }
 #plano .sub { color: var(--texto-2); margin: 0 0 12px }
@@ -922,6 +930,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <a href="#pontos">Pontos e horários</a>
     <a href="#subidas">Subidas</a>
     <a href="#historia">A prova</a>
+    <a href="#ilha">A ilha</a>
     <a href="#dia">O dia</a>
     <a href="#material">Material</a>
     <a class="inscrever" href="#inscricao">Inscrever-me</a>
@@ -1049,6 +1058,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
 </section>
 
+<section id="ilha" aria-labelledby="t-ilha">
+  <div class="largura">
+    <h2 id="t-ilha">A ilha pelo caminho</h2>
+    <p class="lead">Os sítios do Faial por onde esta prova passa.</p>
+    <div class="sitios"><figure class="sitio"><img src="fotos/caldeira.jpg" alt="A Caldeira" loading="lazy" width="1200" height="800"><figcaption><b>A Caldeira</b><span class="km-ilha">km 6,8</span><p>A cratera no centro da ilha, com cerca de 2 km de largura e 400 m de fundo, é reserva natural. Muitas vezes está cheia de nuvens; ao lado fica o Cabeço Gordo, o ponto mais alto do Faial.</p><small>Fotografia: Arquivo Azores Trail Run</small></figcaption></figure><figure class="sitio"><img src="fotos/cabouco.jpg" alt="Cabouco Velho" loading="lazy" width="1200" height="800"><figcaption><b>Cabouco Velho</b><span class="km-ilha">km 10,9</span><p>A floresta de criptomérias da Reserva Florestal de Recreio do Cabouco Velho, no interior da ilha: sombra, musgo e ribeiras a meio da prova.</p><small>Fotografia: Pedro Silva · UBI 2024</small></figcaption></figure><figure class="sitio"><img src="fotos/pico.jpg" alt="A vista do Pico" loading="lazy" width="1200" height="800"><figcaption><b>A vista do Pico</b><p>Do lado leste do Faial, do outro lado do canal, aparece o Pico, a montanha mais alta de Portugal (2 351 m), muitas vezes com o seu chapéu de nuvens.</p><small>Fotografia: Pedro Silva · UBI 2024</small></figcaption></figure><figure class="sitio"><img src="fotos/horta.jpg" alt="A Horta" loading="lazy" width="1200" height="800"><figcaption><b>A Horta</b><span class="km-ilha">km 26,5</span><p>A cidade e a marina, porto de escala dos veleiros que atravessam o Atlântico, com as pinturas das tripulações no molhe. A meta é na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Avenida 25 de Abril</a>, de frente para o mar.</p><small>Fotografia: Arquivo Azores Trail Run</small></figcaption></figure></div>
+  </div>
+</section>
 <section id="dia" aria-labelledby="t-dia">
   <div class="largura duas">
     <div>
@@ -1574,7 +1590,7 @@ mostrarRelogio('garmin');
 // ---------- submenu: secção ativa ----------
 const ligacoes = [...document.querySelectorAll('.submenu a:not(.inscrever)')];
 const obs = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting) ligacoes.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -55% 0px' });
-['percurso', 'relogio', 'pontos', 'subidas', 'historia', 'dia', 'material'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+['percurso', 'relogio', 'pontos', 'subidas', 'historia', 'ilha', 'dia', 'material'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
 
 // ---------- aperto das barreiras (relatório 71 §1) ----------
 // para cada troço entre barreiras: esforço (km + D+/100, valores oficiais) a dividir pelas horas disponíveis,
