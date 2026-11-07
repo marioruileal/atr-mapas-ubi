@@ -727,7 +727,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 17, maxZoom: 18,
           attribution: 'Dados: © OpenStreetMap, SRTM · Desenho: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }).addTo(mapa);
         const camadas = {}, todos = [];
-        PROVAS.slice().reverse().forEach(p => {
+        PROVAS.forEach(p => { // a mais longa primeiro, as mais curtas por cima
           const fundo = L.polyline(p.l, { color: '#fff', weight: 7, opacity: .9 });
           const linha = L.polyline(p.l, { color: p.c, weight: 4, opacity: .95 }).bindTooltip(p.t, { sticky: true });
           const g = L.layerGroup([fundo, linha]).addTo(mapa);
