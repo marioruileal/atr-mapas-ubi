@@ -966,7 +966,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div><dt>Distância</dt><dd>63,4 <small>km</small></dd></div>
       <div><dt>Subida</dt><dd>2 611 <small>m D+</small></dd></div>
       <div><dt>Descida</dt><dd>2 618 <small>m D−</small></dd></div>
-      <div><dt>Km-esforço</dt><dd>89</dd></div>
+      <div><dt>Km-esforço</dt><dd>90</dd></div>
       <div><dt>Partida</dt><dd>08:00 <small>sábado, 1 mai</small></dd></div>
       <div><dt>Tempo limite</dt><dd>16h00 <small>até às 00:00</small></dd></div>
       <div><dt>Ponto mais alto</dt><dd>893 <small>m</small></dd></div>
@@ -1269,8 +1269,8 @@ const ICONES = {
 };
 const SERVICOS = CFG.servicos;
 const iPorKm = km => { let lo = 0, hi = P.length - 1; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (P[m][0] < km) lo = m; else hi = m; } return Math.abs(P[lo][0] - km) < Math.abs(P[hi][0] - km) ? lo : hi; };
-// kmVer: o km que se mostra (na meta, a distância oficial do Trace de Trail); km: a posição no traçado
-const PONTOS = CFG.pontos.map(p => ({ ...p, km: p.km === 'fim' ? KM_TOTAL : p.km, kmVer: p.km === 'fim' && CFG.oficial ? CFG.oficial.km : (p.km === 'fim' ? KM_TOTAL : p.km) })).map(p => { const i = iPorKm(p.km); return { ...p, i, alt: P[i][1], dmais: P[i][4], dmenos: P[i][5] }; });
+// kmVer: o km que se mostra (na meta, a distância oficial do Trace de Trail; num posto, o km oficial quando a configuração o dá); km: a posição no traçado
+const PONTOS = CFG.pontos.map(p => ({ ...p, km: p.km === 'fim' ? KM_TOTAL : p.km, kmVer: p.kmVer != null ? p.kmVer : p.km === 'fim' && CFG.oficial ? CFG.oficial.km : (p.km === 'fim' ? KM_TOTAL : p.km) })).map(p => { const i = iPorKm(p.km); return { ...p, i, alt: P[i][1], dmais: P[i][4], dmenos: P[i][5] }; });
 
 // estado
 const E = { modo: 'percurso', barreiras: true, servicosPerfil: new Set(Object.keys(SERVICOS)), filtroTabela: new Set(), de: 0, ate: KM_TOTAL, alvo: CFG.alvo.valor, ponto: null, cursor: null };
@@ -1316,7 +1316,7 @@ document.getElementById('sol').innerHTML = hora(SOL.nascer) + ' <small>· ' + ho
     let best = null; for (let n = 1; n < PONTOS.length; n++) { const a = PONTOS[n - 1], b = PONTOS[n], s = b.dmais - a.dmais; if (!best || s > best.s) best = { a, b, s }; }
     el.textContent = fmt(best.s) + ' m+';
     // «do Porto», «da Fajã», «dos Cedros»: o artigo certo antes do nome do lugar
-    const art = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+    const art = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço|Farol|Clube|Vulcão|Mercado|Loural|Monte)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
     txt.textContent = art(best.a.nome)[0] + ' ' + best.a.nome + ' ' + art(best.b.nome)[1] + ' ' + best.b.nome + ': ' + fmt(best.b.kmVer - best.a.kmVer, 1) + ' km, com ' + fmt(best.s) + ' m de subida e ' + fmt(best.b.dmenos - best.a.dmenos) + ' m de descida.';
     return;
   }
@@ -1504,7 +1504,7 @@ function atualizarTotais() {
   const ia = iPorKm(E.de), ib = iPorKm(E.ate), inteiro = E.de <= 0.01 && E.ate >= KM_TOTAL - 0.01;
   document.getElementById('tot-km').textContent = fmt(inteiro && CFG.oficial ? CFG.oficial.km : E.ate - E.de, 1) + ' km';
   document.getElementById('tot-d').textContent = '+' + fmt(P[ib][4] - P[ia][4]) + ' m · −' + fmt(P[ib][5] - P[ia][5]) + ' m';
-  document.getElementById('tot-onde').textContent = inteiro ? 'a prova inteira' : 'do km ' + fmt(E.de, 1) + ' ao km ' + fmt(E.ate, 1);
+  document.getElementById('tot-onde').textContent = inteiro ? 'a ' + (CFG.unidade || 'prova') + ' inteira' : 'do km ' + fmt(E.de, 1) + ' ao km ' + fmt(E.ate, 1);
   document.getElementById('repor').hidden = inteiro;
 }
 
@@ -1545,7 +1545,7 @@ mapa.addEventListener('pointermove', ev => { if (ev.target.closest('.alvo-ponto'
 mapa.addEventListener('pointerleave', esconderCursor);
 
 // ---------- cartão do ponto ----------
-const artigo = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+const artigo = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço|Farol|Clube|Vulcão|Mercado|Loural|Monte)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
 // distância até ao próximo abastecimento (ou à meta): a pergunta que todos fazem
 const ehAbast = p => p.tipo === 'abastecimento' || p.tipo === 'meta';
 function proximoDe(km) { return PONTOS.find(p => ehAbast(p) && p.km > km + 1e-6) || null; }
@@ -1667,7 +1667,7 @@ function desenharAperto() {
   if (!lista.length) { if (el) el.remove(); return; }
   if (!el) { el = document.createElement('div'); el.id = 'aperto'; el.className = 'aperto'; document.querySelector('#pontos .tabela-caixa').after(el); }
   const media = lista[0].media;
-  el.innerHTML = `<h3>Quão apertadas são as barreiras</h3><p class="lead">Cada troço entre barreiras pede um certo esforço por hora (km + D+/100 a dividir pelas horas disponíveis). A média da prova inteira é <b>${fmt(media, 1)}</b> por hora. A cor diz quanto cada troço pede a mais. Também aparece no perfil, numa faixa por cima da linha.</p>`
+  el.innerHTML = `<h3>Quão apertadas são as barreiras</h3><p class="lead">Cada troço entre barreiras pede um certo esforço por hora (km + D+/100 a dividir pelas horas disponíveis). A média da ${CFG.unidade || 'prova'} inteira é <b>${fmt(media, 1)}</b> por hora. A cor diz quanto cada troço pede a mais. Também aparece no perfil, numa faixa por cima da linha.</p>`
     + '<ol class="aperto-lista">' + lista.map(t => `<li><span class="aperto-cor" style="background:${corAperto(t.rel)}"></span><span><b>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}</b><small>${fmt(t.b.kmVer - t.a.kmVer, 1)} km · +${fmt(t.b.dmais - t.a.dmais)} m em ${duracao(t.h * 60)}</small></span><span class="num">${fmt(t.porHora, 1)} /h<small>${fmt(t.rel, 1)}× a média · ${txtAperto(t.rel)}</small></span></li>`).join('') + '</ol>';
 }
 

@@ -1,0 +1,1857 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://*.tile.opentopomap.org https://*.tile-cyclosm.openstreetmap.fr https://ambiente.azores.gov.pt; connect-src 'self'; frame-src https://www.strava.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="robots" content="noindex, nofollow"><meta name="description" content="From the Vineyards to the Mountain · Etapa 1, Triangle Adventure 2027 (Ilha do Pico, Açores): 25,1 km, 1 388 m D+. Perfil, mapa, pontos e horários."><link rel="canonical" href="https://mapas.myazorestrailrun.com/ta-etapa1.html"><meta property="og:type" content="website"><meta property="og:locale" content="pt_PT"><meta property="og:site_name" content="Azores Trail Run"><meta property="og:title" content="From the Vineyards to the Mountain · Etapa 1 · Triangle Adventure 2027"><meta property="og:description" content="From the Vineyards to the Mountain · Etapa 1, Triangle Adventure 2027 (Ilha do Pico, Açores): 25,1 km, 1 388 m D+. Perfil, mapa, pontos e horários."><meta property="og:url" content="https://mapas.myazorestrailrun.com/ta-etapa1.html"><meta name="theme-color" content="#052974"><style>body{margin:0}</style></head><body><title>From the Vineyards to the Mountain · Etapa 1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+/* Página de uma prova: faixa escura de abertura, ficha rápida, submenu fixo e secções em coluna (máx. 1120 px). */
+:root {
+  --papel: #f7f5f0; --cartao: #ffffff; --texto: #1a1d21; --texto-2: #565b61; --linha: #d9d2c3; --linha-2: #ece6da;
+  --basalto: #14181d; --osso: #e9e3d6; --turquesa: #087e7f; --turquesa-tinta: #e3f1ef; --lava: #d4492f; --lava-tinta: #fbe7e2;
+  --sol: #e0a100; --noite: #19305a;
+  --s0: #2f9e44; --s1: #8bbf3a; --s2: #e6c229; --s3: #f08c1e; --s4: #e0521d; --s5: #a61e1e; --t0: #5d6670; --t6: #8b5fbf; --t7: #c9c3b6; --mar: #b9d6e3; --terra: #eef0e2;
+  --f-display: "Outfit", system-ui, sans-serif; --f-corpo: "Outfit", system-ui, sans-serif; --f-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papel: #0f1214; --cartao: #171b1f; --texto: #e9e3d6; --texto-2: #a8a193; --linha: #2e343a; --linha-2: #23282e;
+  --basalto: #07090c; --osso: #e9e3d6; --turquesa: #2bb8b8; --turquesa-tinta: #0f2a2a; --lava: #f07158; --lava-tinta: #3a1c16;
+  --sol: #f2bd2c; --noite: #6d8fd1; --mar: #1d3a47; --terra: #2c322b; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --papel: #0f1214; --cartao: #171b1f; --texto: #e9e3d6; --texto-2: #a8a193; --linha: #2e343a; --linha-2: #23282e;
+  --basalto: #07090c; --osso: #e9e3d6; --turquesa: #2bb8b8; --turquesa-tinta: #0f2a2a; --lava: #f07158; --lava-tinta: #3a1c16;
+  --sol: #f2bd2c; --noite: #6d8fd1; --mar: #1d3a47; --terra: #2c322b; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--papel); color: var(--texto); font-family: var(--f-corpo); font-size: 16px; line-height: 1.5 }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--basalto) }
+.largura { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0 }
+button { font: inherit; color: inherit }
+:focus-visible { outline: 2px solid var(--turquesa); outline-offset: 2px }
+
+/* Abertura */
+.abertura { background: var(--basalto); color: var(--osso) }
+.abertura .largura { padding-block: 40px 28px; display: grid; gap: 10px }
+.etiqueta { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #9fd9d6 }
+.abertura h1 { font-size: clamp(34px, 6vw, 58px); font-weight: 600; line-height: 1.05 }
+.abertura .sub { font-size: 18px; color: #cfc8ba; max-width: 60ch }
+.sigla { display: inline-block; font-family: var(--f-mono); font-size: 13px; border: 1px solid #4a5560; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 4px; color: #cfc8ba }
+.ficha { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: #2b3138; border: 1px solid #2b3138; border-radius: 10px; overflow: hidden; margin-top: 18px }
+@media (max-width: 620px) { .ficha { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.ficha div { background: #1b2026; padding: 12px 14px; display: grid; gap: 2px; min-width: 0 }
+.ficha dt { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #9a948a }
+.ficha dd { margin: 0; font-family: var(--f-mono); font-size: 19px; color: #f4f0e8 }
+.ficha dd small { font-size: 12px; color: #9a948a; font-family: var(--f-corpo) }
+.oficial { font-size: 13px; color: #9a948a }
+
+/* Submenu fixo */
+.submenu { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--cartao); border-bottom: 1px solid var(--linha) }
+.submenu .largura { display: flex; gap: 4px; overflow-x: auto; padding-block: 0 }
+.submenu a { padding: 12px 12px; color: var(--texto-2); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; font-size: 15px }
+.submenu a:hover, .submenu a.ativo { color: var(--texto); border-bottom-color: var(--turquesa) }
+.submenu .inscrever { margin-left: auto; color: var(--turquesa); font-weight: 600 }
+
+section { padding-block: 40px 8px; scroll-margin-top: 56px }
+section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px }
+.lead { color: var(--texto-2); max-width: 65ch; margin: 0 0 18px }
+
+/* Traços da etapa */
+.tracos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px }
+.traco { background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 12px; padding: 16px; display: grid; gap: 6px; align-content: start }
+.traco b { font-family: var(--f-display); font-size: 18px; font-weight: 600 }
+.traco .num { font-size: 26px; color: var(--turquesa) }
+.traco p { margin: 0; color: var(--texto-2); font-size: 15px }
+
+/* Explorador do percurso */
+.painel { background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 14px; padding: 16px; display: grid; gap: 12px }
+.linha-controlos { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center }
+.segmentos { display: inline-flex; background: var(--linha-2); border-radius: 999px; padding: 3px }
+.segmentos button { border: 0; background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 14px; color: var(--texto-2) }
+.segmentos button[aria-pressed="true"] { background: var(--basalto); color: #f4f0e8 }
+.segmentos button:disabled { opacity: .45; cursor: not-allowed }
+.ligacao { background: none; border: 0; border-bottom: 1px solid currentColor; padding: 0; cursor: pointer; font-size: 14px; color: var(--texto) }
+.interruptor { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; cursor: pointer; margin-left: auto }
+.interruptor input { appearance: none; width: 34px; height: 20px; border-radius: 999px; background: var(--linha); position: relative; cursor: pointer; margin: 0 }
+.interruptor input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left .15s }
+.interruptor input:checked { background: var(--lava) }
+.interruptor input:checked::after { left: 16px }
+.servicos { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
+.servicos > span { font-size: 14px; color: var(--texto-2); margin-right: 4px }
+.chip { border: 1px solid var(--linha); background: var(--cartao); border-radius: 999px; padding: 4px 10px 4px 8px; font-size: 13px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center }
+.chip[aria-pressed="true"] { background: var(--turquesa); border-color: var(--turquesa); color: #fff }
+.chip svg { width: 15px; height: 15px }
+.ajuda { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--linha); background: var(--cartao); cursor: pointer; font-size: 13px }
+
+.perfil-caixa { position: relative; touch-action: pan-y; user-select: none }
+#perfil { display: block; width: 100%; height: 300px }
+#perfil text { fill: var(--texto-2); font-family: var(--f-mono); font-size: 11px }
+.dica { position: absolute; pointer-events: none; background: var(--basalto); color: #f4f0e8; border-radius: 8px; padding: 8px 10px; font-size: 13px; line-height: 1.35; min-width: 150px; transform: translate(-50%, 0); white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,.25) }
+.dica b { font-family: var(--f-mono); font-weight: 500 }
+.navegador { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center }
+.mini { position: relative; height: 56px; border-radius: 8px; background: var(--linha-2); overflow: hidden; touch-action: none }
+.mini svg { position: absolute; inset: 0; width: 100%; height: 100% }
+.janela { position: absolute; top: 0; bottom: 0; border: 2px solid var(--basalto); border-radius: 8px; background: rgba(8,126,127,.06); cursor: grab }
+:root[data-theme="dark"] .janela { border-color: var(--osso) }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .janela { border-color: var(--osso) } }
+.pega { position: absolute; top: 0; bottom: 0; width: 16px; background: var(--basalto); color: #f4f0e8; display: grid; place-items: center; font-size: 11px; cursor: ew-resize; border: 0; padding: 0 }
+.pega.esq { left: -2px; border-radius: 7px 0 0 7px } .pega.dir { right: -2px; border-radius: 0 7px 7px 0 }
+.totais { display: grid; gap: 0; width: 170px }
+.totais b { font-family: var(--f-mono); font-size: 22px; font-weight: 500 }
+.totais span { font-family: var(--f-mono); font-size: 13px; color: var(--texto-2) }
+.aperto { margin-top: 22px }
+.aperto h3 { margin: 0 0 4px; font-family: var(--f-display) }
+.aperto-lista { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px }
+.aperto-lista li { display: grid; grid-template-columns: 10px 1fr auto; gap: 12px; align-items: center; background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 10px; padding: 10px 14px }
+.aperto-cor { width: 10px; height: 100%; min-height: 34px; border-radius: 4px }
+.aperto-lista small { display: block; color: var(--texto-2); font-size: 13px; font-family: inherit }
+.aperto-lista .num { text-align: right; font-family: var(--f-mono) }
+.subida[hidden] { display: none }
+.sitios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px }
+.sitio { margin: 0; background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 14px; overflow: hidden }
+.sitio img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover }
+.sitio figcaption { padding: 14px 16px 16px }
+.sitio figcaption b { font-family: var(--f-display); font-size: 18px }
+.sitio .km-ilha { margin-left: 8px; font-family: var(--f-mono); font-size: 13px; color: var(--turquesa) }
+.sitio p { margin: 6px 0 8px; color: var(--texto-2); font-size: 15px }
+.sitio small { color: var(--texto-2); font-size: 12px }
+dialog.plano { width: min(720px, calc(100vw - 32px)) }
+#plano h3 { margin: 0 0 2px }
+#plano .sub { color: var(--texto-2); margin: 0 0 12px }
+#plano ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 }
+#plano li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid var(--linha-2) }
+#plano li .h { font-family: var(--f-mono); font-weight: 600; font-size: 16px }
+#plano li small { display: block; color: var(--texto-2) }
+#plano .nota { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--turquesa-tinta) }
+.plano-acoes { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0 }
+@media print { body * { visibility: hidden } dialog.plano, dialog.plano #plano, dialog.plano #plano * { visibility: visible } dialog.plano { position: absolute; inset: 0 auto auto 0; box-shadow: none; width: 100% } .plano-acoes, dialog.plano .fechar { display: none } }
+.ver-todas { margin-top: 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 8px 18px; color: var(--turquesa); font: inherit; font-weight: 600; cursor: pointer }
+.luz { margin: 4px 0 14px; color: var(--texto-2); font-size: 15px }
+.luz b { color: var(--texto) }
+.subida .etq { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2) }
+.subida .cat { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--turquesa); color: #fff; font-size: 11px; letter-spacing: 0 }
+.subida .num { font-size: 20px }
+.subida p b { font-family: inherit; font-size: inherit; font-weight: 600 }
+.subida a { color: var(--turquesa); font-weight: 600; font-size: 14px }
+.subida button { justify-self: start; background: none; border: 1px solid var(--linha); border-radius: 999px; padding: 4px 12px; color: var(--texto); cursor: pointer; font: inherit; font-size: 13px }
+a.lugar { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-thickness: 1px }
+a.lugar:hover, a.lugar:focus-visible { text-decoration-style: solid }
+a.maps { color: var(--turquesa) }
+.dica-mini { margin: 6px 0 0; font-size: 13.5px; color: var(--texto-2) }
+.dica-mini b { color: var(--texto) }
+.janela.convite { animation: convite 1.6s ease-in-out 2 }
+@keyframes convite { 0%, 100% { transform: translateX(0) } 25% { transform: translateX(10px) } 75% { transform: translateX(-6px) } }
+@media (prefers-reduced-motion: reduce) { .janela.convite { animation: none } }
+.repor { font-size: 13px }
+
+.mapa-e-ponto { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 14px; align-items: start }
+@media (max-width: 760px) { .mapa-e-ponto { grid-template-columns: 1fr } }
+.mapa { background: var(--linha-2); border-radius: 12px; overflow: hidden; position: relative }
+#mapa { display: block; width: 100%; height: auto }
+.mapa .nota { position: absolute; left: 10px; bottom: 8px; font-size: 12px; color: var(--texto-2) }
+.ponto-cartao { background: var(--papel); border: 1px solid var(--linha-2); border-radius: 12px; padding: 14px; display: grid; gap: 8px; min-width: 0 }
+.ponto-cartao h3 { font-size: 20px; font-weight: 600 }
+.ponto-cartao dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 14px }
+.ponto-cartao dt { color: var(--texto-2) } .ponto-cartao dd { margin: 0; font-family: var(--f-mono) }
+.ponto-cartao .vazio { color: var(--texto-2); font-size: 14px }
+
+/* Tabela */
+.tabela-caixa { overflow-x: auto; border: 1px solid var(--linha-2); border-radius: 12px; background: var(--cartao) }
+table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 14px }
+th { text-align: left; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-2); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--linha) }
+td { padding: 10px 12px; border-bottom: 1px solid var(--linha-2); vertical-align: middle }
+tr:last-child td { border-bottom: 0 }
+td .peq { display: block; white-space: nowrap; font-size: 12px; color: var(--texto-2); font-family: var(--f-mono) }
+td.nome { font-weight: 600 }
+td.nome small { display: block; font-weight: 400; color: var(--texto-2) }
+.barreira { color: var(--lava); font-family: var(--f-mono); white-space: nowrap }
+.estado { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; margin-left: 6px; font-family: var(--f-corpo) }
+.estado.ok { background: var(--turquesa-tinta); color: var(--turquesa) }
+.estado.justo { background: #fff3cd; color: #7a5600 }
+.estado.fora { background: var(--lava-tinta); color: var(--lava) }
+.carril { width: 8px; padding: 0 !important }
+.carril span { display: block; width: 6px; height: 46px; border-radius: 3px; margin: 0 auto }
+.icones { display: flex; gap: 4px }
+.icones svg { width: 18px; height: 18px; color: var(--texto-2) }
+.alvo { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-bottom: 12px }
+.alvo label { font-size: 15px }
+.alvo input[type=range] { width: min(320px, 100%); accent-color: var(--turquesa) }
+.alvo output { font-family: var(--f-mono); font-size: 20px; color: var(--turquesa) }
+.alvo small { color: var(--texto-2) }
+
+/* O dia, material, relógio */
+.duas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px }
+@media (max-width: 760px) { .duas { grid-template-columns: 1fr } }
+.horario { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 }
+.horario li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--linha-2) }
+.horario li b { font-family: var(--f-mono); font-weight: 500 }
+.horario li.marco b { color: var(--lava) }
+.horario li.prova b { color: var(--turquesa) }
+.material { columns: 2 220px; padding-left: 20px; margin: 0 }
+.material li { margin-bottom: 6px; break-inside: avoid }
+.texto p { max-width: 68ch; margin: 0 0 14px }
+.relogios { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px }
+pre.gpx { background: var(--basalto); color: #d9f0ee; border-radius: 10px; padding: 14px; overflow-x: auto; font-size: 12.5px; line-height: 1.5; margin: 0 }
+.aviso { background: var(--turquesa-tinta); border-radius: 10px; padding: 12px 14px; font-size: 14px }
+.rodape { padding-block: 32px 48px; color: var(--texto-2); font-size: 14px }
+
+/* Janelas (detalhe das inclinações, legenda) */
+dialog { border: 0; border-radius: 14px; padding: 20px; width: min(520px, calc(100vw - 32px)); background: var(--cartao); color: var(--texto); box-shadow: 0 20px 60px rgba(0,0,0,.35) }
+dialog::backdrop { background: rgba(10,12,14,.5) }
+dialog h3 { font-size: 20px; margin-bottom: 12px }
+.fechar { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--linha-2); cursor: pointer; font-size: 18px }
+.barras { display: grid; gap: 6px }
+.barra { display: grid; grid-template-columns: 74px 1fr 120px; gap: 10px; align-items: center; font-size: 14px }
+.barra.larga { grid-template-columns: 150px 1fr 110px; gap: 10px; align-items: center; font-size: 14px }
+.barra .etq { font-family: var(--f-mono); background: var(--basalto); color: #f4f0e8; border-radius: 6px; padding: 3px 8px; text-align: center; font-size: 12.5px }
+.barra .tubo { height: 14px; border-radius: 7px; background: var(--linha-2); overflow: hidden }
+.barra .tubo i { display: block; height: 100% }
+.barra .val { font-family: var(--f-mono); font-size: 13px }
+.barra .val small { color: var(--texto-2) }
+.legenda { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px }
+.legenda li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-size: 14px }
+.legenda li svg { width: 22px; height: 22px; color: var(--turquesa) }
+.legenda li span { color: var(--texto-2) }
+
+/* Mapa do percurso (Leaflet, plano) */
+.mapa { min-height: 120px }
+.mapa.com-fundo { grid-column: 1 / -1 }
+#mapa-fundo { width: 100%; height: min(560px, 75vh); background: var(--mar); font-family: var(--f-corpo) }
+.mapa:fullscreen #mapa-fundo { height: 100vh }
+.painel-mapa { position: absolute; left: 10px; top: 10px; z-index: 1000; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-width: calc(100% - 70px) }
+.painel-mapa .segmentos { background: rgba(255,255,255,.9) }
+.painel-mapa .chip { background: rgba(255,255,255,.92); color: #1a1d21 }
+.painel-mapa .chip[aria-pressed="true"] { background: var(--turquesa); color: #fff }
+.ecra-inteiro { width: 34px; height: 34px; background: #fff; border: 0; font-size: 18px; line-height: 1; cursor: pointer; color: #1a1d21 }
+.aviso-foto { position: absolute; left: 10px; right: 60px; bottom: 28px; z-index: 1000; margin: 0; padding: 8px 12px; border-radius: 8px; background: rgba(20,24,29,.85); color: #f4f0e8; font-size: 13px }
+.aviso-foto[hidden] { display: none }
+.mk-solto { background: none; border: 0 }
+.mk-solto > * { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) }
+.mk-seta svg { display: block }
+.mk-ponto { white-space: nowrap; display: inline-block; border: 2px solid #fff; border-radius: 999px; padding: 2px 8px; font: 600 12px var(--f-mono); color: #1a1d21; background: var(--sol); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.3) }
+.mk-ponto.mk-partida { background: var(--s0); color: #fff } .mk-ponto.mk-meta { background: #14181d; color: #fff }
+.mk-km { font: 600 10px var(--f-mono); background: #fff; color: #1a1d21; border: 1px solid #5d6670; border-radius: 999px; width: 22px; height: 22px; display: grid; place-items: center; box-sizing: border-box }
+.mk-lugar { font: 500 12px var(--f-corpo); color: #1a1d21; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff; pointer-events: none; white-space: nowrap }
+.fundo-foto .mk-lugar { color: #fff; text-shadow: 0 0 3px #000, 0 0 3px #000 }
+.fundo-foto .mk-lugar.mk-pico { color: #f4e3c4 }
+.mk-lugar.mk-village, .mk-lugar.mk-town { font-weight: 700; font-size: 13px }
+.mk-lugar.mk-pico { font-style: italic; color: #5a4632 }
+.mk-lugar.mk-pico::before { content: "▲ "; font-style: normal; font-size: 9px }
+.mk-cursor { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 4px solid #14181d; box-shadow: 0 0 0 2px #fff }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+/* Leaflet 1.9.4, BSD-2-Clause */
+/* required styles */
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+.leaflet-container {
+	overflow: hidden;
+	}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+	  -webkit-user-drag: none;
+	}
+/* Prevents IE11 from highlighting tiles in blue */
+.leaflet-tile::selection {
+	background: transparent;
+}
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.leaflet-safari .leaflet-tile {
+	image-rendering: -webkit-optimize-contrast;
+	}
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.leaflet-safari .leaflet-tile-container {
+	width: 1600px;
+	height: 1600px;
+	-webkit-transform-origin: 0 0;
+	}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	display: block;
+	}
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+.leaflet-container .leaflet-overlay-pane svg {
+	max-width: none !important;
+	max-height: none !important;
+	}
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	width: auto;
+	padding: 0;
+	}
+
+.leaflet-container img.leaflet-tile {
+	/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
+	mix-blend-mode: plus-lighter;
+}
+
+.leaflet-container.leaflet-touch-zoom {
+	-ms-touch-action: pan-x pan-y;
+	touch-action: pan-x pan-y;
+	}
+.leaflet-container.leaflet-touch-drag {
+	-ms-touch-action: pinch-zoom;
+	/* Fallback for FF which doesn't support pinch-zoom */
+	touch-action: none;
+	touch-action: pinch-zoom;
+}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.leaflet-container {
+	-webkit-tap-highlight-color: transparent;
+}
+.leaflet-container a {
+	-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+.leaflet-tile {
+	filter: inherit;
+	visibility: hidden;
+	}
+.leaflet-tile-loaded {
+	visibility: inherit;
+	}
+.leaflet-zoom-box {
+	width: 0;
+	height: 0;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	z-index: 800;
+	}
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	}
+
+.leaflet-pane         { z-index: 400; }
+
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+
+.leaflet-vml-shape {
+	width: 1px;
+	height: 1px;
+	}
+.lvml {
+	behavior: url(#default#VML);
+	display: inline-block;
+	position: absolute;
+	}
+
+
+/* control positioning */
+
+.leaflet-control {
+	position: relative;
+	z-index: 800;
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.leaflet-top,
+.leaflet-bottom {
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	}
+.leaflet-top {
+	top: 0;
+	}
+.leaflet-right {
+	right: 0;
+	}
+.leaflet-bottom {
+	bottom: 0;
+	}
+.leaflet-left {
+	left: 0;
+	}
+.leaflet-control {
+	float: left;
+	clear: both;
+	}
+.leaflet-right .leaflet-control {
+	float: right;
+	}
+.leaflet-top .leaflet-control {
+	margin-top: 10px;
+	}
+.leaflet-bottom .leaflet-control {
+	margin-bottom: 10px;
+	}
+.leaflet-left .leaflet-control {
+	margin-left: 10px;
+	}
+.leaflet-right .leaflet-control {
+	margin-right: 10px;
+	}
+
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	   -moz-transition: opacity 0.2s linear;
+	        transition: opacity 0.2s linear;
+	}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+	opacity: 1;
+	}
+.leaflet-zoom-animated {
+	-webkit-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	}
+svg.leaflet-zoom-animated {
+	will-change: transform;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+	}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	        transition: none;
+	}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+	visibility: hidden;
+	}
+
+
+/* cursors */
+
+.leaflet-interactive {
+	cursor: pointer;
+	}
+.leaflet-grab {
+	cursor: -webkit-grab;
+	cursor:    -moz-grab;
+	cursor:         grab;
+	}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+	cursor: crosshair;
+	}
+.leaflet-popup-pane,
+.leaflet-control {
+	cursor: auto;
+	}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor:    -moz-grabbing;
+	cursor:         grabbing;
+	}
+
+/* marker & overlays interactivity */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+	pointer-events: none;
+	}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+
+.leaflet-container {
+	background: #ddd;
+	outline-offset: 1px;
+	}
+.leaflet-container a {
+	color: #0078A8;
+	}
+.leaflet-zoom-box {
+	border: 2px dotted #38f;
+	background: rgba(255,255,255,0.5);
+	}
+
+
+/* general typography */
+.leaflet-container {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	}
+
+
+/* general toolbar styles */
+
+.leaflet-bar {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	border-radius: 4px;
+	}
+.leaflet-bar a {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+	}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+	background-color: #f4f4f4;
+	}
+.leaflet-bar a:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	}
+.leaflet-bar a:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom: none;
+	}
+.leaflet-bar a.leaflet-disabled {
+	cursor: default;
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.leaflet-touch .leaflet-bar a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	}
+.leaflet-touch .leaflet-bar a:first-child {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	}
+.leaflet-touch .leaflet-bar a:last-child {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	}
+
+
+/* layers control */
+
+.leaflet-control-layers {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	background: #fff;
+	border-radius: 5px;
+	}
+.leaflet-control-layers-toggle {
+	background-image: url(images/layers.png);
+	width: 36px;
+	height: 36px;
+	}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url(images/layers-2x.png);
+	background-size: 26px 26px;
+	}
+.leaflet-touch .leaflet-control-layers-toggle {
+	width: 44px;
+	height: 44px;
+	}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: none;
+	}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+	display: block;
+	position: relative;
+	}
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+	}
+.leaflet-control-layers-scrollbar {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-right: 5px;
+	}
+.leaflet-control-layers-selector {
+	margin-top: 2px;
+	position: relative;
+	top: 1px;
+	}
+.leaflet-control-layers label {
+	display: block;
+	font-size: 13px;
+	font-size: 1.08333em;
+	}
+.leaflet-control-layers-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 5px -10px 5px -6px;
+	}
+
+/* Default icon URLs */
+.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */
+	background-image: url(images/marker-icon.png);
+	}
+
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	line-height: 1.4;
+	}
+.leaflet-control-attribution a {
+	text-decoration: none;
+	}
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+	text-decoration: underline;
+	}
+.leaflet-attribution-flag {
+	display: inline !important;
+	vertical-align: baseline !important;
+	width: 1em;
+	height: 0.6669em;
+	}
+.leaflet-left .leaflet-control-scale {
+	margin-left: 5px;
+	}
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 5px;
+	}
+.leaflet-control-scale-line {
+	border: 2px solid #777;
+	border-top: none;
+	line-height: 1.1;
+	padding: 2px 5px 1px;
+	white-space: nowrap;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.8);
+	text-shadow: 1px 1px #fff;
+	}
+.leaflet-control-scale-line:not(:first-child) {
+	border-top: 2px solid #777;
+	border-bottom: none;
+	margin-top: -2px;
+	}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+	border-bottom: 2px solid #777;
+	}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	box-shadow: none;
+	}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+	}
+
+
+/* popup */
+
+.leaflet-popup {
+	position: absolute;
+	text-align: center;
+	margin-bottom: 20px;
+	}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	border-radius: 12px;
+	}
+.leaflet-popup-content {
+	margin: 13px 24px 13px 20px;
+	line-height: 1.3;
+	font-size: 13px;
+	font-size: 1.08333em;
+	min-height: 1px;
+	}
+.leaflet-popup-content p {
+	margin: 17px 0;
+	margin: 1.3em 0;
+	}
+.leaflet-popup-tip-container {
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	left: 50%;
+	margin-top: -1px;
+	margin-left: -20px;
+	overflow: hidden;
+	pointer-events: none;
+	}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+	pointer-events: auto;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: white;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+	}
+.leaflet-container a.leaflet-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	font: 16px/24px Tahoma, Verdana, sans-serif;
+	color: #757575;
+	text-decoration: none;
+	background: transparent;
+	}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+	color: #585858;
+	}
+.leaflet-popup-scrolled {
+	overflow: auto;
+	}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+	-ms-zoom: 1;
+	}
+.leaflet-oldie .leaflet-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.leaflet-div-icon {
+	background: #fff;
+	border: 1px solid #666;
+	}
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.leaflet-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.leaflet-tooltip.leaflet-interactive {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+	margin-top: 6px;
+}
+.leaflet-tooltip-top {
+	margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+	left: 50%;
+	margin-left: -6px;
+	}
+.leaflet-tooltip-top:before {
+	bottom: 0;
+	margin-bottom: -12px;
+	border-top-color: #fff;
+	}
+.leaflet-tooltip-bottom:before {
+	top: 0;
+	margin-top: -12px;
+	margin-left: -6px;
+	border-bottom-color: #fff;
+	}
+.leaflet-tooltip-left {
+	margin-left: -6px;
+}
+.leaflet-tooltip-right {
+	margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	top: 50%;
+	margin-top: -6px;
+	}
+.leaflet-tooltip-left:before {
+	right: 0;
+	margin-right: -12px;
+	border-left-color: #fff;
+	}
+.leaflet-tooltip-right:before {
+	left: 0;
+	margin-left: -12px;
+	border-right-color: #fff;
+	}
+
+/* Printing */
+
+@media print {
+	/* Prevent printers from removing background-images of controls. */
+	.leaflet-control {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+		}
+	}
+
+</style><style>.botao{display:inline-block;padding:10px 18px;border-radius:999px;background:var(--turquesa);color:#fff;font-weight:600;text-decoration:none}</style>
+
+<header class="abertura">
+  <div class="largura">
+    <span class="etiqueta">Triangle Adventure 2027 · Etapa 1 de 3 · Ilha do Pico</span>
+    <h1>From the Vineyards to the Mountain <span class="sigla">FVM</span></h1>
+    <p class="sub">Do mar, na Madalena, à <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a>, a 1 233 m, no sopé da montanha mais alta de Portugal. Uma subida quase contínua pela Paisagem da Cultura da Vinha da Ilha do Pico, Património Mundial da UNESCO.</p>
+    <dl class="ficha">
+      <div><dt>Distância</dt><dd>25,1 <small>km</small></dd></div>
+      <div><dt>Subida</dt><dd>1 388 <small>m D+</small></dd></div>
+      <div><dt>Descida</dt><dd>161 <small>m D−</small></dd></div>
+      <div><dt>Km-esforço</dt><dd>39</dd></div>
+      <div><dt>Partida</dt><dd>09:00 <small>sexta, 29 out</small></dd></div>
+      <div><dt>Tempo limite</dt><dd>5h00 <small>até às 14:00</small></dd></div>
+      <div><dt>Ponto mais alto</dt><dd>1 262 <small>m</small></dd></div>
+      <div><dt>Sol</dt><dd><span id="sol">08:20 <small>· 18:54</small></span></dd></div>
+    </dl>
+    <span class="oficial">Valores oficiais do Trace de Trail. Partida no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.53415,-28.52984" target="_blank" rel="noopener">Clube Naval da Madalena</a>, chegada na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a>.</span>
+  </div>
+</header>
+
+<nav class="submenu" aria-label="Secções da prova">
+  <div class="largura">
+    <a href="#percurso">O percurso</a>
+    <a href="#relogio">GPX</a>
+    <a href="#pontos">Pontos e horários</a>
+    <a href="#subidas">Subidas</a>
+    <a href="#historia">A etapa</a>
+    <a href="#dia">O dia</a>
+    <a href="#material">Material</a>
+    <a class="inscrever" href="#inscricao">Inscrever-me</a>
+  </div>
+</nav>
+
+<main>
+<section aria-labelledby="t-tracos">
+  <div class="largura">
+    <h2 id="t-tracos">Em 30 segundos</h2>
+    <p class="lead">O que torna esta etapa diferente das outras duas.</p>
+    <div class="tracos">
+      <div class="traco"><b>Do mar à montanha</b><span class="num">1 233 m</span><p>Parte junto ao mar, na Madalena, e acaba na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a>, a 1 233 m. É quase sempre a subir.</p></div>
+      <div class="traco"><b>O troço mais duro</b><span class="num" id="t-duro">—</span><p id="t-duro-txt">—</p></div>
+      <div class="traco"><b>Um abastecimento</b><span class="num">1</span><p>Na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.514552,-28.49287" target="_blank" rel="noopener">Criação Velha</a> (km 13,3), no meio das vinhas, com barreira às 11:00.</p></div>
+      <div class="traco"><b>Barco de manhã</b><span class="num">07:30</span><p>Barco da Horta para a Madalena. A mala entrega-se no terminal e segue para São Jorge.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="percurso" aria-labelledby="t-percurso">
+  <div class="largura">
+    <h2 id="t-percurso">O percurso</h2>
+    <p class="lead">Passa o rato ou o dedo pelo perfil. Arrasta sobre ele, ou usa as pegas por baixo, para ver um troço em pormenor. Duplo clique repõe a etapa inteira. A zona cinzenta é a parte que fazes de noite, com o tempo que escolhes em «Pontos e horários».</p>
+    <div class="painel">
+      <div class="servicos" id="servicos"><span>Serviços</span></div>
+      <div class="linha-controlos">
+        <div class="segmentos" role="group" aria-label="Vista do perfil">
+          <button type="button" data-modo="percurso" aria-pressed="true">Percurso</button>
+          <button type="button" data-modo="inclinacao" aria-pressed="false">Inclinação</button>
+          <button type="button" data-modo="tecnica" aria-pressed="false" disabled title="Falta o tipo de piso desta prova">Técnica</button>
+        </div>
+        <button type="button" class="ligacao" id="abrir-inclinacoes" hidden>Detalhe das inclinações</button>
+        <button type="button" class="ligacao" id="abrir-terreno" hidden>Detalhe do terreno</button>
+        <label class="interruptor"><input type="checkbox" id="ver-barreiras" checked> Barreiras horárias</label>
+      </div>
+      <div class="perfil-caixa" id="perfil-caixa">
+        <svg id="perfil" role="img" aria-label="Perfil de altitude da etapa"></svg>
+        <div class="dica" id="dica" hidden></div>
+      </div>
+      <div class="navegador">
+        <div class="mini" id="mini" aria-label="Escolher um troço">
+          <svg id="mini-svg" preserveAspectRatio="none" viewBox="0 0 100 56" aria-hidden="true"></svg>
+          <div class="janela" id="janela">
+            <button type="button" class="pega esq" id="pega-esq" aria-label="Início do troço">‹</button>
+            <button type="button" class="pega dir" id="pega-dir" aria-label="Fim do troço">›</button>
+          </div>
+        </div>
+        <div class="totais"><b id="tot-km"></b><span id="tot-d"></span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a etapa inteira</button></div>
+      </div>
+      <p class="dica-mini" id="dica-mini"><span aria-hidden="true">↔</span> <b>Arrasta a janela</b> (ou as pegas ‹ ›) no perfil pequeno para escolher o troço que queres ver em pormenor. Também podes tocar noutro sítio do perfil pequeno, ou arrastar no perfil grande.</p>
+      <div class="mapa-e-ponto">
+        <div class="mapa"><svg id="mapa" role="img" aria-label="Traçado da etapa"></svg><span class="nota">Traçado sem mapa de fundo · N ↑</span></div>
+        <div class="ponto-cartao" id="ponto-cartao" aria-live="polite"><p class="vazio">Toca num ponto do perfil ou do mapa para ver o que há lá.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="relogio" aria-labelledby="t-relogio">
+  <div class="largura">
+    <h2 id="t-relogio">GPX para o relógio</h2>
+    <p class="lead">Um GPX feito para cada marca. Escolhe a marca e descarrega o percurso, com os abastecimentos e as barreiras. É o percurso de 2026, que se mantém em 2027.</p>
+    <div class="relogios segmentos" role="group" aria-label="Marca do relógio">
+      <button type="button" data-relogio="garmin" aria-pressed="true">Garmin</button>
+      <button type="button" data-relogio="suunto" aria-pressed="false">Suunto</button>
+      <button type="button" data-relogio="coros" aria-pressed="false">Coros</button>
+      <button type="button" data-relogio="universal" aria-pressed="false">Universal</button>
+    </div>
+    <p id="relogio-desc" class="lead" style="margin-bottom:8px"></p>
+    <pre class="gpx" id="relogio-gpx" hidden></pre>
+    <p style="margin-top:14px"><a id="relogio-descarregar" class="botao" download>Descarregar o GPX</a></p><div class="ajuda-gpx" style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;margin-top:14px;padding:14px 16px;border:1px solid var(--linha-2);background:var(--cartao)">
+      <div style="flex:1 1 320px">
+        <b style="font-family:var(--f-display)">Pôr o percurso no relógio pelo telemóvel</b>
+        <ol style="margin:8px 0 0;padding-left:20px;line-height:1.55">
+          <li>No telemóvel, escolhe a marca e carrega em «Descarregar o GPX».</li>
+          <li>Abre o ficheiro descarregado (no iPhone, na app Ficheiros; no Android, em Transferências) e usa «Partilhar» ou «Abrir com».</li>
+          <li>Escolhe a app do teu relógio (Garmin Connect, Suunto, COROS…), guarda o percurso e sincroniza o relógio.</li>
+        </ol>
+      </div>
+      <div class="qr-gpx" style="text-align:center;font-size:13px;color:var(--texto-2)"><svg width="148" height="148" class="segno"><g transform="scale(4)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#052974" d="M2 2.5h7m2 0h1m2 0h2m2 0h2m1 0h2m2 0h2m1 0h7m-33 1h1m5 0h1m5 0h5m3 0h1m1 0h1m3 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h4m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m2 0h3m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m2 0h7m1 0h1m1 0h1m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h2m3 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m1 0h3m1 0h3m4 0h1m3 0h5m-31 1h1m2 0h2m5 0h2m4 0h2m1 0h2m2 0h1m2 0h2m1 0h2m1 0h1m-33 1h4m1 0h2m2 0h1m1 0h1m3 0h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h2m-32 1h3m1 0h2m2 0h1m3 0h1m1 0h1m4 0h1m1 0h1m2 0h2m2 0h5m-33 1h1m1 0h1m3 0h3m1 0h1m4 0h1m1 0h1m4 0h1m2 0h1m1 0h3m1 0h2m-33 1h2m2 0h1m4 0h2m1 0h5m1 0h3m1 0h5m2 0h1m1 0h2m-32 1h10m3 0h1m6 0h2m2 0h2m2 0h3m-32 1h1m2 0h1m1 0h1m1 0h3m1 0h1m4 0h1m1 0h2m1 0h2m1 0h3m1 0h1m1 0h1m-31 1h2m2 0h1m1 0h1m1 0h4m4 0h2m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1m-33 1h1m1 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h5m2 0h2m1 0h2m1 0h1m-31 1h2m1 0h7m1 0h3m1 0h1m2 0h3m1 0h2m1 0h2m1 0h2m-31 1h1m2 0h2m2 0h1m2 0h1m1 0h1m1 0h2m2 0h3m2 0h1m2 0h6m-32 1h2m2 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h3m-30 1h1m3 0h1m3 0h1m1 0h4m1 0h1m2 0h3m2 0h1m2 0h2m1 0h1m2 0h1m-33 1h1m2 0h1m2 0h2m1 0h1m1 0h1m1 0h3m1 0h2m1 0h2m2 0h3m2 0h1m1 0h1m-32 1h1m1 0h3m3 0h1m2 0h1m1 0h3m2 0h2m1 0h2m1 0h2m1 0h1m1 0h3m-32 1h1m1 0h3m1 0h1m1 0h3m3 0h2m1 0h1m4 0h1m1 0h6m2 0h1m-25 1h2m2 0h1m3 0h5m2 0h2m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h2m4 0h2m1 0h1m2 0h4m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h4m3 0h1m3 0h1m1 0h4m3 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m3 0h1m2 0h1m1 0h1m2 0h1m1 0h6m1 0h2m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h2m2 0h2m1 0h1m1 0h3m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m-31 1h1m5 0h1m2 0h1m2 0h2m2 0h1m3 0h4m4 0h3m-31 1h7m1 0h3m1 0h3m2 0h1m1 0h2m1 0h4m1 0h1m3 0h1"/></g></svg><div>No computador? Aponta a câmara<br>do telemóvel para abrir aqui.</div></div>
+    </div>
+    <style>@media (max-width: 760px) { .qr-gpx { display: none } }</style>
+    <script>(() => { const a = document.getElementById('relogio-descarregar'), nomes = {garmin: 'Garmin', suunto: 'Suunto', coros: 'Coros', universal: 'universal'};
+      const por = k => { a.href = 'gpx/ta-etapa1-' + k + '.gpx'; a.textContent = 'Descarregar o GPX ' + nomes[k]; };
+      document.querySelectorAll('[data-relogio]').forEach(b => b.addEventListener('click', () => por(b.dataset.relogio))); por('garmin'); })();</script>
+  </div>
+</section>
+
+<section id="pontos" aria-labelledby="t-pontos">
+  <div class="largura">
+    <h2 id="t-pontos">Pontos e horários</h2>
+    <p class="lead">Escolhe o tempo que contas fazer. A hora prevista em cada ponto reparte esse tempo pelo esforço de cada troço (km + D+/100), e avisa quando ficas perto de uma barreira.</p>
+    <div class="alvo">
+      <label for="tempo-alvo">O meu tempo previsto</label>
+      <input type="range" id="tempo-alvo" min="150" max="300" step="5" value="210">
+      <output id="tempo-alvo-txt" for="tempo-alvo">3h30</output>
+      <small>Tempo limite 5h00</small>
+    </div>
+    <p class="luz" id="luz"></p>
+    <p><button type="button" class="ver-todas" id="abrir-plano" style="margin-top:0">O meu dia: plano com o meu tempo</button></p>
+    <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
+    <div class="tabela-caixa">
+      <table>
+        <thead><tr><th>Ponto</th><th>Altitude</th><th>Desde a partida</th><th colspan="2">Próximo abastecimento</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="subidas" aria-labelledby="t-subidas">
+  <div class="largura">
+    <h2 id="t-subidas">Subidas e descidas</h2>
+    <p class="lead">As maiores do percurso, com o nome do sítio; em «Ver todas» estão todas as que têm 100 m de desnível ou mais. A categoria segue a regra do Strava: comprimento × inclinação média. A hora muda com o tempo que escolhes em «Pontos e horários».</p>
+    <div class="tracos" id="lista-subidas"></div>
+  </div>
+</section>
+<section id="historia" aria-labelledby="t-historia">
+  <div class="largura texto">
+    <h2 id="t-historia">A etapa</h2>
+    <p>A primeira etapa do Triangle Adventure liga o mar à montanha. Parte do <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.53415,-28.52984" target="_blank" rel="noopener">Clube Naval da Madalena</a>, junto ao porto, e sobe pela Paisagem da Cultura da Vinha da Ilha do Pico, Património Mundial da UNESCO, até à <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a>, a 1 233 m.</p>
+    <p>O único abastecimento é na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.514552,-28.49287" target="_blank" rel="noopener">Criação Velha</a> (km 13,3), com barreira às 11:00. Daí até à meta são quase 12 km quase sempre a subir, por caminhos rurais e trilhos, com a montanha do Pico à frente.</p>
+    <p>Na meta há transfers da organização para a Madalena, de hora a hora a partir das 13:00. O último sai às 15:00.</p>
+  </div>
+</section>
+
+<section id="dia" aria-labelledby="t-dia">
+  <div class="largura duas">
+    <div>
+      <h2 id="t-dia">O dia</h2>
+      <p class="lead">Sexta, 29 de outubro. O dia começa cedo, no barco da Horta para a Madalena.</p>
+      <ol class="horario">
+        <li><b>qui</b><span>Quinta, 28 de outubro: secretariado no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.53971,-28.62536" target="_blank" rel="noopener">Mercado Municipal da Horta</a>, das 18:00 às 22:00. Briefing às 19:30.</span></li>
+        <li><b>07:00</b><span>Encontro no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Terminal+Marítimo+da+Horta,+Açores" target="_blank" rel="noopener">Terminal Marítimo da Horta</a> e entrega da mala de viagem.</span></li>
+        <li><b>07:30</b><span>Barco da Horta para a Madalena (chega às 08:00).</span></li>
+        <li><b>08:00</b><span>Dorsais na Madalena, junto ao Clube Naval, para quem chega neste dia (até às 08:45).</span></li>
+        <li class="prova"><b>09:00</b><span>Partida, no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.53415,-28.52984" target="_blank" rel="noopener">Clube Naval da Madalena</a>.</span></li>
+        <li class="marco"><b>11:00</b><span>Barreira na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.514552,-28.49287" target="_blank" rel="noopener">Criação Velha</a> (km 13,3).</span></li>
+        <li><b>13:00</b><span>Começam os transfers da <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a> para a Madalena, de hora a hora.</span></li>
+        <li class="marco"><b>14:00</b><span>Fecho da meta, na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.47069,-28.42653" target="_blank" rel="noopener">Casa da Montanha</a>.</span></li>
+        <li><b>15:00</b><span>Último transfer para a Madalena.</span></li>
+      </ol>
+    </div>
+    <div id="material">
+      <h2>Material obrigatório</h2>
+      <p class="lead">O mesmo nas três etapas. Mostra-se no secretariado e pode ser verificado na partida, no percurso e na meta.</p>
+      <ol class="material">
+        <li>Dorsal, bem visível durante todo o percurso</li><li>Mochila ou equipamento semelhante</li><li>Recipiente de água, 0,5 l no mínimo</li><li>Manta térmica (100 × 200 cm no mínimo)</li><li>Corta-vento ou casaco impermeável</li><li>Telemóvel ligado, com bateria e saldo</li><li>Alimentação de reserva</li><li>Apito</li><li>Copo: não há copos nos abastecimentos</li><li>Documento de identificação com fotografia</li>
+      </ol>
+      <p class="aviso">Número de emergência da prova: <span class="num">+351 961 665 221</span>, impresso no dorsal. Se não conseguires falar com a organização, liga <span class="num">112</span>. Se desistires fora de um abastecimento, liga para o número da prova: o carro vassoura vai buscar-te.</p>
+    </div>
+  </div>
+</section>
+
+<section id="regras" aria-labelledby="t-regras">
+  <div class="largura">
+    <h2 id="t-regras">Antes e durante a prova</h2>
+    <p class="lead">O essencial do racebook. Em caso de dúvida, fala connosco no secretariado.</p>
+    <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div>
+        <h3>Três etapas, uma inscrição</h3>
+        <ul>
+          <li>A inscrição é para as três etapas: não há inscrição numa etapa só.</li>
+          <li>Levanta o dorsal no secretariado, com o documento de identificação. Quem chega no dia da primeira etapa levanta-o na Madalena, junto ao Clube Naval, das 08:00 às 08:45.</li>
+          <li>O dorsal vai no peito ou na barriga, sempre à vista.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Barcos e malas</h3>
+        <ul>
+          <li>Os barcos entre as ilhas estão incluídos na inscrição. Os acompanhantes compram o bilhete na Atlânticoline.</li>
+          <li>De manhã, entregas a mala no terminal marítimo e a organização leva-a para a ilha seguinte.</li>
+          <li>Perder o barco é perder a etapa.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Semi-autonomia</h3>
+        <ul>
+          <li>Entre abastecimentos, vais por tua conta: comida, roupa e material de segurança.</li>
+          <li>Os abastecimentos têm água e comida para consumir no local. Não há copos: leva o teu.</li>
+          <li>Só há ajuda de fora junto aos abastecimentos. É proibido ir acompanhado por quem não está inscrito.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Postos e marcação</h3>
+        <ul>
+          <li>O tempo limite conta desde a partida da etapa. Quem chega a um posto depois da hora entrega o dorsal e sai da prova.</li>
+          <li>Os postos são de passagem obrigatória. Falhar um posto dá desclassificação.</li>
+          <li>Segue sempre a marcação. Se deixares de ver marcas durante cerca de 200 m, volta atrás até à última que viste.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="aviso">Terreno duro, desnível elevado e tempo imprevisível: sol, chuva, frio, vento e nevoeiro. Cada atleta tem de saber gerir sozinho o cansaço e pequenas lesões. Aconselhamos um exame médico desportivo antes da prova.</p>
+  </div>
+</section>
+
+<section id="strava" aria-labelledby="t-strava">
+  <div class="largura">
+    <h2 id="t-strava">A comunidade no Strava</h2>
+    <p class="lead">O clube Azores Trail Run no Strava: o resumo da semana e as atividades mais recentes dos membros.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin-top:12px">
+      <iframe title="Resumo do clube Azores Trail Run no Strava" allowtransparency="true" height="160" scrolling="no" src="https://www.strava.com/clubs/271402/latest-rides/e0459a79502d7bd2dcca539b99dfd6acc5ce00ce?show_rides=false" width="300" loading="lazy" style="border:0;max-width:100%"></iframe>
+      <iframe title="Atividades recentes do clube Azores Trail Run no Strava" allowtransparency="true" height="454" scrolling="no" src="https://www.strava.com/clubs/271402/latest-rides/e0459a79502d7bd2dcca539b99dfd6acc5ce00ce?show_rides=true" width="300" loading="lazy" style="border:0;max-width:100%"></iframe>
+    </div>
+    <p><a href="https://www.strava.com/clubs/271402" style="color:var(--turquesa);font-weight:600">Junta-te ao clube no Strava</a></p>
+  </div>
+</section>
+<section id="inscricao" aria-labelledby="t-inscricao">
+  <div class="largura">
+    <h2 id="t-inscricao">Inscrição</h2>
+    <p class="lead">As inscrições do Triangle Adventure fazem-se na StopandGo. A inscrição é para as três etapas.</p>
+    <p><a class="botao" href="https://stopandgo.net/events/triangle-adventure-by-azores-trail-run-2026">Inscrever-me</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="largura rodape">
+  Distâncias e desníveis oficiais: Trace de Trail. Percursos de 2026, que se mantêm em 2027. Pontos, barreiras, programa e material: racebook do Triangle Adventure 2026, com as datas de 2027. Mapas: © contribuidores do OpenStreetMap, OpenTopoMap (CC-BY-SA), CyclOSM e Ortofotomapa 2024 © Governo dos Açores (SRAAC), CC BY 4.0. © Azores Trail Run.
+</footer>
+
+<dialog id="dlg-plano" aria-labelledby="t-plano" class="plano">
+  <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div id="plano"></div>
+  <p class="plano-acoes"><button type="button" class="ver-todas" id="imprimir-plano">Imprimir ou guardar em PDF</button> <button type="button" class="ver-todas" id="partilhar-plano">Copiar a ligação</button></p>
+</dialog>
+<dialog id="dlg-inclinacoes" aria-labelledby="t-incl">
+  <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h3 id="t-incl">Detalhe das inclinações</h3>
+  <label class="interruptor" style="margin:0 0 12px"><input type="checkbox" id="separar"> Separar subida e descida</label>
+  <div class="barras" id="barras"></div>
+</dialog>
+<dialog id="dlg-terreno" aria-labelledby="t-terr">
+  <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h3 id="t-terr">Detalhe do terreno</h3>
+  <div class="barras" id="barras-terreno"></div>
+  <p style="font-size:13px;color:var(--texto-2);margin:12px 0 0">Tipo de caminho segundo o OpenStreetMap, ponto a ponto. T1 a T3 seguem a escala de caminhada do Clube Alpino Suíço, a mesma que o OpenStreetMap usa. As estradas de terra contam como caminho rural.</p>
+</dialog>
+<dialog id="dlg-legenda" aria-labelledby="t-leg">
+  <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h3 id="t-leg">Serviços</h3>
+  <ul class="legenda" id="legenda"></ul>
+</dialog>
+
+<script>
+const D = {"source":"etapa1-pico.gpx","stats":{"distance_km":25.02,"gain_m":1397,"loss_m":172,"max_m":1262,"min_m":2,"points_10m":2503},"p":[[0.0,6,-28.52984,38.53415,0,0,2.9],[0.03,6,-28.53007,38.534,0,0,3.5],[0.06,7,-28.53017,38.53375,0,0,4.8],[0.09,9,-28.53036,38.53352,3,0,4.2],[0.12,10,-28.53055,38.5333,3,0,1.4],[0.15,10,-28.53084,38.53329,3,0,-1.8],[0.18,9,-28.5311,38.53346,3,0,-4.0],[0.21,7,-28.53142,38.53356,3,0,-4.0],[0.24,6,-28.53174,38.53365,3,0,-3.6],[0.27,5,-28.53206,38.53377,3,3,-3.0],[0.3,4,-28.53237,38.53388,3,3,-2.3],[0.33,4,-28.5327,38.53395,3,3,-1.1],[0.36,4,-28.53304,38.53396,3,3,-0.4],[0.39,4,-28.53338,38.5339,3,3,0.2],[0.42,4,-28.53369,38.53378,3,3,0.5],[0.45,4,-28.53395,38.53361,3,3,1.4],[0.48,4,-28.53415,38.53342,3,3,1.9],[0.51,5,-28.53415,38.53315,3,3,1.4],[0.54,6,-28.53428,38.53293,3,3,1.0],[0.57,6,-28.53444,38.53269,3,3,0.1],[0.6,6,-28.5345,38.53243,3,3,-0.7],[0.63,5,-28.53459,38.53218,3,3,-1.6],[0.66,5,-28.53484,38.532,3,3,-2.3],[0.69,4,-28.53508,38.5318,3,3,-1.2],[0.72,4,-28.53529,38.53159,3,3,0.2],[0.75,4,-28.53549,38.53137,3,3,1.5],[0.78,5,-28.53568,38.53115,3,3,1.6],[0.81,5,-28.53587,38.53092,3,3,1.5],[0.84,6,-28.53605,38.53069,3,3,1.4],[0.87,6,-28.53625,38.53047,3,3,1.6],[0.9,6,-28.53648,38.53027,3,3,1.8],[0.93,7,-28.53668,38.53006,3,3,1.0],[0.96,7,-28.53683,38.52981,3,3,0.9],[0.99,7,-28.53689,38.52955,3,3,0.3],[1.02,8,-28.53684,38.52928,3,3,-0.1],[1.05,8,-28.53674,38.52902,3,3,-1.4],[1.08,7,-28.53664,38.52876,3,3,-3.0],[1.11,6,-28.53656,38.5285,3,3,-2.7],[1.14,5,-28.53653,38.52823,3,3,-2.2],[1.17,5,-28.53652,38.52797,3,3,-1.2],[1.2,4,-28.53654,38.5277,3,3,0.8],[1.23,4,-28.53646,38.52745,3,3,3.1],[1.26,6,-28.5362,38.52729,3,3,2.8],[1.29,7,-28.53595,38.52718,3,3,0.5],[1.32,6,-28.53609,38.52693,3,3,-2.1],[1.35,5,-28.53624,38.52669,3,3,-2.8],[1.38,5,-28.5365,38.52651,3,3,-1.2],[1.41,4,-28.53678,38.52636,3,3,0.6],[1.44,5,-28.53695,38.52613,3,3,0.8],[1.47,6,-28.53709,38.52588,3,3,-0.0],[1.5,5,-28.53723,38.52563,3,3,-1.4],[1.53,4,-28.53735,38.52538,3,3,-1.4],[1.56,4,-28.53739,38.52512,3,3,-0.1],[1.59,4,-28.53735,38.52485,3,3,1.2],[1.62,5,-28.53731,38.52458,3,3,0.9],[1.65,5,-28.53735,38.52432,3,3,0.1],[1.68,5,-28.53747,38.52406,3,3,-0.5],[1.71,4,-28.53759,38.52381,3,3,-0.3],[1.74,4,-28.5377,38.52355,3,3,0.3],[1.77,5,-28.53774,38.52328,3,3,0.7],[1.8,5,-28.53779,38.52302,3,3,0.5],[1.83,5,-28.53782,38.52275,3,3,0.2],[1.86,5,-28.53782,38.52248,3,3,-0.2],[1.89,5,-28.53782,38.52221,3,3,-0.7],[1.92,5,-28.53781,38.52194,3,3,-0.9],[1.95,4,-28.53778,38.52167,3,3,-1.0],[1.98,4,-28.53781,38.5214,3,3,-1.0],[2.01,4,-28.53784,38.52113,3,3,-1.0],[2.04,3,-28.53792,38.52087,3,3,-1.2],[2.07,3,-28.53802,38.52061,3,3,-1.3],[2.1,3,-28.53814,38.52036,3,6,-1.2],[2.13,2,-28.53827,38.52011,3,6,-0.5],[2.16,2,-28.53839,38.51986,3,6,0.1],[2.19,2,-28.53851,38.51961,3,6,0.8],[2.22,3,-28.53863,38.51935,3,6,0.8],[2.25,3,-28.53874,38.5191,3,6,0.6],[2.28,3,-28.53881,38.51883,3,6,0.4],[2.31,3,-28.53887,38.51857,3,6,0.6],[2.34,3,-28.53894,38.5183,3,6,1.1],[2.37,4,-28.539,38.51804,3,6,1.5],[2.4,4,-28.53907,38.51777,3,6,1.7],[2.43,5,-28.53913,38.51751,3,6,1.7],[2.46,5,-28.53919,38.51724,3,6,1.5],[2.49,6,-28.53925,38.51698,6,6,1.3],[2.52,6,-28.53931,38.51671,6,6,0.7],[2.55,6,-28.53937,38.51644,6,6,0.2],[2.58,6,-28.53942,38.51618,6,6,0.3],[2.61,6,-28.53934,38.51597,6,6,0.7],[2.64,7,-28.53902,38.51587,6,6,1.2],[2.67,7,-28.53871,38.51577,6,6,1.6],[2.7,8,-28.53839,38.51566,6,6,1.9],[2.73,8,-28.53807,38.51556,6,6,2.2],[2.76,9,-28.53775,38.51546,10,6,2.2],[2.79,10,-28.53743,38.51535,10,6,2.1],[2.82,10,-28.53712,38.51524,10,6,1.8],[2.85,11,-28.5368,38.51513,10,6,1.7],[2.88,11,-28.53649,38.51502,10,6,1.8],[2.91,12,-28.53618,38.5149,10,6,2.1],[2.94,12,-28.53588,38.51477,13,6,2.4],[2.97,13,-28.53556,38.51467,13,6,2.6],[3.0,14,-28.53524,38.51457,13,6,2.7],[3.03,15,-28.53491,38.51448,13,6,2.6],[3.06,16,-28.53459,38.51438,16,6,2.6],[3.09,17,-28.5343,38.51425,16,6,2.3],[3.12,17,-28.53401,38.5141,16,6,1.9],[3.15,18,-28.53372,38.51396,16,6,1.2],[3.18,18,-28.53343,38.51382,16,6,1.0],[3.21,18,-28.53313,38.51368,19,6,1.0],[3.24,18,-28.53283,38.51355,19,6,1.2],[3.27,19,-28.53253,38.51342,19,6,1.1],[3.3,19,-28.53222,38.5133,19,6,0.5],[3.33,19,-28.53235,38.5131,19,6,-0.1],[3.36,19,-28.53257,38.51289,19,6,-0.4],[3.39,19,-28.53274,38.51266,19,6,0.0],[3.42,19,-28.53292,38.51242,19,6,0.5],[3.45,19,-28.53309,38.51219,19,6,0.8],[3.48,20,-28.53314,38.51193,19,6,1.2],[3.51,20,-28.53308,38.51166,19,6,1.5],[3.54,21,-28.533,38.5114,19,6,2.0],[3.57,21,-28.53293,38.51114,19,6,1.3],[3.6,22,-28.53305,38.51102,22,6,0.6],[3.63,21,-28.53338,38.51111,22,6,-0.2],[3.66,21,-28.5337,38.5112,22,6,-0.5],[3.69,21,-28.53402,38.5113,22,6,-0.5],[3.72,21,-28.53434,38.5114,22,6,-0.5],[3.75,21,-28.53466,38.51151,22,6,-0.6],[3.78,21,-28.53498,38.51161,22,6,-0.8],[3.81,20,-28.53529,38.51172,22,6,-1.0],[3.84,20,-28.53561,38.51182,22,6,-1.2],[3.87,20,-28.53593,38.51193,22,6,-0.8],[3.9,19,-28.53625,38.51202,22,6,-0.6],[3.93,19,-28.53658,38.5121,22,6,-0.5],[3.96,19,-28.5369,38.5122,22,6,-0.9],[3.99,19,-28.53722,38.5123,22,6,-1.7],[4.02,18,-28.53754,38.51241,22,6,-2.9],[4.05,17,-28.53786,38.51251,22,9,-4.1],[4.08,16,-28.53818,38.51261,22,9,-4.9],[4.11,14,-28.5385,38.5127,22,12,-4.6],[4.14,13,-28.53882,38.5128,22,12,-4.3],[4.17,12,-28.53914,38.5129,22,15,-4.3],[4.2,10,-28.53947,38.51299,22,15,-4.2],[4.23,9,-28.53979,38.51309,22,18,-3.5],[4.26,8,-28.54005,38.51304,22,18,-2.6],[4.29,8,-28.54021,38.5128,22,18,-1.2],[4.32,7,-28.54034,38.51255,22,18,-0.2],[4.35,7,-28.54038,38.51228,22,18,0.8],[4.38,8,-28.54035,38.51201,22,18,1.1],[4.41,8,-28.54032,38.51175,22,18,0.8],[4.44,8,-28.54037,38.51148,22,18,-0.0],[4.47,8,-28.5405,38.51123,22,18,-0.2],[4.5,8,-28.54068,38.511,22,18,0.5],[4.53,8,-28.54062,38.5108,22,18,1.5],[4.56,9,-28.5403,38.5107,22,18,3.1],[4.59,10,-28.53997,38.51062,22,18,4.0],[4.62,12,-28.53964,38.51055,22,18,4.8],[4.65,13,-28.53932,38.51045,25,18,4.5],[4.68,15,-28.539,38.51035,25,18,3.6],[4.71,15,-28.53867,38.51026,28,18,2.7],[4.74,16,-28.53835,38.51016,28,18,2.0],[4.77,17,-28.53803,38.51007,28,18,2.1],[4.8,17,-28.5377,38.50999,28,18,2.2],[4.83,18,-28.53737,38.5099,28,18,2.7],[4.86,19,-28.53705,38.50982,31,18,3.2],[4.89,20,-28.53676,38.50967,31,18,3.5],[4.92,21,-28.53645,38.50956,31,18,3.5],[4.95,22,-28.53611,38.50949,35,18,2.7],[4.98,23,-28.53579,38.50941,35,18,2.2],[5.01,23,-28.53547,38.50931,35,18,1.9],[5.04,24,-28.53514,38.50923,35,18,2.2],[5.07,24,-28.5348,38.50919,35,18,2.7],[5.1,25,-28.53451,38.50906,38,18,3.6],[5.13,26,-28.53423,38.50895,38,18,4.3],[5.16,28,-28.53391,38.50886,41,18,4.0],[5.19,30,-28.53358,38.50878,41,18,2.6],[5.22,29,-28.53338,38.50895,41,18,3.1],[5.25,30,-28.53315,38.50895,41,18,3.7],[5.28,32,-28.53288,38.50879,45,18,6.5],[5.31,34,-28.53263,38.50861,45,18,6.1],[5.34,36,-28.53245,38.50838,48,18,3.9],[5.37,37,-28.53229,38.50814,48,18,2.1],[5.4,37,-28.53228,38.50787,48,18,0.3],[5.43,37,-28.53228,38.5076,48,18,-0.1],[5.46,37,-28.53218,38.50735,48,18,-0.3],[5.49,37,-28.53201,38.50711,48,18,-0.7],[5.52,37,-28.5321,38.50685,48,18,-1.0],[5.55,36,-28.53219,38.50659,48,18,-1.6],[5.58,36,-28.53232,38.50635,48,18,-1.7],[5.61,35,-28.5325,38.50612,48,18,-0.7],[5.64,35,-28.53256,38.50586,48,18,0.7],[5.67,36,-28.53255,38.50559,48,18,1.6],[5.7,36,-28.5326,38.50532,48,18,1.2],[5.73,36,-28.53275,38.50508,48,18,0.2],[5.76,36,-28.53296,38.50487,48,18,-0.2],[5.79,36,-28.53318,38.50466,48,18,0.1],[5.82,36,-28.53336,38.50443,48,18,0.5],[5.85,36,-28.53364,38.50427,48,18,0.9],[5.88,37,-28.53393,38.50413,48,18,2.4],[5.91,37,-28.53423,38.50399,48,18,4.7],[5.94,40,-28.53436,38.50375,52,18,5.8],[5.97,42,-28.53438,38.50349,55,18,5.6],[6.0,43,-28.53448,38.50323,55,18,4.1],[6.03,44,-28.53457,38.50297,55,18,3.6],[6.06,45,-28.53461,38.5027,55,18,3.4],[6.09,46,-28.53456,38.50243,58,18,2.9],[6.12,47,-28.53444,38.50218,58,18,1.9],[6.15,47,-28.53429,38.50194,58,18,1.2],[6.18,47,-28.53415,38.50169,58,18,0.2],[6.21,47,-28.53413,38.50143,58,18,-0.6],[6.24,47,-28.53421,38.50117,58,18,-0.3],[6.27,46,-28.5343,38.50091,58,18,2.4],[6.3,48,-28.5343,38.50067,61,18,4.6],[6.33,50,-28.53402,38.50052,61,18,5.6],[6.36,51,-28.53374,38.50037,64,18,2.5],[6.39,52,-28.53346,38.5002,64,18,1.2],[6.42,52,-28.5333,38.49996,64,18,1.0],[6.45,52,-28.53321,38.49971,64,18,1.3],[6.48,53,-28.53321,38.49944,64,18,2.7],[6.51,53,-28.53321,38.49917,64,18,4.1],[6.54,55,-28.53316,38.4989,67,18,5.2],[6.57,57,-28.5331,38.49863,67,18,4.8],[6.6,58,-28.53306,38.49837,71,18,1.1],[6.63,58,-28.53291,38.49815,71,18,-1.0],[6.66,57,-28.53264,38.49799,71,18,-1.4],[6.69,57,-28.53233,38.49786,71,18,0.3],[6.72,58,-28.5321,38.49766,71,18,1.8],[6.75,58,-28.53199,38.49741,71,18,1.9],[6.78,58,-28.53192,38.49715,71,18,2.3],[6.81,59,-28.53177,38.49691,71,18,3.7],[6.84,61,-28.53155,38.49671,71,18,4.9],[6.87,62,-28.53124,38.4966,74,18,4.5],[6.9,64,-28.53097,38.49645,74,18,3.5],[6.93,64,-28.53078,38.49622,74,18,2.6],[6.96,65,-28.53046,38.49615,77,18,2.6],[6.99,66,-28.53015,38.49604,77,18,4.0],[7.02,67,-28.5299,38.49595,77,18,4.5],[7.05,69,-28.52956,38.49591,81,18,5.5],[7.08,70,-28.52927,38.49578,81,18,5.5],[7.11,72,-28.52895,38.49584,84,18,5.6],[7.14,74,-28.52863,38.49594,87,18,6.8],[7.17,76,-28.5283,38.49601,87,18,6.8],[7.2,78,-28.52796,38.49602,90,18,4.7],[7.23,79,-28.52783,38.49588,90,18,3.3],[7.26,79,-28.52782,38.49561,90,18,4.4],[7.29,81,-28.52761,38.4955,94,18,8.9],[7.32,85,-28.52728,38.49544,98,18,12.4],[7.35,89,-28.52695,38.49537,102,18,12.3],[7.38,92,-28.52661,38.49532,105,18,9.6],[7.41,95,-28.52628,38.49524,105,18,8.2],[7.44,96,-28.52596,38.49524,109,18,8.0],[7.47,99,-28.52562,38.4952,112,18,9.0],[7.5,103,-28.52527,38.49516,115,18,11.1],[7.53,106,-28.52493,38.49513,119,18,11.9],[7.56,110,-28.52459,38.4951,123,18,12.5],[7.59,114,-28.52425,38.4951,126,18,13.6],[7.62,118,-28.52391,38.49512,131,18,14.3],[7.65,122,-28.52357,38.49513,134,18,14.8],[7.68,127,-28.52323,38.49519,137,18,15.0],[7.71,131,-28.5229,38.49522,144,18,13.7],[7.74,136,-28.52255,38.49519,147,18,11.5],[7.77,138,-28.52224,38.49513,151,18,8.4],[7.8,140,-28.52191,38.49511,151,18,10.7],[7.83,142,-28.52161,38.49499,154,18,13.7],[7.86,150,-28.52137,38.4948,163,18,16.4],[7.89,154,-28.52108,38.49466,167,18,15.1],[7.92,157,-28.52078,38.49452,167,18,10.4],[7.95,161,-28.52052,38.49435,172,18,6.4],[7.98,162,-28.52021,38.49423,175,18,3.4],[8.01,162,-28.51987,38.49418,175,18,3.0],[8.04,163,-28.51954,38.49414,175,18,4.5],[8.07,165,-28.51921,38.49405,178,18,6.9],[8.1,167,-28.51888,38.49398,178,18,10.1],[8.13,170,-28.51855,38.49392,181,18,10.7],[8.16,175,-28.51824,38.4938,188,18,7.2],[8.19,176,-28.51791,38.49386,188,18,3.7],[8.22,175,-28.51759,38.49395,188,18,2.2],[8.25,177,-28.51726,38.49397,188,18,5.1],[8.28,179,-28.51691,38.49397,192,18,10.0],[8.31,182,-28.51658,38.49392,195,18,10.0],[8.34,186,-28.51626,38.49383,199,18,8.8],[8.37,189,-28.51597,38.49368,199,18,5.6],[8.4,188,-28.5157,38.49379,199,18,3.4],[8.43,190,-28.51536,38.49382,202,18,3.2],[8.46,191,-28.51502,38.49379,202,18,4.1],[8.49,192,-28.51469,38.49381,205,18,2.9],[8.52,193,-28.51439,38.49394,205,18,2.2],[8.55,193,-28.51416,38.49413,205,18,3.0],[8.58,194,-28.51388,38.4943,205,18,4.3],[8.61,196,-28.51355,38.49434,208,18,6.1],[8.64,198,-28.51321,38.49429,208,18,7.0],[8.67,200,-28.51288,38.49422,212,18,7.7],[8.7,203,-28.51256,38.49414,215,18,8.5],[8.73,205,-28.51223,38.49404,218,18,8.7],[8.76,208,-28.5119,38.49398,218,18,8.0],[8.79,211,-28.51156,38.49398,222,18,4.3],[8.82,211,-28.51143,38.49415,222,18,0.9],[8.85,210,-28.51146,38.49442,222,18,-2.6],[8.88,210,-28.5115,38.49469,222,18,-3.0],[8.91,209,-28.5116,38.49495,222,18,-3.4],[8.94,207,-28.51176,38.49518,222,18,-3.6],[8.97,206,-28.51193,38.49542,222,18,-4.0],[9.0,205,-28.51209,38.49566,222,22,-4.7],[9.03,204,-28.51229,38.49588,222,22,-5.1],[9.06,202,-28.51244,38.49612,222,25,-5.1],[9.09,200,-28.51257,38.49637,222,25,-4.2],[9.12,199,-28.51271,38.49662,222,28,-3.3],[9.15,199,-28.51284,38.49687,222,28,-3.7],[9.18,198,-28.51293,38.49713,222,28,-5.0],[9.21,196,-28.51309,38.49737,222,31,-6.5],[9.24,193,-28.51325,38.49761,222,31,-7.2],[9.27,191,-28.5134,38.49785,222,35,-6.7],[9.3,189,-28.51351,38.4981,222,38,-6.2],[9.33,188,-28.5136,38.49836,222,38,-6.1],[9.36,186,-28.51376,38.4986,222,42,-6.2],[9.39,184,-28.51398,38.49881,222,42,-6.0],[9.42,182,-28.51417,38.49903,222,45,-5.7],[9.45,181,-28.51427,38.49929,222,45,-6.0],[9.48,179,-28.51439,38.49954,222,48,-6.8],[9.51,176,-28.51454,38.49978,222,51,-7.1],[9.54,174,-28.51467,38.50003,222,51,-6.4],[9.57,172,-28.51472,38.5003,222,55,-5.3],[9.6,171,-28.51475,38.50057,222,55,-4.6],[9.63,170,-28.51476,38.50084,222,58,-5.3],[9.66,168,-28.51488,38.50108,222,58,-4.7],[9.69,166,-28.51501,38.50133,222,61,-4.3],[9.72,166,-28.51504,38.5016,222,61,-2.6],[9.75,165,-28.51504,38.50186,222,61,-1.1],[9.78,165,-28.51496,38.50212,222,61,-0.7],[9.81,165,-28.51485,38.50238,222,61,-1.3],[9.84,164,-28.51479,38.50264,222,61,-3.0],[9.87,163,-28.51475,38.50291,222,64,-4.1],[9.9,161,-28.51471,38.50318,222,64,-5.3],[9.93,160,-28.51463,38.50344,222,67,-6.6],[9.96,158,-28.5146,38.50371,222,67,-8.1],[9.99,155,-28.51459,38.50398,222,71,-8.2],[10.02,152,-28.51458,38.50425,222,74,-7.2],[10.05,151,-28.51452,38.50451,222,74,-6.1],[10.08,149,-28.51444,38.50478,222,77,-5.5],[10.11,147,-28.51435,38.50504,222,77,-5.4],[10.14,146,-28.51426,38.5053,222,81,-5.5],[10.17,144,-28.51416,38.50556,222,81,-4.9],[10.2,142,-28.51406,38.50581,222,84,-4.4],[10.23,141,-28.51404,38.50608,222,84,-3.9],[10.26,140,-28.51408,38.50635,222,87,-3.6],[10.29,139,-28.51412,38.50662,222,87,-4.3],[10.32,138,-28.51417,38.50688,222,87,-5.1],[10.35,136,-28.51427,38.50714,222,91,-5.8],[10.38,134,-28.51448,38.50735,222,91,-2.8],[10.41,133,-28.5145,38.50749,222,94,0.9],[10.44,135,-28.51416,38.5075,222,94,4.6],[10.47,137,-28.51381,38.50752,225,94,5.7],[10.5,139,-28.51347,38.50758,225,94,5.3],[10.53,140,-28.51313,38.5076,229,94,4.3],[10.56,142,-28.51279,38.50759,229,94,2.7],[10.59,142,-28.51253,38.50776,229,94,0.8],[10.62,142,-28.51241,38.50801,229,94,2.0],[10.65,142,-28.51227,38.5082,229,94,4.3],[10.68,145,-28.51193,38.50823,232,94,7.3],[10.71,147,-28.51163,38.50811,236,94,9.0],[10.74,150,-28.51134,38.50796,236,94,6.8],[10.77,152,-28.51109,38.50799,240,94,4.5],[10.8,152,-28.51091,38.50822,240,94,5.0],[10.83,154,-28.51068,38.50839,240,94,7.8],[10.86,157,-28.51033,38.5084,243,94,11.9],[10.89,161,-28.50999,38.50839,247,94,14.1],[10.92,166,-28.50967,38.50829,254,94,14.8],[10.95,170,-28.50935,38.50835,257,94,15.5],[10.98,175,-28.50902,38.50843,262,94,14.7],[11.01,180,-28.50871,38.50854,265,94,12.5],[11.04,183,-28.50841,38.50866,269,94,8.9],[11.07,184,-28.50821,38.50888,273,94,8.7],[11.1,187,-28.50793,38.50899,273,94,8.9],[11.13,191,-28.50759,38.50899,277,94,7.7],[11.16,193,-28.50735,38.50912,281,94,3.5],[11.19,192,-28.5073,38.50938,281,94,-1.0],[11.22,192,-28.50715,38.50962,281,94,-2.3],[11.25,191,-28.50709,38.50988,281,94,-2.5],[11.28,190,-28.507,38.51014,281,94,-2.9],[11.31,189,-28.50717,38.51034,281,94,-2.6],[11.34,188,-28.50748,38.51046,281,97,-2.3],[11.37,188,-28.50749,38.5107,281,97,-2.2],[11.4,187,-28.50729,38.51092,281,97,-2.7],[11.43,186,-28.50714,38.51116,281,97,-4.4],[11.46,185,-28.50714,38.51142,281,100,-5.4],[11.49,183,-28.50728,38.51167,281,103,-6.1],[11.52,181,-28.50741,38.51192,281,103,-2.7],[11.55,179,-28.50756,38.51213,281,107,1.8],[11.58,182,-28.50722,38.51217,281,107,6.3],[11.61,185,-28.50687,38.5122,284,107,7.3],[11.64,187,-28.50654,38.51222,288,107,5.2],[11.67,188,-28.50623,38.5121,288,107,3.6],[11.7,189,-28.5061,38.5122,288,107,3.5],[11.73,190,-28.50596,38.51245,291,107,4.1],[11.76,191,-28.50582,38.51269,291,107,3.1],[11.79,192,-28.50573,38.51295,291,107,2.0],[11.82,192,-28.50568,38.51322,291,107,-0.4],[11.85,192,-28.50562,38.51348,291,107,-2.7],[11.88,191,-28.50548,38.51373,291,107,-4.9],[11.91,189,-28.50549,38.51399,291,107,-7.1],[11.94,187,-28.50547,38.51426,291,110,-8.0],[11.97,184,-28.50534,38.51451,291,110,-8.3],[12.0,181,-28.50524,38.51477,291,114,-7.8],[12.03,179,-28.50511,38.51501,291,117,-6.5],[12.06,177,-28.50481,38.51514,291,117,-5.3],[12.09,176,-28.50453,38.51527,291,120,-4.0],[12.12,175,-28.50434,38.5155,291,120,-2.9],[12.15,174,-28.50417,38.51573,291,120,-1.9],[12.18,174,-28.5041,38.516,291,120,0.3],[12.21,174,-28.50398,38.51613,291,120,2.2],[12.24,175,-28.50366,38.51602,291,120,4.4],[12.27,177,-28.50335,38.5159,291,120,7.2],[12.3,179,-28.50303,38.51582,291,120,8.5],[12.33,183,-28.50271,38.51573,295,120,9.2],[12.36,185,-28.50243,38.51557,299,120,7.8],[12.39,187,-28.50212,38.51545,299,120,6.3],[12.42,189,-28.50182,38.51532,302,120,4.5],[12.45,190,-28.50155,38.51516,302,120,3.7],[12.48,190,-28.50128,38.51501,302,120,2.9],[12.51,192,-28.50094,38.51502,305,120,3.7],[12.54,193,-28.5006,38.51497,305,120,4.1],[12.57,194,-28.50027,38.5149,309,120,4.2],[12.6,195,-28.49994,38.51482,309,120,4.3],[12.63,197,-28.4996,38.51475,309,120,4.5],[12.66,198,-28.4993,38.51462,312,120,5.3],[12.69,200,-28.49898,38.51453,312,120,6.0],[12.72,202,-28.49864,38.5145,315,120,5.8],[12.75,204,-28.49835,38.51438,318,120,6.5],[12.78,205,-28.49815,38.51416,318,120,7.6],[12.81,208,-28.49782,38.51415,322,120,7.9],[12.84,211,-28.49748,38.51417,325,120,7.2],[12.87,212,-28.49715,38.51425,325,120,4.8],[12.9,213,-28.49683,38.51433,328,120,4.0],[12.93,214,-28.49653,38.51446,328,120,4.4],[12.96,216,-28.49619,38.51445,328,120,5.1],[12.99,218,-28.49586,38.51437,331,120,5.9],[13.02,219,-28.49552,38.51439,331,120,6.0],[13.05,221,-28.49518,38.51442,335,120,6.2],[13.08,223,-28.49484,38.5144,338,120,6.3],[13.11,225,-28.4945,38.51437,338,120,5.8],[13.14,227,-28.49418,38.51427,341,120,4.3],[13.17,228,-28.49385,38.51424,341,120,2.2],[13.2,228,-28.49381,38.51448,341,120,1.7],[13.23,228,-28.49374,38.51466,341,120,2.3],[13.26,230,-28.49339,38.51462,344,120,3.9],[13.29,231,-28.49306,38.51457,344,120,4.8],[13.32,232,-28.49272,38.51459,344,120,5.3],[13.35,234,-28.49238,38.51459,347,120,5.7],[13.38,236,-28.49207,38.51448,350,120,6.3],[13.41,238,-28.49174,38.51442,350,120,6.7],[13.44,240,-28.4914,38.51439,354,120,7.0],[13.47,242,-28.49106,38.51435,354,120,7.0],[13.5,244,-28.49072,38.51431,357,120,6.5],[13.53,246,-28.49043,38.51418,361,120,6.1],[13.56,248,-28.49017,38.514,361,120,5.9],[13.59,250,-28.48987,38.51387,364,120,5.8],[13.62,251,-28.48954,38.51381,364,120,5.2],[13.65,253,-28.48921,38.51374,367,120,4.4],[13.68,254,-28.48887,38.5137,367,120,3.9],[13.71,255,-28.48853,38.51365,367,120,3.2],[13.74,256,-28.4882,38.51358,371,120,2.7],[13.77,257,-28.48787,38.51351,371,120,2.8],[13.8,257,-28.48753,38.5135,371,120,3.6],[13.83,259,-28.48718,38.5135,371,120,4.6],[13.86,260,-28.48684,38.5135,374,120,4.8],[13.89,262,-28.4865,38.51349,374,120,4.2],[13.92,263,-28.48622,38.51335,377,120,3.8],[13.95,264,-28.48596,38.51317,377,120,4.8],[13.98,265,-28.4857,38.513,380,120,6.5],[14.01,268,-28.48544,38.51283,380,120,7.6],[14.04,270,-28.48518,38.51265,383,120,7.1],[14.07,272,-28.48492,38.51248,386,120,6.2],[14.1,274,-28.4846,38.51238,386,120,6.0],[14.13,275,-28.48432,38.51224,390,120,6.6],[14.16,278,-28.48409,38.51204,390,120,7.7],[14.19,280,-28.48388,38.51183,393,120,8.3],[14.22,283,-28.48363,38.51165,396,120,8.3],[14.25,285,-28.48335,38.51149,400,120,8.3],[14.28,288,-28.48305,38.51136,400,120,8.1],[14.31,290,-28.48275,38.51123,403,120,6.9],[14.34,292,-28.48242,38.51117,406,120,6.3],[14.37,294,-28.48208,38.51112,406,120,5.9],[14.4,295,-28.48178,38.511,409,120,6.0],[14.43,297,-28.48159,38.51077,409,120,5.4],[14.46,299,-28.48138,38.51056,413,120,3.8],[14.49,300,-28.48111,38.5104,413,120,4.6],[14.52,301,-28.48081,38.51026,413,120,7.0],[14.55,304,-28.4806,38.51005,416,120,9.6],[14.58,307,-28.48034,38.50989,419,120,11.2],[14.61,311,-28.48002,38.50979,423,120,11.1],[14.64,314,-28.47974,38.50963,426,120,10.4],[14.67,317,-28.47943,38.50952,429,120,10.0],[14.7,320,-28.47914,38.50938,433,120,9.9],[14.73,322,-28.4789,38.50919,436,120,10.3],[14.76,326,-28.47864,38.50901,439,120,9.3],[14.79,329,-28.4783,38.50898,443,120,8.5],[14.82,331,-28.47796,38.50896,443,120,7.2],[14.85,333,-28.47766,38.50883,447,120,6.9],[14.88,335,-28.47734,38.50873,450,120,7.4],[14.91,337,-28.47702,38.50864,450,120,7.4],[14.94,339,-28.4767,38.50853,453,120,8.4],[14.97,342,-28.4764,38.50841,457,120,8.9],[15.0,345,-28.47611,38.50826,460,120,9.0],[15.03,348,-28.47584,38.5081,460,120,8.3],[15.06,350,-28.47561,38.50791,463,120,8.1],[15.09,353,-28.47529,38.5078,466,120,8.5],[15.12,355,-28.47502,38.50764,470,120,10.3],[15.15,358,-28.4748,38.50744,473,120,11.9],[15.18,363,-28.47456,38.50725,477,120,13.0],[15.21,367,-28.47427,38.5071,481,120,12.0],[15.24,370,-28.47404,38.5069,485,120,9.3],[15.27,373,-28.47382,38.5067,485,120,6.1],[15.3,374,-28.47354,38.50654,488,120,4.2],[15.33,374,-28.47322,38.50644,488,120,3.0],[15.36,376,-28.47292,38.50632,488,120,3.3],[15.39,376,-28.47265,38.50615,491,120,3.5],[15.42,378,-28.47236,38.50601,491,120,3.6],[15.45,379,-28.47207,38.50587,491,120,4.8],[15.48,380,-28.47176,38.50575,494,120,6.4],[15.51,382,-28.47143,38.50567,494,120,7.3],[15.54,385,-28.47114,38.50554,498,120,8.5],[15.57,387,-28.47095,38.50532,501,120,9.0],[15.6,390,-28.47065,38.5052,505,120,9.8],[15.63,393,-28.47039,38.50502,505,120,10.8],[15.66,397,-28.47009,38.50489,509,120,11.3],[15.69,400,-28.46976,38.50483,512,120,12.0],[15.72,404,-28.46947,38.50468,516,120,13.1],[15.75,408,-28.46918,38.50453,520,120,14.6],[15.78,413,-28.4689,38.50438,527,120,15.9],[15.81,418,-28.46861,38.50423,531,120,16.5],[15.84,423,-28.46834,38.50407,537,120,16.0],[15.87,427,-28.46805,38.50392,540,120,15.3],[15.9,432,-28.46775,38.50379,543,120,13.8],[15.93,436,-28.46746,38.50364,548,120,12.0],[15.96,439,-28.46719,38.50348,551,120,10.4],[15.99,442,-28.4669,38.50333,555,120,10.1],[16.02,445,-28.46661,38.50318,559,120,10.1],[16.05,448,-28.46633,38.50303,563,120,10.1],[16.08,451,-28.46603,38.5029,563,120,11.5],[16.11,454,-28.46571,38.50281,566,120,13.0],[16.14,459,-28.46539,38.5027,573,120,15.1],[16.17,464,-28.46511,38.50255,577,120,17.0],[16.2,469,-28.46483,38.50239,583,120,18.2],[16.23,475,-28.46455,38.50223,587,120,19.1],[16.26,481,-28.46428,38.50207,595,120,18.8],[16.29,486,-28.46401,38.5019,599,120,18.1],[16.32,491,-28.46372,38.50175,606,120,17.3],[16.35,497,-28.46344,38.5016,609,120,15.9],[16.38,501,-28.46316,38.50145,613,120,14.1],[16.41,505,-28.46286,38.5013,617,120,11.5],[16.44,508,-28.46257,38.50117,621,120,9.9],[16.47,511,-28.46228,38.50102,624,120,9.2],[16.5,513,-28.46202,38.50084,628,120,10.0],[16.53,516,-28.46174,38.50069,631,120,11.0],[16.56,520,-28.46144,38.50055,635,120,11.0],[16.59,524,-28.46124,38.50033,638,120,9.9],[16.62,526,-28.46099,38.50016,638,120,9.0],[16.65,528,-28.4607,38.50002,641,120,9.4],[16.68,532,-28.46039,38.4999,645,120,10.4],[16.71,535,-28.46009,38.49977,649,120,11.2],[16.74,538,-28.4598,38.49963,652,120,11.5],[16.77,542,-28.4595,38.4995,655,120,11.8],[16.8,545,-28.4592,38.49937,659,120,12.1],[16.83,549,-28.4589,38.49923,662,120,12.1],[16.86,553,-28.4586,38.4991,666,120,12.0],[16.89,556,-28.45829,38.49898,670,120,12.2],[16.92,560,-28.45799,38.49885,673,120,12.7],[16.95,564,-28.4577,38.49871,677,120,13.7],[16.98,568,-28.45739,38.49858,681,120,14.2],[17.01,573,-28.45709,38.49845,686,120,13.4],[17.04,577,-28.4568,38.49831,690,120,10.8],[17.07,579,-28.4566,38.4981,693,120,8.6],[17.1,581,-28.45637,38.4979,693,120,7.4],[17.13,583,-28.45606,38.49779,696,120,7.9],[17.16,586,-28.45575,38.49767,700,120,8.6],[17.19,589,-28.45545,38.49753,703,120,8.9],[17.22,591,-28.45515,38.4974,703,120,9.3],[17.25,594,-28.45489,38.49723,707,120,9.5],[17.28,597,-28.45465,38.49704,711,120,10.2],[17.31,600,-28.45439,38.49686,714,120,10.3],[17.34,603,-28.45408,38.49674,717,120,10.7],[17.37,606,-28.45378,38.49661,720,120,11.4],[17.4,610,-28.45348,38.49649,723,120,12.4],[17.43,614,-28.45317,38.49637,727,120,13.2],[17.46,618,-28.45288,38.49622,731,120,13.0],[17.49,622,-28.45262,38.49605,735,120,12.2],[17.52,625,-28.45237,38.49586,739,120,11.3],[17.55,629,-28.45208,38.49571,742,120,10.9],[17.58,632,-28.4518,38.49556,745,120,11.9],[17.61,636,-28.4515,38.49542,749,120,12.9],[17.64,640,-28.45121,38.49529,753,120,13.7],[17.67,644,-28.45096,38.4951,757,120,13.4],[17.7,648,-28.4507,38.49493,761,120,13.1],[17.73,652,-28.4504,38.49479,765,120,12.6],[17.76,655,-28.45013,38.49463,769,120,12.3],[17.79,659,-28.44983,38.49449,773,120,11.9],[17.82,663,-28.44952,38.49438,776,120,11.4],[17.85,666,-28.44925,38.49422,780,120,10.6],[17.88,669,-28.449,38.49404,783,120,10.5],[17.91,672,-28.44875,38.49385,787,120,11.0],[17.94,675,-28.44846,38.49371,790,120,12.2],[17.97,679,-28.44815,38.4936,794,120,12.7],[18.0,683,-28.44787,38.49344,798,120,13.5],[18.03,687,-28.44759,38.49329,802,120,13.8],[18.06,692,-28.4473,38.49314,806,120,14.3],[18.09,696,-28.44701,38.493,811,120,14.5],[18.12,700,-28.44675,38.49282,815,120,14.9],[18.15,705,-28.44648,38.49266,819,120,15.1],[18.18,710,-28.44617,38.49256,823,120,15.9],[18.21,714,-28.44588,38.49244,829,120,15.9],[18.24,719,-28.44558,38.4923,832,120,15.9],[18.27,724,-28.44533,38.49211,838,120,15.0],[18.3,728,-28.44504,38.49197,843,120,13.8],[18.33,732,-28.44476,38.49181,847,120,13.3],[18.36,736,-28.44449,38.49166,851,120,13.4],[18.39,740,-28.4442,38.49151,855,120,13.8],[18.42,744,-28.44393,38.49136,859,120,14.1],[18.45,749,-28.44367,38.49118,863,120,14.2],[18.48,753,-28.44343,38.49099,867,120,14.9],[18.51,757,-28.44313,38.49086,872,120,15.7],[18.54,762,-28.44283,38.49073,875,120,16.0],[18.57,767,-28.44257,38.49057,882,120,15.5],[18.6,772,-28.44231,38.4904,886,120,14.8],[18.63,776,-28.44204,38.49023,891,120,14.3],[18.66,780,-28.44179,38.49004,895,120,14.2],[18.69,785,-28.44152,38.48988,899,120,14.3],[18.72,789,-28.44125,38.48971,904,120,14.8],[18.75,793,-28.44094,38.48959,908,120,16.2],[18.78,798,-28.44069,38.48942,911,120,17.5],[18.81,804,-28.44045,38.48923,919,120,18.4],[18.84,810,-28.4402,38.48906,922,120,18.0],[18.87,815,-28.43991,38.48891,930,120,17.5],[18.9,820,-28.43963,38.48876,933,120,17.1],[18.93,825,-28.43936,38.4886,940,120,16.5],[18.96,830,-28.43913,38.48842,943,120,16.2],[18.99,835,-28.4389,38.48826,949,120,15.7],[19.02,840,-28.43862,38.48811,953,120,13.3],[19.05,844,-28.43852,38.48786,956,120,11.0],[19.08,846,-28.43857,38.4876,959,120,7.5],[19.11,848,-28.43868,38.48736,962,120,8.3],[19.14,850,-28.43868,38.4871,962,120,9.1],[19.17,854,-28.43841,38.48693,966,120,11.9],[19.2,857,-28.43813,38.48678,970,120,12.1],[19.23,861,-28.43785,38.48663,973,120,11.7],[19.26,864,-28.43761,38.48644,977,120,12.7],[19.29,868,-28.43736,38.48625,980,120,14.2],[19.32,873,-28.43712,38.48605,987,120,16.0],[19.35,878,-28.4369,38.48585,991,120,16.5],[19.38,883,-28.4367,38.48563,998,120,16.1],[19.41,888,-28.43644,38.48546,1001,120,14.9],[19.44,892,-28.43626,38.48523,1005,120,13.4],[19.47,896,-28.43612,38.485,1009,120,12.9],[19.5,899,-28.43624,38.48475,1013,120,14.1],[19.53,904,-28.43615,38.48451,1017,120,15.9],[19.56,909,-28.43612,38.48425,1023,120,20.5],[19.59,916,-28.43596,38.48401,1028,120,22.8],[19.62,924,-28.4358,38.48378,1038,120,20.2],[19.65,931,-28.43571,38.48356,1043,120,12.4],[19.68,931,-28.43542,38.48369,1043,120,4.6],[19.71,931,-28.43515,38.48385,1043,120,-1.2],[19.74,931,-28.43485,38.48399,1043,120,-2.2],[19.77,929,-28.43458,38.48415,1043,120,-2.4],[19.8,928,-28.43432,38.48433,1043,120,-1.6],[19.83,928,-28.43404,38.48449,1043,120,-0.9],[19.86,928,-28.43376,38.48465,1043,120,-0.3],[19.89,928,-28.43347,38.48479,1043,120,-0.5],[19.92,928,-28.43317,38.48491,1043,120,0.3],[19.95,928,-28.43286,38.48503,1043,120,3.5],[19.98,929,-28.43257,38.48517,1043,120,5.8],[20.01,932,-28.43226,38.48521,1047,120,5.5],[20.04,933,-28.43201,38.48533,1047,120,3.9],[20.07,934,-28.43174,38.4855,1047,120,-1.4],[20.1,933,-28.43151,38.4857,1047,120,-3.6],[20.13,932,-28.43128,38.48589,1047,120,-6.7],[20.16,929,-28.4311,38.48612,1047,120,-7.9],[20.19,926,-28.43097,38.48637,1047,124,-9.0],[20.22,924,-28.43084,38.48662,1047,127,-3.8],[20.25,923,-28.43064,38.4868,1047,127,3.6],[20.28,926,-28.43029,38.48684,1047,127,10.9],[20.31,931,-28.43007,38.48666,1051,127,13.2],[20.34,935,-28.43012,38.4864,1054,127,13.4],[20.37,938,-28.43021,38.48614,1058,127,13.0],[20.4,942,-28.4302,38.48587,1061,127,10.7],[20.43,947,-28.43,38.4857,1069,127,8.4],[20.46,946,-28.42981,38.48591,1069,127,5.5],[20.49,948,-28.42951,38.48605,1069,127,4.9],[20.52,950,-28.42919,38.48614,1072,127,8.7],[20.55,953,-28.42885,38.48613,1072,127,11.3],[20.58,957,-28.42861,38.48597,1076,127,11.9],[20.61,961,-28.42858,38.4857,1080,127,12.2],[20.64,964,-28.42851,38.48544,1084,127,10.8],[20.67,968,-28.42832,38.48523,1087,127,9.3],[20.7,970,-28.42799,38.48522,1090,127,6.6],[20.73,972,-28.42765,38.48526,1094,127,3.0],[20.76,972,-28.42741,38.48545,1094,127,2.9],[20.79,972,-28.4272,38.48566,1094,127,3.9],[20.82,974,-28.42691,38.4858,1094,127,4.7],[20.85,976,-28.42659,38.48592,1097,127,1.5],[20.88,976,-28.42634,38.48608,1097,127,-3.2],[20.91,973,-28.42618,38.48632,1097,127,-7.1],[20.94,971,-28.42603,38.48656,1097,131,-7.1],[20.97,969,-28.42587,38.4868,1097,134,-2.6],[21.0,968,-28.42561,38.48692,1097,134,1.4],[21.03,971,-28.42528,38.48685,1097,134,5.5],[21.06,972,-28.42494,38.48688,1100,134,7.4],[21.09,975,-28.42461,38.48694,1100,134,8.7],[21.12,978,-28.42426,38.48693,1104,134,9.3],[21.15,981,-28.42392,38.48692,1107,134,9.2],[21.18,983,-28.42358,38.48694,1110,134,8.5],[21.21,986,-28.42324,38.48698,1114,134,8.0],[21.24,988,-28.4229,38.48704,1114,134,6.8],[21.27,990,-28.42259,38.48715,1117,134,4.7],[21.3,991,-28.4223,38.4873,1117,134,2.7],[21.33,991,-28.422,38.48743,1117,134,1.4],[21.36,992,-28.42168,38.48753,1117,134,1.6],[21.39,992,-28.42136,38.48761,1120,134,1.9],[21.42,992,-28.42104,38.48772,1120,134,3.0],[21.45,994,-28.42072,38.48781,1120,134,4.6],[21.48,995,-28.4204,38.48792,1124,134,4.9],[21.51,997,-28.42008,38.48801,1124,134,6.1],[21.54,998,-28.41977,38.48813,1124,134,6.0],[21.57,1001,-28.41943,38.48816,1127,134,6.3],[21.6,1003,-28.4191,38.48823,1131,134,5.7],[21.63,1004,-28.41876,38.48826,1131,134,4.7],[21.66,1005,-28.41843,38.48832,1131,134,5.6],[21.69,1007,-28.41809,38.48835,1134,134,7.9],[21.72,1010,-28.41776,38.48828,1138,134,10.2],[21.75,1014,-28.41744,38.4882,1142,134,10.5],[21.78,1017,-28.41709,38.48818,1145,134,7.1],[21.81,1018,-28.41677,38.48824,1145,134,6.6],[21.84,1019,-28.4165,38.4884,1145,134,7.9],[21.87,1023,-28.41623,38.48824,1148,134,10.8],[21.9,1027,-28.41605,38.48801,1152,134,12.4],[21.93,1030,-28.41593,38.48776,1156,134,13.0],[21.96,1034,-28.4157,38.48756,1159,134,14.2],[21.99,1039,-28.41544,38.48738,1167,134,15.2],[22.02,1044,-28.4152,38.48719,1170,134,14.9],[22.05,1048,-28.41495,38.487,1174,134,13.9],[22.08,1052,-28.4147,38.48682,1178,134,13.6],[22.11,1056,-28.4144,38.48669,1183,134,14.7],[22.14,1060,-28.41412,38.48656,1187,134,16.2],[22.17,1065,-28.41385,38.48639,1194,134,15.8],[22.2,1071,-28.41365,38.4862,1197,134,10.7],[22.23,1073,-28.41386,38.486,1201,134,8.6],[22.26,1073,-28.41414,38.48584,1201,134,8.1],[22.29,1077,-28.41435,38.48563,1204,134,10.2],[22.32,1081,-28.41457,38.48543,1208,134,8.5],[22.35,1084,-28.41486,38.48528,1212,134,3.7],[22.38,1083,-28.4152,38.48527,1212,134,0.3],[22.41,1082,-28.41554,38.48525,1212,134,-2.5],[22.44,1082,-28.41588,38.48522,1212,134,-2.7],[22.47,1080,-28.41623,38.48523,1212,137,-4.6],[22.5,1079,-28.41657,38.48521,1212,137,-5.0],[22.53,1077,-28.41691,38.48517,1212,140,-2.5],[22.56,1077,-28.41719,38.48502,1212,140,-2.5],[22.59,1077,-28.41746,38.48485,1212,140,-2.7],[22.62,1075,-28.41777,38.48475,1212,140,-4.4],[22.65,1073,-28.41808,38.48463,1212,143,-4.4],[22.68,1072,-28.41836,38.48447,1212,143,-2.9],[22.71,1072,-28.41866,38.48433,1212,143,-0.6],[22.74,1072,-28.41894,38.48418,1212,143,0.9],[22.77,1073,-28.41923,38.48404,1212,143,3.1],[22.8,1074,-28.41952,38.48389,1212,143,5.3],[22.83,1075,-28.41979,38.48372,1212,143,9.0],[22.86,1079,-28.42004,38.48353,1215,143,10.6],[22.89,1083,-28.42026,38.48333,1220,143,7.3],[22.92,1085,-28.42057,38.48322,1223,143,3.2],[22.95,1083,-28.4209,38.48323,1223,143,5.8],[22.98,1086,-28.42104,38.48303,1223,143,8.3],[23.01,1091,-28.42074,38.48295,1226,143,16.3],[23.04,1095,-28.42043,38.48286,1230,143,14.8],[23.07,1100,-28.42056,38.48261,1238,143,14.6],[23.1,1104,-28.42078,38.48241,1242,143,12.1],[23.13,1107,-28.42101,38.48221,1245,143,10.5],[23.16,1110,-28.42125,38.48201,1245,143,9.5],[23.19,1113,-28.42147,38.48181,1249,143,7.5],[23.22,1115,-28.42168,38.4816,1252,143,7.6],[23.25,1116,-28.42189,38.48139,1252,143,8.9],[23.28,1120,-28.42204,38.48114,1256,143,10.8],[23.31,1124,-28.42215,38.48089,1260,143,12.8],[23.34,1127,-28.42231,38.48065,1264,143,14.3],[23.37,1132,-28.42244,38.4804,1268,143,14.8],[23.4,1137,-28.42258,38.48016,1272,143,16.2],[23.43,1142,-28.42274,38.47992,1279,143,15.4],[23.46,1147,-28.42287,38.47967,1283,143,15.4],[23.49,1151,-28.42304,38.47944,1286,143,14.2],[23.52,1155,-28.42318,38.47919,1293,143,12.4],[23.55,1158,-28.42333,38.47895,1296,143,10.9],[23.58,1161,-28.42351,38.47873,1299,143,10.3],[23.61,1163,-28.42375,38.47853,1299,143,10.8],[23.64,1169,-28.42369,38.47832,1307,143,9.8],[23.67,1170,-28.42336,38.47839,1307,143,8.2],[23.7,1172,-28.42306,38.47851,1310,143,7.7],[23.73,1174,-28.42276,38.47863,1310,143,12.9],[23.76,1179,-28.42241,38.47865,1317,143,14.3],[23.79,1186,-28.42231,38.47844,1322,143,13.9],[23.82,1188,-28.42247,38.47821,1326,143,11.6],[23.85,1191,-28.42266,38.47798,1326,143,14.3],[23.88,1195,-28.42278,38.47773,1333,143,14.5],[23.91,1201,-28.42257,38.47761,1338,143,15.3],[23.94,1204,-28.42226,38.47772,1341,143,14.5],[23.97,1209,-28.42192,38.47775,1345,143,15.8],[24.0,1214,-28.42159,38.47783,1349,143,20.4],[24.03,1220,-28.42126,38.47788,1358,143,20.6],[24.06,1228,-28.42099,38.47775,1363,143,16.8],[24.09,1232,-28.42104,38.47749,1368,143,11.9],[24.12,1233,-28.4212,38.47726,1371,143,5.4],[24.15,1235,-28.42136,38.47702,1371,143,2.8],[24.18,1235,-28.42154,38.47679,1371,143,3.7],[24.21,1236,-28.42172,38.47656,1374,143,4.0],[24.24,1238,-28.42187,38.47632,1374,143,4.1],[24.27,1239,-28.4221,38.47611,1377,143,3.9],[24.3,1239,-28.42235,38.47594,1377,143,6.9],[24.33,1242,-28.42261,38.47576,1380,143,11.4],[24.36,1247,-28.42286,38.47558,1383,143,16.2],[24.39,1253,-28.42307,38.47537,1390,143,16.8],[24.42,1258,-28.42315,38.47511,1394,143,12.5],[24.45,1261,-28.42328,38.47486,1397,143,7.2],[24.48,1262,-28.42346,38.47464,1397,143,1.4],[24.51,1261,-28.42372,38.47446,1397,143,-2.2],[24.54,1261,-28.42403,38.47434,1397,143,-6.5],[24.57,1258,-28.4243,38.47418,1397,143,-10.4],[24.6,1254,-28.42451,38.47397,1397,148,-13.8],[24.63,1249,-28.42468,38.47373,1397,152,-14.3],[24.66,1245,-28.42481,38.47348,1397,156,-11.3],[24.69,1242,-28.42492,38.47323,1397,160,-7.6],[24.72,1241,-28.42502,38.47297,1397,160,-3.6],[24.75,1240,-28.42511,38.47271,1397,160,-0.7],[24.78,1240,-28.42518,38.47245,1397,160,-0.5],[24.81,1240,-28.42529,38.47219,1397,160,-2.5],[24.84,1239,-28.42544,38.47195,1397,160,-7.4],[24.87,1236,-28.42564,38.47173,1397,164,-9.2],[24.9,1232,-28.42588,38.47154,1397,169,-8.1],[24.93,1230,-28.42614,38.47136,1397,172,-3.8],[24.96,1230,-28.4263,38.47113,1397,172,0.9],[24.99,1231,-28.42644,38.47088,1397,172,2.9],[25.015,1232,-28.42653,38.47069,1397,172,4.4]],"t":[2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,0,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0],"classes":["Estrada","Caminho rural ou florestal","Trilho","Trilho de caminhada (T1)","Trilho de montanha (T2)","Trilho de montanha dif\u00edcil (T3 ou mais)","Escadas","Sem dados"]};
+const CFG = {"partida": 540, "limite": 300, "sol": {"lat": 38.49, "lon": -28.47, "dia": 302, "fuso": 0, "ano": 2027}, "alvo": {"valor": 210}, "gpxPonto": 1, "oficial": {"km": 25.11, "dmais": 1388, "dmenos": 161}, "mapa": {"pasta": "pico/", "limites": [-28.56, 38.38, -28.02, 38.57], "orto": {"wms": "https://ambiente.azores.gov.pt/qgisserver/pic/orto2024", "camada": "ortofotomapa_2024_pic", "credito": "Ortofotomapa 2024 © Governo dos Açores (SRAAC), CC BY 4.0"}}, "servicos": {"agua": {"nome": "Água", "desc": "Água para encher garrafas e mochilas. Não há copos: leva o teu."}, "solidos": {"nome": "Comida", "desc": "Comida para consumir no local."}, "barco": {"nome": "Barco", "desc": "Barco da Horta para a Madalena às 07:30, incluído na inscrição."}, "transfer": {"nome": "Transfer", "desc": "Transfer da organização para a Madalena, de hora a hora a partir das 13:00; o último sai às 15:00."}}, "pontos": [{"id": "partida", "curto": "Partida", "nome": "Clube Naval da Madalena", "local": "Partida · Madalena", "km": 0, "tipo": "partida", "servicos": ["barco"], "gps": [38.53415, -28.52984]}, {"id": "cp1", "curto": "CP1", "nome": "Criação Velha", "local": "Abastecimento (CP1)", "km": 13.32, "tipo": "abastecimento", "servicos": ["agua", "solidos"], "nomeCurto": "C. Velha", "barreira": 660, "kmVer": 13.3, "gps": [38.514552, -28.49287]}, {"id": "meta", "curto": "Meta", "nome": "Casa da Montanha", "local": "Meta · 1 233 m", "km": "fim", "tipo": "meta", "servicos": ["transfer"], "barreira": 840, "gps": [38.47069, -28.42653]}], "unidade": "etapa", "subidas": [{"tipo": "subida", "de": 0.0, "ate": 8.85, "nome": "Monte"}, {"tipo": "subida", "de": 12.18, "ate": 24.51, "nome": "Cabeço das Cabras"}]};
+
+const P = D.p; // [km, alt, lng, lat, D+ acum, D- acum, inclinação %]
+// Decisão do Mário (05-11-2026): os números mostrados são os do Trace de Trail. O desnível calculado no GPX ajusta-se
+// na mesma proporção para que os totais batam com os oficiais; as distâncias dos pontos continuam as do regulamento.
+if (CFG.oficial) {
+  const ult = P[P.length - 1], fm = CFG.oficial.dmais / (ult[4] || 1), fd = CFG.oficial.dmenos / (ult[5] || 1);
+  P.forEach(p => { p[4] = Math.round(p[4] * fm); p[5] = Math.round(p[5] * fd); });
+}
+const KM_TOTAL = P[P.length - 1][0];
+const PARTIDA_MIN = CFG.partida, LIMITE_MIN = CFG.limite;
+const fmt = (n, d = 0) => n.toLocaleString('pt-PT', { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always' });
+const hora = m => { m = Math.round(m); return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+const duracao = m => Math.floor(m / 60) + 'h' + String(Math.round(m % 60)).padStart(2, '0');
+
+const ICONES = {
+  agua: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>',
+  solidos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 7c-1-3-4-3-5-2M12 7c4-2 8 1 7 6-1 5-4 8-7 6-3 2-6-1-7-6-1-5 3-8 7-6z"/></svg>',
+  wc: '<svg viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor" font-family="sans-serif">WC</text></svg>',
+  transfer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16M8 20v-3M16 20v-3"/></svg>',
+  barco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 15l2 5h14l2-5zM6 15V9h12v6M12 9V4"/></svg>',
+  autocarro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 10h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg>',
+  saco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 13H7zM9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+  dropbag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="13" rx="2"/><path d="M9 8V5h6v3M12 11v6M9 14l3 3 3-3"/></svg>'
+};
+const SERVICOS = CFG.servicos;
+const iPorKm = km => { let lo = 0, hi = P.length - 1; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (P[m][0] < km) lo = m; else hi = m; } return Math.abs(P[lo][0] - km) < Math.abs(P[hi][0] - km) ? lo : hi; };
+// kmVer: o km que se mostra (na meta, a distância oficial do Trace de Trail; num posto, o km oficial quando a configuração o dá); km: a posição no traçado
+const PONTOS = CFG.pontos.map(p => ({ ...p, km: p.km === 'fim' ? KM_TOTAL : p.km, kmVer: p.kmVer != null ? p.kmVer : p.km === 'fim' && CFG.oficial ? CFG.oficial.km : (p.km === 'fim' ? KM_TOTAL : p.km) })).map(p => { const i = iPorKm(p.km); return { ...p, i, alt: P[i][1], dmais: P[i][4], dmenos: P[i][5] }; });
+
+// estado
+const E = { modo: 'percurso', barreiras: true, servicosPerfil: new Set(Object.keys(SERVICOS)), filtroTabela: new Set(), de: 0, ate: KM_TOTAL, alvo: CFG.alvo.valor, ponto: null, cursor: null };
+
+// classes de inclinação (valor absoluto, %)
+const CLASSES = [[0, 5, '--s0', '0–5 %'], [5, 10, '--s1', '5–10 %'], [10, 15, '--s2', '10–15 %'], [15, 20, '--s3', '15–20 %'], [20, 30, '--s4', '20–30 %'], [30, 999, '--s5', '30 % ou mais']];
+const TERRENO = D.t ? D.classes.map((nome, c) => ({ nome, var: ['--t0', '--s0', '--s1', '--s2', '--s3', '--s4', '--t6', '--t7'][c] })) : null;
+if (TERRENO) { const b = document.querySelector('[data-modo="tecnica"]'); b.disabled = false; b.title = 'Tipo de piso, segundo o OpenStreetMap'; }
+const cor = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const corModo = i => E.modo === 'tecnica' && TERRENO ? TERRENO[D.t[i]].var : CLASSES[classe(P[i][6])][2];
+const classe = s => { const a = Math.abs(s); return CLASSES.findIndex(c => a >= c[0] && a < c[1]); };
+
+// esforço acumulado (km + D+/100) para a hora prevista
+const esforco = i => P[i][0] + P[i][4] / 100;
+const ESF_TOTAL = esforco(P.length - 1);
+const horaPrevista = i => PARTIDA_MIN + E.alvo * esforco(i) / ESF_TOTAL;
+
+// nascer e pôr do sol (fórmula astronómica simples, dia do ano)
+function sol(lat, lon, dia, fuso, zen = 90.833) {
+  const c = Math.PI / 180, l = 360 / 365 * c * (dia - 81), dec = 23.45 * c * Math.sin(l);
+  const eq = 9.87 * Math.sin(2 * l) - 7.53 * Math.cos(l) - 1.5 * Math.sin(l);
+  const p = (Math.cos(zen * c) - Math.sin(lat * c) * Math.sin(dec)) / (Math.cos(lat * c) * Math.cos(dec));
+  const m = Math.acos(Math.max(-1, Math.min(1, p))) / c, meio = 720 - 4 * lon - eq + fuso * 60;
+  return { nascer: meio - 4 * m, por: meio + 4 * m };
+}
+const SOL = sol(CFG.sol.lat, CFG.sol.lon, CFG.sol.dia, CFG.sol.fuso);
+const CREP = sol(CFG.sol.lat, CFG.sol.lon, CFG.sol.dia, CFG.sol.fuso, 96); // crepúsculo civil: sol 6° abaixo do horizonte
+// fase da lua na noite da prova (aproximação: lua nova de referência a 6-1-2000, mês lunar 29,53 dias)
+function lua(ano, dia) { const jd = Date.UTC(ano, 0, dia, 23) / 86400000 + 2440587.5, idade = ((jd - 2451550.1) % 29.530588853 + 29.530588853) % 29.530588853;
+  const ilum = (1 - Math.cos(2 * Math.PI * idade / 29.530588853)) / 2;
+  const nome = idade < 1.85 || idade > 27.68 ? 'lua nova' : idade < 5.54 ? 'lua crescente' : idade < 9.23 ? 'quarto crescente' : idade < 12.92 ? 'lua crescente, quase cheia' : idade < 16.61 ? 'lua cheia' : idade < 20.3 ? 'lua minguante, ainda quase cheia' : idade < 23.99 ? 'quarto minguante' : 'lua minguante';
+  return { nome, ilum }; }
+const LUA = CFG.sol.ano ? lua(CFG.sol.ano, CFG.sol.dia) : null;
+const deNoite = m => { const d = ((m % 1440) + 1440) % 1440; return d < SOL.nascer || d >= SOL.por; };
+document.getElementById('sol').innerHTML = hora(SOL.nascer) + ' <small>· ' + hora(SOL.por) + '</small>';
+
+// traço calculado: o troço com mais subida entre dois pontos
+// (sem pontos pelo meio, mostra antes a maior subida seguida do percurso)
+(() => {
+  const el = document.getElementById('t-duro'); if (!el) return;
+  const txt = document.getElementById('t-duro-txt');
+  if (PONTOS.length > 2) {
+    let best = null; for (let n = 1; n < PONTOS.length; n++) { const a = PONTOS[n - 1], b = PONTOS[n], s = b.dmais - a.dmais; if (!best || s > best.s) best = { a, b, s }; }
+    el.textContent = fmt(best.s) + ' m+';
+    // «do Porto», «da Fajã», «dos Cedros»: o artigo certo antes do nome do lugar
+    const art = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço|Farol|Clube|Vulcão|Mercado|Loural|Monte)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+    txt.textContent = art(best.a.nome)[0] + ' ' + best.a.nome + ' ' + art(best.b.nome)[1] + ' ' + best.b.nome + ': ' + fmt(best.b.kmVer - best.a.kmVer, 1) + ' km, com ' + fmt(best.s) + ' m de subida e ' + fmt(best.b.dmenos - best.a.dmenos) + ' m de descida.';
+    return;
+  }
+  // a maior subida: do ponto mais baixo ao mais alto sem descer mais de 15 m pelo meio
+  let ini = 0, topo = 0, melhor = [0, 0];
+  for (let i = 1; i < P.length; i++) {
+    if (P[i][1] < P[ini][1]) { ini = topo = i; continue; }
+    if (P[i][1] > P[topo][1]) topo = i;
+    if (P[topo][1] - P[ini][1] > P[melhor[1]][1] - P[melhor[0]][1]) melhor = [ini, topo];
+    if (P[topo][1] - P[i][1] > 15) ini = topo = i;
+  }
+  const [i0, i1] = melhor, kmF = KM_TOTAL > 0 && CFG.oficial ? CFG.oficial.km / KM_TOTAL : 1;
+  el.previousElementSibling.textContent = 'A maior subida';
+  el.textContent = fmt(P[i1][1] - P[i0][1]) + ' m+';
+  txt.textContent = 'Do km ' + fmt(P[i0][0] * kmF, 1) + ' ao km ' + fmt(P[i1][0] * kmF, 1) + ': ' + fmt((P[i1][0] - P[i0][0]) * kmF, 1) + ' km a subir, de ' + fmt(P[i0][1]) + ' m a ' + fmt(P[i1][1]) + ' m.';
+})();
+// ---------- chips de serviços (perfil e tabela) ----------
+const disponiveis = Object.keys(SERVICOS).filter(s => PONTOS.some(p => p.servicos.includes(s)));
+function chips(caixaId, conjunto, aoMudar, ajuda) {
+  const caixa = document.getElementById(caixaId);
+  disponiveis.forEach(s => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.dataset.servico = s;
+    b.innerHTML = ICONES[s] + SERVICOS[s].nome; b.setAttribute('aria-pressed', conjunto.has(s));
+    b.addEventListener('click', () => { conjunto.has(s) ? conjunto.delete(s) : conjunto.add(s); b.setAttribute('aria-pressed', conjunto.has(s)); aoMudar(); });
+    caixa.appendChild(b);
+  });
+  if (ajuda) { const a = document.createElement('button'); a.type = 'button'; a.className = 'ajuda'; a.textContent = '?'; a.setAttribute('aria-label', 'Legenda dos serviços'); a.addEventListener('click', () => document.getElementById('dlg-legenda').showModal()); caixa.appendChild(a); }
+}
+chips('servicos', E.servicosPerfil, () => desenharPerfil(), true);
+chips('filtro-tabela', E.filtroTabela, () => desenharTabela(), false);
+document.getElementById('legenda').innerHTML = disponiveis.map(s => `<li>${ICONES[s]}<div><b>${SERVICOS[s].nome}</b><br><span>${SERVICOS[s].desc}</span></div></li>`).join('');
+
+// ---------- perfil ----------
+const svg = document.getElementById('perfil'), caixaPerfil = document.getElementById('perfil-caixa'), dica = document.getElementById('dica');
+const M = { e: 46, d: 12, t: 54, b: 52 }; // margens: em cima ficam as barreiras e os ícones; em baixo os km e os troços
+let G = null; // geometria do último desenho
+function desenharPerfil() {
+  const W = caixaPerfil.clientWidth, H = 300;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const i0 = iPorKm(E.de), i1 = iPorKm(E.ate);
+  let amin = Infinity, amax = -Infinity;
+  for (let i = i0; i <= i1; i++) { amin = Math.min(amin, P[i][1]); amax = Math.max(amax, P[i][1]); }
+  const passo = (amax - amin) > 600 ? 250 : (amax - amin) > 250 ? 100 : 50;
+  const y0 = Math.floor(amin / passo) * passo, y1 = Math.ceil((amax + 1) / passo) * passo;
+  const x = km => M.e + (km - E.de) / (E.ate - E.de) * (W - M.e - M.d);
+  const y = a => H - M.b - (a - y0) / (y1 - y0) * (H - M.t - M.b);
+  G = { W, H, x, y, i0, i1 };
+  let s = '<defs><linearGradient id="g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + cor('--turquesa') + '" stop-opacity=".25"/><stop offset="1" stop-color="' + cor('--turquesa') + '" stop-opacity=".02"/></linearGradient>';
+  // um só degradê com uma paragem em cada mudança de classe (a técnica da UTMB)
+  if (E.modo !== 'percurso') {
+    s += `<linearGradient id="g-linha" gradientUnits="userSpaceOnUse" x1="${x(E.de)}" y1="0" x2="${x(E.ate)}" y2="0">`;
+    let ant = -1;
+    for (let i = i0; i <= i1; i++) { const c = corModo(i); if (c !== ant) { const off = ((P[i][0] - E.de) / (E.ate - E.de)).toFixed(4); if (ant !== -1) s += `<stop offset="${off}" stop-color="${cor(ant)}"/>`; s += `<stop offset="${off}" stop-color="${cor(c)}"/>`; ant = c; } }
+    s += `<stop offset="1" stop-color="${cor(ant)}"/></linearGradient>`;
+  }
+  s += `<clipPath id="corte"><rect x="${M.e}" y="0" width="${W - M.e - M.d}" height="${H}"/></clipPath></defs>`;
+  for (let a = y0; a <= y1; a += passo) s += `<line x1="${M.e}" x2="${W - M.d}" y1="${y(a)}" y2="${y(a)}" stroke="${cor('--linha')}" stroke-width=".75"/><text x="${M.e - 6}" y="${y(a) + 4}" text-anchor="end">${fmt(a)}</text>`;
+  // noite: troços que o corredor faz de noite com o tempo que escolheu
+  let ini = null;
+  for (let i = i0; i <= i1 + 1; i++) { const n = i <= i1 && deNoite(horaPrevista(i));
+    if (n && ini === null) ini = i;
+    if (!n && ini !== null) { const xa = x(P[ini][0]), xb = x(P[i - 1][0]); s += `<rect x="${xa}" y="22" width="${Math.max(1, xb - xa)}" height="${H - M.b - 22}" fill="${cor('--noite')}" fill-opacity=".13"/>` + (xb - xa > 46 ? `<text x="${xa + 6}" y="36" style="fill:${cor('--texto-2')};font-size:11px">noite</text>` : ''); ini = null; } }
+  let linha = '';
+  for (let i = i0; i <= i1; i++) linha += (i === i0 ? 'M' : 'L') + x(P[i][0]).toFixed(1) + ',' + y(P[i][1]).toFixed(1);
+  s += `<g clip-path="url(#corte)"><path d="${linha}L${x(P[i1][0])},${H - M.b}L${x(P[i0][0])},${H - M.b}Z" fill="url(#g-area)"/>`;
+  s += `<path d="${linha}" fill="none" stroke="${E.modo !== 'percurso' ? 'url(#g-linha)' : cor('--turquesa')}" stroke-width="${E.modo !== 'percurso' ? 3 : 2}" stroke-linejoin="round"/></g>`;
+  s += `<line x1="${M.e}" x2="${W - M.d}" y1="${H - M.b}" y2="${H - M.b}" stroke="${cor('--texto-2')}" stroke-width="1"/>`;
+  // pontos, barreiras, troços
+  const vis = PONTOS.filter(p => p.km >= E.de - 1e-6 && p.km <= E.ate + 1e-6);
+  // nomes e km por baixo: com muitos pontos juntos, só ficam os que cabem (o primeiro e o último ficam sempre)
+  const curtos = W < 560 || (W - M.e - M.d) / PONTOS.length < 150, LARG = 6.8;
+  const caixaTxt = p => { const px = x(p.km), w = Math.max((fmt(p.kmVer, 1) + ' km').length, (curtos ? p.curto : p.nome).length * 0.95) * LARG, a = px < 60 ? 'start' : px > W - 60 ? 'end' : 'middle'; return a === 'start' ? [px, px + w] : a === 'end' ? [px - w, px] : [px - w / 2, px + w / 2]; };
+  const comNome = new Set();
+  if (vis.length) {
+    const ult = vis[vis.length - 1], cu = caixaTxt(ult); let dir = -Infinity;
+    vis.forEach((p, n) => { const c = caixaTxt(p); if (n === vis.length - 1 || (c[0] > dir + 6 && c[1] < cu[0] - 6)) { comNome.add(p.id); dir = c[1]; } });
+  }
+  vis.forEach((p, n) => {
+    const px = x(p.km), py = y(p.alt);
+    if (E.barreiras && p.barreira) s += `<line x1="${px}" x2="${px}" y1="22" y2="${py}" stroke="${cor('--lava')}" stroke-dasharray="3 3"/><text x="${px}" y="16" text-anchor="${px > W - 30 ? 'end' : 'middle'}" style="fill:${cor('--lava')};font-weight:600">${hora(p.barreira)}</text>`;
+    s += `<line x1="${px}" x2="${px}" y1="${py}" y2="${H - M.b + 34}" stroke="${cor('--linha')}" stroke-dasharray="2 3"/>`;
+    if (comNome.has(p.id)) s += `<text x="${px}" y="${H - M.b + 15}" text-anchor="${px < 60 ? 'start' : px > W - 60 ? 'end' : 'middle'}" style="fill:${cor('--turquesa')};font-weight:600">${fmt(p.kmVer, 1)} km</text>`;
+    if (comNome.has(p.id)) s += `<text x="${px}" y="${H - M.b + 28}" text-anchor="${px < 60 ? 'start' : px > W - 60 ? 'end' : 'middle'}" style="font-family:var(--f-corpo);font-size:12px;fill:${cor('--texto')}">${curtos ? p.curto : p.nome}</text>`;
+    // ícones dos serviços ligados, no máximo 3, e «+N»
+    const sv = p.servicos.filter(z => E.servicosPerfil.has(z)), mostra = sv.slice(0, 3);
+    mostra.forEach((z, k) => { s += `<g transform="translate(${px - 9},${py - 30 - k * 20})" style="color:${cor('--turquesa')}"><rect x="-2" y="-2" width="22" height="22" rx="5" fill="${cor('--cartao')}" stroke="${cor('--linha')}"/><svg x="1" y="1" width="16" height="16">${ICONES[z].replace('<svg ', '<svg width="16" height="16" ')}</svg></g>`; });
+    if (sv.length > 3) s += `<text x="${px}" y="${py - 30 - 3 * 20 + 14}" text-anchor="middle">+${sv.length - 3}</text>`;
+    const r = p.tipo === 'abastecimento' ? 7 : 6;
+    const preenche = p.tipo === 'partida' ? cor('--s0') : p.tipo === 'meta' ? cor('--basalto') : cor('--sol');
+    s += `<g class="alvo-ponto" data-ponto="${p.id}" style="cursor:pointer"><circle cx="${px}" cy="${py}" r="14" fill="transparent"/><circle cx="${px}" cy="${py}" r="${r}" fill="${preenche}" stroke="${cor('--cartao')}" stroke-width="2"/></g>`;
+  });
+  // troços entre pontos visíveis
+  for (let n = 1; n < PONTOS.length; n++) {
+    const a = PONTOS[n - 1], b = PONTOS[n];
+    const ka = Math.max(a.km, E.de), kb = Math.min(b.km, E.ate); if (kb - ka < 0.3) continue;
+    const ia = iPorKm(ka), ib = iPorKm(kb), mx = (x(ka) + x(kb)) / 2;
+    // o texto do troço encolhe se não couber: «km · m+», só «km», ou nada
+    const kmT = (ka === a.km && kb === b.km) ? b.kmVer - a.kmVer : kb - ka; // troço inteiro: km oficiais
+    const largo = x(kb) - x(ka) - 8, longo = `${fmt(kmT, 1)} km · ${fmt(P[ib][4] - P[ia][4])} m+`, so = `${fmt(kmT, 1)} km`;
+    const txt = longo.length * 6.2 <= largo ? longo : so.length * 6.2 <= largo ? so : '';
+    if (txt) s += `<text x="${mx}" y="${H - 6}" text-anchor="middle" style="fill:${cor('--texto-2')}">${txt}</text>`;
+  }
+  if (E.barreiras) apertoBarreiras().forEach(t => { const ka = Math.max(t.a.km, E.de), kb = Math.min(t.b.km, E.ate); if (kb <= ka) return;
+    s += `<rect x="${x(ka)}" y="24" width="${Math.max(1, x(kb) - x(ka) - 1)}" height="6" rx="2" fill="${corAperto(t.rel)}"><title>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}: ${fmt(t.porHora, 1)} por hora, ${fmt(t.rel, 1)}× a média (${txtAperto(t.rel)})</title></rect>`; });
+  s += `<line id="cursor-l" x1="0" x2="0" y1="22" y2="${H - M.b}" stroke="${cor('--texto')}" stroke-width="1" visibility="hidden"/><circle id="cursor-c" r="5" fill="${cor('--cartao')}" stroke="${cor('--texto')}" stroke-width="2" visibility="hidden"/>`;
+  s += `<rect id="selecao" y="22" height="${H - M.b - 22}" fill="${cor('--turquesa')}" fill-opacity=".12" visibility="hidden"/>`;
+  svg.innerHTML = s;
+  desenharMapa(); desenharMini(); atualizarTotais();
+}
+
+// cursor, dica, seleção por arrasto, clique nos pontos
+let arrasto = null;
+const kmDoRato = ev => { const r = svg.getBoundingClientRect(); const xx = Math.min(Math.max(ev.clientX - r.left, M.e), G.W - M.d); return E.de + (xx - M.e) / (G.W - M.e - M.d) * (E.ate - E.de); };
+function mostrarCursor(km) {
+  const i = iPorKm(km), p = P[i], px = G.x(p[0]), py = G.y(p[1]);
+  const l = svg.querySelector('#cursor-l'), c = svg.querySelector('#cursor-c');
+  l.setAttribute('x1', px); l.setAttribute('x2', px); l.setAttribute('visibility', 'visible');
+  c.setAttribute('cx', px); c.setAttribute('cy', py); c.setAttribute('visibility', 'visible');
+  dica.hidden = false;
+  dica.innerHTML = `<b>${fmt(p[0], 1)} km</b> · <b>${fmt(p[1])} m</b><br>Subida até aqui <b>${fmt(p[4])} m</b> · descida <b>${fmt(p[5])} m</b><br>Inclinação <b>${p[6] > 0 ? '+' : ''}${fmt(p[6], 0)} %</b>${TERRENO ? `<br>Piso <b>${TERRENO[D.t[i]].nome}</b>` : ''}<br>A tua hora prevista <b>${hora(horaPrevista(i))}</b>${(b => b ? `<br>Próximo abastecimento: <b>${fmt(b.km - p[0], 1)} km</b> (${b.tipo === 'meta' ? 'Meta' : b.nome})` : '')(proximoDe(p[0]))}`;
+  const lw = dica.offsetWidth; dica.style.left = Math.min(Math.max(px, lw / 2 + 4), G.W - lw / 2 - 4) + 'px'; dica.style.top = '24px';
+  E.cursor = i; marcarMapa(i);
+}
+function esconderCursor() { svg.querySelector('#cursor-l')?.setAttribute('visibility', 'hidden'); svg.querySelector('#cursor-c')?.setAttribute('visibility', 'hidden'); dica.hidden = true; E.cursor = null; marcarMapa(null); }
+caixaPerfil.addEventListener('pointermove', ev => {
+  const km = kmDoRato(ev); mostrarCursor(km);
+  if (arrasto) { arrasto.ate = km; const a = Math.min(arrasto.de, km), b = Math.max(arrasto.de, km); const r = svg.querySelector('#selecao'); r.setAttribute('x', G.x(a)); r.setAttribute('width', G.x(b) - G.x(a)); r.setAttribute('visibility', 'visible'); }
+});
+caixaPerfil.addEventListener('pointerleave', () => { if (!arrasto) esconderCursor(); });
+caixaPerfil.addEventListener('pointerdown', ev => { if (ev.target.closest('.alvo-ponto')) return; if (ev.pointerType === 'mouse') { arrasto = { de: kmDoRato(ev), ate: kmDoRato(ev) }; caixaPerfil.setPointerCapture(ev.pointerId); } });
+caixaPerfil.addEventListener('pointerup', ev => {
+  if (!arrasto) return; const a = Math.min(arrasto.de, arrasto.ate), b = Math.max(arrasto.de, arrasto.ate); arrasto = null;
+  if (b - a > (E.ate - E.de) * 0.04) definirTroco(a, b); else svg.querySelector('#selecao')?.setAttribute('visibility', 'hidden');
+});
+caixaPerfil.addEventListener('dblclick', () => definirTroco(0, KM_TOTAL));
+svg.addEventListener('click', ev => { const g = ev.target.closest('.alvo-ponto'); if (g) abrirPonto(g.dataset.ponto); });
+svg.setAttribute('tabindex', '0');
+svg.addEventListener('keydown', ev => {
+  if (!['ArrowLeft', 'ArrowRight'].includes(ev.key)) return; ev.preventDefault();
+  const km = (E.cursor != null ? P[E.cursor][0] : E.de) + (ev.key === 'ArrowRight' ? 0.25 : -0.25);
+  mostrarCursor(Math.min(Math.max(km, E.de), E.ate));
+});
+svg.addEventListener('blur', esconderCursor);
+
+function definirTroco(a, b) { E.de = Math.max(0, a); E.ate = Math.min(KM_TOTAL, b); if (E.ate - E.de < KM_TOTAL * 0.08) { const m = (E.de + E.ate) / 2; E.de = Math.max(0, m - KM_TOTAL * 0.04); E.ate = Math.min(KM_TOTAL, E.de + KM_TOTAL * 0.08); } desenharPerfil(); }
+
+// ---------- mini-perfil com pegas ----------
+const mini = document.getElementById('mini'), janela = document.getElementById('janela');
+(function desenharMiniFundo() {
+  let amin = Infinity, amax = -Infinity; P.forEach(p => { amin = Math.min(amin, p[1]); amax = Math.max(amax, p[1]); });
+  let d = ''; P.forEach((p, i) => { d += (i ? 'L' : 'M') + (p[0] / KM_TOTAL * 100).toFixed(2) + ',' + (52 - (p[1] - amin) / (amax - amin) * 46).toFixed(2); });
+  document.getElementById('mini-svg').innerHTML = `<path d="${d}L100,56L0,56Z" fill="${cor('--turquesa')}" fill-opacity=".18"/><path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="1" vector-effect="non-scaling-stroke"/>`;
+})();
+function desenharMini() { janela.style.left = (E.de / KM_TOTAL * 100) + '%'; janela.style.width = ((E.ate - E.de) / KM_TOTAL * 100) + '%'; }
+function arrastar(tipo) {
+  return ev => {
+    ev.preventDefault(); ev.stopPropagation();
+    const r = mini.getBoundingClientRect(), x0 = ev.clientX, de0 = E.de, ate0 = E.ate;
+    const mover = e => { const dk = (e.clientX - x0) / r.width * KM_TOTAL; const minimo = KM_TOTAL * 0.08;
+      if (tipo === 'esq') E.de = Math.min(Math.max(0, de0 + dk), E.ate - minimo);
+      else if (tipo === 'dir') E.ate = Math.max(Math.min(KM_TOTAL, ate0 + dk), E.de + minimo);
+      else { const w = ate0 - de0; E.de = Math.min(Math.max(0, de0 + dk), KM_TOTAL - w); E.ate = E.de + w; }
+      desenharPerfil(); };
+    const largar = () => { window.removeEventListener('pointermove', mover); window.removeEventListener('pointerup', largar); };
+    window.addEventListener('pointermove', mover); window.addEventListener('pointerup', largar);
+  };
+}
+document.getElementById('pega-esq').addEventListener('pointerdown', arrastar('esq'));
+document.getElementById('pega-dir').addEventListener('pointerdown', arrastar('dir'));
+janela.addEventListener('pointerdown', arrastar('meio'));
+mini.addEventListener('dblclick', () => definirTroco(0, KM_TOTAL));
+// tocar fora da janela leva a janela para lá (mantém a largura)
+mini.addEventListener('pointerdown', ev => { if (ev.target.closest('.janela')) return; const r = mini.getBoundingClientRect(), km = (ev.clientX - r.left) / r.width * KM_TOTAL;
+  const w = (E.ate - E.de) >= KM_TOTAL - 1e-6 ? KM_TOTAL * 0.25 : E.ate - E.de; E.de = Math.min(Math.max(0, km - w / 2), KM_TOTAL - w); E.ate = E.de + w; desenharPerfil(); });
+// convite a mexer: a janela abana duas vezes quando aparece; pára ao primeiro toque
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { janela.classList.add('convite'); o.disconnect(); } }), { threshold: 0.6 }).observe(mini);
+mini.addEventListener('pointerdown', () => janela.classList.remove('convite'));
+[['pega-esq', 'esq'], ['pega-dir', 'dir']].forEach(([id, lado]) => document.getElementById(id).addEventListener('keydown', ev => {
+  if (!['ArrowLeft', 'ArrowRight'].includes(ev.key)) return; ev.preventDefault(); const d = ev.key === 'ArrowRight' ? 0.5 : -0.5;
+  if (lado === 'esq') E.de = Math.min(Math.max(0, E.de + d), E.ate - KM_TOTAL * 0.08); else E.ate = Math.max(Math.min(KM_TOTAL, E.ate + d), E.de + KM_TOTAL * 0.08);
+  desenharPerfil();
+}));
+document.getElementById('repor').addEventListener('click', () => definirTroco(0, KM_TOTAL));
+function atualizarTotais() {
+  const ia = iPorKm(E.de), ib = iPorKm(E.ate), inteiro = E.de <= 0.01 && E.ate >= KM_TOTAL - 0.01;
+  document.getElementById('tot-km').textContent = fmt(inteiro && CFG.oficial ? CFG.oficial.km : E.ate - E.de, 1) + ' km';
+  document.getElementById('tot-d').textContent = '+' + fmt(P[ib][4] - P[ia][4]) + ' m · −' + fmt(P[ib][5] - P[ia][5]) + ' m';
+  document.getElementById('tot-onde').textContent = inteiro ? 'a ' + (CFG.unidade || 'prova') + ' inteira' : 'do km ' + fmt(E.de, 1) + ' ao km ' + fmt(E.ate, 1);
+  document.getElementById('repor').hidden = inteiro;
+}
+
+// ---------- mapa (traçado próprio, sem mosaicos) ----------
+const mapa = document.getElementById('mapa');
+const lngs = P.map(p => p[2]), lats = P.map(p => p[3]);
+const B = { x0: Math.min(...lngs), x1: Math.max(...lngs), y0: Math.min(...lats), y1: Math.max(...lats) };
+const kLat = Math.cos((B.y0 + B.y1) / 2 * Math.PI / 180);
+const MW = 640, MH = Math.round(MW * (B.y1 - B.y0) / ((B.x1 - B.x0) * kLat) * 1.0) + 0, pad = 28;
+const MHt = Math.min(Math.max(MH, 300), 520);
+const esc = Math.min((MW - 2 * pad) / ((B.x1 - B.x0) * kLat), (MHt - 2 * pad) / (B.y1 - B.y0));
+const mx = lng => pad + (lng - B.x0) * kLat * esc + ((MW - 2 * pad) - (B.x1 - B.x0) * kLat * esc) / 2;
+const my = lat => MHt - pad - (lat - B.y0) * esc - ((MHt - 2 * pad) - (B.y1 - B.y0) * esc) / 2;
+mapa.setAttribute('viewBox', `0 0 ${MW} ${MHt}`);
+function desenharMapa() {
+  const i0 = iPorKm(E.de), i1 = iPorKm(E.ate), parcial = !(E.de <= 0.01 && E.ate >= KM_TOTAL - 0.01);
+  let s = '', d = '';
+  P.forEach((p, i) => { d += (i ? 'L' : 'M') + mx(p[2]).toFixed(1) + ',' + my(p[3]).toFixed(1); });
+  s += `<path d="${d}" fill="none" stroke="${cor('--cartao')}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>`;
+  if (E.modo !== 'percurso') {
+    for (let i = 1; i < P.length; i++) { const fora = i < i0 || i > i1; s += `<line x1="${mx(P[i - 1][2]).toFixed(1)}" y1="${my(P[i - 1][3]).toFixed(1)}" x2="${mx(P[i][2]).toFixed(1)}" y2="${my(P[i][3]).toFixed(1)}" stroke="${cor(corModo(i))}" stroke-width="4" stroke-linecap="round" opacity="${parcial && fora ? .25 : 1}"/>`; }
+  } else {
+    s += `<path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="3.5" stroke-linejoin="round" opacity="${parcial ? .3 : 1}"/>`;
+    if (parcial) { let dd = ''; for (let i = i0; i <= i1; i++) dd += (i === i0 ? 'M' : 'L') + mx(P[i][2]).toFixed(1) + ',' + my(P[i][3]).toFixed(1); s += `<path d="${dd}" fill="none" stroke="${cor('--turquesa')}" stroke-width="4.5" stroke-linejoin="round"/>`; }
+  }
+  // marcas de km, de 5 em 5
+  for (let k = 5; k < KM_TOTAL; k += 5) { const p = P[iPorKm(k)]; s += `<g><circle cx="${mx(p[2])}" cy="${my(p[3])}" r="9" fill="${cor('--cartao')}" stroke="${cor('--texto-2')}"/><text x="${mx(p[2])}" y="${my(p[3]) + 3.5}" text-anchor="middle" font-size="9.5" style="font-family:var(--f-mono)" fill="${cor('--texto')}">${k}</text></g>`; }
+  PONTOS.forEach(pt => { const p = P[pt.i]; const f = pt.tipo === 'partida' ? cor('--s0') : pt.tipo === 'meta' ? cor('--basalto') : cor('--sol');
+    s += `<g class="alvo-ponto" data-ponto="${pt.id}" style="cursor:pointer"><circle cx="${mx(p[2])}" cy="${my(p[3])}" r="16" fill="transparent"/><circle cx="${mx(p[2])}" cy="${my(p[3])}" r="8" fill="${f}" stroke="${cor('--cartao')}" stroke-width="2.5"/>`
+      + `<text x="${mx(p[2]) + (mx(p[2]) > MW - 150 ? -13 : 13)}" text-anchor="${mx(p[2]) > MW - 150 ? 'end' : 'start'}" y="${my(p[3]) + 4}" font-size="12.5" font-weight="600" fill="${cor('--texto')}" style="font-family:var(--f-corpo)" paint-order="stroke" stroke="${cor('--linha-2')}" stroke-width="4">${PONTOS.length > 4 ? pt.curto : pt.nome}</text></g>`; });
+  s += `<circle id="mapa-cursor" r="7" fill="${cor('--cartao')}" stroke="${cor('--texto')}" stroke-width="3" visibility="hidden"/>`;
+  mapa.innerHTML = s;
+  window.MAPA?.atualizar();
+}
+function marcarMapa(i) { window.MAPA?.marcar(i); const c = mapa.querySelector('#mapa-cursor'); if (!c) return; if (i == null) { c.setAttribute('visibility', 'hidden'); return; } c.setAttribute('cx', mx(P[i][2])); c.setAttribute('cy', my(P[i][3])); c.setAttribute('visibility', 'visible'); }
+mapa.addEventListener('click', ev => { const g = ev.target.closest('.alvo-ponto'); if (g) abrirPonto(g.dataset.ponto); });
+mapa.addEventListener('pointermove', ev => { if (ev.target.closest('.alvo-ponto')) return; const r = mapa.getBoundingClientRect(); const sx = (ev.clientX - r.left) / r.width * MW, sy = (ev.clientY - r.top) / r.height * MHt; let best = -1, bd = 1e9; for (let i = 0; i < P.length; i += 2) { const dx = mx(P[i][2]) - sx, dy = my(P[i][3]) - sy, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = i; } } if (bd < 400) { const km = P[best][0]; if (km >= E.de && km <= E.ate) mostrarCursor(km); else marcarMapa(best); } else esconderCursor(); });
+mapa.addEventListener('pointerleave', esconderCursor);
+
+// ---------- cartão do ponto ----------
+const artigo = n => /^(Porto|Parque|Império|Tanque|Depósito|Pico|Cabeço|Farol|Clube|Vulcão|Mercado|Loural|Monte)/.test(n) ? ['Do', 'ao'] : /^(Fajã|Reserva|Caldeira|Ribeira|Horta|Praia|Casa|Criação|Madalena)/.test(n) ? ['Da', 'à'] : /^Cedros/.test(n) ? ['Dos', 'aos'] : ['De', 'a'];
+// distância até ao próximo abastecimento (ou à meta): a pergunta que todos fazem
+const ehAbast = p => p.tipo === 'abastecimento' || p.tipo === 'meta';
+function proximoDe(km) { return PONTOS.find(p => ehAbast(p) && p.km > km + 1e-6) || null; }
+function ateProximo(a, b, comHora) {
+  if (!b) return '';
+  const nome = b.tipo === 'meta' ? 'Meta' : b.nome, t = comHora ? horaPrevista(b.i) - (a.i != null ? horaPrevista(a.i) : 0) : 0;
+  return `${fmt(b.kmVer - a.kmVer, 1)} km · +${fmt(b.dmais - a.dmais)} m · −${fmt(b.dmenos - a.dmenos)} m, até ${artigo(nome)[1]} ${nome}${comHora && t > 0 ? ` (cerca de ${duracao(t)} com o teu tempo)` : ''}`;
+}
+const linkMaps = (p, txt) => p.gps ? `<a class="maps" href="https://www.google.com/maps/search/?api=1&query=${p.gps[0]},${p.gps[1]}" target="_blank" rel="noopener">${txt}</a>` : '';
+function abrirPonto(id) {
+  const n = PONTOS.findIndex(p => p.id === id), p = PONTOS[n], ant = PONTOS[n - 1];
+  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
+  document.getElementById('ponto-cartao').innerHTML = `<h3>${p.nome}</h3><span style="color:var(--texto-2)">${p.local}</span>${p.gps ? ' · ' + linkMaps(p, 'Abrir no Google Maps') : ''}<dl>${linhas.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>` + (p.servicos.length ? `<div class="icones" style="gap:10px;flex-wrap:wrap">${p.servicos.map(s => `<span style="display:inline-flex;gap:4px;align-items:center;font-size:14px">${ICONES[s]}${SERVICOS[s].nome}</span>`).join('')}</div>` : '');
+  E.ponto = id; mostrarCursor(p.km >= E.de && p.km <= E.ate ? p.km : E.de);
+}
+
+// ---------- modos e detalhe das inclinações ----------
+document.querySelectorAll('[data-modo]').forEach(b => b.addEventListener('click', () => { E.modo = b.dataset.modo; document.querySelectorAll('[data-modo]').forEach(o => o.setAttribute('aria-pressed', o === b)); document.getElementById('abrir-inclinacoes').hidden = E.modo !== 'inclinacao'; document.getElementById('abrir-terreno').hidden = E.modo !== 'tecnica'; desenharPerfil(); }));
+document.getElementById('abrir-terreno').addEventListener('click', () => { const km = TERRENO.map(() => 0); for (let i = 1; i < P.length; i++) km[D.t[i]] += P[i][0] - P[i - 1][0]; const max = Math.max(...km); document.getElementById('barras-terreno').innerHTML = TERRENO.map((t, c) => km[c] < 0.05 ? '' : `<div class="barra larga"><span class="etq">${t.nome}</span><span class="tubo"><i style="width:${(km[c] / max * 100).toFixed(1)}%;background:${cor(t.var)}"></i></span><span class="val">${fmt(km[c], 1)} km <small>${fmt(km[c] / KM_TOTAL * 100, 0)} %</small></span></div>`).join(''); document.getElementById('dlg-terreno').showModal(); });
+document.getElementById('ver-barreiras').addEventListener('change', ev => { E.barreiras = ev.target.checked; desenharPerfil(); });
+if (!PONTOS.some(p => p.barreira)) document.getElementById('ver-barreiras').closest('label').style.display = 'none'; // prova sem barreiras
+document.getElementById('abrir-inclinacoes').addEventListener('click', () => { desenharBarras(); document.getElementById('dlg-inclinacoes').showModal(); });
+document.getElementById('separar').addEventListener('change', desenharBarras);
+function desenharBarras() {
+  const separar = document.getElementById('separar').checked;
+  const soma = { sobe: CLASSES.map(() => 0), desce: CLASSES.map(() => 0), todos: CLASSES.map(() => 0) };
+  for (let i = 1; i < P.length; i++) { const d = P[i][0] - P[i - 1][0], c = classe(P[i][6]); soma.todos[c] += d; (P[i][6] >= 0 ? soma.sobe : soma.desce)[c] += d; }
+  const barra = (v, max, c) => `<div class="barra"><span class="etq">${CLASSES[c][3]}</span><span class="tubo"><i style="width:${(v / max * 100).toFixed(1)}%;background:${cor(CLASSES[c][2])}"></i></span><span class="val">${fmt(v, 1)} km <small>${fmt(v / KM_TOTAL * 100, 1)} %</small></span></div>`;
+  let h = '';
+  if (separar) { const max = Math.max(...soma.sobe, ...soma.desce); h += '<b>A subir</b>' + CLASSES.map((_, c) => barra(soma.sobe[c], max, c)).join('') + '<b style="margin-top:8px">A descer</b>' + CLASSES.map((_, c) => barra(soma.desce[c], max, c)).join(''); }
+  else { const max = Math.max(...soma.todos); h = CLASSES.map((_, c) => barra(soma.todos[c], max, c)).join(''); }
+  document.getElementById('barras').innerHTML = h;
+}
+document.querySelectorAll('[data-fechar]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
+
+// ---------- tabela ----------
+function faixaCeu(m) { const nasc = SOL.nascer, por = SOL.por; return (m >= nasc && m < por) ? cor('--sol') : cor('--noite'); }
+function desenharTabela() {
+  const linhas = PONTOS.filter((p, n) => n === 0 || !E.filtroTabela.size || p.servicos.some(s => E.filtroTabela.has(s)));
+  let h = '';
+  // cada linha: onde estou (ponto, altitude), quanto já fiz (desde a partida), o que vem a seguir (perfil, km e desnível até ao próximo abastecimento), horas
+  const mini = (ia, ib) => { let amin = Infinity, amax = -Infinity; for (let i = ia; i <= ib; i++) { amin = Math.min(amin, P[i][1]); amax = Math.max(amax, P[i][1]); }
+    let d = ''; for (let i = ia; i <= ib; i += 2) d += (i === ia ? 'M' : 'L') + ((P[i][0] - P[ia][0]) / (P[ib][0] - P[ia][0]) * 120).toFixed(1) + ',' + (36 - (P[i][1] - amin) / Math.max(1, amax - amin) * 30).toFixed(1);
+    return `<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true"><path d="${d}L120,40L0,40Z" fill="${cor('--turquesa')}" fill-opacity=".15"/><path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="1.5"/></svg>`; };
+  linhas.forEach((p, n) => {
+    const b = p.tipo !== 'meta' ? proximoDe(p.km) : null;
+    const minutos = n === 0 ? PARTIDA_MIN : horaPrevista(p.i);
+    let estado = '';
+    if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
+    h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td>`
+      + `<td class="num">${fmt(p.alt)} m</td>`
+      + `<td class="num">${fmt(p.kmVer, 1)} km${n ? `<span class="peq">+${fmt(p.dmais)} | −${fmt(p.dmenos)} m</span>` : ''}</td>`
+      + (b ? `<td>${mini(p.i, b.i)}</td><td class="prox"><b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m</span></td>` : '<td></td><td class="prox"><b>Chegada</b></td>')
+      + `<td class="carril"><span style="background:${faixaCeu(minutos)}" title="${minutos >= SOL.nascer && minutos < SOL.por ? 'De dia' : 'De noite'}"></span></td>`
+      + `<td class="num">${hora(minutos)}${estado}</td><td class="barreira">${p.barreira ? hora(p.barreira) : ''}</td>`
+      + `<td><span class="icones">${p.servicos.map(s => `<span title="${SERVICOS[s].nome}">${ICONES[s]}</span>`).join('')}</span></td></tr>`;
+  });
+  document.getElementById('corpo-tabela').innerHTML = h;
+  if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent === 'Próximo abastecimento'); if (th) th.textContent = 'Até à chegada'; }
+}
+const alvo = document.getElementById('tempo-alvo');
+alvo.addEventListener('input', () => { E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); desenharTabela(); desenharPerfil(); desenharLuz(); desenharSubidas(); if (E.ponto) abrirPonto(E.ponto); });
+
+// ---------- GPX por marca de relógio ----------
+const cp = PONTOS[CFG.gpxPonto], pc = P[cp.i], svc = cp.servicos.map(s => SERVICOS[s].nome.toLowerCase()).join(', ');
+const GPX = {
+  garmin: ['Ícone de cada ponto e aviso a 1 km: o relógio avisa quando te aproximas do abastecimento.',
+    `<wpt lat="${pc[3]}" lon="${pc[2]}">
+  <ele>${pc[1]}</ele>
+  <name>${cp.nome}</name>
+  <sym>Food Source</sym>
+  <extensions>
+    <gpxx:WaypointExtension>
+      <gpxx:Proximity>1000</gpxx:Proximity>
+    </gpxx:WaypointExtension>
+  </extensions>
+</wpt>`],
+  suunto: ['Cada ponto leva o tipo certo (abastecimento, socorro, controlo), e o relógio mostra o ícone.',
+    `<wpt lat="${pc[3]}" lon="${pc[2]}">
+  <ele>${pc[1]}</ele>
+  <name>${cp.nome}</name>
+  <type>Aid_station</type>
+</wpt>`],
+  coros: ['Nomes curtos, para caberem no ecrã pequeno.',
+    `<wpt lat="${pc[3]}" lon="${pc[2]}">
+  <ele>${pc[1]}</ele>
+  <name>${cp.curto} ${cp.nomeCurto || ''}</name>
+</wpt>`],
+  universal: ['GPX normal, para qualquer aparelho ou aplicação.',
+    `<wpt lat="${pc[3]}" lon="${pc[2]}">
+  <ele>${pc[1]}</ele>
+  <name>${cp.curto} ${cp.nome}</name>
+  <desc>Km ${fmt(cp.kmVer, 1)} · ${svc}${cp.barreira ? ' · barreira ' + hora(cp.barreira) : ''}</desc>
+</wpt>`]
+};
+function mostrarRelogio(k) { document.querySelectorAll('[data-relogio]').forEach(b => b.setAttribute('aria-pressed', b.dataset.relogio === k)); document.getElementById('relogio-desc').textContent = GPX[k][0]; document.getElementById('relogio-gpx').textContent = GPX[k][1]; }
+document.querySelectorAll('[data-relogio]').forEach(b => b.addEventListener('click', () => mostrarRelogio(b.dataset.relogio)));
+mostrarRelogio('garmin');
+
+// ---------- submenu: secção ativa ----------
+const ligacoes = [...document.querySelectorAll('.submenu a:not(.inscrever)')];
+const obs = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting) ligacoes.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -55% 0px' });
+['percurso', 'relogio', 'pontos', 'subidas', 'historia', 'ilha', 'dia', 'material'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+// ---------- aperto das barreiras (relatório 71 §1) ----------
+// para cada troço entre barreiras: esforço (km + D+/100, valores oficiais) a dividir pelas horas disponíveis,
+// comparado com o esforço por hora da prova inteira (esforço total ÷ tempo limite)
+function apertoBarreiras() {
+  const com = PONTOS.filter((p, n) => n === 0 || p.barreira); if (com.length < 2) return [];
+  const esfP = p => p.kmVer + p.dmais / 100, ult = PONTOS[PONTOS.length - 1];
+  const media = esfP(ult) / (((ult.barreira != null ? ult.barreira : PARTIDA_MIN + LIMITE_MIN) - PARTIDA_MIN) / 60); // tempo limite = fecho da meta menos a partida
+  return com.slice(1).map((b, n) => { const a = com[n], ta = n === 0 ? PARTIDA_MIN : a.barreira, h = (b.barreira - ta) / 60, esf = esfP(b) - esfP(a);
+    return { a, b, esf, h, porHora: esf / h, rel: esf / h / media, media }; });
+}
+const corAperto = r => r < 1.1 ? cor('--s0') : r < 1.3 ? cor('--s2') : r < 1.6 ? cor('--s3') : cor('--s5');
+const txtAperto = r => r < 1.1 ? 'folgado' : r < 1.3 ? 'justo' : r < 1.6 ? 'apertado' : 'muito apertado';
+function desenharAperto() {
+  const lista = apertoBarreiras(); let el = document.getElementById('aperto');
+  if (!lista.length) { if (el) el.remove(); return; }
+  if (!el) { el = document.createElement('div'); el.id = 'aperto'; el.className = 'aperto'; document.querySelector('#pontos .tabela-caixa').after(el); }
+  const media = lista[0].media;
+  el.innerHTML = `<h3>Quão apertadas são as barreiras</h3><p class="lead">Cada troço entre barreiras pede um certo esforço por hora (km + D+/100 a dividir pelas horas disponíveis). A média da ${CFG.unidade || 'prova'} inteira é <b>${fmt(media, 1)}</b> por hora. A cor diz quanto cada troço pede a mais. Também aparece no perfil, numa faixa por cima da linha.</p>`
+    + '<ol class="aperto-lista">' + lista.map(t => `<li><span class="aperto-cor" style="background:${corAperto(t.rel)}"></span><span><b>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}</b><small>${fmt(t.b.kmVer - t.a.kmVer, 1)} km · +${fmt(t.b.dmais - t.a.dmais)} m em ${duracao(t.h * 60)}</small></span><span class="num">${fmt(t.porHora, 1)} /h<small>${fmt(t.rel, 1)}× a média · ${txtAperto(t.rel)}</small></span></li>`).join('') + '</ol>';
+}
+
+// ---------- luz e noite com o tempo escolhido ----------
+function desenharLuz() {
+  const el = document.getElementById('luz'); if (!el) return;
+  const trocos = []; let ini = null;
+  for (let i = 0; i <= P.length; i++) { const n = i < P.length && deNoite(horaPrevista(i)); if (n && ini === null) ini = i; if (!n && ini !== null) { trocos.push([ini, i - 1]); ini = null; } }
+  let t;
+  if (!trocos.length) t = `Com ${duracao(E.alvo)} fazes a prova toda de dia: o sol põe-se às <b>${hora(SOL.por)}</b>.`;
+  else t = 'Com ' + duracao(E.alvo) + ', vais de noite ' + trocos.map(([a, b]) => a === 0 ? `desde a partida até ao <b>km ${fmt(P[b][0], 1)}</b> (o sol nasce às ${hora(SOL.nascer)})` : b === P.length - 1 ? `a partir do <b>km ${fmt(P[a][0], 1)}</b> (o sol põe-se às ${hora(SOL.por)}; ainda há alguma luz até às ${hora(CREP.por)})` : `do <b>km ${fmt(P[a][0], 1)}</b> ao <b>km ${fmt(P[b][0], 1)}</b>`).join(' e ') + '. <b>Frontal ligada</b> nesses troços.';
+  if (LUA) t += ` Na noite da prova há ${LUA.nome} (${fmt(LUA.ilum * 100)} % iluminada).`;
+  el.innerHTML = t;
+}
+// ---------- subidas e descidas com nome ----------
+function desenharSubidas() {
+  const el = document.getElementById('lista-subidas'); if (!el || !CFG.subidas) return;
+  const MOSTRA = 6, tam = sb => { const ia = iPorKm(sb.de), ib = iPorKm(sb.ate); return sb.tipo === 'subida' ? P[ib][4] - P[ia][4] : P[ib][5] - P[ia][5]; };
+  const maiores = new Set(CFG.subidas.map((sb, k) => [tam(sb), k]).sort((a, b) => b[0] - a[0]).slice(0, MOSTRA).map(x => x[1]));
+  el.innerHTML = CFG.subidas.map((sb, k) => {
+    const ia = iPorKm(sb.de), ib = iPorKm(sb.ate), km = P[ib][0] - P[ia][0], dz = P[ib][1] - P[ia][1], med = dz / (km * 10);
+    let mx = 0; for (let i = ia; i <= ib; i++) if (sb.tipo === 'subida' ? P[i][6] > mx : P[i][6] < mx) mx = P[i][6];
+    const nota = km * 1000 * Math.abs(med), cat = sb.tipo !== 'subida' ? '' : nota >= 80000 ? 'HC' : nota >= 64000 ? 'Cat. 1' : nota >= 32000 ? 'Cat. 2' : nota >= 16000 ? 'Cat. 3' : nota >= 8000 ? 'Cat. 4' : '';
+    const sobe = P[ib][4] - P[ia][4], desce = P[ib][5] - P[ia][5];
+    return `<article class="traco subida"${E.todasSubidas || maiores.has(k) ? '' : ' hidden'}><span class="etq">${sb.tipo === 'subida' ? 'Subida' : 'Descida'}${cat ? `<span class="cat">${cat}</span>` : ''}</span><b>${sb.nome}</b>`
+      + (sb.cimo ? `<p>${sb.tipo === 'subida' ? 'Até ao' : 'Desde o'} ${sb.cimo}</p>` : '')
+      + `<span class="num">${sb.tipo === 'subida' ? '+' + fmt(sobe) : '−' + fmt(desce)} m</span>`
+      + `<p>Do km ${fmt(P[ia][0], 1)} ao ${fmt(P[ib][0], 1)} (${fmt(km, 1)} km), ${fmt(Math.abs(med), 0)} % de média, ${fmt(Math.abs(mx), 0)} % no mais inclinado.</p>`
+      + `<p>Com o teu tempo, começas às <b>${hora(horaPrevista(ia))}</b> e levas cerca de ${duracao(horaPrevista(ib) - horaPrevista(ia))}.${deNoite(horaPrevista(ia)) ? ' De noite.' : ''}</p>`
+      + (sb.strava ? `<a href="${sb.strava.url}" target="_blank" rel="noopener" title="Segmento do Strava: ${sb.strava.nome}">Ver os tempos no Strava</a>` : '')
+      + `<button type="button" data-de="${P[ia][0]}" data-ate="${P[ib][0]}">Ver no perfil</button></article>`;
+  }).join('');
+  let bt = document.getElementById('ver-todas-subidas');
+  if (CFG.subidas.length > MOSTRA) {
+    if (!bt) { bt = document.createElement('button'); bt.type = 'button'; bt.id = 'ver-todas-subidas'; bt.className = 'ver-todas'; el.after(bt); bt.addEventListener('click', () => { E.todasSubidas = !E.todasSubidas; desenharSubidas(); if (!E.todasSubidas) document.getElementById('subidas').scrollIntoView({ behavior: 'smooth' }); }); }
+    bt.textContent = E.todasSubidas ? 'Mostrar só as 6 maiores' : `Ver todas (${CFG.subidas.length})`;
+  }
+}
+document.getElementById('lista-subidas')?.addEventListener('click', ev => { const b = ev.target.closest('button[data-de]'); if (!b) return; definirTroco(+b.dataset.de, +b.dataset.ate); document.getElementById('percurso').scrollIntoView({ behavior: 'smooth' }); });
+
+// ---------- «O meu dia»: o plano pessoal com o tempo escolhido (relatório 72, proposta 1) ----------
+function desenharPlano() {
+  const titulo = document.title.split(' · ')[0], linhas = [];
+  PONTOS.forEach((p, n) => {
+    const m = n === 0 ? PARTIDA_MIN : horaPrevista(p.i), prox = p.tipo !== 'meta' ? proximoDe(p.km) : null, extra = [];
+    if (p.barreira && n > 0) { const f = p.barreira - m; extra.push(f < 0 ? `<b style="color:var(--lava)">fora da barreira das ${hora(p.barreira)}</b>` : `barreira às ${hora(p.barreira)}, ${duracao(f)} de folga`); }
+    if (p.servicos.length) extra.push(p.servicos.map(s => SERVICOS[s].nome.toLowerCase()).join(', '));
+    if (prox) { const t = horaPrevista(prox.i) - m; extra.push(`até ${prox.tipo === 'meta' ? 'à meta' : 'ao próximo abastecimento'}: ${fmt(prox.kmVer - p.kmVer, 1)} km, +${fmt(prox.dmais - p.dmais)} m, cerca de ${duracao(t)}${deNoite(m) || deNoite(horaPrevista(prox.i)) ? ', <b>com frontal</b>' : ''}`); }
+    linhas.push(`<li><span class="h">${hora(m)}</span><span><b>${n === 0 ? 'Partida' : p.tipo === 'meta' ? 'Chegada' : p.curto} · ${p.nome}</b> <small>km ${fmt(p.kmVer, 1)}${extra.length ? ' · ' + extra.join(' · ') : ''}</small></span></li>`);
+  });
+  const fim = horaPrevista(P.length - 1);
+  document.getElementById('plano').innerHTML = `<h3 id="t-plano">O meu dia · ${titulo}</h3><p class="sub">Com ${duracao(E.alvo)}: partida às ${hora(PARTIDA_MIN)}, chegada por volta das ${hora(fim)}. Horas previstas pelo esforço de cada troço (km + D+/100).</p>`
+    + `<ol>${linhas.join('')}</ol>` + `<p class="nota">${document.getElementById('luz')?.innerHTML || ''}</p>`
+    + `<p class="sub" style="margin-top:10px">Leva comida e água para o tempo até ao abastecimento seguinte; os abastecimentos não têm copos.</p>`;
+}
+document.getElementById('abrir-plano')?.addEventListener('click', () => { desenharPlano(); document.getElementById('dlg-plano').showModal(); });
+document.getElementById('imprimir-plano')?.addEventListener('click', () => window.print());
+document.getElementById('partilhar-plano')?.addEventListener('click', ev => {
+  const url = location.origin + location.pathname + '#tempo=' + duracao(E.alvo);
+  (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(() => { ev.target.textContent = 'Ligação copiada'; }, () => { prompt('Copia esta ligação:', url); });
+});
+// o tempo escolhido fica guardado neste aparelho e pode vir na ligação (#tempo=10h00)
+const CHAVE_TEMPO = 'atr-tempo-' + location.pathname;
+alvo.addEventListener('change', () => { try { localStorage.setItem(CHAVE_TEMPO, String(E.alvo)); } catch (e) {} });
+(() => { let v = null; const m = location.hash.match(/tempo=(\d+)h(\d\d)/); if (m) v = +m[1] * 60 + +m[2]; else { try { v = +localStorage.getItem(CHAVE_TEMPO) || null; } catch (e) {} }
+  if (v && v >= +alvo.min && v <= +alvo.max) { alvo.value = v; E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); } })();
+
+desenharPerfil(); desenharTabela(); desenharLuz(); desenharSubidas(); desenharAperto();
+new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
+
+// ---------- mapa do percurso (Leaflet, plano) ----------
+// Fundos (decisão do Mário, 05-11-2026): «Relevo» (OpenTopoMap, abre por omissão), «Trilhos» (CyclOSM) e «Fotografia aérea», todos ligados à origem.
+// O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
+// e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
+// Fundo «Fotografia aérea»: ligada diretamente ao serviço da IDE Açores (WMS), com a definição toda; nada fica guardado por nós.
+// O serviço devolve a branco o mar sem fotografia: a camada da fotografia «multiplica» sobre um fundo branco na terra e azul no mar,
+// e assim o branco fica da cor do mar e a fotografia fica igual.
+// O Leaflet carrega-se quando o mapa está perto de aparecer no ecrã; até lá, ou se falhar, fica o traçado em SVG.
+window.MAPA = (() => {
+  if (!CFG.mapa) return null;
+  const caixa = document.querySelector('.mapa');
+  const base = new URL(CFG.mapa.pasta, location.href).href;
+  const LIB = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js';
+  const [oeste, sul, este, norte] = CFG.mapa.limites;
+  const OSM = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  let mapa = null, cursor = null, percurso = null, contorno = null, terra = null, agua = null, estradasFundo = null, caminhos = null, foto = null;
+  let fundo = 'mapa', setas = true, marcasKm = true, outros = {};
+  const lugares = [], marcasSetas = [], marcasDeKm = [];
+
+  function carregar(src) { return new Promise((ok, erro) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = erro; document.head.appendChild(s); }); }
+  const ll = p => [p[3], p[2]];
+  const solto = (html, interativo = false) => L.divIcon({ className: 'mk-solto' + (interativo ? ' mk-clicavel' : ''), html, iconSize: [0, 0] });
+
+  // espessuras conforme a aproximação
+  const z = () => mapa.getZoom();
+  const larguraPercurso = () => Math.max(3.5, Math.min(9, 3.5 + (z() - 11) * 1.4));
+
+  // o percurso aos bocados da mesma cor: o mesmo critério do perfil (modo, troço escolhido)
+  function corDe(i, i0, i1, parcial) { return (parcial && (i < i0 || i > i1)) ? cor('--linha') : (E.modo === 'percurso' ? cor('--turquesa') : cor(corModo(i))); }
+  function desenharPercurso() {
+    percurso.clearLayers();
+    const i0 = iPorKm(E.de), i1 = iPorKm(E.ate), parcial = !(E.de <= 0.01 && E.ate >= KM_TOTAL - 0.01), w = larguraPercurso();
+    let ini = 0, c = corDe(0, i0, i1, parcial);
+    for (let i = 1; i < P.length; i++) {
+      const ci = corDe(i, i0, i1, parcial);
+      if (ci !== c || i === P.length - 1) {
+        L.polyline(P.slice(ini, i + 1).map(ll), { pane: 'percurso', color: c, weight: w, lineCap: 'round', lineJoin: 'round', interactive: false }).addTo(percurso);
+        ini = i; c = ci;
+      }
+    }
+    contorno.setStyle({ weight: w + 4 });
+  }
+
+  // caminhos do OpenStreetMap: c = 0 estrada (p = 1 principal), 1 caminho rural, 2 ou mais trilho
+  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // o Relevo e os Trilhos já trazem caminhos e nomes
+  function estiloCaminho(f) {
+    if (!nosso()) return { opacity: 0 };
+    const zz = z(), sobreFoto = fundo === 'foto', c = f.properties.c, p = f.properties.p === 1;
+    if (c >= 2) return { color: sobreFoto ? '#f6e3b8' : '#6b4f2a', weight: zz >= 15 ? 1.8 : 1.1, dashArray: '4 3', opacity: zz >= 12 ? (sobreFoto ? 0.8 : 1) : 0 };
+    if (c === 1) return { color: sobreFoto ? '#f1d9a8' : '#9a7b52', weight: zz >= 15 ? 2.4 : zz >= 13 ? 1.6 : 0.9, opacity: zz >= 11 ? (sobreFoto ? (zz >= 16 ? 0.35 : 0.6) : 1) : 0 };
+    // sobre a fotografia as estradas já se veem: de perto escondem-se, de longe ficam suaves
+    return { color: '#ffffff', weight: (p ? 2.5 : 1.2) + Math.max(0, zz - 12) * (p ? 1 : 0.6), opacity: sobreFoto ? (zz >= 15 ? 0 : 0.4) : 1 };
+  }
+  function estiloContornoEstrada(f) {
+    if (!nosso()) return { opacity: 0 };
+    const zz = z(), p = f.properties.p === 1;
+    return { color: '#9aa3ab', weight: (p ? 2.5 : 1.2) + Math.max(0, zz - 12) * (p ? 1 : 0.6) + 1.6, opacity: fundo === 'foto' ? 0 : 1 };
+  }
+
+  function visibilidade() {
+    const zz = z();
+    lugares.forEach(({ m, t }) => { const ver = nosso() && ((t === 'village' || t === 'town') ? zz >= 11 : t === 'pico' ? zz >= 13 : zz >= 14); m.getElement() && (m.getElement().style.display = ver ? '' : 'none'); });
+    marcasDeKm.forEach(m => m.getElement() && (m.getElement().style.display = marcasKm ? '' : 'none'));
+    marcasSetas.forEach(({ m, passo }) => { const ver = setas && (zz >= 14 || (zz >= 12 && passo % 2 === 0) || passo % 4 === 0); m.getElement() && (m.getElement().style.display = ver ? '' : 'none'); });
+  }
+
+  function avisar(texto) { let a = caixa.querySelector('.aviso-foto'); if (!a) { a = document.createElement('p'); a.className = 'aviso-foto'; caixa.appendChild(a); } a.textContent = texto; a.hidden = false; }
+  function mudarFundo(qual) {
+    fundo = qual;
+    const aviso = caixa.querySelector('.aviso-foto'); if (aviso) aviso.hidden = true;
+    const sobreFoto = qual === 'foto';
+    if (foto) { if (sobreFoto) foto.addTo(mapa); else foto.remove(); }
+    // há redes onde o pedido fica parado sem dar erro (por exemplo a rede interna do Governo dos Açores): avisa ao fim de 12 s sem nenhuma imagem
+    clearTimeout(mudarFundo.espera);
+    if (sobreFoto && foto) {
+      let chegou = false; foto.once('tileload', () => { chegou = true; });
+      mudarFundo.espera = setTimeout(() => { if (!chegou && fundo === 'foto') avisar('A fotografia aérea está a demorar a chegar do serviço da IDE Açores. Se estás na rede interna do Governo dos Açores, o navegador não a deixa carregar aqui; fora dessa rede funciona. Entretanto, escolhe outro fundo.'); }, 12000);
+    }
+    Object.entries(outros).forEach(([k, c]) => { if (k === qual) c.addTo(mapa); else c.remove(); });
+    terra.setStyle({ fillColor: sobreFoto ? '#ffffff' : cor('--terra') }); // a ilha fica sempre por baixo: se um fundo de fora não chegar, vê-se a ilha
+    agua.setStyle({ fillOpacity: qual === 'mapa' ? 1 : 0 });
+    visibilidade();
+    caminhos.setStyle(estiloCaminho); estradasFundo.setStyle(estiloContornoEstrada);
+    caixa.classList.toggle('fundo-foto', sobreFoto);
+    painel.querySelectorAll('[data-fundo]').forEach(b => b.setAttribute('aria-pressed', b.dataset.fundo === qual));
+  }
+
+  // seta do sentido da prova, a apontar para a frente
+  function rumo(i) { const a = P[i], b = P[Math.min(i + 5, P.length - 1)], kx = Math.cos(a[3] * Math.PI / 180); return Math.atan2((b[2] - a[2]) * kx, b[3] - a[3]) * 180 / Math.PI; }
+  const SETA = r => `<span class="mk-seta"><svg width="14" height="14" viewBox="0 0 24 24" style="transform:rotate(${(r - 90).toFixed(0)}deg)"><path d="M6 5 L19 12 L6 19 L9 12 Z" fill="#fff" stroke="#14181d" stroke-width="1.8" stroke-linejoin="round"/></svg></span>`;
+
+  let painel = null;
+  async function abrir() {
+    try { await carregar(LIB); } catch (e) { return; } // sem o Leaflet fica o traçado em SVG
+    caixa.classList.add('com-fundo');
+    const div = document.createElement('div'); div.id = 'mapa-fundo'; caixa.insertBefore(div, caixa.firstChild);
+    document.getElementById('mapa').style.display = 'none'; caixa.querySelector('.nota').style.display = 'none';
+    const limites = L.latLngBounds([[sul, oeste], [norte, este]]);
+    mapa = L.map(div, { zoomControl: false, minZoom: 10, maxZoom: 19, maxBounds: limites.pad(0.3), attributionControl: true });
+    mapa.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+    L.control.zoom({ position: 'topright', zoomInTitle: 'Aproximar', zoomOutTitle: 'Afastar' }).addTo(mapa);
+    L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(mapa);
+    // botão de ecrã inteiro
+    const Ecra = L.Control.extend({ options: { position: 'topright' }, onAdd() { const b = L.DomUtil.create('button', 'leaflet-bar ecra-inteiro'); b.type = 'button'; b.title = 'Ecrã inteiro'; b.innerHTML = '⤢'; L.DomEvent.disableClickPropagation(b); b.addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : caixa.requestFullscreen?.()); return b; } });
+    new Ecra().addTo(mapa);
+    document.addEventListener('fullscreenchange', () => setTimeout(() => mapa.invalidateSize(), 50));
+
+    // camadas por ordem: fundo (terra e água) · fotografia · caminhos · percurso · marcadores
+    [['fundo', 150], ['foto', 250], ['caminhos', 400], ['percurso', 450]].forEach(([n, zi]) => { mapa.createPane(n).style.zIndex = zi; });
+    mapa.getPane('foto').style.mixBlendMode = 'multiply';
+    mapa.getPane('fundo').style.pointerEvents = mapa.getPane('foto').style.pointerEvents = mapa.getPane('caminhos').style.pointerEvents = 'none';
+    const rFundo = L.svg({ pane: 'fundo' }), rCaminhos = L.canvas({ pane: 'caminhos' });
+    // o mar por baixo de tudo (a fotografia «multiplica» sobre ele: o branco que o serviço devolve no mar fica da cor do mar)
+    L.rectangle(limites.pad(2), { renderer: rFundo, pane: 'fundo', interactive: false, stroke: false, fillColor: cor('--mar'), fillOpacity: 1 }).addTo(mapa);
+    terra = L.geoJSON(null, { renderer: rFundo, pane: 'fundo', interactive: false, attribution: OSM, style: { stroke: false, fillColor: cor('--terra'), fillOpacity: 1 } }).addTo(mapa);
+    agua = L.geoJSON(null, { renderer: rFundo, pane: 'fundo', interactive: false, style: { stroke: false, fillColor: cor('--mar'), fillOpacity: 1 } }).addTo(mapa);
+    estradasFundo = L.geoJSON(null, { renderer: rCaminhos, pane: 'caminhos', interactive: false, filter: f => f.properties.c === 0, style: estiloContornoEstrada }).addTo(mapa);
+    caminhos = L.geoJSON(null, { renderer: rCaminhos, pane: 'caminhos', interactive: false, style: estiloCaminho }).addTo(mapa);
+    // fundos do OpenStreetMap feitos por outros, ligados à origem; só se pede o que o visitante está a ver (regras de cada serviço)
+    outros = {
+      relevo: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 17, maxZoom: 19, attribution: 'Dados: © OpenStreetMap, SRTM · Desenho: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }),
+      trilhos: L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 20, maxZoom: 19, attribution: '<a href="https://www.cyclosm.org">CyclOSM</a> · © OpenStreetMap' })
+    };
+    if (CFG.mapa.orto) {
+      foto = L.tileLayer.wms(CFG.mapa.orto.wms, { pane: 'foto', layers: CFG.mapa.orto.camada, format: 'image/jpeg', version: '1.3.0', tileSize: 512, maxZoom: 19, bounds: limites, attribution: CFG.mapa.orto.credito });
+    }
+    // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
+    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
+    const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
+    json('terra.geojson').then(g => terra.addData(g));
+    json('agua.geojson').then(g => agua.addData(g));
+    json('caminhos.geojson').then(g => { estradasFundo.addData(g); caminhos.addData(g); });
+
+    // percurso: contorno branco por baixo e a linha por cores por cima
+    contorno = L.polyline(P.map(ll), { pane: 'percurso', color: '#ffffff', weight: 8, lineCap: 'round', lineJoin: 'round', interactive: false }).addTo(mapa);
+    percurso = L.layerGroup().addTo(mapa);
+    mapa.fitBounds(L.latLngBounds(P.map(ll)), { padding: [30, 30] });
+    desenharPercurso();
+    // setas a cada quilómetro, km de 5 em 5, pontos da prova e lugares (em HTML: não precisam de letras de outro servidor)
+    for (let k = 0.5, n = 0; k < KM_TOTAL - 0.3; k += 1, n++) { const i = iPorKm(k); marcasSetas.push({ passo: n, m: L.marker(ll(P[i]), { icon: solto(SETA(rumo(i))), interactive: false, keyboard: false }).addTo(mapa) }); }
+    for (let k = 5; k < KM_TOTAL - 1; k += 5) marcasDeKm.push(L.marker(ll(P[iPorKm(k)]), { icon: solto(`<span class="mk-km">${k}</span>`), interactive: false, keyboard: false }).addTo(mapa));
+    PONTOS.forEach(pt => { L.marker(ll(P[pt.i]), { icon: solto(`<span class="mk-ponto mk-${pt.tipo}" title="${pt.nome}">${pt.curto}</span>`, true), title: pt.nome, zIndexOffset: 1000 }).on('click', () => abrirPonto(pt.id)).addTo(mapa); });
+    json('lugares.geojson').then(g => { g.features.forEach(f => { const [lo, la] = f.geometry.coordinates; lugares.push({ t: f.properties.t, m: L.marker([la, lo], { icon: solto(`<span class="mk-lugar mk-${f.properties.t}">${f.properties.n}</span>`), interactive: false, keyboard: false, zIndexOffset: -1000 }).addTo(mapa) }); }); visibilidade(); });
+    cursor = L.marker(ll(P[0]), { icon: solto('<span class="mk-cursor"></span>'), interactive: false, keyboard: false, zIndexOffset: 2000 });
+
+    mapa.on('zoomend', () => { desenharPercurso(); caminhos.setStyle(estiloCaminho); estradasFundo.setStyle(estiloContornoEstrada); visibilidade(); });
+    mapa.on('mousemove', ev => {
+      let best = -1, bd = 1e9;
+      for (let i = 0; i < P.length; i += 2) { const s = mapa.latLngToContainerPoint(ll(P[i])); const d = (s.x - ev.containerPoint.x) ** 2 + (s.y - ev.containerPoint.y) ** 2; if (d < bd) { bd = d; best = i; } }
+      if (bd < 400) mostrarCursor(P[best][0] >= E.de && P[best][0] <= E.ate ? P[best][0] : E.de); else esconderCursor();
+    });
+    mapa.on('mouseout', () => esconderCursor());
+    visibilidade();
+
+    painel = document.createElement('div'); painel.className = 'painel-mapa';
+    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="relevo" aria-pressed="true">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
+      + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`;
+    L.DomEvent.disableClickPropagation(painel); L.DomEvent.disableScrollPropagation(painel);
+    caixa.appendChild(painel);
+    painel.querySelectorAll('[data-fundo]').forEach(b => b.addEventListener('click', () => mudarFundo(b.dataset.fundo)));
+    painel.querySelector('[data-setas]').addEventListener('click', ev => { setas = !setas; ev.currentTarget.setAttribute('aria-pressed', setas); visibilidade(); });
+    painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
+    // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
+    const pedido = (location.hash.match(/^#(mapa|relevo|trilhos|foto)/) || [])[1];
+    // decisão do Mário (05-11-2026): sem o fundo «Mapa»; abre no «Relevo»
+    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) ? pedido : 'relevo');
+    const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
+    if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
+  }
+
+  // abre-se sozinho quando o mapa chega perto do ecrã
+  const vigia = new IntersectionObserver(ent => { if (ent.some(e => e.isIntersecting)) { vigia.disconnect(); abrir(); } }, { rootMargin: '400px' });
+  vigia.observe(caixa);
+  if (/^#(relevo|trilhos|foto)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
+
+  return {
+    marcar(i) { if (!mapa || !cursor) return; if (i == null) { cursor.remove(); return; } cursor.setLatLng(ll(P[i])).addTo(mapa); },
+    atualizar() { if (mapa && percurso) desenharPercurso(); }
+  };
+})();
+</script>
+</body></html>

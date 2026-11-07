@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://*.tile.opentopomap.org https://*.tile-cyclosm.openstreetmap.fr https://ambiente.azores.gov.pt; connect-src 'self'; frame-src https://www.strava.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Perfis, mapas, pontos e horários das três etapas do Triangle Adventure 2027: Pico, São Jorge e Faial."><link rel="canonical" href="https://mapas.myazorestrailrun.com/triangle.html"><meta property="og:type" content="website"><meta property="og:locale" content="pt_PT"><meta property="og:site_name" content="Azores Trail Run"><meta property="og:title" content="Triangle Adventure 2027 · mapas das etapas"><meta property="og:description" content="Perfis, mapas, pontos e horários das três etapas do Triangle Adventure 2027: Pico, São Jorge e Faial."><meta property="og:url" content="https://mapas.myazorestrailrun.com/triangle.html"><meta name="theme-color" content="#052974">
+<title>Triangle Adventure 2027 · mapas das etapas</title>
+<style>
+  :root { --papel: #f4f1ea; --texto: #1a1d21; --texto-2: #5d6670; --linha: #d9d3c6; --turquesa: #087e7f; --cartao: #ffffff; color-scheme: light }
+  @media (prefers-color-scheme: dark) { :root { --papel: #0f1214; --texto: #e9e3d6; --texto-2: #a8a193; --linha: #2e343a; --turquesa: #2bb8b8; --cartao: #171b1f; color-scheme: dark } }
+  body { margin: 0; background: var(--papel); color: var(--texto); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif }
+  main { max-width: 640px; margin: 0 auto; padding: 40px max(16px, env(safe-area-inset-left, 0px)) 64px }
+  .voltar { color: var(--turquesa); font-size: 14px; text-decoration: none }
+  h1 { font-size: 28px; margin: 10px 0 6px; text-wrap: balance }
+  h2 { font-size: 20px; margin: 40px 0 6px }
+  p { color: var(--texto-2); margin: 0 0 24px }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px }
+  ul a { display: grid; gap: 2px; padding: 14px 16px; border: 1px solid var(--linha); border-radius: 10px; background: var(--cartao); color: inherit; text-decoration: none }
+  ul a:hover, ul a:focus-visible { border-color: var(--turquesa) }
+  ul a b { color: var(--turquesa) }
+  ul a span { color: var(--texto-2); font-size: 14px; font-variant-numeric: tabular-nums }
+</style>
+</head>
+<body>
+  <main>
+    <a class="voltar" href="index.html">← Mapas das provas</a>
+    <h1>Triangle Adventure 2027</h1>
+    <p>Três etapas em três dias, de 29 a 31 de outubro de 2027: Pico, São Jorge e Faial. Os percursos são os de 2026; números oficiais do Trace de Trail.</p>
+    <ul>
+      <li><a href="ta-etapa1.html"><b>From the Vineyards to the Mountain · Etapa 1</b><span>Ilha do Pico · 25,1 km · 1 388 m D+ · partida 09:00</span></a></li>
+      <li><a href="ta-etapa2.html"><b>Fajãs Trail · Etapa 2</b><span>Ilha de São Jorge · 25,0 km · 1 288 m D+ · partida 11:30</span></a></li>
+      <li><a href="ta-etapa3.html"><b>Volcanoes Trail · Etapa 3</b><span>Ilha do Faial · 33,9 km · 1 362 m D+ · partida 11:30</span></a></li>
+    </ul>
+    <h2>As três etapas no mapa</h2>
+    <p>Toca numa linha para abrir a página da etapa. Liga e desliga as etapas por baixo do mapa.</p>
+    <div id="mapa-evento" role="img" aria-label="Mapa do Pico, de São Jorge e do Faial com os percursos das três etapas"></div>
+    <div class="legenda" id="legenda"></div>
+    <h2>Comparar as etapas</h2>
+    <p>O km-esforço junta a distância e a subida (km + D+/100), como a ITRA. O esforço por hora é o km-esforço a dividir pelo tempo limite de cada etapa.</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Etapa</th><th>Distância</th><th>Subida</th><th>Km-esforço</th><th>Partida</th><th>Tempo limite</th><th>Abastecimentos</th><th>Esforço por hora</th></tr></thead>
+      <tbody><tr><td><span class="ponto" style="background:#2f6f4f"></span><a href="ta-etapa1.html">From the Vineyards to the Mountain · Etapa 1</a></td><td class="n">25,1 km</td><td class="n">1 388 m</td><td class="n">39</td><td class="n">09:00</td><td class="n">5h00</td><td class="n">1</td><td class="n">7,8</td></tr><tr><td><span class="ponto" style="background:#c2410c"></span><a href="ta-etapa2.html">Fajãs Trail · Etapa 2</a></td><td class="n">25,0 km</td><td class="n">1 288 m</td><td class="n">38</td><td class="n">11:30</td><td class="n">7h00</td><td class="n">2</td><td class="n">5,4</td></tr><tr><td><span class="ponto" style="background:#1d4ed8"></span><a href="ta-etapa3.html">Volcanoes Trail · Etapa 3</a></td><td class="n">33,9 km</td><td class="n">1 362 m</td><td class="n">48</td><td class="n">11:30</td><td class="n">7h00</td><td class="n">2</td><td class="n">6,8</td></tr></tbody></table></div>
+    <style>/* Leaflet 1.9.4, BSD-2-Clause */
+/* required styles */
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+.leaflet-container {
+	overflow: hidden;
+	}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+	  -webkit-user-drag: none;
+	}
+/* Prevents IE11 from highlighting tiles in blue */
+.leaflet-tile::selection {
+	background: transparent;
+}
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.leaflet-safari .leaflet-tile {
+	image-rendering: -webkit-optimize-contrast;
+	}
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.leaflet-safari .leaflet-tile-container {
+	width: 1600px;
+	height: 1600px;
+	-webkit-transform-origin: 0 0;
+	}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	display: block;
+	}
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+.leaflet-container .leaflet-overlay-pane svg {
+	max-width: none !important;
+	max-height: none !important;
+	}
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	width: auto;
+	padding: 0;
+	}
+
+.leaflet-container img.leaflet-tile {
+	/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
+	mix-blend-mode: plus-lighter;
+}
+
+.leaflet-container.leaflet-touch-zoom {
+	-ms-touch-action: pan-x pan-y;
+	touch-action: pan-x pan-y;
+	}
+.leaflet-container.leaflet-touch-drag {
+	-ms-touch-action: pinch-zoom;
+	/* Fallback for FF which doesn't support pinch-zoom */
+	touch-action: none;
+	touch-action: pinch-zoom;
+}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.leaflet-container {
+	-webkit-tap-highlight-color: transparent;
+}
+.leaflet-container a {
+	-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+.leaflet-tile {
+	filter: inherit;
+	visibility: hidden;
+	}
+.leaflet-tile-loaded {
+	visibility: inherit;
+	}
+.leaflet-zoom-box {
+	width: 0;
+	height: 0;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	z-index: 800;
+	}
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	}
+
+.leaflet-pane         { z-index: 400; }
+
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+
+.leaflet-vml-shape {
+	width: 1px;
+	height: 1px;
+	}
+.lvml {
+	behavior: url(#default#VML);
+	display: inline-block;
+	position: absolute;
+	}
+
+
+/* control positioning */
+
+.leaflet-control {
+	position: relative;
+	z-index: 800;
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.leaflet-top,
+.leaflet-bottom {
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	}
+.leaflet-top {
+	top: 0;
+	}
+.leaflet-right {
+	right: 0;
+	}
+.leaflet-bottom {
+	bottom: 0;
+	}
+.leaflet-left {
+	left: 0;
+	}
+.leaflet-control {
+	float: left;
+	clear: both;
+	}
+.leaflet-right .leaflet-control {
+	float: right;
+	}
+.leaflet-top .leaflet-control {
+	margin-top: 10px;
+	}
+.leaflet-bottom .leaflet-control {
+	margin-bottom: 10px;
+	}
+.leaflet-left .leaflet-control {
+	margin-left: 10px;
+	}
+.leaflet-right .leaflet-control {
+	margin-right: 10px;
+	}
+
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	   -moz-transition: opacity 0.2s linear;
+	        transition: opacity 0.2s linear;
+	}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+	opacity: 1;
+	}
+.leaflet-zoom-animated {
+	-webkit-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	}
+svg.leaflet-zoom-animated {
+	will-change: transform;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+	}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	        transition: none;
+	}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+	visibility: hidden;
+	}
+
+
+/* cursors */
+
+.leaflet-interactive {
+	cursor: pointer;
+	}
+.leaflet-grab {
+	cursor: -webkit-grab;
+	cursor:    -moz-grab;
+	cursor:         grab;
+	}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+	cursor: crosshair;
+	}
+.leaflet-popup-pane,
+.leaflet-control {
+	cursor: auto;
+	}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor:    -moz-grabbing;
+	cursor:         grabbing;
+	}
+
+/* marker & overlays interactivity */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+	pointer-events: none;
+	}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+
+.leaflet-container {
+	background: #ddd;
+	outline-offset: 1px;
+	}
+.leaflet-container a {
+	color: #0078A8;
+	}
+.leaflet-zoom-box {
+	border: 2px dotted #38f;
+	background: rgba(255,255,255,0.5);
+	}
+
+
+/* general typography */
+.leaflet-container {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	}
+
+
+/* general toolbar styles */
+
+.leaflet-bar {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	border-radius: 4px;
+	}
+.leaflet-bar a {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+	}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+	background-color: #f4f4f4;
+	}
+.leaflet-bar a:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	}
+.leaflet-bar a:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom: none;
+	}
+.leaflet-bar a.leaflet-disabled {
+	cursor: default;
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.leaflet-touch .leaflet-bar a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	}
+.leaflet-touch .leaflet-bar a:first-child {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	}
+.leaflet-touch .leaflet-bar a:last-child {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	}
+
+
+/* layers control */
+
+.leaflet-control-layers {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	background: #fff;
+	border-radius: 5px;
+	}
+.leaflet-control-layers-toggle {
+	background-image: url(images/layers.png);
+	width: 36px;
+	height: 36px;
+	}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url(images/layers-2x.png);
+	background-size: 26px 26px;
+	}
+.leaflet-touch .leaflet-control-layers-toggle {
+	width: 44px;
+	height: 44px;
+	}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: none;
+	}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+	display: block;
+	position: relative;
+	}
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+	}
+.leaflet-control-layers-scrollbar {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-right: 5px;
+	}
+.leaflet-control-layers-selector {
+	margin-top: 2px;
+	position: relative;
+	top: 1px;
+	}
+.leaflet-control-layers label {
+	display: block;
+	font-size: 13px;
+	font-size: 1.08333em;
+	}
+.leaflet-control-layers-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 5px -10px 5px -6px;
+	}
+
+/* Default icon URLs */
+.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */
+	background-image: url(images/marker-icon.png);
+	}
+
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	line-height: 1.4;
+	}
+.leaflet-control-attribution a {
+	text-decoration: none;
+	}
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+	text-decoration: underline;
+	}
+.leaflet-attribution-flag {
+	display: inline !important;
+	vertical-align: baseline !important;
+	width: 1em;
+	height: 0.6669em;
+	}
+.leaflet-left .leaflet-control-scale {
+	margin-left: 5px;
+	}
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 5px;
+	}
+.leaflet-control-scale-line {
+	border: 2px solid #777;
+	border-top: none;
+	line-height: 1.1;
+	padding: 2px 5px 1px;
+	white-space: nowrap;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.8);
+	text-shadow: 1px 1px #fff;
+	}
+.leaflet-control-scale-line:not(:first-child) {
+	border-top: 2px solid #777;
+	border-bottom: none;
+	margin-top: -2px;
+	}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+	border-bottom: 2px solid #777;
+	}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	box-shadow: none;
+	}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+	}
+
+
+/* popup */
+
+.leaflet-popup {
+	position: absolute;
+	text-align: center;
+	margin-bottom: 20px;
+	}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	border-radius: 12px;
+	}
+.leaflet-popup-content {
+	margin: 13px 24px 13px 20px;
+	line-height: 1.3;
+	font-size: 13px;
+	font-size: 1.08333em;
+	min-height: 1px;
+	}
+.leaflet-popup-content p {
+	margin: 17px 0;
+	margin: 1.3em 0;
+	}
+.leaflet-popup-tip-container {
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	left: 50%;
+	margin-top: -1px;
+	margin-left: -20px;
+	overflow: hidden;
+	pointer-events: none;
+	}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+	pointer-events: auto;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: white;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+	}
+.leaflet-container a.leaflet-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	font: 16px/24px Tahoma, Verdana, sans-serif;
+	color: #757575;
+	text-decoration: none;
+	background: transparent;
+	}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+	color: #585858;
+	}
+.leaflet-popup-scrolled {
+	overflow: auto;
+	}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+	-ms-zoom: 1;
+	}
+.leaflet-oldie .leaflet-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.leaflet-div-icon {
+	background: #fff;
+	border: 1px solid #666;
+	}
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.leaflet-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.leaflet-tooltip.leaflet-interactive {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+	margin-top: 6px;
+}
+.leaflet-tooltip-top {
+	margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+	left: 50%;
+	margin-left: -6px;
+	}
+.leaflet-tooltip-top:before {
+	bottom: 0;
+	margin-bottom: -12px;
+	border-top-color: #fff;
+	}
+.leaflet-tooltip-bottom:before {
+	top: 0;
+	margin-top: -12px;
+	margin-left: -6px;
+	border-bottom-color: #fff;
+	}
+.leaflet-tooltip-left {
+	margin-left: -6px;
+}
+.leaflet-tooltip-right {
+	margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	top: 50%;
+	margin-top: -6px;
+	}
+.leaflet-tooltip-left:before {
+	right: 0;
+	margin-right: -12px;
+	border-left-color: #fff;
+	}
+.leaflet-tooltip-right:before {
+	left: 0;
+	margin-left: -12px;
+	border-right-color: #fff;
+	}
+
+/* Printing */
+
+@media print {
+	/* Prevent printers from removing background-images of controls. */
+	.leaflet-control {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+		}
+	}
+
+      #mapa-evento { height: 440px; border: 1px solid var(--linha); margin-top: 12px; background: #b9d6e3 }
+      .legenda { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0 }
+      .legenda label { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 2px solid var(--linha); background: var(--cartao); font-size: 14px; cursor: pointer }
+      .ponto { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; vertical-align: -1px }
+      .tabela { overflow-x: auto; border: 2px solid var(--linha); background: var(--cartao); margin-top: 10px }
+      .tabela table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px }
+      .tabela th, .tabela td { padding: 10px 12px; border-bottom: 1px solid var(--linha); text-align: left; white-space: nowrap }
+      .tabela th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--texto-2) }
+      .tabela td a { display: inline; padding: 0; border: 0; background: none; color: var(--turquesa); font-weight: 700 }
+      .tabela .n { font-variant-numeric: tabular-nums; text-align: right }
+      .tabela tr:last-child td { border-bottom: 0 }
+    </style>
+    <script>
+    (() => {
+      const PROVAS = [{"id":"ta-etapa1","t":"From the Vineyards to the Mountain · Etapa 1","c":"#2f6f4f","l":[[38.53415,-28.52984],[38.53329,-28.53084],[38.53388,-28.53237],[38.53361,-28.53395],[38.53243,-28.5345],[38.53137,-28.53549],[38.53027,-28.53648],[38.52902,-28.53674],[38.5277,-28.53654],[38.52669,-28.53624],[38.52563,-28.53723],[38.52432,-28.53735],[38.52302,-28.53779],[38.52167,-28.53778],[38.52036,-28.53814],[38.5191,-28.53874],[38.51777,-28.53907],[38.51644,-28.53937],[38.51566,-28.53839],[38.51513,-28.5368],[38.51457,-28.53524],[38.51396,-28.53372],[38.5133,-28.53222],[38.51219,-28.53309],[38.51102,-28.53305],[38.51151,-28.53466],[38.51202,-28.53625],[38.51251,-28.53786],[38.51299,-28.53947],[38.51228,-28.54038],[38.511,-28.54068],[38.51045,-28.53932],[38.50999,-28.5377],[38.50949,-28.53611],[38.50906,-28.53451],[38.50895,-28.53315],[38.50787,-28.53228],[38.50659,-28.53219],[38.50532,-28.5326],[38.50427,-28.53364],[38.50323,-28.53448],[38.50194,-28.53429],[38.50067,-28.5343],[38.49971,-28.53321],[38.49837,-28.53306],[38.49741,-28.53199],[38.49645,-28.53097],[38.49591,-28.52956],[38.49602,-28.52796],[38.49537,-28.52695],[38.49516,-28.52527],[38.49513,-28.52357],[38.49511,-28.52191],[38.49435,-28.52052],[38.49398,-28.51888],[38.49397,-28.51726],[38.49379,-28.5157],[38.49413,-28.51416],[38.49414,-28.51256],[38.49442,-28.51146],[38.49566,-28.51209],[38.49687,-28.51284],[38.4981,-28.51351],[38.49929,-28.51427],[38.50057,-28.51475],[38.50186,-28.51504],[38.50318,-28.51471],[38.50451,-28.51452],[38.50581,-28.51406],[38.50714,-28.51427],[38.50758,-28.51347],[38.5082,-28.51227],[38.50822,-28.51091],[38.50835,-28.50935],[38.50899,-28.50793],[38.50988,-28.50709],[38.51092,-28.50729],[38.51213,-28.50756],[38.5122,-28.5061],[38.51348,-28.50562],[38.51477,-28.50524],[38.51573,-28.50417],[38.51582,-28.50303],[38.51516,-28.50155],[38.51482,-28.49994],[38.51438,-28.49835],[38.51433,-28.49683],[38.51442,-28.49518],[38.51448,-28.49381],[38.51459,-28.49238],[38.51431,-28.49072],[38.51374,-28.48921],[38.5135,-28.48753],[38.51317,-28.48596],[38.51238,-28.4846],[38.51149,-28.48335],[38.511,-28.48178],[38.51005,-28.4806],[38.50938,-28.47914],[38.50883,-28.47766],[38.50826,-28.47611],[38.50744,-28.4748],[38.50654,-28.47354],[38.50587,-28.47207],[38.5052,-28.47065],[38.50453,-28.46918],[38.50379,-28.46775],[38.50303,-28.46633],[38.50239,-28.46483],[38.5016,-28.46344],[38.50084,-28.46202],[38.50002,-28.4607],[38.49937,-28.4592],[38.49871,-28.4577],[38.4979,-28.45637],[38.49723,-28.45489],[38.49649,-28.45348],[38.49571,-28.45208],[38.49493,-28.4507],[38.49422,-28.44925],[38.49344,-28.44787],[38.49266,-28.44648],[38.49197,-28.44504],[38.49118,-28.44367],[38.4904,-28.44231],[38.48959,-28.44094],[38.48876,-28.43963],[38.48786,-28.43852],[38.48678,-28.43813],[38.48585,-28.4369],[38.48475,-28.43624],[38.48356,-28.43571],[38.48433,-28.43432],[38.48503,-28.43286],[38.4857,-28.43151],[38.4868,-28.43064],[38.48587,-28.4302],[38.48613,-28.42885],[38.48522,-28.42799],[38.48592,-28.42659],[38.48692,-28.42561],[38.48692,-28.42392],[38.4873,-28.4223],[38.48781,-28.42072],[38.48823,-28.4191],[38.4882,-28.41744],[38.48801,-28.41605],[38.487,-28.41495],[38.4862,-28.41365],[38.48528,-28.41486],[38.48521,-28.41657],[38.48463,-28.41808],[38.48389,-28.41952],[38.48323,-28.4209],[38.48241,-28.42078],[38.48139,-28.42189],[38.48016,-28.42258],[38.47895,-28.42333],[38.47851,-28.42306],[38.47798,-28.42266],[38.47783,-28.42159],[38.47702,-28.42136],[38.47594,-28.42235],[38.47486,-28.42328],[38.47397,-28.42451],[38.47271,-28.42511],[38.47154,-28.42588],[38.47069,-28.42653]]},{"id":"ta-etapa2","t":"Fajãs Trail · Etapa 2","c":"#c2410c","l":[[38.5482,-27.75337],[38.54732,-27.75383],[38.54802,-27.75516],[38.54909,-27.75591],[38.54978,-27.75705],[38.55039,-27.75856],[38.55124,-27.75865],[38.55117,-27.76006],[38.55036,-27.76143],[38.54967,-27.7629],[38.54881,-27.76419],[38.5489,-27.76585],[38.5477,-27.7664],[38.54707,-27.76613],[38.54598,-27.76547],[38.54556,-27.7642],[38.54486,-27.76515],[38.54375,-27.76561],[38.54372,-27.76699],[38.54399,-27.76853],[38.54335,-27.76949],[38.54243,-27.77052],[38.54213,-27.77208],[38.54168,-27.77365],[38.54128,-27.77515],[38.54048,-27.77618],[38.54064,-27.77707],[38.54182,-27.77753],[38.54217,-27.77894],[38.54249,-27.7806],[38.543,-27.7822],[38.543,-27.78387],[38.54318,-27.78556],[38.54388,-27.78694],[38.54501,-27.78779],[38.54547,-27.78926],[38.5452,-27.79093],[38.54499,-27.79259],[38.54515,-27.79417],[38.54381,-27.79434],[38.54334,-27.79593],[38.54281,-27.7975],[38.54216,-27.79897],[38.5413,-27.80028],[38.54063,-27.80176],[38.54016,-27.80337],[38.53952,-27.80486],[38.53872,-27.80623],[38.53839,-27.8079],[38.53787,-27.80948],[38.53883,-27.81056],[38.53969,-27.81157],[38.53857,-27.81245],[38.53824,-27.81408],[38.538,-27.81577],[38.53793,-27.81699],[38.53864,-27.81833],[38.53805,-27.8193],[38.53775,-27.82086],[38.53712,-27.82139],[38.53793,-27.82276],[38.53909,-27.82348],[38.53958,-27.82501],[38.53936,-27.82585],[38.53839,-27.82671],[38.53876,-27.82715],[38.53864,-27.82866],[38.5389,-27.83008],[38.53966,-27.83146],[38.54086,-27.83186],[38.54155,-27.83249],[38.54255,-27.83357],[38.54349,-27.83456],[38.54481,-27.83458],[38.54604,-27.83489],[38.54643,-27.83608],[38.5464,-27.8378],[38.54693,-27.83935],[38.54721,-27.84099],[38.54735,-27.8427],[38.54663,-27.84235],[38.54537,-27.84218],[38.54458,-27.84305],[38.54502,-27.84465],[38.54393,-27.84423],[38.54325,-27.84449],[38.54358,-27.84609],[38.54398,-27.84768],[38.54356,-27.84764],[38.54359,-27.84877],[38.54278,-27.8479],[38.54217,-27.84861],[38.54279,-27.85009],[38.54347,-27.85116],[38.54403,-27.85269],[38.54485,-27.85404],[38.5458,-27.85521],[38.54571,-27.85683],[38.54669,-27.85799],[38.54757,-27.85925],[38.54838,-27.86059],[38.54895,-27.86213],[38.54973,-27.8635],[38.55062,-27.8647],[38.55128,-27.86616],[38.55251,-27.86664],[38.55365,-27.86752],[38.55453,-27.86862],[38.55497,-27.87016],[38.55525,-27.87181],[38.55562,-27.87343],[38.55587,-27.87508],[38.55614,-27.87675],[38.55702,-27.87804],[38.55797,-27.8792],[38.559,-27.88021],[38.5598,-27.88158],[38.56079,-27.88267],[38.56076,-27.88147],[38.56066,-27.88035],[38.56159,-27.88144],[38.56214,-27.88296],[38.56296,-27.88399],[38.564,-27.88411],[38.56447,-27.88511],[38.56563,-27.88438],[38.56625,-27.88498],[38.56682,-27.88611],[38.5672,-27.8877],[38.56772,-27.88915],[38.56819,-27.88971],[38.56808,-27.89121],[38.56727,-27.89241],[38.56826,-27.89342],[38.56782,-27.89476],[38.56747,-27.89626],[38.56792,-27.89773],[38.56846,-27.89905],[38.56852,-27.89977],[38.56915,-27.90076],[38.56923,-27.9023],[38.56967,-27.90362],[38.57095,-27.90372],[38.5701,-27.90477],[38.5699,-27.90634],[38.56997,-27.90797],[38.57065,-27.90942],[38.57146,-27.91077],[38.57135,-27.91149],[38.57193,-27.91268],[38.5726,-27.91407],[38.57316,-27.91564],[38.5737,-27.9172],[38.57434,-27.91843],[38.57528,-27.91931],[38.57617,-27.92035],[38.5773,-27.92128],[38.57842,-27.92223],[38.57917,-27.92365],[38.57988,-27.92507],[38.58077,-27.92626],[38.58176,-27.92743],[38.58207,-27.92874],[38.58228,-27.93026],[38.5831,-27.93149],[38.58351,-27.93212]]},{"id":"ta-etapa3","t":"Volcanoes Trail · Etapa 3","c":"#1d4ed8","l":[[38.59679,-28.82358],[38.59647,-28.82525],[38.59704,-28.82479],[38.59771,-28.82339],[38.59875,-28.82235],[38.59995,-28.82166],[38.60051,-28.82012],[38.60039,-28.81845],[38.59958,-28.81812],[38.59844,-28.81765],[38.59876,-28.81677],[38.59969,-28.81627],[38.59865,-28.81582],[38.59857,-28.81466],[38.59946,-28.81364],[38.59899,-28.8124],[38.59807,-28.81158],[38.59753,-28.81041],[38.59749,-28.80898],[38.59693,-28.8076],[38.59597,-28.80641],[38.59496,-28.80536],[38.5941,-28.80433],[38.59407,-28.80279],[38.59348,-28.80165],[38.59242,-28.80159],[38.59126,-28.80075],[38.59105,-28.80133],[38.58976,-28.80122],[38.58843,-28.80123],[38.58758,-28.79995],[38.58721,-28.79829],[38.58658,-28.79682],[38.5862,-28.79518],[38.58625,-28.79363],[38.58632,-28.79194],[38.58624,-28.79026],[38.5858,-28.78885],[38.58488,-28.7877],[38.58435,-28.78628],[38.58457,-28.78461],[38.58357,-28.78347],[38.58273,-28.78268],[38.58229,-28.78111],[38.58203,-28.77943],[38.58157,-28.77782],[38.58073,-28.7765],[38.57975,-28.77533],[38.57871,-28.77445],[38.57918,-28.77335],[38.58025,-28.77234],[38.58126,-28.77135],[38.58229,-28.7703],[38.58335,-28.76932],[38.58444,-28.769],[38.58395,-28.7675],[38.58406,-28.76603],[38.58508,-28.76513],[38.58607,-28.76555],[38.58677,-28.76456],[38.58693,-28.76368],[38.58671,-28.76241],[38.58569,-28.76182],[38.58502,-28.76062],[38.58615,-28.75985],[38.58688,-28.75848],[38.58662,-28.75768],[38.58533,-28.75739],[38.5844,-28.75635],[38.58422,-28.75644],[38.58428,-28.7548],[38.58408,-28.75314],[38.58396,-28.75145],[38.58286,-28.75092],[38.58241,-28.74951],[38.58253,-28.74797],[38.58275,-28.74666],[38.58372,-28.74556],[38.58434,-28.74416],[38.58441,-28.74252],[38.58519,-28.74141],[38.58611,-28.74077],[38.58629,-28.73929],[38.58736,-28.73931],[38.58831,-28.73861],[38.58948,-28.73854],[38.59024,-28.73767],[38.59149,-28.73765],[38.59248,-28.73697],[38.59336,-28.73753],[38.59452,-28.73695],[38.59541,-28.73579],[38.59538,-28.73482],[38.59493,-28.73512],[38.59447,-28.73352],[38.59377,-28.73442],[38.59378,-28.73271],[38.59296,-28.73262],[38.59299,-28.73158],[38.59322,-28.72991],[38.59224,-28.73087],[38.59191,-28.72934],[38.59104,-28.72816],[38.59039,-28.72711],[38.59112,-28.72566],[38.59009,-28.72576],[38.58953,-28.72539],[38.59067,-28.72454],[38.59164,-28.72342],[38.5926,-28.72231],[38.59342,-28.721],[38.59417,-28.71966],[38.59478,-28.71823],[38.59489,-28.71654],[38.59494,-28.71485],[38.59466,-28.71321],[38.59411,-28.71166],[38.59363,-28.71012],[38.59288,-28.70871],[38.59212,-28.7073],[38.59114,-28.70619],[38.59017,-28.70508],[38.58919,-28.70395],[38.58823,-28.70283],[38.58737,-28.70156],[38.58701,-28.70022],[38.58715,-28.69851],[38.58824,-28.69795],[38.58797,-28.69688],[38.58839,-28.69637],[38.58961,-28.69656],[38.58919,-28.69517],[38.59051,-28.69547],[38.59045,-28.69418],[38.59174,-28.69454],[38.59115,-28.6931],[38.59205,-28.69343],[38.59235,-28.69298],[38.59204,-28.69171],[38.59327,-28.6919],[38.59273,-28.69038],[38.59404,-28.69058],[38.59453,-28.68994],[38.5939,-28.68841],[38.59446,-28.68784],[38.59543,-28.6874],[38.59608,-28.68591],[38.59661,-28.68434],[38.59705,-28.6827],[38.59759,-28.68115],[38.59873,-28.68113],[38.59954,-28.67978],[38.59933,-28.67809],[38.59908,-28.6764],[38.59892,-28.67468],[38.59811,-28.67331],[38.59752,-28.67177],[38.59702,-28.67017],[38.59641,-28.66865],[38.59585,-28.66709],[38.59525,-28.66555],[38.59453,-28.6641],[38.59397,-28.66253],[38.59366,-28.66088],[38.59291,-28.65957],[38.59215,-28.65963],[38.59255,-28.66119],[38.59305,-28.66278],[38.59219,-28.66361],[38.59106,-28.66288],[38.59009,-28.66181],[38.58882,-28.66151],[38.58774,-28.6608],[38.58706,-28.65939],[38.58623,-28.65821],[38.5855,-28.65681],[38.58468,-28.65545],[38.58394,-28.65403],[38.58273,-28.65331],[38.58143,-28.65289],[38.58012,-28.65258],[38.57888,-28.65209],[38.57803,-28.65078],[38.57722,-28.64979],[38.57604,-28.64899],[38.57487,-28.64815],[38.57378,-28.64713],[38.57285,-28.64596],[38.57233,-28.64442],[38.57154,-28.64308],[38.57058,-28.64187],[38.57043,-28.64037],[38.56918,-28.6401],[38.56803,-28.64094],[38.56696,-28.64193],[38.566,-28.6419],[38.56492,-28.64218],[38.56397,-28.64313],[38.56277,-28.64357],[38.5616,-28.64274],[38.5607,-28.64148],[38.56013,-28.64029],[38.55943,-28.63883],[38.55873,-28.63738],[38.5581,-28.63587],[38.55728,-28.63454],[38.5565,-28.63313],[38.55581,-28.63167],[38.5552,-28.63018],[38.55417,-28.62908],[38.55307,-28.6281],[38.55195,-28.62716],[38.55098,-28.62598],[38.55002,-28.62479],[38.54904,-28.62388],[38.54847,-28.62234],[38.54859,-28.62064],[38.54797,-28.62169],[38.54735,-28.62319],[38.54655,-28.62443],[38.54532,-28.62423],[38.54405,-28.6238],[38.54276,-28.62381],[38.54156,-28.62416],[38.54056,-28.6253],[38.53971,-28.62536]]}];
+      const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js';
+      s.onload = () => {
+        const mapa = L.map('mapa-evento', { scrollWheelZoom: false });
+        L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 17, maxZoom: 18,
+          attribution: 'Dados: © OpenStreetMap, SRTM · Desenho: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }).addTo(mapa);
+        const camadas = {}, todos = [];
+        PROVAS.forEach(p => { // a mais longa primeiro, as mais curtas por cima
+          const fundo = L.polyline(p.l, { color: '#052974', weight: 8, opacity: .9 });
+          const linha = L.polyline(p.l, { color: p.c, weight: 5, opacity: 1 }).bindTooltip(p.t, { sticky: true });
+          const g = L.layerGroup([fundo, linha]).addTo(mapa);
+          [fundo, linha].forEach(x => x.on('click', () => { location.href = p.id + '.html'; }));
+          linha.on('mouseover', () => linha.setStyle({ weight: 7 })); linha.on('mouseout', () => linha.setStyle({ weight: 5 }));
+          camadas[p.id] = g; todos.push(...p.l);
+        });
+        mapa.fitBounds(L.latLngBounds(todos), { padding: [16, 16] });
+        document.getElementById('legenda').innerHTML = PROVAS.map(p => `<label><input type="checkbox" checked data-id="${p.id}"><span class="ponto" style="background:${p.c};margin:0"></span>${p.t}</label>`).join('');
+        document.getElementById('legenda').addEventListener('change', e => { const g = camadas[e.target.dataset.id]; if (e.target.checked) g.addTo(mapa); else mapa.removeLayer(g); });
+      };
+      document.head.appendChild(s);
+    })();
+    </script>
+
+  </main>
+</body>
+</html>
