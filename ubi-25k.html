@@ -107,6 +107,16 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .aperto-lista small { display: block; color: var(--texto-2); font-size: 13px; font-family: inherit }
 .aperto-lista .num { text-align: right; font-family: var(--f-mono) }
 .subida[hidden] { display: none }
+dialog.plano { width: min(720px, calc(100vw - 32px)) }
+#plano h3 { margin: 0 0 2px }
+#plano .sub { color: var(--texto-2); margin: 0 0 12px }
+#plano ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 }
+#plano li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid var(--linha-2) }
+#plano li .h { font-family: var(--f-mono); font-weight: 600; font-size: 16px }
+#plano li small { display: block; color: var(--texto-2) }
+#plano .nota { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--turquesa-tinta) }
+.plano-acoes { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0 }
+@media print { body * { visibility: hidden } dialog.plano, dialog.plano #plano, dialog.plano #plano * { visibility: visible } dialog.plano { position: absolute; inset: 0 auto auto 0; box-shadow: none; width: 100% } .plano-acoes, dialog.plano .fechar { display: none } }
 .ver-todas { margin-top: 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 8px 18px; color: var(--turquesa); font: inherit; font-weight: 600; cursor: pointer }
 .luz { margin: 4px 0 14px; color: var(--texto-2); font-size: 15px }
 .luz b { color: var(--texto) }
@@ -1012,6 +1022,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <small>Tempo limite 13h00</small>
     </div>
     <p class="luz" id="luz"></p>
+    <p><button type="button" class="ver-todas" id="abrir-plano" style="margin-top:0">O meu dia: plano com o meu tempo</button></p>
     <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
     <div class="tabela-caixa">
       <table>
@@ -1132,6 +1143,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   Distâncias e desníveis oficiais: Trace de Trail. Pontos, barreiras, programa e material: Race Week e regulamento da Ultra Blue Island 2026, com as datas de 2027. Mapas: © contribuidores do OpenStreetMap, OpenTopoMap (CC-BY-SA), CyclOSM e Ortofotomapa 2024 © Governo dos Açores (SRAAC), CC BY 4.0. © Azores Trail Run.
 </footer>
 
+<dialog id="dlg-plano" aria-labelledby="t-plano" class="plano">
+  <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div id="plano"></div>
+  <p class="plano-acoes"><button type="button" class="ver-todas" id="imprimir-plano">Imprimir ou guardar em PDF</button> <button type="button" class="ver-todas" id="partilhar-plano">Copiar a ligação</button></p>
+</dialog>
 <dialog id="dlg-inclinacoes" aria-labelledby="t-incl">
   <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
   <h3 id="t-incl">Detalhe das inclinações</h3>
@@ -1617,6 +1633,33 @@ function desenharSubidas() {
   }
 }
 document.getElementById('lista-subidas')?.addEventListener('click', ev => { const b = ev.target.closest('button[data-de]'); if (!b) return; definirTroco(+b.dataset.de, +b.dataset.ate); document.getElementById('percurso').scrollIntoView({ behavior: 'smooth' }); });
+
+// ---------- «O meu dia»: o plano pessoal com o tempo escolhido (relatório 72, proposta 1) ----------
+function desenharPlano() {
+  const titulo = document.title.split(' · ')[0], linhas = [];
+  PONTOS.forEach((p, n) => {
+    const m = n === 0 ? PARTIDA_MIN : horaPrevista(p.i), prox = p.tipo !== 'meta' ? proximoDe(p.km) : null, extra = [];
+    if (p.barreira && n > 0) { const f = p.barreira - m; extra.push(f < 0 ? `<b style="color:var(--lava)">fora da barreira das ${hora(p.barreira)}</b>` : `barreira às ${hora(p.barreira)}, ${duracao(f)} de folga`); }
+    if (p.servicos.length) extra.push(p.servicos.map(s => SERVICOS[s].nome.toLowerCase()).join(', '));
+    if (prox) { const t = horaPrevista(prox.i) - m; extra.push(`até ${prox.tipo === 'meta' ? 'à meta' : 'ao próximo abastecimento'}: ${fmt(prox.kmVer - p.kmVer, 1)} km, +${fmt(prox.dmais - p.dmais)} m, cerca de ${duracao(t)}${deNoite(m) || deNoite(horaPrevista(prox.i)) ? ', <b>com frontal</b>' : ''}`); }
+    linhas.push(`<li><span class="h">${hora(m)}</span><span><b>${n === 0 ? 'Partida' : p.tipo === 'meta' ? 'Chegada' : p.curto} · ${p.nome}</b> <small>km ${fmt(p.kmVer, 1)}${extra.length ? ' · ' + extra.join(' · ') : ''}</small></span></li>`);
+  });
+  const fim = horaPrevista(P.length - 1);
+  document.getElementById('plano').innerHTML = `<h3 id="t-plano">O meu dia · ${titulo}</h3><p class="sub">Com ${duracao(E.alvo)}: partida às ${hora(PARTIDA_MIN)}, chegada por volta das ${hora(fim)}. Horas previstas pelo esforço de cada troço (km + D+/100).</p>`
+    + `<ol>${linhas.join('')}</ol>` + `<p class="nota">${document.getElementById('luz')?.innerHTML || ''}</p>`
+    + `<p class="sub" style="margin-top:10px">Leva comida e água para o tempo até ao abastecimento seguinte; os abastecimentos não têm copos.</p>`;
+}
+document.getElementById('abrir-plano')?.addEventListener('click', () => { desenharPlano(); document.getElementById('dlg-plano').showModal(); });
+document.getElementById('imprimir-plano')?.addEventListener('click', () => window.print());
+document.getElementById('partilhar-plano')?.addEventListener('click', ev => {
+  const url = location.origin + location.pathname + '#tempo=' + duracao(E.alvo);
+  (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(() => { ev.target.textContent = 'Ligação copiada'; }, () => { prompt('Copia esta ligação:', url); });
+});
+// o tempo escolhido fica guardado neste aparelho e pode vir na ligação (#tempo=10h00)
+const CHAVE_TEMPO = 'atr-tempo-' + location.pathname;
+alvo.addEventListener('change', () => { try { localStorage.setItem(CHAVE_TEMPO, String(E.alvo)); } catch (e) {} });
+(() => { let v = null; const m = location.hash.match(/tempo=(\d+)h(\d\d)/); if (m) v = +m[1] * 60 + +m[2]; else { try { v = +localStorage.getItem(CHAVE_TEMPO) || null; } catch (e) {} }
+  if (v && v >= +alvo.min && v <= +alvo.max) { alvo.value = v; E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); } })();
 
 desenharPerfil(); desenharTabela(); desenharLuz(); desenharSubidas(); desenharAperto();
 new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
