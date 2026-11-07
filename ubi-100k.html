@@ -1560,7 +1560,7 @@ const obs = new IntersectionObserver(ents => ents.forEach(e => { if (e.isInterse
 function apertoBarreiras() {
   const com = PONTOS.filter((p, n) => n === 0 || p.barreira); if (com.length < 2) return [];
   const esfP = p => p.kmVer + p.dmais / 100, ult = PONTOS[PONTOS.length - 1];
-  const media = esfP(ult) / (LIMITE_MIN / 60);
+  const media = esfP(ult) / (((ult.barreira != null ? ult.barreira : PARTIDA_MIN + LIMITE_MIN) - PARTIDA_MIN) / 60); // tempo limite = fecho da meta menos a partida
   return com.slice(1).map((b, n) => { const a = com[n], ta = n === 0 ? PARTIDA_MIN : a.barreira, h = (b.barreira - ta) / 60, esf = esfP(b) - esfP(a);
     return { a, b, esf, h, porHora: esf / h, rel: esf / h / media, media }; });
 }
