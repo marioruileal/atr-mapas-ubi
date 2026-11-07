@@ -99,6 +99,9 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .totais { display: grid; gap: 0; width: 170px }
 .totais b { font-family: var(--f-mono); font-size: 22px; font-weight: 500 }
 .totais span { font-family: var(--f-mono); font-size: 13px; color: var(--texto-2) }
+a.lugar { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-thickness: 1px }
+a.lugar:hover, a.lugar:focus-visible { text-decoration-style: solid }
+a.maps { color: var(--turquesa) }
 .dica-mini { margin: 6px 0 0; font-size: 13.5px; color: var(--texto-2) }
 .dica-mini b { color: var(--texto) }
 .janela.convite { animation: convite 1.6s ease-in-out 2 }
@@ -879,9 +882,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div><dt>Partida</dt><dd>09:00 <small>sábado, 1 mai</small></dd></div>
       <div><dt>Tempo limite</dt><dd>15h00 <small>até às 00:00</small></dd></div>
       <div><dt>Ponto mais alto</dt><dd>893 <small>m</small></dd></div>
-      <div><dt>Sol</dt><dd><span id="sol">06:57 <small>· 20:46</small></span></dd></div>
+      <div><dt>Sol</dt><dd><span id="sol">06:58 <small>· 20:45</small></span></dd></div>
     </dl>
-    <span class="oficial">Valores oficiais do Trace de Trail. Partida no <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo), chegada na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, Frente Mar, na Horta.</span>
+    <span class="oficial">Valores oficiais do Trace de Trail. Partida no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo), chegada na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, Frente Mar, na Horta.</span>
   </div>
 </header>
 
@@ -903,10 +906,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <h2 id="t-tracos">Em 30 segundos</h2>
     <p class="lead">O que torna esta prova diferente das outras distâncias da UBI.</p>
     <div class="tracos">
-      <div class="traco"><b>De costa a costa</b><span class="num">41 km</span><p>Do <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, junto ao Vulcão dos Capelinhos, à baía da Horta, pelos antigos caminhos entre freguesias.</p></div>
+      <div class="traco"><b>De costa a costa</b><span class="num">40,9 km</span><p>Do <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, junto ao Vulcão dos Capelinhos, à baía da Horta, pelos antigos caminhos entre freguesias.</p></div>
       <div class="traco"><b>O troço mais duro</b><span class="num" id="t-duro">—</span><p id="t-duro-txt">—</p></div>
-      <div class="traco"><b>Três abastecimentos</b><span class="num">3</span><p><a href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0), <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1) e <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9).</p></div>
-      <div class="traco"><b>Até à noite</b><span class="num">20:46</span><p>O sol põe-se às 20:46 e a meta fecha à meia-noite. A frontal é obrigatória.</p></div>
+      <div class="traco"><b>Três abastecimentos</b><span class="num">3</span><p><a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0), <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1) e <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9).</p></div>
+      <div class="traco"><b>Até à noite</b><span class="num">20:45</span><p>O sol põe-se às 20:45 e a meta fecha à meia-noite. A frontal é obrigatória.</p></div>
     </div>
   </div>
 </section>
@@ -939,7 +942,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button type="button" class="pega dir" id="pega-dir" aria-label="Fim do troço">›</button>
           </div>
         </div>
-        <div class="totais"><b id="tot-km">25,1 km</b><span id="tot-d">1 388 m+ · 161 m−</span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a prova inteira</button></div>
+        <div class="totais"><b id="tot-km"></b><span id="tot-d"></span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a prova inteira</button></div>
       </div>
       <p class="dica-mini" id="dica-mini"><span aria-hidden="true">↔</span> <b>Arrasta a janela</b> (ou as pegas ‹ ›) no perfil pequeno para escolher o troço que queres ver em pormenor. Também podes tocar noutro sítio do perfil pequeno, ou arrastar no perfil grande.</p>
       <div class="mapa-e-ponto">
@@ -974,7 +977,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="largura texto">
     <h2 id="t-historia">A prova</h2>
     <p>A Coast to Coast corre a ilha de costa a costa por trilhos históricos, os antigos caminhos que os faialenses usavam para ligar as freguesias.</p>
-    <p>Parte às 09:00 do <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, no Capelo, ao sopé do Vulcão dos Capelinhos, símbolo da erupção de 1957. Atravessa uma ilha moldada por falhas tectónicas, com abastecimentos no <a href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0), na <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1) e no <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9), e termina na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Avenida 25 de Abril</a>, na Horta.</p>
+    <p>Parte às 09:00 do <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, no Capelo, ao sopé do Vulcão dos Capelinhos, símbolo da erupção de 1957. Atravessa uma ilha moldada por falhas tectónicas, com abastecimentos no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0), na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1) e no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9), e termina na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Avenida 25 de Abril</a>, na Horta.</p>
     <p>A corrida é em semiautonomia: entre dois abastecimentos, cada corredor leva a comida, a água e o material de que precisa.</p>
   </div>
 </section>
@@ -985,14 +988,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <h2 id="t-dia">O dia</h2>
       <p class="lead">Sábado, 1 de maio. Os autocarros para a partida são só para atletas e o acesso faz-se com o dorsal.</p>
       <ol class="horario">
-        <li><b>qui/sex</b><span>Dorsais no <a href="https://www.google.com/maps/search/?api=1&query=Teatro+Faialense,+Horta,+Açores" target="_blank" rel="noopener">Teatro Faialense</a>, na Horta: quinta das 15:00 às 22:00 e sexta das 10:00 às 20:00. Briefing na sexta às 19:00.</span></li>
-        <li><b>07:00</b><span>Autocarro da Horta para o <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, a partir da <a href="https://www.google.com/maps/search/?api=1&query=Escola+António+José+de+Ávila,+Horta,+Açores" target="_blank" rel="noopener">Escola António José d'Ávila</a>.</span></li>
-        <li class="prova"><b>09:00</b><span>Partida, no <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo). O saco de muda de roupa entrega-se aqui e recolhe-se na meta com o dorsal.</span></li>
-        <li class="marco"><b>12:00</b><span>Barreira no <a href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0).</span></li>
-        <li class="marco"><b>16:00</b><span>Barreira na <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1).</span></li>
-        <li class="marco"><b>19:00</b><span>Barreira no <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9).</span></li>
-        <li class="marco"><b>00:00</b><span>Fecho da meta, na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, na Horta.</span></li>
-        <li><b>dom</b><span>Entrega de prémios às 10:30, no <a href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+da+Horta,+Açores" target="_blank" rel="noopener">Mercado Municipal da Horta</a>.</span></li>
+        <li><b>qui/sex</b><span>Dorsais no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Teatro+Faialense,+Horta,+Açores" target="_blank" rel="noopener">Teatro Faialense</a>, na Horta: quinta das 15:00 às 22:00 e sexta das 10:00 às 20:00. Briefing na sexta às 19:00.</span></li>
+        <li><b>07:00</b><span>Autocarro da Horta para o <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, a partir da <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Escola+António+José+de+Ávila,+Horta,+Açores" target="_blank" rel="noopener">Escola António José d'Ávila</a>.</span></li>
+        <li class="prova"><b>09:00</b><span>Partida, no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo). O saco de muda de roupa entrega-se aqui e recolhe-se na meta com o dorsal.</span></li>
+        <li class="marco"><b>12:00</b><span>Barreira no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.583641,-28.745637" target="_blank" rel="noopener">Depósito de Água Levada</a> (km 12,0).</span></li>
+        <li class="marco"><b>16:00</b><span>Barreira na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 25,1).</span></li>
+        <li class="marco"><b>19:00</b><span>Barreira no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 32,9).</span></li>
+        <li class="marco"><b>00:00</b><span>Fecho da meta, na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, na Horta.</span></li>
+        <li><b>dom</b><span>Entrega de prémios às 10:30, no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+da+Horta,+Açores" target="_blank" rel="noopener">Mercado Municipal da Horta</a>.</span></li>
       </ol>
     </div>
     <div id="material">
@@ -1015,7 +1018,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <h3>Levantar o dorsal</h3>
         <ul>
           <li>Documento de identificação com fotografia.</li>
-          <li>Declaração de verificação de material e termo de responsabilidade, assinados. Menores de 18 anos: declaração para menores. <a href="https://drive.google.com/drive/folders/1h7RwDHzvQFTnnjqNftHIusw_n5yjAVyz" target="_blank" rel="noopener">Modelos dos documentos</a>.</li>
+          <li>Declaração de verificação de material e termo de responsabilidade, assinados. Menores de 18 anos: declaração para menores. <a class="lugar" href="https://drive.google.com/drive/folders/1h7RwDHzvQFTnnjqNftHIusw_n5yjAVyz" target="_blank" rel="noopener">Modelos dos documentos</a>.</li>
           <li>Se outra pessoa levantar por ti: cópia do teu documento e a tua autorização assinada.</li>
         </ul>
       </div>
@@ -1052,7 +1055,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="relogio" aria-labelledby="t-relogio">
   <div class="largura">
     <h2 id="t-relogio">GPX para o relógio</h2>
-    <p class="lead">Um GPX feito para cada marca. Escolhe a marca e descarrega o percurso oficial (Trace de Trail) com os abastecimentos e as barreiras.<a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a>.</p>
+    <p class="lead">Um GPX feito para cada marca. Escolhe a marca e descarrega o percurso oficial (Trace de Trail) com os abastecimentos e as barreiras.</p>
     <div class="relogios segmentos" role="group" aria-label="Marca do relógio">
       <button type="button" data-relogio="garmin" aria-pressed="true">Garmin</button>
       <button type="button" data-relogio="suunto" aria-pressed="false">Suunto</button>
@@ -1459,6 +1462,7 @@ function desenharTabela() {
       + `<td><span class="icones">${p.servicos.map(s => `<span title="${SERVICOS[s].nome}">${ICONES[s]}</span>`).join('')}</span></td></tr>`;
   });
   document.getElementById('corpo-tabela').innerHTML = h;
+  if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent === 'Próximo abastecimento'); if (th) th.textContent = 'Até à chegada'; }
 }
 const alvo = document.getElementById('tempo-alvo');
 alvo.addEventListener('input', () => { E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); desenharTabela(); if (E.ponto) abrirPonto(E.ponto); });

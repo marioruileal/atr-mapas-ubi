@@ -99,6 +99,9 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .totais { display: grid; gap: 0; width: 170px }
 .totais b { font-family: var(--f-mono); font-size: 22px; font-weight: 500 }
 .totais span { font-family: var(--f-mono); font-size: 13px; color: var(--texto-2) }
+a.lugar { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-thickness: 1px }
+a.lugar:hover, a.lugar:focus-visible { text-decoration-style: solid }
+a.maps { color: var(--turquesa) }
 .dica-mini { margin: 6px 0 0; font-size: 13.5px; color: var(--texto-2) }
 .dica-mini b { color: var(--texto) }
 .janela.convite { animation: convite 1.6s ease-in-out 2 }
@@ -870,7 +873,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="largura">
     <span class="etiqueta">Ultra Blue Island 2027 · Ilha do Faial</span>
     <h1>Ultra Blue Island 63 km <span class="sigla">UBI</span></h1>
-    <p class="sub">A prova que dá o nome ao evento. Do <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, junto ao Vulcão dos Capelinhos, à Horta, pelos lugares mais emblemáticos do Faial, com a população da ilha nos cinco abastecimentos.</p>
+    <p class="sub">A prova que dá o nome ao evento. Do <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, junto ao Vulcão dos Capelinhos, à Horta, pelos lugares mais emblemáticos do Faial, com a população da ilha nos cinco abastecimentos.</p>
     <dl class="ficha">
       <div><dt>Distância</dt><dd>63,4 <small>km</small></dd></div>
       <div><dt>Subida</dt><dd>2 611 <small>m D+</small></dd></div>
@@ -879,9 +882,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div><dt>Partida</dt><dd>08:00 <small>sábado, 1 mai</small></dd></div>
       <div><dt>Tempo limite</dt><dd>16h00 <small>até às 00:00</small></dd></div>
       <div><dt>Ponto mais alto</dt><dd>893 <small>m</small></dd></div>
-      <div><dt>Sol</dt><dd id="sol">06:57 <small>· 20:46</small></dd></div>
+      <div><dt>Sol</dt><dd id="sol">06:58 <small>· 20:45</small></dd></div>
     </dl>
-    <span class="oficial">Valores oficiais do Trace de Trail. Partida no <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo), chegada na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, Frente Mar, na Horta.</span>
+    <span class="oficial">Valores oficiais do Trace de Trail. Partida no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo), chegada na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, Frente Mar, na Horta.</span>
   </div>
 </header>
 
@@ -903,10 +906,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <h2 id="t-tracos">Em 30 segundos</h2>
     <p class="lead">O que torna esta prova diferente das outras distâncias da UBI.</p>
     <div class="tracos">
-      <div class="traco"><b>A ilha de ponta a ponta</b><span class="num">63 km</span><p>Do extremo oeste, nos Capelinhos, à Horta, a passar pela <a href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a>, pelos Cedros e pelo Cabouco.</p></div>
+      <div class="traco"><b>A ilha de ponta a ponta</b><span class="num">63 km</span><p>Do extremo oeste, nos Capelinhos, à Horta, a passar pela <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a>, pelos Cedros e pelo Cabouco.</p></div>
       <div class="traco"><b>O troço mais duro</b><span class="num" id="t-duro">—</span><p id="t-duro-txt">—</p></div>
-      <div class="traco"><b>Cinco abastecimentos</b><span class="num">5</span><p>Com a população do Faial: <a href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a>, <a href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a>, <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a>, <a href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> e <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a>.</p></div>
-      <div class="traco"><b>Até à noite</b><span class="num">20:46</span><p>O sol põe-se às 20:46 e a meta fecha à meia-noite. A frontal é obrigatória.</p></div>
+      <div class="traco"><b>Cinco abastecimentos</b><span class="num">5</span><p>Com a população do Faial: <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a>, <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a>, <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a>, <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> e <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a>.</p></div>
+      <div class="traco"><b>Até à noite</b><span class="num">20:45</span><p>O sol põe-se às 20:45 e a meta fecha à meia-noite. A frontal é obrigatória.</p></div>
     </div>
   </div>
 </section>
@@ -939,7 +942,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button type="button" class="pega dir" id="pega-dir" aria-label="Fim do troço">›</button>
           </div>
         </div>
-        <div class="totais"><b id="tot-km">25,1 km</b><span id="tot-d">1 388 m+ · 161 m−</span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a prova inteira</button></div>
+        <div class="totais"><b id="tot-km"></b><span id="tot-d"></span><span id="tot-onde"></span><button type="button" class="ligacao repor" id="repor" hidden>Ver a prova inteira</button></div>
       </div>
       <p class="dica-mini" id="dica-mini"><span aria-hidden="true">↔</span> <b>Arrasta a janela</b> (ou as pegas ‹ ›) no perfil pequeno para escolher o troço que queres ver em pormenor. Também podes tocar noutro sítio do perfil pequeno, ou arrastar no perfil grande.</p>
       <div class="mapa-e-ponto">
@@ -973,8 +976,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="historia" aria-labelledby="t-historia">
   <div class="largura texto">
     <h2 id="t-historia">A prova</h2>
-    <p>A Ultra Blue Island é a prova que dá o nome ao evento. Parte às 08:00 do <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, no Capelo, junto ao Vulcão dos Capelinhos, e atravessa o Faial até à Horta, onde termina na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Avenida 25 de Abril</a>, de frente para o mar.</p>
-    <p>Pelo caminho há cinco abastecimentos, onde a população do Faial recebe os corredores: a <a href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a> (km 8,4), o <a href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a> (km 19,8), a <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 32,8), a <a href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> (km 45,3) e o <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 55,3).</p>
+    <p>A Ultra Blue Island é a prova que dá o nome ao evento. Parte às 08:00 do <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, no Capelo, junto ao Vulcão dos Capelinhos, e atravessa o Faial até à Horta, onde termina na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Avenida 25 de Abril</a>, de frente para o mar.</p>
+    <p>Pelo caminho há cinco abastecimentos, onde a população do Faial recebe os corredores: a <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a> (km 8,4), o <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a> (km 19,8), a <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 32,8), a <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> (km 45,3) e o <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 55,3).</p>
     <p>A corrida é em semiautonomia: entre dois abastecimentos, cada corredor leva a comida, a água e o material de que precisa.</p>
   </div>
 </section>
@@ -985,16 +988,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <h2 id="t-dia">O dia</h2>
       <p class="lead">Sábado, 1 de maio. Os autocarros para a partida são só para atletas e o acesso faz-se com o dorsal.</p>
       <ol class="horario">
-        <li><b>sex</b><span>Dorsais no <a href="https://www.google.com/maps/search/?api=1&query=Teatro+Faialense,+Horta,+Açores" target="_blank" rel="noopener">Teatro Faialense</a>, na Horta: quinta das 15:00 às 22:00 e sexta das 10:00 às 20:00. Briefing na sexta às 19:00.</span></li>
-        <li><b>07:00</b><span>Autocarro da Horta para o <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, a partir da <a href="https://www.google.com/maps/search/?api=1&query=Escola+António+José+de+Ávila,+Horta,+Açores" target="_blank" rel="noopener">Escola António José d'Ávila</a>.</span></li>
-        <li class="prova"><b>08:00</b><span>Partida, no <a href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo). O saco de muda de roupa entrega-se aqui e recolhe-se na meta com o dorsal.</span></li>
-        <li class="marco"><b>10:00</b><span>Barreira na <a href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a> (km 8,4).</span></li>
-        <li class="marco"><b>13:00</b><span>Barreira no <a href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a> (km 19,8).</span></li>
-        <li class="marco"><b>17:00</b><span>Barreira na <a href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 32,8).</span></li>
-        <li class="marco"><b>20:00</b><span>Barreira na <a href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> (km 45,3).</span></li>
-        <li class="marco"><b>23:00</b><span>Barreira no <a href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 55,3).</span></li>
-        <li class="marco"><b>00:00</b><span>Fecho da meta, na <a href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, na Horta.</span></li>
-        <li><b>dom</b><span>Entrega de prémios às 10:30, no <a href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+da+Horta,+Açores" target="_blank" rel="noopener">Mercado Municipal da Horta</a>.</span></li>
+        <li><b>qui/sex</b><span>Dorsais no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Teatro+Faialense,+Horta,+Açores" target="_blank" rel="noopener">Teatro Faialense</a>, na Horta: quinta das 15:00 às 22:00 e sexta das 10:00 às 20:00. Briefing na sexta às 19:00.</span></li>
+        <li><b>07:00</b><span>Autocarro da Horta para o <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a>, a partir da <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Escola+António+José+de+Ávila,+Horta,+Açores" target="_blank" rel="noopener">Escola António José d'Ávila</a>.</span></li>
+        <li class="prova"><b>08:00</b><span>Partida, no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.592698,-28.827058" target="_blank" rel="noopener">Porto do Comprido</a> (Capelo). O saco de muda de roupa entrega-se aqui e recolhe-se na meta com o dorsal.</span></li>
+        <li class="marco"><b>10:00</b><span>Barreira na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.609226,-28.76503" target="_blank" rel="noopener">Fajã da Praia do Norte</a> (km 8,4).</span></li>
+        <li class="marco"><b>13:00</b><span>Barreira no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.635361,-28.714706" target="_blank" rel="noopener">Império do Cascalho</a> (km 19,8).</span></li>
+        <li class="marco"><b>17:00</b><span>Barreira na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.59871,-28.68144" target="_blank" rel="noopener">Reserva do Cabouco Velho</a> (km 32,8).</span></li>
+        <li class="marco"><b>20:00</b><span>Barreira na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.593152,-28.612953" target="_blank" rel="noopener">Casa do Povo da Ribeirinha</a> (km 45,3).</span></li>
+        <li class="marco"><b>23:00</b><span>Barreira no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.565136,-28.638112" target="_blank" rel="noopener">Império do Canto do Chão Frio</a> (km 55,3).</span></li>
+        <li class="marco"><b>00:00</b><span>Fecho da meta, na <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=38.535111,-28.626194" target="_blank" rel="noopener">Av. 25 de Abril</a>, na Horta.</span></li>
+        <li><b>dom</b><span>Entrega de prémios às 10:30, no <a class="lugar" href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+da+Horta,+Açores" target="_blank" rel="noopener">Mercado Municipal da Horta</a>.</span></li>
       </ol>
     </div>
     <div id="material">
@@ -1018,7 +1021,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <h3>Levantar o dorsal</h3>
         <ul>
           <li>Documento de identificação com fotografia.</li>
-          <li>Declaração de verificação de material e termo de responsabilidade, assinados. Menores de 18 anos: declaração para menores. <a href="https://drive.google.com/drive/folders/1h7RwDHzvQFTnnjqNftHIusw_n5yjAVyz" target="_blank" rel="noopener">Modelos dos documentos</a>.</li>
+          <li>Declaração de verificação de material e termo de responsabilidade, assinados. Menores de 18 anos: declaração para menores. <a class="lugar" href="https://drive.google.com/drive/folders/1h7RwDHzvQFTnnjqNftHIusw_n5yjAVyz" target="_blank" rel="noopener">Modelos dos documentos</a>.</li>
           <li>Se outra pessoa levantar por ti: cópia do teu documento e a tua autorização assinada.</li>
         </ul>
       </div>
@@ -1462,6 +1465,7 @@ function desenharTabela() {
       + `<td><span class="icones">${p.servicos.map(s => `<span title="${SERVICOS[s].nome}">${ICONES[s]}</span>`).join('')}</span></td></tr>`;
   });
   document.getElementById('corpo-tabela').innerHTML = h;
+  if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent === 'Próximo abastecimento'); if (th) th.textContent = 'Até à chegada'; }
 }
 const alvo = document.getElementById('tempo-alvo');
 alvo.addEventListener('input', () => { E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); desenharTabela(); if (E.ponto) abrirPonto(E.ponto); });
