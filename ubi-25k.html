@@ -99,6 +99,13 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .totais { display: grid; gap: 0; width: 170px }
 .totais b { font-family: var(--f-mono); font-size: 22px; font-weight: 500 }
 .totais span { font-family: var(--f-mono); font-size: 13px; color: var(--texto-2) }
+.aperto { margin-top: 22px }
+.aperto h3 { margin: 0 0 4px; font-family: var(--f-display) }
+.aperto-lista { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px }
+.aperto-lista li { display: grid; grid-template-columns: 10px 1fr auto; gap: 12px; align-items: center; background: var(--cartao); border: 1px solid var(--linha-2); border-radius: 10px; padding: 10px 14px }
+.aperto-cor { width: 10px; height: 100%; min-height: 34px; border-radius: 4px }
+.aperto-lista small { display: block; color: var(--texto-2); font-size: 13px; font-family: inherit }
+.aperto-lista .num { text-align: right; font-family: var(--f-mono) }
 .luz { margin: 4px 0 14px; color: var(--texto-2); font-size: 15px }
 .luz b { color: var(--texto) }
 .subida .etq { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2) }
@@ -1308,6 +1315,8 @@ function desenharPerfil() {
     const txt = longo.length * 6.2 <= largo ? longo : so.length * 6.2 <= largo ? so : '';
     if (txt) s += `<text x="${mx}" y="${H - 6}" text-anchor="middle" style="fill:${cor('--texto-2')}">${txt}</text>`;
   }
+  if (E.barreiras) apertoBarreiras().forEach(t => { const ka = Math.max(t.a.km, E.de), kb = Math.min(t.b.km, E.ate); if (kb <= ka) return;
+    s += `<rect x="${x(ka)}" y="24" width="${Math.max(1, x(kb) - x(ka) - 1)}" height="6" rx="2" fill="${corAperto(t.rel)}"><title>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}: ${fmt(t.porHora, 1)} por hora, ${fmt(t.rel, 1)}× a média (${txtAperto(t.rel)})</title></rect>`; });
   s += `<line id="cursor-l" x1="0" x2="0" y1="22" y2="${H - M.b}" stroke="${cor('--texto')}" stroke-width="1" visibility="hidden"/><circle id="cursor-c" r="5" fill="${cor('--cartao')}" stroke="${cor('--texto')}" stroke-width="2" visibility="hidden"/>`;
   s += `<rect id="selecao" y="22" height="${H - M.b - 22}" fill="${cor('--turquesa')}" fill-opacity=".12" visibility="hidden"/>`;
   svg.innerHTML = s;
@@ -1537,6 +1546,27 @@ const ligacoes = [...document.querySelectorAll('.submenu a:not(.inscrever)')];
 const obs = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting) ligacoes.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -55% 0px' });
 ['percurso', 'pontos', 'historia', 'dia', 'relogio'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
 
+// ---------- aperto das barreiras (relatório 71 §1) ----------
+// para cada troço entre barreiras: esforço (km + D+/100, valores oficiais) a dividir pelas horas disponíveis,
+// comparado com o esforço por hora da prova inteira (esforço total ÷ tempo limite)
+function apertoBarreiras() {
+  const com = PONTOS.filter((p, n) => n === 0 || p.barreira); if (com.length < 2) return [];
+  const esfP = p => p.kmVer + p.dmais / 100, ult = PONTOS[PONTOS.length - 1];
+  const media = esfP(ult) / (LIMITE_MIN / 60);
+  return com.slice(1).map((b, n) => { const a = com[n], ta = n === 0 ? PARTIDA_MIN : a.barreira, h = (b.barreira - ta) / 60, esf = esfP(b) - esfP(a);
+    return { a, b, esf, h, porHora: esf / h, rel: esf / h / media, media }; });
+}
+const corAperto = r => r < 1.1 ? cor('--s0') : r < 1.3 ? cor('--s2') : r < 1.6 ? cor('--s3') : cor('--s5');
+const txtAperto = r => r < 1.1 ? 'folgado' : r < 1.3 ? 'justo' : r < 1.6 ? 'apertado' : 'muito apertado';
+function desenharAperto() {
+  const lista = apertoBarreiras(); let el = document.getElementById('aperto');
+  if (!lista.length) { if (el) el.remove(); return; }
+  if (!el) { el = document.createElement('div'); el.id = 'aperto'; el.className = 'aperto'; document.querySelector('#pontos .tabela-caixa').after(el); }
+  const media = lista[0].media;
+  el.innerHTML = `<h3>Quão apertadas são as barreiras</h3><p class="lead">Cada troço entre barreiras pede um certo esforço por hora (km + D+/100 a dividir pelas horas disponíveis). A média da prova inteira é <b>${fmt(media, 1)}</b> por hora. A cor diz quanto cada troço pede a mais. Também aparece no perfil, numa faixa por cima da linha.</p>`
+    + '<ol class="aperto-lista">' + lista.map(t => `<li><span class="aperto-cor" style="background:${corAperto(t.rel)}"></span><span><b>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}</b><small>${fmt(t.b.kmVer - t.a.kmVer, 1)} km · +${fmt(t.b.dmais - t.a.dmais)} m em ${duracao(t.h * 60)}</small></span><span class="num">${fmt(t.porHora, 1)} /h<small>${fmt(t.rel, 1)}× a média · ${txtAperto(t.rel)}</small></span></li>`).join('') + '</ol>';
+}
+
 // ---------- luz e noite com o tempo escolhido ----------
 function desenharLuz() {
   const el = document.getElementById('luz'); if (!el) return;
@@ -1567,7 +1597,7 @@ function desenharSubidas() {
 }
 document.getElementById('lista-subidas')?.addEventListener('click', ev => { const b = ev.target.closest('button[data-de]'); if (!b) return; definirTroco(+b.dataset.de, +b.dataset.ate); document.getElementById('percurso').scrollIntoView({ behavior: 'smooth' }); });
 
-desenharPerfil(); desenharTabela(); desenharLuz(); desenharSubidas();
+desenharPerfil(); desenharTabela(); desenharLuz(); desenharSubidas(); desenharAperto();
 new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
