@@ -106,6 +106,7 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .aperto-cor { width: 10px; height: 100%; min-height: 34px; border-radius: 4px }
 .aperto-lista small { display: block; color: var(--texto-2); font-size: 13px; font-family: inherit }
 .aperto-lista .num { text-align: right; font-family: var(--f-mono) }
+.ver-todas { margin-top: 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 8px 18px; color: var(--turquesa); font: inherit; font-weight: 600; cursor: pointer }
 .luz { margin: 4px 0 14px; color: var(--texto-2); font-size: 15px }
 .luz b { color: var(--texto) }
 .subida .etq { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2) }
@@ -1023,7 +1024,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="subidas" aria-labelledby="t-subidas">
   <div class="largura">
     <h2 id="t-subidas">Subidas e descidas</h2>
-    <p class="lead">As que têm 100 m de desnível ou mais, com o nome do sítio. A categoria segue a regra do Strava: comprimento × inclinação média. A hora muda com o tempo que escolhes em «Pontos e horários».</p>
+    <p class="lead">As maiores do percurso, com o nome do sítio; em «Ver todas» estão todas as que têm 100 m de desnível ou mais. A categoria segue a regra do Strava: comprimento × inclinação média. A hora muda com o tempo que escolhes em «Pontos e horários».</p>
     <div class="tracos" id="lista-subidas"></div>
   </div>
 </section>
@@ -1594,12 +1595,14 @@ function desenharLuz() {
 // ---------- subidas e descidas com nome ----------
 function desenharSubidas() {
   const el = document.getElementById('lista-subidas'); if (!el || !CFG.subidas) return;
-  el.innerHTML = CFG.subidas.map(sb => {
+  const MOSTRA = 6, tam = sb => { const ia = iPorKm(sb.de), ib = iPorKm(sb.ate); return sb.tipo === 'subida' ? P[ib][4] - P[ia][4] : P[ib][5] - P[ia][5]; };
+  const maiores = new Set(CFG.subidas.map((sb, k) => [tam(sb), k]).sort((a, b) => b[0] - a[0]).slice(0, MOSTRA).map(x => x[1]));
+  el.innerHTML = CFG.subidas.map((sb, k) => {
     const ia = iPorKm(sb.de), ib = iPorKm(sb.ate), km = P[ib][0] - P[ia][0], dz = P[ib][1] - P[ia][1], med = dz / (km * 10);
     let mx = 0; for (let i = ia; i <= ib; i++) if (sb.tipo === 'subida' ? P[i][6] > mx : P[i][6] < mx) mx = P[i][6];
     const nota = km * 1000 * Math.abs(med), cat = sb.tipo !== 'subida' ? '' : nota >= 80000 ? 'HC' : nota >= 64000 ? 'Cat. 1' : nota >= 32000 ? 'Cat. 2' : nota >= 16000 ? 'Cat. 3' : nota >= 8000 ? 'Cat. 4' : '';
     const sobe = P[ib][4] - P[ia][4], desce = P[ib][5] - P[ia][5];
-    return `<article class="traco subida"><span class="etq">${sb.tipo === 'subida' ? 'Subida' : 'Descida'}${cat ? `<span class="cat">${cat}</span>` : ''}</span><b>${sb.nome}</b>`
+    return `<article class="traco subida"${E.todasSubidas || maiores.has(k) ? '' : ' hidden'}><span class="etq">${sb.tipo === 'subida' ? 'Subida' : 'Descida'}${cat ? `<span class="cat">${cat}</span>` : ''}</span><b>${sb.nome}</b>`
       + (sb.cimo ? `<p>${sb.tipo === 'subida' ? 'Até ao' : 'Desde o'} ${sb.cimo}</p>` : '')
       + `<span class="num">${sb.tipo === 'subida' ? '+' + fmt(sobe) : '−' + fmt(desce)} m</span>`
       + `<p>Do km ${fmt(P[ia][0], 1)} ao ${fmt(P[ib][0], 1)} (${fmt(km, 1)} km), ${fmt(Math.abs(med), 0)} % de média, ${fmt(Math.abs(mx), 0)} % no mais inclinado.</p>`
@@ -1607,6 +1610,11 @@ function desenharSubidas() {
       + (sb.strava ? `<a href="${sb.strava.url}" target="_blank" rel="noopener" title="Segmento do Strava: ${sb.strava.nome}">Ver os tempos no Strava</a>` : '')
       + `<button type="button" data-de="${P[ia][0]}" data-ate="${P[ib][0]}">Ver no perfil</button></article>`;
   }).join('');
+  let bt = document.getElementById('ver-todas-subidas');
+  if (CFG.subidas.length > MOSTRA) {
+    if (!bt) { bt = document.createElement('button'); bt.type = 'button'; bt.id = 'ver-todas-subidas'; bt.className = 'ver-todas'; el.after(bt); bt.addEventListener('click', () => { E.todasSubidas = !E.todasSubidas; desenharSubidas(); if (!E.todasSubidas) document.getElementById('subidas').scrollIntoView({ behavior: 'smooth' }); }); }
+    bt.textContent = E.todasSubidas ? 'Mostrar só as 6 maiores' : `Ver todas (${CFG.subidas.length})`;
+  }
 }
 document.getElementById('lista-subidas')?.addEventListener('click', ev => { const b = ev.target.closest('button[data-de]'); if (!b) return; definirTroco(+b.dataset.de, +b.dataset.ate); document.getElementById('percurso').scrollIntoView({ behavior: 'smooth' }); });
 
