@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>Volcanoes Trail · Etapa 3 · Triangle Adventure 2027</name><desc>Percurso de 2026 (os percursos de 2027 são os mesmos), com os pontos do racebook de 2026.</desc><link href="https://mapas.myazorestrailrun.com/ta-etapa3.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Etapa 3 · Volcanoes Trail 34 km · Triangle Adventure 2027</name><desc>Percurso de 2026 (os percursos de 2027 são os mesmos), com os pontos do racebook de 2026.</desc><link href="https://mapas.myazorestrailrun.com/ta-etapa3.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.59679" lon="-28.82358">
     <ele>73</ele>
     <name>Vulcão dos Capelinhos</name>
@@ -22,7 +22,7 @@
     <desc>Km 33,9 · barreira 18:30</desc>
   </wpt>
   <trk>
-    <name>Volcanoes Trail · Etapa 3 · Triangle Adventure 2027</name>
+    <name>Etapa 3 · Volcanoes Trail 34 km · Triangle Adventure 2027</name>
     <trkseg>
       <trkpt lat="38.59679" lon="-28.82358"><ele>73</ele></trkpt>
       <trkpt lat="38.59671" lon="-28.82393"><ele>72</ele></trkpt>

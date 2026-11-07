@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="Azores Trail Run" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-  <metadata><name>Fajãs Trail · Etapa 2 · Triangle Adventure 2027</name><desc>Percurso de 2026 (os percursos de 2027 são os mesmos), com os pontos do racebook de 2026.</desc><link href="https://mapas.myazorestrailrun.com/ta-etapa2.html"><text>Azores Trail Run</text></link></metadata>
+  <metadata><name>Etapa 2 · Fajãs Trail 25 km · Triangle Adventure 2027</name><desc>Percurso de 2026 (os percursos de 2027 são os mesmos), com os pontos do racebook de 2026.</desc><link href="https://mapas.myazorestrailrun.com/ta-etapa2.html"><text>Azores Trail Run</text></link></metadata>
   <wpt lat="38.5482" lon="-27.75337">
     <ele>15</ele>
     <name>Farol da Ponta do Topo</name>
@@ -28,7 +28,7 @@
     <sym>Flag, Red</sym>
   </wpt>
   <trk>
-    <name>Fajãs Trail · Etapa 2 · Triangle Adventure 2027</name>
+    <name>Etapa 2 · Fajãs Trail 25 km · Triangle Adventure 2027</name>
     <trkseg>
       <trkpt lat="38.548197" lon="-27.753373"><ele>14.9</ele></trkpt>
       <trkpt lat="38.548266" lon="-27.753584"><ele>18.7</ele></trkpt>
