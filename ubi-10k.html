@@ -1543,10 +1543,11 @@ function desenharSubidas() {
     const nota = km * 1000 * Math.abs(med), cat = sb.tipo !== 'subida' ? '' : nota >= 80000 ? 'HC' : nota >= 64000 ? 'Cat. 1' : nota >= 32000 ? 'Cat. 2' : nota >= 16000 ? 'Cat. 3' : nota >= 8000 ? 'Cat. 4' : '';
     const sobe = P[ib][4] - P[ia][4], desce = P[ib][5] - P[ia][5];
     return `<article class="traco subida"><span class="etq">${sb.tipo === 'subida' ? 'Subida' : 'Descida'}${cat ? `<span class="cat">${cat}</span>` : ''}</span><b>${sb.nome}</b>`
+      + (sb.cimo ? `<p>${sb.tipo === 'subida' ? 'Até ao' : 'Desde o'} ${sb.cimo}</p>` : '')
       + `<span class="num">${sb.tipo === 'subida' ? '+' + fmt(sobe) : '−' + fmt(desce)} m</span>`
       + `<p>Do km ${fmt(P[ia][0], 1)} ao ${fmt(P[ib][0], 1)} (${fmt(km, 1)} km), ${fmt(Math.abs(med), 0)} % de média, ${fmt(Math.abs(mx), 0)} % no mais inclinado.</p>`
       + `<p>Com o teu tempo, começas às <b>${hora(horaPrevista(ia))}</b> e levas cerca de ${duracao(horaPrevista(ib) - horaPrevista(ia))}.${deNoite(horaPrevista(ia)) ? ' De noite.' : ''}</p>`
-      + (sb.strava ? `<a href="${sb.strava.url}" target="_blank" rel="noopener">Segmento no Strava: ${sb.strava.nome}</a>` : '')
+      + (sb.strava ? `<a href="${sb.strava.url}" target="_blank" rel="noopener" title="Segmento do Strava: ${sb.strava.nome}">Ver os tempos no Strava</a>` : '')
       + `<button type="button" data-de="${P[ia][0]}" data-ate="${P[ib][0]}">Ver no perfil</button></article>`;
   }).join('');
 }
