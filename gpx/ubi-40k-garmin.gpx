@@ -10,21 +10,21 @@
   <wpt lat="38.58369" lon="-28.7456">
     <ele>669</ele>
     <name>Depósito de Água Levada</name>
-    <desc>Km 12,1 · água, comida · barreira 12:00 · próximo abastecimento a 13,2 km (+558 m)</desc>
+    <desc>Km 12,1 · água, comida · barreira 13:45 · próximo abastecimento a 13,2 km (+558 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.59905" lon="-28.68165">
     <ele>515</ele>
     <name>Reserva do Cabouco Velho</name>
-    <desc>Km 25,3 · água, comida · barreira 16:00 · próximo abastecimento a 7,8 km (+6 m)</desc>
+    <desc>Km 25,3 · água, comida · barreira 16:45 · próximo abastecimento a 7,8 km (+6 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.56524" lon="-28.63813">
     <ele>235</ele>
     <name>Império do Canto do Chão Frio</name>
-    <desc>Km 33,1 · água, comida · barreira 19:00 · meta a 7,8 km (+165 m)</desc>
+    <desc>Km 33,1 · água, comida · barreira 21:45 · meta a 7,8 km (+165 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>

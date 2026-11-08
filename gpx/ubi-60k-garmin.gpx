@@ -10,35 +10,35 @@
   <wpt lat="38.60929" lon="-28.76495">
     <ele>55</ele>
     <name>Fajã da Praia do Norte</name>
-    <desc>Km 8,2 · água, comida · barreira 10:00 · próximo abastecimento a 11,2 km (+499 m)</desc>
+    <desc>Km 8,2 · água, comida · barreira 10:30 · próximo abastecimento a 11,2 km (+499 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.63562" lon="-28.71414">
     <ele>141</ele>
     <name>Império do Cascalho</name>
-    <desc>Km 19,3 · água, comida · barreira 13:00 · próximo abastecimento a 13,4 km (+843 m)</desc>
+    <desc>Km 19,3 · água, comida · barreira 13:15 · próximo abastecimento a 13,4 km (+843 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.59908" lon="-28.68172">
     <ele>517</ele>
     <name>Reserva do Cabouco Velho</name>
-    <desc>Km 32,7 · água, comida · barreira 17:00 · próximo abastecimento a 12,2 km (+323 m)</desc>
+    <desc>Km 32,7 · água, comida · barreira 16:45 · próximo abastecimento a 12,2 km (+323 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.59315" lon="-28.61279">
     <ele>108</ele>
     <name>Casa do Povo da Ribeirinha</name>
-    <desc>Km 45,0 · água, comida · barreira 20:00 · próximo abastecimento a 9,3 km (+391 m)</desc>
+    <desc>Km 45,0 · água, comida · barreira 19:45 · próximo abastecimento a 9,3 km (+391 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
   <wpt lat="38.56513" lon="-28.63815">
     <ele>234</ele>
     <name>Império do Canto do Chão Frio</name>
-    <desc>Km 54,3 · água, comida · barreira 23:00 · meta a 7,9 km (+165 m)</desc>
+    <desc>Km 54,3 · água, comida · barreira 22:15 · meta a 7,9 km (+165 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
