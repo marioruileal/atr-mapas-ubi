@@ -217,6 +217,7 @@ dialog h3 { font-size: 20px; margin-bottom: 12px }
 .mapa:fullscreen #mapa-fundo { height: 100vh }
 .painel-mapa { position: absolute; left: 10px; top: 10px; z-index: 1000; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-width: calc(100% - 70px) }
 .painel-mapa .segmentos { background: rgba(255,255,255,.9) }
+@media (max-width: 520px) { .painel-mapa .segmentos { flex-wrap: wrap; border-radius: 18px } .painel-mapa .segmentos button { padding: 6px 10px } }
 .painel-mapa .chip { background: rgba(255,255,255,.92); color: #1a1d21 }
 .painel-mapa .chip[aria-pressed="true"] { background: var(--turquesa); color: #fff }
 .ecra-inteiro { width: 34px; height: 34px; background: #fff; border: 0; font-size: 18px; line-height: 1; cursor: pointer; color: #1a1d21 }
@@ -1197,7 +1198,7 @@ const KM_TOTAL = P[P.length - 1][0];
 const PARTIDA_MIN = CFG.partida, LIMITE_MIN = CFG.limite;
 const fmt = (n, d = 0) => n.toLocaleString('pt-PT', { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always' });
 const hora = m => { m = Math.round(m); return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
-const duracao = m => Math.floor(m / 60) + 'h' + String(Math.round(m % 60)).padStart(2, '0');
+const duracao = m => { const t = Math.round(m); return Math.floor(t / 60) + 'h' + String(t % 60).padStart(2, '0'); };  // arredonda primeiro: 119,6 min dá 2h00, não 1h60
 
 const ICONES = {
   agua: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>',
@@ -1683,6 +1684,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { de
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
 // Fundos (decisão do Mário, 05-11-2026): «Relevo» (OpenTopoMap, abre por omissão), «Trilhos» (CyclOSM) e «Fotografia aérea», todos ligados à origem.
+// «Exterior» (Mapbox Outdoors, pedido de 07-11-2026): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
 // O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
 // e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
 // Fundo «Fotografia aérea»: ligada diretamente ao serviço da IDE Açores (WMS), com a definição toda; nada fica guardado por nós.
@@ -1725,7 +1727,7 @@ window.MAPA = (() => {
   }
 
   // caminhos do OpenStreetMap: c = 0 estrada (p = 1 principal), 1 caminho rural, 2 ou mais trilho
-  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // o Relevo e os Trilhos já trazem caminhos e nomes
+  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // o Relevo, os Trilhos e o Exterior já trazem caminhos e nomes
   function estiloCaminho(f) {
     if (!nosso()) return { opacity: 0 };
     const zz = z(), sobreFoto = fundo === 'foto', c = f.properties.c, p = f.properties.p === 1;
@@ -1765,6 +1767,7 @@ window.MAPA = (() => {
     visibilidade();
     caminhos.setStyle(estiloCaminho); estradasFundo.setStyle(estiloContornoEstrada);
     caixa.classList.toggle('fundo-foto', sobreFoto);
+    if (logoMapbox) logoMapbox.style.display = qual === 'exterior' ? 'block' : 'none';
     painel.querySelectorAll('[data-fundo]').forEach(b => b.setAttribute('aria-pressed', b.dataset.fundo === qual));
   }
 
@@ -1772,7 +1775,7 @@ window.MAPA = (() => {
   function rumo(i) { const a = P[i], b = P[Math.min(i + 5, P.length - 1)], kx = Math.cos(a[3] * Math.PI / 180); return Math.atan2((b[2] - a[2]) * kx, b[3] - a[3]) * 180 / Math.PI; }
   const SETA = r => `<span class="mk-seta"><svg width="14" height="14" viewBox="0 0 24 24" style="transform:rotate(${(r - 90).toFixed(0)}deg)"><path d="M6 5 L19 12 L6 19 L9 12 Z" fill="#fff" stroke="#14181d" stroke-width="1.8" stroke-linejoin="round"/></svg></span>`;
 
-  let painel = null;
+  let painel = null, logoMapbox = null;
   async function abrir() {
     try { await carregar(LIB); } catch (e) { return; } // sem o Leaflet fica o traçado em SVG
     caixa.classList.add('com-fundo');
@@ -1804,11 +1807,21 @@ window.MAPA = (() => {
       relevo: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 17, maxZoom: 19, attribution: 'Dados: © OpenStreetMap, SRTM · Desenho: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }),
       trilhos: L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', { subdomains: 'abc', maxNativeZoom: 20, maxZoom: 19, attribution: '<a href="https://www.cyclosm.org">CyclOSM</a> · © OpenStreetMap' })
     };
+    const EXT = CFG.mapa.exterior;
+    if (EXT) {
+      // mosaicos de 512 px (um quarto dos pedidos dos de 256 px); o Mapbox conta cada mosaico pedido
+      outros.exterior = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/512/{z}/{x}/{y}{r}?access_token=' + encodeURIComponent(EXT.chave), { tileSize: 512, zoomOffset: -1, maxZoom: 19,
+        attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> <a class="melhorar" href="https://apps.mapbox.com/feedback/" target="_blank" rel="noopener">Improve this map</a>' });
+      // o «Improve this map» leva o sítio que se está a ver, como o Mapbox pede
+      mapa.on('moveend', () => { const a = div.querySelector('.leaflet-control-attribution a.melhorar'); if (a) { const c = mapa.getCenter(); a.href = `https://apps.mapbox.com/feedback/#/${c.lng.toFixed(5)}/${c.lat.toFixed(5)}/${mapa.getZoom()}`; } });
+      const Logo = L.Control.extend({ options: { position: 'bottomleft' }, onAdd() { const a = L.DomUtil.create('a', 'logo-mapbox'); a.href = 'https://www.mapbox.com/'; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', 'Mapbox'); a.style.cssText = `display:none;width:88px;height:23px;margin:0 0 4px 10px;background:url("${EXT.logo}") no-repeat center/contain`; return a; } });
+      logoMapbox = new Logo().addTo(mapa).getContainer();
+    }
     if (CFG.mapa.orto) {
       foto = L.tileLayer.wms(CFG.mapa.orto.wms, { pane: 'foto', layers: CFG.mapa.orto.camada, format: 'image/jpeg', version: '1.3.0', tileSize: 512, maxZoom: 19, bounds: limites, attribution: CFG.mapa.orto.credito });
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
-    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
+    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['exterior', outros.exterior, 'Exterior', 'do Mapbox'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
     const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
     json('terra.geojson').then(g => terra.addData(g));
     json('agua.geojson').then(g => agua.addData(g));
@@ -1836,7 +1849,7 @@ window.MAPA = (() => {
     visibilidade();
 
     painel = document.createElement('div'); painel.className = 'painel-mapa';
-    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="relevo" aria-pressed="true">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
+    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="relevo" aria-pressed="true">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${outros.exterior ? '<button type="button" data-fundo="exterior" aria-pressed="false">Exterior</button>' : ''}${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
       + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`;
     L.DomEvent.disableClickPropagation(painel); L.DomEvent.disableScrollPropagation(painel);
     caixa.appendChild(painel);
@@ -1844,9 +1857,9 @@ window.MAPA = (() => {
     painel.querySelector('[data-setas]').addEventListener('click', ev => { setas = !setas; ev.currentTarget.setAttribute('aria-pressed', setas); visibilidade(); });
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
-    const pedido = (location.hash.match(/^#(mapa|relevo|trilhos|foto)/) || [])[1];
+    const pedido = (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
     // decisão do Mário (05-11-2026): sem o fundo «Mapa»; abre no «Relevo»
-    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) ? pedido : 'relevo');
+    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : 'relevo');
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
     if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
   }
@@ -1854,7 +1867,7 @@ window.MAPA = (() => {
   // abre-se sozinho quando o mapa chega perto do ecrã
   const vigia = new IntersectionObserver(ent => { if (ent.some(e => e.isIntersecting)) { vigia.disconnect(); abrir(); } }, { rootMargin: '400px' });
   vigia.observe(caixa);
-  if (/^#(relevo|trilhos|foto)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
+  if (/^#(relevo|trilhos|exterior|foto)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
 
   return {
     marcar(i) { if (!mapa || !cursor) return; if (i == null) { cursor.remove(); return; } cursor.setLatLng(ll(P[i])).addTo(mapa); },

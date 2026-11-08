@@ -7,8 +7,8 @@
     <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 11,0 km (+676 m)</desc>
     <sym>Flag, Green</sym>
   </wpt>
-  <wpt lat="38.59905" lon="-28.68162">
-    <ele>515</ele>
+  <wpt lat="38.59895" lon="-28.68175">
+    <ele>516</ele>
     <name>Reserva do Cabouco Velho</name>
     <desc>Km 11,0 · água, comida · barreira 13:30 · próximo abastecimento a 7,8 km (+3 m)</desc>
     <sym>Food Source</sym>
@@ -17,7 +17,7 @@
   <wpt lat="38.56522" lon="-28.6381">
     <ele>235</ele>
     <name>Império do Canto do Chão Frio</name>
-    <desc>Km 18,8 · água, comida · barreira 16:00 · meta a 7,9 km (+175 m)</desc>
+    <desc>Km 18,9 · água, comida · barreira 16:00 · meta a 7,8 km (+175 m)</desc>
     <sym>Food Source</sym>
     <extensions><gpxx:WaypointExtension><gpxx:Proximity>1000</gpxx:Proximity></gpxx:WaypointExtension></extensions>
   </wpt>
