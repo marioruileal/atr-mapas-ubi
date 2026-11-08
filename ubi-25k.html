@@ -1739,7 +1739,7 @@ new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
-// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Curvas de nível» (OpenTopoMap), «Caminhos» (CyclOSM), «Paisagem» (Mapbox, abre por omissão) e «Fotografia aérea», todos ligados à origem.
+// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Curvas de nível» (OpenTopoMap), «Trilhos» (CyclOSM), «Paisagem» (Mapbox, abre por omissão) e «Fotografia aérea», todos ligados à origem.
 // «Exterior» (Mapbox Outdoors, pedido de 07-11-2026): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
 // O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
 // e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
@@ -1783,7 +1783,7 @@ window.MAPA = (() => {
   }
 
   // caminhos do OpenStreetMap: c = 0 estrada (p = 1 principal), 1 caminho rural, 2 ou mais trilho
-  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // as Curvas de nível, os Caminhos e a Paisagem já trazem caminhos e nomes
+  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // as Curvas de nível, os Trilhos e a Paisagem já trazem caminhos e nomes
   function estiloCaminho(f) {
     if (!nosso()) return { opacity: 0 };
     const zz = z(), sobreFoto = fundo === 'foto', c = f.properties.c, p = f.properties.p === 1;
@@ -1877,11 +1877,11 @@ window.MAPA = (() => {
       foto = L.tileLayer.wms(CFG.mapa.orto.wms, { pane: 'foto', layers: CFG.mapa.orto.camada, format: 'image/jpeg', version: '1.3.0', tileSize: 512, maxZoom: 19, bounds: limites, attribution: CFG.mapa.orto.credito });
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
-    // nomes pelo que cada fundo mostra (decisão do Mário, 08-11-2026), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
+    // nomes pelo que cada fundo mostra (decisões do Mário, 08-11-2026; «Trilhos» em vez de «Caminhos»), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
     // abre na «Paisagem» (decisão do Mário, 08-11-2026); sem a chave do Mapbox, nas «Curvas de nível»
     const INICIAL = outros.exterior ? 'exterior' : 'relevo';
     const FUNDOS = [['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
-      ['trilhos', outros.trilhos, 'Caminhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
+      ['trilhos', outros.trilhos, 'Trilhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
       ['exterior', outros.exterior, 'Paisagem', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
       ['foto', foto, 'Fotografia aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores']].filter(f => f[1]);
     FUNDOS.forEach(([k, c, nome, , origem]) => c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
