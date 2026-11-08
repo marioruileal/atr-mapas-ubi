@@ -1275,7 +1275,32 @@ const classe = s => { const a = Math.abs(s); return CLASSES.findIndex(c => a >= 
 // esforço acumulado (km + D+/100) para a hora prevista
 const esforco = i => P[i][0] + P[i][4] / 100;
 const ESF_TOTAL = esforco(P.length - 1);
-const horaPrevista = i => PARTIDA_MIN + E.alvo * esforco(i) / ESF_TOTAL;
+// Com horas de passagem reais (CFG.passagens, relatório 81), cada posto fica à hora real para o tempo escolhido e,
+// entre postos, o tempo reparte-se pelo esforço. Os mais lentos vão mais depressa no início e abrandam no fim:
+// repartir tudo pelo esforço punha quem escolhe o tempo limite fora das primeiras barreiras.
+const POSTOS_REAIS = (() => {
+  const ps = CFG.passagens, abs = PONTOS.filter(p => p.tipo === 'abastecimento');
+  return ps && ps.postos.length === abs.length ? abs.map((p, k) => ({ i: p.i, c: ps.postos[k] })) : null;
+})();
+let ancoras = null;
+function ancorasPara(T) {
+  if (ancoras && ancoras.T === T) return ancoras.v;
+  const v = [[0, 0]];
+  POSTOS_REAIS.forEach(({ i, c }) => {
+    const t = c[0] + c[1] * T + c[2] * T * T;
+    v.push([i, Math.min(Math.max(t, v[v.length - 1][1] + 1), T - 1)]);
+  });
+  v.push([P.length - 1, T]);
+  ancoras = { T, v };
+  return v;
+}
+const horaPrevista = i => {
+  if (!POSTOS_REAIS) return PARTIDA_MIN + E.alvo * esforco(i) / ESF_TOTAL;
+  const v = ancorasPara(E.alvo);
+  let k = 1; while (k < v.length - 1 && v[k][0] < i) k++;
+  const [ia, ta] = v[k - 1], [ib, tb] = v[k], ea = esforco(ia), eb = esforco(ib);
+  return PARTIDA_MIN + ta + (eb > ea ? (tb - ta) * (esforco(i) - ea) / (eb - ea) : 0);
+};
 
 // nascer e pôr do sol (fórmula astronómica simples, dia do ano)
 function sol(lat, lon, dia, fuso, zen = 90.833) {
