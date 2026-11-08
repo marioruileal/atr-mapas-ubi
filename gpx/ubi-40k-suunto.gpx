@@ -4,13 +4,13 @@
   <wpt lat="38.59239" lon="-28.82714">
     <ele>8</ele>
     <name>Porto do Comprido</name>
-    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 12,0 km (+945 m)</desc>
+    <desc>Km 0,0 · autocarro, saco · próximo abastecimento a 12,1 km (+945 m)</desc>
     <type>Start</type>
   </wpt>
-  <wpt lat="38.58347" lon="-28.7457">
-    <ele>670</ele>
+  <wpt lat="38.58369" lon="-28.7456">
+    <ele>669</ele>
     <name>Depósito de Água Levada</name>
-    <desc>Km 12,0 · água, comida · barreira 12:00 · próximo abastecimento a 13,2 km (+558 m)</desc>
+    <desc>Km 12,1 · água, comida · barreira 12:00 · próximo abastecimento a 13,2 km (+558 m)</desc>
     <type>Aid_station</type>
   </wpt>
   <wpt lat="38.59905" lon="-28.68165">
