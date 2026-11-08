@@ -223,6 +223,8 @@ dialog h3 { font-size: 20px; margin-bottom: 12px }
 .ecra-inteiro { width: 34px; height: 34px; background: #fff; border: 0; font-size: 18px; line-height: 1; cursor: pointer; color: #1a1d21 }
 .aviso-foto { position: absolute; left: 10px; right: 60px; bottom: 28px; z-index: 1000; margin: 0; padding: 8px 12px; border-radius: 8px; background: rgba(20,24,29,.85); color: #f4f0e8; font-size: 13px }
 .aviso-foto[hidden] { display: none }
+.ajuda-fundo { flex-basis: 100%; margin: 0; padding: 6px 10px; border-radius: 8px; background: rgba(20,24,29,.85); color: #f4f0e8; font-size: 13px; max-width: 34ch }
+.ajuda-fundo[hidden] { display: none }
 .mk-solto { background: none; border: 0 }
 .mk-solto > * { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) }
 .mk-seta svg { display: block }
@@ -268,7 +270,7 @@ h1, section > .largura > h2 { text-transform: uppercase; letter-spacing: -0.01em
 /* Cantos direitos (regra da casa do sistema): só os discos das provas e os marcadores do mapa ficam redondos */
 .ficha, .traco, .painel, .mini, .janela, .pega.esq, .pega.dir, .aperto-lista li, .aperto-cor, .sitio, .mapa, .ponto-cartao, .tabela-caixa,
 dialog, .barra .etq, .barra .tubo, pre.gpx, .aviso, #plano .nota, .dica, .ajuda-gpx, .segmentos, .segmentos button, .chip, .estado,
-.ver-todas, .subida button, .subida .cat, .carril span, .aviso-foto, #mapa-evento, .tabela, .legenda label { border-radius: 0 !important }
+.ver-todas, .subida button, .subida .cat, .carril span, .aviso-foto, .ajuda-fundo, #mapa-evento, .tabela, .legenda label { border-radius: 0 !important }
 .dica, dialog { box-shadow: 4px 4px 0 #052974 }
 .traco .num { color: var(--turquesa) }
 .submenu a { font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 13px }
@@ -1723,7 +1725,7 @@ new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
-// Fundos (decisão do Mário, 05-11-2026): «Relevo» (OpenTopoMap, abre por omissão), «Trilhos» (CyclOSM) e «Fotografia aérea», todos ligados à origem.
+// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Curvas de nível» (OpenTopoMap), «Caminhos» (CyclOSM), «Paisagem» (Mapbox, abre por omissão) e «Fotografia aérea», todos ligados à origem.
 // «Exterior» (Mapbox Outdoors, pedido de 07-11-2026): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
 // O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
 // e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
@@ -1767,7 +1769,7 @@ window.MAPA = (() => {
   }
 
   // caminhos do OpenStreetMap: c = 0 estrada (p = 1 principal), 1 caminho rural, 2 ou mais trilho
-  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // o Relevo, os Trilhos e o Exterior já trazem caminhos e nomes
+  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // as Curvas de nível, os Caminhos e a Paisagem já trazem caminhos e nomes
   function estiloCaminho(f) {
     if (!nosso()) return { opacity: 0 };
     const zz = z(), sobreFoto = fundo === 'foto', c = f.properties.c, p = f.properties.p === 1;
@@ -1861,7 +1863,14 @@ window.MAPA = (() => {
       foto = L.tileLayer.wms(CFG.mapa.orto.wms, { pane: 'foto', layers: CFG.mapa.orto.camada, format: 'image/jpeg', version: '1.3.0', tileSize: 512, maxZoom: 19, bounds: limites, attribution: CFG.mapa.orto.credito });
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
-    [['relevo', outros.relevo, 'Relevo', 'do OpenTopoMap'], ['trilhos', outros.trilhos, 'Trilhos', 'do CyclOSM'], ['exterior', outros.exterior, 'Exterior', 'do Mapbox'], ['foto', foto, 'Fotografia aérea', 'do serviço da IDE Açores']].forEach(([k, c, nome, origem]) => c && c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
+    // nomes pelo que cada fundo mostra (decisão do Mário, 08-11-2026), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
+    // abre na «Paisagem» (decisão do Mário, 08-11-2026); sem a chave do Mapbox, nas «Curvas de nível»
+    const INICIAL = outros.exterior ? 'exterior' : 'relevo';
+    const FUNDOS = [['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
+      ['trilhos', outros.trilhos, 'Caminhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
+      ['exterior', outros.exterior, 'Paisagem', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
+      ['foto', foto, 'Fotografia aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores']].filter(f => f[1]);
+    FUNDOS.forEach(([k, c, nome, , origem]) => c.on('tileerror', () => { if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); }));
     const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
     json('terra.geojson').then(g => terra.addData(g));
     json('agua.geojson').then(g => agua.addData(g));
@@ -1889,17 +1898,20 @@ window.MAPA = (() => {
     visibilidade();
 
     painel = document.createElement('div'); painel.className = 'painel-mapa';
-    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa"><button type="button" data-fundo="relevo" aria-pressed="true">Relevo</button><button type="button" data-fundo="trilhos" aria-pressed="false">Trilhos</button>${outros.exterior ? '<button type="button" data-fundo="exterior" aria-pressed="false">Exterior</button>' : ''}${CFG.mapa.orto ? '<button type="button" data-fundo="foto" aria-pressed="false">Fotografia aérea</button>' : ''}</div>`
+    painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa">${FUNDOS.map(([k, , nome, ajuda]) => `<button type="button" data-fundo="${k}" aria-pressed="${k === INICIAL}" title="${nome}: ${ajuda}">${nome}</button>`).join('')}</div>`
       + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`;
     L.DomEvent.disableClickPropagation(painel); L.DomEvent.disableScrollPropagation(painel);
     caixa.appendChild(painel);
-    painel.querySelectorAll('[data-fundo]').forEach(b => b.addEventListener('click', () => mudarFundo(b.dataset.fundo)));
+    painel.querySelectorAll('[data-fundo]').forEach(b => b.addEventListener('click', () => { mudarFundo(b.dataset.fundo); ajudaFundo(b.title); }));
+    // ao tocar num fundo, a frase de ajuda aparece uns segundos por baixo dos botões (no telemóvel não há «passar o rato»)
+    const ajuda = document.createElement('p'); ajuda.className = 'ajuda-fundo'; ajuda.hidden = true; painel.appendChild(ajuda);
+    function ajudaFundo(texto) { ajuda.textContent = texto; ajuda.hidden = false; clearTimeout(ajudaFundo.t); ajudaFundo.t = setTimeout(() => { ajuda.hidden = true; }, 4000); }
     painel.querySelector('[data-setas]').addEventListener('click', ev => { setas = !setas; ev.currentTarget.setAttribute('aria-pressed', setas); visibilidade(); });
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
-    const pedido = (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
-    // decisão do Mário (05-11-2026): sem o fundo «Mapa»; abre no «Relevo»
-    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : 'relevo');
+    const pedido = ({ paisagem: 'exterior', caminhos: 'trilhos', curvas: 'relevo' })[(location.hash.match(/^#(\w+)/) || [])[1]] || (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
+    // decisão do Mário (05-11-2026): sem o fundo «Mapa»
+    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : INICIAL);
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
     if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
   }
@@ -1907,7 +1919,7 @@ window.MAPA = (() => {
   // abre-se sozinho quando o mapa chega perto do ecrã
   const vigia = new IntersectionObserver(ent => { if (ent.some(e => e.isIntersecting)) { vigia.disconnect(); abrir(); } }, { rootMargin: '400px' });
   vigia.observe(caixa);
-  if (/^#(relevo|trilhos|exterior|foto)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
+  if (/^#(relevo|trilhos|exterior|foto|paisagem|caminhos|curvas)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
 
   return {
     marcar(i) { if (!mapa || !cursor) return; if (i == null) { cursor.remove(); return; } cursor.setLatLng(ll(P[i])).addTo(mapa); },
