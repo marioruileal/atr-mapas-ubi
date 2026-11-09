@@ -81,7 +81,7 @@ section > .largura > h2 { font-size: 28px; font-weight: 600; margin-bottom: 6px 
 .ajuda { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--linha); background: var(--cartao); cursor: pointer; font-size: 13px }
 
 .perfil-caixa { position: relative; touch-action: pan-y; user-select: none }
-#perfil { display: block; width: 100%; height: 300px }
+#perfil { display: block; width: 100%; height: 316px }
 #perfil text { fill: var(--texto-2); font-family: var(--f-mono); font-size: 11px }
 .dica { position: absolute; pointer-events: none; background: var(--basalto); color: #f4f0e8; border-radius: 8px; padding: 8px 10px; font-size: 13px; line-height: 1.35; min-width: 150px; transform: translate(-50%, 0); white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,.25) }
 .dica b { font-family: var(--f-mono); font-weight: 500 }
@@ -167,6 +167,21 @@ td.nome .linha { display: block }
 .estado.ok { background: var(--turquesa-tinta); color: var(--turquesa) }
 .estado.justo { background: #fff3cd; color: #7a5600 }
 .estado.fora { background: var(--lava-tinta); color: var(--lava) }
+/* relatório 85 §5: legenda das horas no perfil, − e + ao lado da régua, paragem e barra do tempo fixa */
+.legenda-horas { margin: 6px 0 0; font-size: 13px; color: var(--texto-2) }
+.sai { display: block; font-size: 12px; color: var(--texto-2); font-family: var(--f-corpo) }
+.passo-btn, .passo button { width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--linha); background: var(--cartao); color: var(--turquesa); font: inherit; font-size: 20px; line-height: 1; cursor: pointer; display: inline-grid; place-items: center; padding: 0 }
+.passo-btn:hover, .passo button:hover { border-color: var(--turquesa) }
+.passo-btn:focus-visible, .passo button:focus-visible { outline: 2px solid var(--turquesa); outline-offset: 2px }
+.passo { display: inline-flex; align-items: center; gap: 8px }
+.passo .rot { font-size: 15px }
+.passo output { font-family: var(--f-mono); font-size: 18px; color: var(--turquesa); min-width: 4.2em; text-align: center }
+.alvo.paragem { margin-top: -4px }
+.barra-tempo { position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; padding: 8px 14px; max-width: calc(100% - 24px); box-sizing: border-box; background: var(--cartao); border: 1px solid var(--linha); border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,.18) }
+.barra-tempo[hidden] { display: none }
+.barra-tempo .rot { font-size: 13px; color: var(--texto-2) }
+@media (max-width: 420px) { .barra-tempo { gap: 6px 12px; padding: 6px 10px } .passo output { min-width: 3.6em; font-size: 16px } .passo-btn, .passo button { width: 32px; height: 32px } }
+@media print { .barra-tempo { display: none !important } }
 .carril { width: 22px; padding: 0 2px !important }
 .carril span { display: block; width: 20px; height: 20px; margin: 0 auto }
 .carril svg { display: block; width: 20px; height: 20px }
@@ -174,7 +189,8 @@ td.nome .linha { display: block }
 .icones svg { width: 18px; height: 18px; color: var(--texto-2) }
 .alvo { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-bottom: 12px }
 .alvo label { font-size: 15px }
-.alvo input[type=range] { width: min(320px, 100%); accent-color: var(--turquesa) }
+.alvo input[type=range] { flex: 1 1 140px; min-width: 0; max-width: 320px; accent-color: var(--turquesa) }
+@media (max-width: 520px) { .alvo label { flex-basis: 100% } .alvo { gap: 8px 10px } }
 .alvo output { font-family: var(--f-mono); font-size: 20px; color: var(--turquesa) }
 .alvo small { color: var(--texto-2) }
 
@@ -1029,6 +1045,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <svg id="perfil" role="img" aria-label="Perfil de altitude da prova"></svg>
         <div class="dica" id="dica" hidden></div>
       </div>
+      <p class="legenda-horas" id="legenda-horas">Por cima de cada ponto, <b>a tua hora</b>, com o tempo que escolhes em «Pontos e horários»<span class="so-barreiras">; por baixo dela, a vermelho, <b>a barreira</b>. A tua hora fica verde com folga, amarela com menos de 20 minutos e vermelha fora da barreira</span>. Em cada troço, os km, a subida e o tempo que levas.</p>
       <div class="navegador">
         <div class="mini" id="mini" aria-label="Escolher um troço">
           <svg id="mini-svg" preserveAspectRatio="none" viewBox="0 0 100 56" aria-hidden="true"></svg>
@@ -1081,7 +1098,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="pontos" aria-labelledby="t-pontos">
   <div class="largura">
     <h2 id="t-pontos">Pontos e horários</h2>
-    <p class="lead">Escolhe o tempo que contas fazer. A hora prevista em cada ponto reparte esse tempo pelo esforço de cada troço (km + D+/100), e avisa quando ficas perto de uma barreira.</p>
+    <p class="lead">Escolhe o tempo que contas fazer. <span id="explica-horas">A hora prevista em cada ponto reparte esse tempo pelo esforço de cada troço (km + D+/100)</span>, e avisa quando ficas perto de uma barreira.</p>
     <div class="alvo">
       <label for="tempo-alvo">O meu tempo previsto</label>
       <input type="range" id="tempo-alvo" min="90" max="780" step="15" value="300">
@@ -1278,7 +1295,7 @@ const iPorKm = km => { let lo = 0, hi = P.length - 1; while (hi - lo > 1) { cons
 const PONTOS = CFG.pontos.map(p => ({ ...p, km: p.km === 'fim' ? KM_TOTAL : p.km, kmVer: p.kmVer != null ? p.kmVer : p.km === 'fim' && CFG.oficial ? CFG.oficial.km : (p.km === 'fim' ? KM_TOTAL : p.km) })).map(p => { const i = iPorKm(p.km); return { ...p, i, alt: P[i][1], dmais: P[i][4], dmenos: P[i][5] }; });
 
 // estado
-const E = { modo: 'percurso', barreiras: true, servicosPerfil: new Set(Object.keys(SERVICOS)), filtroTabela: new Set(), de: 0, ate: KM_TOTAL, alvo: CFG.alvo.valor, ponto: null, cursor: null };
+const E = { modo: 'percurso', barreiras: true, servicosPerfil: new Set(Object.keys(SERVICOS)), filtroTabela: new Set(), de: 0, ate: KM_TOTAL, alvo: CFG.alvo.valor, paragem: 0, ponto: null, cursor: null };
 
 // classes de inclinação (valor absoluto, %)
 const CLASSES = [[0, 5, '--s0', '0–5 %'], [5, 10, '--s1', '5–10 %'], [10, 15, '--s2', '10–15 %'], [15, 20, '--s3', '15–20 %'], [20, 30, '--s4', '20–30 %'], [30, 999, '--s5', '30 % ou mais']];
@@ -1310,13 +1327,25 @@ function ancorasPara(T) {
   ancoras = { T, v };
   return v;
 }
-const horaPrevista = i => {
-  if (!POSTOS_REAIS) return PARTIDA_MIN + E.alvo * esforco(i) / ESF_TOTAL;
-  const v = ancorasPara(E.alvo);
+const horaBase = (i, T) => {
+  if (!POSTOS_REAIS) return PARTIDA_MIN + T * esforco(i) / ESF_TOTAL;
+  const v = ancorasPara(T);
   let k = 1; while (k < v.length - 1 && v[k][0] < i) k++;
   const [ia, ta] = v[k - 1], [ib, tb] = v[k], ea = esforco(ia), eb = esforco(ib);
   return PARTIDA_MIN + ta + (eb > ea ? (tb - ta) * (esforco(i) - ea) / (eb - ea) : 0);
 };
+// Paragem em cada abastecimento (relatório 85 §5, melhoria 8): o tempo escolhido continua a ser a hora de chegada à meta.
+// As paragens contam dentro dele: anda-se o tempo que sobra (T − N × paragem), repartido como antes, e somam-se as paragens já feitas.
+const ABAST = PONTOS.filter(p => p.tipo === 'abastecimento');
+const paragensAntes = i => ABAST.filter(p => p.i < i).length;
+const horaPrevista = i => !E.paragem ? horaBase(i, E.alvo) : horaBase(i, E.alvo - ABAST.length * E.paragem) + paragensAntes(i) * E.paragem;
+// hora de saída de um ponto: num abastecimento, depois da paragem. A barreira é a hora a que o posto fecha (decisão 95): conta a saída.
+const horaSaida = (p, n) => n === 0 || p.tipo === 'partida' ? PARTIDA_MIN : horaPrevista(p.i) + (p.tipo === 'abastecimento' ? E.paragem : 0);
+// a frase que explica de onde vêm as horas (relatório 85 §5, melhoria 1): nos 102, 40 e 26 km vêm dos tempos reais de 2026
+const textoHoras = () => (POSTOS_REAIS
+  ? `A hora em cada abastecimento vem dos tempos reais de passagem de ${CFG.passagens.ano || 2026} para o tempo que escolhes; entre abastecimentos, reparte-se pelo esforço de cada troço (km + D+/100)`
+  : 'A hora prevista em cada ponto reparte esse tempo pelo esforço de cada troço (km + D+/100)')
+  + (E.paragem && ABAST.length ? `. Contas com ${E.paragem} min de paragem em cada abastecimento: chegas à meta à mesma hora, mas andas mais depressa entre eles` : '');
 
 // nascer e pôr do sol (fórmula astronómica simples, dia do ano)
 function sol(lat, lon, dia, fuso, zen = 90.833) {
@@ -1381,10 +1410,14 @@ document.getElementById('legenda').innerHTML = disponiveis.map(s => `<li>${ICONE
 
 // ---------- perfil ----------
 const svg = document.getElementById('perfil'), caixaPerfil = document.getElementById('perfil-caixa'), dica = document.getElementById('dica');
-const M = { e: 46, d: 12, t: 54, b: 52 }; // margens: em cima ficam as barreiras e os ícones; em baixo os km e os troços
+const M = { e: 46, d: 12, t: 66, b: 64 }; // margens: em cima ficam a tua hora, as barreiras e os ícones; em baixo os km e os troços
+// em cima de cada ponto (relatório 85 §5, melhoria 3): na 1.ª linha a tua hora, na 2.ª a barreira; as linhas e a faixa começam em TOPO
+const Y_HORA = 14, Y_BAR = 28, TOPO = 34;
+// cor da tua hora num ponto com barreira: a mesma regra da tabela (fora, menos de 20 min, folga)
+const corFolga = f => f < 0 ? cor('--lava') : f < 20 ? cor('--sol') : cor('--turquesa');
 let G = null; // geometria do último desenho
 function desenharPerfil() {
-  const W = caixaPerfil.clientWidth, H = 300;
+  const W = caixaPerfil.clientWidth, H = 316;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const i0 = iPorKm(E.de), i1 = iPorKm(E.ate);
   let amin = Infinity, amax = -Infinity;
@@ -1408,7 +1441,7 @@ function desenharPerfil() {
   let ini = null;
   for (let i = i0; i <= i1 + 1; i++) { const n = i <= i1 && deNoite(horaPrevista(i));
     if (n && ini === null) ini = i;
-    if (!n && ini !== null) { const xa = x(P[ini][0]), xb = x(P[i - 1][0]); s += `<rect x="${xa}" y="22" width="${Math.max(1, xb - xa)}" height="${H - M.b - 22}" fill="${cor('--noite')}" fill-opacity=".13"/>` + (xb - xa > 46 ? `<text x="${xa + 6}" y="36" style="fill:${cor('--texto-2')};font-size:11px">noite</text>` : ''); ini = null; } }
+    if (!n && ini !== null) { const xa = x(P[ini][0]), xb = x(P[i - 1][0]); s += `<rect x="${xa}" y="${TOPO}" width="${Math.max(1, xb - xa)}" height="${H - M.b - TOPO}" fill="${cor('--noite')}" fill-opacity=".13"/>` + (xb - xa > 46 ? `<text x="${xa + 6}" y="${TOPO + 20}" style="fill:${cor('--texto-2')};font-size:11px">noite</text>` : ''); ini = null; } }
   let linha = '';
   for (let i = i0; i <= i1; i++) linha += (i === i0 ? 'M' : 'L') + x(P[i][0]).toFixed(1) + ',' + y(P[i][1]).toFixed(1);
   s += `<g clip-path="url(#corte)"><path d="${linha}L${x(P[i1][0])},${H - M.b}L${x(P[i0][0])},${H - M.b}Z" fill="url(#g-area)"/>`;
@@ -1424,9 +1457,21 @@ function desenharPerfil() {
     const ult = vis[vis.length - 1], cu = caixaTxt(ult); let dir = -Infinity;
     vis.forEach((p, n) => { const c = caixaTxt(p); if (n === vis.length - 1 || (c[0] > dir + 6 && c[1] < cu[0] - 6)) { comNome.add(p.id); dir = c[1]; } });
   }
+  // a tua hora e a barreira por cima de cada ponto; quando os rótulos se tocam (telemóvel, pontos juntos), fica só o que cabe
+  // (o último fica sempre); os outros veem-se ao tocar no ponto
+  const LARG_H = 38, ancora = px => px < 30 ? 'start' : px > W - 30 ? 'end' : 'middle';
+  const caixaH = px => { const a = ancora(px); return a === 'start' ? [px, px + LARG_H] : a === 'end' ? [px - LARG_H, px] : [px - LARG_H / 2, px + LARG_H / 2]; };
+  const comHora = new Set();
+  if (vis.length) { const cu = caixaH(x(vis[vis.length - 1].km)); let dir = -Infinity;
+    vis.forEach((p, n) => { const c = caixaH(x(p.km)); if (n === vis.length - 1 || (c[0] > dir + 4 && c[1] < cu[0] - 4)) { comHora.add(p.id); dir = c[1]; } }); }
   vis.forEach((p, n) => {
-    const px = x(p.km), py = y(p.alt);
-    if (E.barreiras && p.barreira) s += `<line x1="${px}" x2="${px}" y1="22" y2="${py}" stroke="${cor('--lava')}" stroke-dasharray="3 3"/><text x="${px}" y="16" text-anchor="${px > W - 30 ? 'end' : 'middle'}" style="fill:${cor('--lava')};font-weight:600">${hora(p.barreira)}</text>`;
+    const px = x(p.km), py = y(p.alt), na = PONTOS.indexOf(p), minha = na === 0 ? PARTIDA_MIN : horaPrevista(p.i);
+    if (E.barreiras && p.barreira) s += `<line x1="${px}" x2="${px}" y1="${TOPO}" y2="${py}" stroke="${cor('--lava')}" stroke-dasharray="3 3"/>`;
+    if (comHora.has(p.id)) {
+      const f = p.barreira ? p.barreira - horaSaida(p, na) : null;
+      s += `<text x="${px}" y="${Y_HORA}" text-anchor="${ancora(px)}" style="fill:${f == null ? cor('--texto') : corFolga(f)};font-weight:700">${hora(minha)}</text>`;
+      if (E.barreiras && p.barreira) s += `<text x="${px}" y="${Y_BAR}" text-anchor="${ancora(px)}" style="fill:${cor('--lava')};font-size:11px;font-weight:600">${hora(p.barreira)}</text>`;
+    }
     s += `<line x1="${px}" x2="${px}" y1="${py}" y2="${H - M.b + 34}" stroke="${cor('--linha')}" stroke-dasharray="2 3"/>`;
     if (comNome.has(p.id)) s += `<text x="${px}" y="${H - M.b + 15}" text-anchor="${px < 60 ? 'start' : px > W - 60 ? 'end' : 'middle'}" style="fill:${cor('--turquesa')};font-weight:600">${fmt(p.kmVer, 1)} km</text>`;
     if (comNome.has(p.id)) s += `<text x="${px}" y="${H - M.b + 28}" text-anchor="${px < 60 ? 'start' : px > W - 60 ? 'end' : 'middle'}" style="font-family:var(--f-corpo);font-size:12px;fill:${cor('--texto')}">${curtos ? p.curto : p.nome}</text>`;
@@ -1445,14 +1490,18 @@ function desenharPerfil() {
     const ia = iPorKm(ka), ib = iPorKm(kb), mx = (x(ka) + x(kb)) / 2;
     // o texto do troço encolhe se não couber: «km · m+», só «km», ou nada
     const kmT = (ka === a.km && kb === b.km) ? b.kmVer - a.kmVer : kb - ka; // troço inteiro: km oficiais
-    const largo = x(kb) - x(ka) - 8, longo = `${fmt(kmT, 1)} km · ${fmt(P[ib][4] - P[ia][4])} m+`, so = `${fmt(kmT, 1)} km`;
-    const txt = longo.length * 6.2 <= largo ? longo : so.length * 6.2 <= largo ? so : '';
-    if (txt) s += `<text x="${mx}" y="${H - 6}" text-anchor="middle" style="fill:${cor('--texto-2')}">${txt}</text>`;
+    // e, no troço inteiro, o tempo previsto com o teu tempo (da saída de um ponto à chegada ao seguinte)
+    const t = ka === a.km && kb === b.km ? horaPrevista(b.i) - horaSaida(a, n - 1) : null;
+    // duas linhas: «km · m+» (ou só «km») e, por baixo, o tempo que levas nesse troço
+    const largo = x(kb) - x(ka) - 8;
+    const txt = [`${fmt(kmT, 1)} km · ${fmt(P[ib][4] - P[ia][4])} m+`, `${fmt(kmT, 1)} km`].find(v => v.length * 6.2 <= largo) || '';
+    if (txt) s += `<text x="${mx}" y="${H - 19}" text-anchor="middle" style="fill:${cor('--texto-2')}">${txt}</text>`;
+    if (txt && t != null && t > 0) s += `<text x="${mx}" y="${H - 5}" text-anchor="middle" style="fill:${cor('--texto')};font-weight:600">${duracao(t)}</text>`;
   }
   if (E.barreiras) apertoBarreiras().forEach(t => { const ka = Math.max(t.a.km, E.de), kb = Math.min(t.b.km, E.ate); if (kb <= ka) return;
-    s += `<rect x="${x(ka)}" y="24" width="${Math.max(1, x(kb) - x(ka) - 1)}" height="6" rx="2" fill="${corAperto(t.rel)}"><title>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}: ${fmt(t.porHora, 1)} por hora, ${fmt(t.rel, 1)}× a média (${txtAperto(t.rel)})</title></rect>`; });
-  s += `<line id="cursor-l" x1="0" x2="0" y1="22" y2="${H - M.b}" stroke="${cor('--texto')}" stroke-width="1" visibility="hidden"/><circle id="cursor-c" r="5" fill="${cor('--cartao')}" stroke="${cor('--texto')}" stroke-width="2" visibility="hidden"/>`;
-  s += `<rect id="selecao" y="22" height="${H - M.b - 22}" fill="${cor('--turquesa')}" fill-opacity=".12" visibility="hidden"/>`;
+    s += `<rect x="${x(ka)}" y="${TOPO + 2}" width="${Math.max(1, x(kb) - x(ka) - 1)}" height="6" rx="2" fill="${corAperto(t.rel)}"><title>${t.a.tipo === 'partida' ? 'Partida' : t.a.nome} → ${t.b.tipo === 'meta' ? 'Meta' : t.b.nome}: ${fmt(t.porHora, 1)} por hora, ${fmt(t.rel, 1)}× a média (${txtAperto(t.rel)})</title></rect>`; });
+  s += `<line id="cursor-l" x1="0" x2="0" y1="${TOPO}" y2="${H - M.b}" stroke="${cor('--texto')}" stroke-width="1" visibility="hidden"/><circle id="cursor-c" r="5" fill="${cor('--cartao')}" stroke="${cor('--texto')}" stroke-width="2" visibility="hidden"/>`;
+  s += `<rect id="selecao" y="${TOPO}" height="${H - M.b - TOPO}" fill="${cor('--turquesa')}" fill-opacity=".12" visibility="hidden"/>`;
   svg.innerHTML = s;
   desenharMapa(); desenharMini(); atualizarTotais();
 }
@@ -1467,7 +1516,7 @@ function mostrarCursor(km) {
   c.setAttribute('cx', px); c.setAttribute('cy', py); c.setAttribute('visibility', 'visible');
   dica.hidden = false;
   dica.innerHTML = `<b>${fmt(p[0], 1)} km</b> · <b>${fmt(p[1])} m</b><br>Subida até aqui <b>${fmt(p[4])} m</b> · descida <b>${fmt(p[5])} m</b><br>Inclinação <b>${p[6] > 0 ? '+' : ''}${fmt(p[6], 0)} %</b>${TERRENO ? `<br>Piso <b>${TERRENO[D.t[i]].nome}</b>` : ''}<br>A tua hora prevista <b>${hora(horaPrevista(i))}</b>${(b => b ? `<br>Próximo abastecimento: <b>${fmt(b.km - p[0], 1)} km</b> (${b.tipo === 'meta' ? 'Meta' : b.nome})` : '')(proximoDe(p[0]))}`;
-  const lw = dica.offsetWidth; dica.style.left = Math.min(Math.max(px, lw / 2 + 4), G.W - lw / 2 - 4) + 'px'; dica.style.top = '24px';
+  const lw = dica.offsetWidth; dica.style.left = Math.min(Math.max(px, lw / 2 + 4), G.W - lw / 2 - 4) + 'px'; dica.style.top = (TOPO + 4) + 'px';
   E.cursor = i; marcarMapa(i);
 }
 function esconderCursor() { svg.querySelector('#cursor-l')?.setAttribute('visibility', 'hidden'); svg.querySelector('#cursor-c')?.setAttribute('visibility', 'hidden'); dica.hidden = true; E.cursor = null; marcarMapa(null); }
@@ -1581,13 +1630,13 @@ const ehAbast = p => p.tipo === 'abastecimento' || p.tipo === 'meta';
 function proximoDe(km) { return PONTOS.find(p => ehAbast(p) && p.km > km + 1e-6) || null; }
 function ateProximo(a, b, comHora) {
   if (!b) return '';
-  const nome = b.tipo === 'meta' ? 'Meta' : b.nome, t = comHora ? horaPrevista(b.i) - (a.i != null ? horaPrevista(a.i) : 0) : 0;
+  const nome = b.tipo === 'meta' ? 'Meta' : b.nome, t = comHora ? horaPrevista(b.i) - (a.i != null ? horaSaida(a, PONTOS.indexOf(a)) : 0) : 0;
   return `${fmt(b.kmVer - a.kmVer, 1)} km · +${fmt(b.dmais - a.dmais)} m · −${fmt(b.dmenos - a.dmenos)} m, até ${artigo(nome)[1]} ${nome}${comHora && t > 0 ? ` (cerca de ${duracao(t)} com o teu tempo)` : ''}`;
 }
 const linkMaps = (p, txt) => p.gps ? `<a class="maps" href="https://www.google.com/maps/search/?api=1&query=${p.gps[0]},${p.gps[1]}" target="_blank" rel="noopener">${txt}</a>` : '';
 function abrirPonto(id) {
   const n = PONTOS.findIndex(p => p.id === id), p = PONTOS[n], ant = PONTOS[n - 1];
-  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i))] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
+  const linhas = [['Desde a partida', fmt(p.kmVer, 1) + ' km · ' + fmt(p.dmais) + ' m+'], ant && n > 1 ? ['Desde ' + ant.nome, fmt(p.kmVer - ant.kmVer, 1) + ' km · ' + fmt(p.dmais - ant.dmais) + ' m+ · ' + fmt(p.dmenos - ant.dmenos) + ' m−'] : null, ['Altitude', fmt(p.alt) + ' m'], p.barreira ? ['Barreira horária', hora(p.barreira)] : null, n > 0 ? ['A tua hora prevista', hora(horaPrevista(p.i)) + (horaSaida(p, n) > horaPrevista(p.i) ? ' · sais às ' + hora(horaSaida(p, n)) : '')] : ['Hora', hora(PARTIDA_MIN)], p.tipo !== 'meta' && proximoDe(p.km) ? ['Próximo abastecimento', ateProximo(p, proximoDe(p.km), true)] : null].filter(Boolean);
   document.getElementById('ponto-cartao').innerHTML = `<h3>${p.nome}</h3><span style="color:var(--texto-2)">${p.local}</span>${p.gps ? ' · ' + linkMaps(p, 'Abrir no Google Maps') : ''}<dl>${linhas.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>` + (p.servicos.length ? `<div class="icones" style="gap:10px;flex-wrap:wrap">${p.servicos.map(s => `<span style="display:inline-flex;gap:4px;align-items:center;font-size:14px">${ICONES[s]}${SERVICOS[s].nome}</span>`).join('')}</div>` : '');
   E.ponto = id; mostrarCursor(p.km >= E.de && p.km <= E.ate ? p.km : E.de);
 }
@@ -1597,6 +1646,7 @@ document.querySelectorAll('[data-modo]').forEach(b => b.addEventListener('click'
 document.getElementById('abrir-terreno').addEventListener('click', () => { const km = TERRENO.map(() => 0); for (let i = 1; i < P.length; i++) km[D.t[i]] += P[i][0] - P[i - 1][0]; const max = Math.max(...km); document.getElementById('barras-terreno').innerHTML = TERRENO.map((t, c) => km[c] < 0.05 ? '' : `<div class="barra larga"><span class="etq">${t.nome}</span><span class="tubo"><i style="width:${(km[c] / max * 100).toFixed(1)}%;background:${cor(t.var)}"></i></span><span class="val">${fmt(km[c], 1)} km <small>${fmt(km[c] / KM_TOTAL * 100, 0)} %</small></span></div>`).join(''); document.getElementById('dlg-terreno').showModal(); });
 document.getElementById('ver-barreiras').addEventListener('change', ev => { E.barreiras = ev.target.checked; desenharPerfil(); });
 if (!PONTOS.some(p => p.barreira)) document.getElementById('ver-barreiras').closest('label').style.display = 'none'; // prova sem barreiras
+if (!PONTOS.some(p => p.barreira)) document.querySelectorAll('.so-barreiras').forEach(el => el.remove());
 document.getElementById('abrir-inclinacoes').addEventListener('click', () => { desenharBarras(); document.getElementById('dlg-inclinacoes').showModal(); });
 document.getElementById('separar').addEventListener('change', desenharBarras);
 function desenharBarras() {
@@ -1626,9 +1676,9 @@ function desenharTabela() {
   const desnivel = (mais, menos) => `<span class="peq">+${fmt(mais)} m</span><span class="peq">−${fmt(menos)} m</span>`;
   linhas.forEach((p, n) => {
     const b = p.tipo !== 'meta' ? proximoDe(p.km) : null;
-    const minutos = n === 0 ? PARTIDA_MIN : horaPrevista(p.i);
-    let estado = '';
-    if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
+    const minutos = n === 0 ? PARTIDA_MIN : horaPrevista(p.i), na = PONTOS.indexOf(p), sai = horaSaida(p, na);
+    let estado = sai > minutos ? `<span class="sai">sais às ${hora(sai)}</span>` : '';
+    if (p.barreira) { const folga = p.barreira - sai; estado += folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
     h += `<tr><td class="nome">${duasLinhas(p.nome)}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td>`
       + `<td class="num">${fmt(p.alt)} m</td>`
       + `<td class="num">${fmt(p.kmVer, 1)} km${n ? desnivel(p.dmais, p.dmenos) : ''}</td>`
@@ -1641,7 +1691,14 @@ function desenharTabela() {
   if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent.replace(/\s+/g, '') === 'Próximoabastecimento'); if (th) th.innerHTML = 'Até à<br>chegada'; }
 }
 const alvo = document.getElementById('tempo-alvo');
-alvo.addEventListener('input', () => { E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); desenharTabela(); desenharPerfil(); desenharLuz(); desenharSubidas(); if (E.ponto) abrirPonto(E.ponto); });
+function redesenharHoras() {
+  E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo);
+  const ex = document.getElementById('explica-horas'); if (ex) ex.textContent = textoHoras();
+  document.querySelectorAll('[data-mostra="alvo"]').forEach(o => { o.textContent = duracao(E.alvo); });
+  document.querySelectorAll('[data-mostra="paragem"]').forEach(o => { o.textContent = E.paragem + ' min'; });
+  desenharTabela(); desenharPerfil(); desenharLuz(); desenharSubidas(); if (E.ponto) abrirPonto(E.ponto);
+}
+alvo.addEventListener('input', redesenharHoras);
 
 // ---------- GPX por marca de relógio ----------
 const cp = PONTOS[CFG.gpxPonto], pc = P[cp.i], svc = cp.servicos.map(s => SERVICOS[s].nome.toLowerCase()).join(', ');
@@ -1746,30 +1803,57 @@ document.getElementById('lista-subidas')?.addEventListener('click', ev => { cons
 function desenharPlano() {
   const titulo = document.title.split(' · ')[0], linhas = [];
   PONTOS.forEach((p, n) => {
-    const m = n === 0 ? PARTIDA_MIN : horaPrevista(p.i), prox = p.tipo !== 'meta' ? proximoDe(p.km) : null, extra = [];
-    if (p.barreira && n > 0) { const f = p.barreira - m; extra.push(f < 0 ? `<b style="color:var(--lava)">fora da barreira das ${hora(p.barreira)}</b>` : `barreira às ${hora(p.barreira)}, ${duracao(f)} de folga`); }
+    const m = n === 0 ? PARTIDA_MIN : horaPrevista(p.i), sai = horaSaida(p, n), prox = p.tipo !== 'meta' ? proximoDe(p.km) : null, extra = [];
+    if (sai > m) extra.push(`sais às ${hora(sai)}`);
+    if (p.barreira && n > 0) { const f = p.barreira - sai; extra.push(f < 0 ? `<b style="color:var(--lava)">fora da barreira das ${hora(p.barreira)}</b>` : `barreira às ${hora(p.barreira)}, ${duracao(f)} de folga`); }
     if (p.servicos.length) extra.push(p.servicos.map(s => SERVICOS[s].nome.toLowerCase()).join(', '));
-    if (prox) { const t = horaPrevista(prox.i) - m; extra.push(`até ${prox.tipo === 'meta' ? 'à meta' : 'ao próximo abastecimento'}: ${fmt(prox.kmVer - p.kmVer, 1)} km, +${fmt(prox.dmais - p.dmais)} m, cerca de ${duracao(t)}${deNoite(m) || deNoite(horaPrevista(prox.i)) ? ', <b>com frontal</b>' : ''}`); }
+    if (prox) { const t = horaPrevista(prox.i) - sai; extra.push(`até ${prox.tipo === 'meta' ? 'à meta' : 'ao próximo abastecimento'}: ${fmt(prox.kmVer - p.kmVer, 1)} km, +${fmt(prox.dmais - p.dmais)} m, cerca de ${duracao(t)}${deNoite(m) || deNoite(horaPrevista(prox.i)) ? ', <b>com frontal</b>' : ''}`); }
     linhas.push(`<li><span class="h">${hora(m)}</span><span><b>${n === 0 ? 'Partida' : p.tipo === 'meta' ? 'Chegada' : p.curto} · ${p.nome}</b> <small>km ${fmt(p.kmVer, 1)}${extra.length ? ' · ' + extra.join(' · ') : ''}</small></span></li>`);
   });
   const fim = horaPrevista(P.length - 1);
-  document.getElementById('plano').innerHTML = `<h3 id="t-plano">O meu dia · ${titulo}</h3><p class="sub">Com ${duracao(E.alvo)}: partida às ${hora(PARTIDA_MIN)}, chegada por volta das ${hora(fim)}. Horas previstas pelo esforço de cada troço (km + D+/100).</p>`
+  document.getElementById('plano').innerHTML = `<h3 id="t-plano">O meu dia · ${titulo}</h3><p class="sub">Com ${duracao(E.alvo)}: partida às ${hora(PARTIDA_MIN)}, chegada por volta das ${hora(fim)}. ${textoHoras()}.</p>`
     + `<ol>${linhas.join('')}</ol>` + `<p class="nota">${document.getElementById('luz')?.innerHTML || ''}</p>`
     + `<p class="sub" style="margin-top:10px">Leva comida e água para o tempo até ao abastecimento seguinte; os abastecimentos não têm copos.</p>`;
 }
 document.getElementById('abrir-plano')?.addEventListener('click', () => { desenharPlano(); document.getElementById('dlg-plano').showModal(); });
 document.getElementById('imprimir-plano')?.addEventListener('click', () => window.print());
 document.getElementById('partilhar-plano')?.addEventListener('click', ev => {
-  const url = location.origin + location.pathname + '#tempo=' + duracao(E.alvo);
+  const url = location.origin + location.pathname + '#tempo=' + duracao(E.alvo) + (E.paragem ? '&paragem=' + E.paragem : '');
   (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(() => { ev.target.textContent = 'Ligação copiada'; }, () => { prompt('Copia esta ligação:', url); });
 });
 // o tempo escolhido fica guardado neste aparelho e pode vir na ligação (#tempo=10h00)
 const CHAVE_TEMPO = 'atr-tempo-' + location.pathname;
-alvo.addEventListener('change', () => { try { localStorage.setItem(CHAVE_TEMPO, String(E.alvo)); } catch (e) {} });
+const guardarTempo = () => { try { localStorage.setItem(CHAVE_TEMPO, String(E.alvo)); } catch (e) {} };
+alvo.addEventListener('change', guardarTempo);
 (() => { let v = null; const m = location.hash.match(/tempo=(\d+)h(\d\d)/); if (m) v = +m[1] * 60 + +m[2]; else { try { v = +localStorage.getItem(CHAVE_TEMPO) || null; } catch (e) {} }
   if (v && v >= +alvo.min && v <= +alvo.max) { alvo.value = v; E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); } })();
 
-desenharPerfil(); desenharTabela(); desenharLuz(); desenharSubidas(); desenharAperto();
+// ---------- − e +, paragem em cada abastecimento e barra do tempo sempre à mão (relatório 85 §5, melhorias 4 e 8) ----------
+const CHAVE_PARAGEM = 'atr-paragem-' + location.pathname;
+// a paragem não pode comer mais de um quarto do tempo escolhido, e no máximo 15 min por abastecimento
+const paragemMax = () => ABAST.length ? Math.min(15, Math.floor(E.alvo * 0.25 / ABAST.length)) : 0;
+function mudarAlvo(d) { const v = Math.min(+alvo.max, Math.max(+alvo.min, +alvo.value + d * +alvo.step)); if (v === +alvo.value) return; alvo.value = v; E.alvo = v; E.paragem = Math.min(E.paragem, paragemMax()); redesenharHoras(); guardarTempo(); }
+function mudarParagem(d) { const v = Math.min(paragemMax(), Math.max(0, E.paragem + d)); if (v === E.paragem) return; E.paragem = v; redesenharHoras(); try { localStorage.setItem(CHAVE_PARAGEM, String(v)); } catch (e) {} }
+const passo = (rotulo, chave, menos, mais) => `<span class="passo"><span class="rot">${rotulo}</span><button type="button" data-passo="${chave}" data-d="-1" aria-label="${menos}">−</button><output data-mostra="${chave}"></output><button type="button" data-passo="${chave}" data-d="1" aria-label="${mais}">+</button></span>`;
+const caixaAlvo = alvo.closest('.alvo');
+// ao lado da régua: − e + (no telemóvel, a régua sozinha é difícil de acertar)
+alvo.insertAdjacentHTML('beforebegin', `<button type="button" class="passo-btn" data-passo="alvo" data-d="-1" aria-label="Menos ${alvo.step} minutos">−</button>`);
+alvo.insertAdjacentHTML('afterend', `<button type="button" class="passo-btn" data-passo="alvo" data-d="1" aria-label="Mais ${alvo.step} minutos">+</button>`);
+if (ABAST.length) caixaAlvo.insertAdjacentHTML('afterend', `<div class="alvo paragem">${passo('Paro em cada abastecimento', 'paragem', 'Menos 1 minuto de paragem', 'Mais 1 minuto de paragem')}<small>Conta dentro do teu tempo: a hora de chegada à meta fica igual.</small></div>`);
+const barraTempo = document.createElement('div');
+barraTempo.className = 'barra-tempo'; barraTempo.hidden = true; barraTempo.setAttribute('role', 'group'); barraTempo.setAttribute('aria-label', 'O meu tempo');
+barraTempo.innerHTML = passo('Tempo', 'alvo', `Menos ${alvo.step} minutos`, `Mais ${alvo.step} minutos`) + (ABAST.length ? passo('Paragem', 'paragem', 'Menos 1 minuto de paragem', 'Mais 1 minuto de paragem') : '');
+document.body.appendChild(barraTempo);
+document.addEventListener('click', ev => { const b = ev.target.closest('[data-passo]'); if (!b) return; (b.dataset.passo === 'alvo' ? mudarAlvo : mudarParagem)(+b.dataset.d); });
+// a barra aparece no perfil, nos pontos e nas subidas, quando a régua não está à vista
+const vistos = new Set();
+const obsBarra = new IntersectionObserver(ents => { ents.forEach(e => e.isIntersecting ? vistos.add(e.target) : vistos.delete(e.target));
+  barraTempo.hidden = vistos.has(caixaAlvo) || ![...vistos].some(el => el !== caixaAlvo); });
+[caixaAlvo, ...['percurso', 'pontos', 'subidas'].map(id => document.getElementById(id))].filter(Boolean).forEach(el => obsBarra.observe(el));
+
+(() => { let v = null; const m = location.hash.match(/paragem=(\d+)/); if (m) v = +m[1]; else { try { v = +localStorage.getItem(CHAVE_PARAGEM) || 0; } catch (e) {} }
+  E.paragem = Math.min(paragemMax(), Math.max(0, v || 0)); })();
+redesenharHoras(); desenharAperto();
 new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
