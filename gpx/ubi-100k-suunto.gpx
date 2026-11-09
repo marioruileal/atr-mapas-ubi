@@ -33,13 +33,13 @@
   </wpt>
   <wpt lat="38.6357" lon="-28.71422">
     <ele>142</ele>
-    <name>Império do Cascalho</name>
+    <name>Império do Espírito Santo do Cascalho</name>
     <desc>Km 58,2 · água, comida · barreira 13:15 · próximo abastecimento a 13,0 km (+820 m)</desc>
     <type>Aid_station</type>
   </wpt>
   <wpt lat="38.59897" lon="-28.68182">
     <ele>517</ele>
-    <name>Reserva do Cabouco Velho</name>
+    <name>Parque do Cabouco</name>
     <desc>Km 71,2 · água, comida · barreira 16:45 · próximo abastecimento a 12,4 km (+346 m)</desc>
     <type>Aid_station</type>
   </wpt>
