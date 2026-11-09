@@ -161,6 +161,7 @@ tr:last-child td { border-bottom: 0 }
 td .peq { display: block; white-space: nowrap; font-size: 12px; color: var(--texto-2); font-family: var(--f-mono) }
 td.nome { font-weight: 600 }
 td.nome small { display: block; font-weight: 400; color: var(--texto-2) }
+td.nome .linha { display: block }
 .barreira { color: var(--lava); font-family: var(--f-mono); white-space: nowrap }
 .estado { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; margin-left: 6px; font-family: var(--f-corpo) }
 .estado.ok { background: var(--turquesa-tinta); color: var(--turquesa) }
@@ -1092,7 +1093,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="servicos" id="filtro-tabela" style="margin-bottom:10px"><span>Mostrar só pontos com</span></div>
     <div class="tabela-caixa">
       <table>
-        <thead><tr><th>Ponto</th><th>Altitude</th><th>Desde a partida</th><th colspan="2">Próximo abastecimento</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
+        <thead><tr><th>Ponto</th><th>Altitude</th><th>Desde a partida</th><th colspan="2">Próximo<br>abastecimento</th><th class="carril" aria-label="Dia ou noite"></th><th>A minha hora</th><th>Barreira</th><th>Serviços</th></tr></thead>
         <tbody id="corpo-tabela"></tbody>
       </table>
     </div>
@@ -1622,21 +1623,25 @@ function desenharTabela() {
   const mini = (ia, ib) => { let amin = Infinity, amax = -Infinity; for (let i = ia; i <= ib; i++) { amin = Math.min(amin, P[i][1]); amax = Math.max(amax, P[i][1]); }
     let d = ''; for (let i = ia; i <= ib; i += 2) d += (i === ia ? 'M' : 'L') + ((P[i][0] - P[ia][0]) / (P[ib][0] - P[ia][0]) * 120).toFixed(1) + ',' + (36 - (P[i][1] - amin) / Math.max(1, amax - amin) * 30).toFixed(1);
     return `<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true"><path d="${d}L120,40L0,40Z" fill="${cor('--turquesa')}" fill-opacity=".15"/><path d="${d}" fill="none" stroke="${cor('--turquesa')}" stroke-width="1.5"/></svg>`; };
+  // nome comprido em duas linhas, a partir depois da primeira preposição («Império da / Ribeira do Cabo»), para dar espaço a outras colunas
+  const duasLinhas = nome => { const w = nome.split(' '), k = w.findIndex((x, j) => j > 0 && /^(da|do|de|das|dos)$/.test(x));
+    return nome.length > 20 && k > 0 && k < w.length - 1 ? `<span class="linha">${w.slice(0, k + 1).join(' ')}</span> <span class="linha">${w.slice(k + 1).join(' ')}</span>` : nome; };
+  const desnivel = (mais, menos) => `<span class="peq">+${fmt(mais)} m</span><span class="peq">−${fmt(menos)} m</span>`;
   linhas.forEach((p, n) => {
     const b = p.tipo !== 'meta' ? proximoDe(p.km) : null;
     const minutos = n === 0 ? PARTIDA_MIN : horaPrevista(p.i);
     let estado = '';
     if (p.barreira) { const folga = p.barreira - minutos; estado = folga < 0 ? '<span class="estado fora">fora da barreira</span>' : folga < 20 ? `<span class="estado justo">${Math.round(folga)} min de folga</span>` : `<span class="estado ok">${duracao(folga)} de folga</span>`; }
-    h += `<tr><td class="nome">${p.nome}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td>`
+    h += `<tr><td class="nome">${duasLinhas(p.nome)}<small>${p.local}${p.gps ? ' · ' + linkMaps(p, 'Maps') : ''}</small></td>`
       + `<td class="num">${fmt(p.alt)} m</td>`
-      + `<td class="num">${fmt(p.kmVer, 1)} km${n ? `<span class="peq">+${fmt(p.dmais)} | −${fmt(p.dmenos)} m</span>` : ''}</td>`
-      + (b ? `<td>${mini(p.i, b.i)}</td><td class="prox"><b>${fmt(b.kmVer - p.kmVer, 1)} km</b><span class="peq">+${fmt(b.dmais - p.dmais)} | −${fmt(b.dmenos - p.dmenos)} m</span></td>` : '<td></td><td class="prox"><b>Chegada</b></td>')
+      + `<td class="num">${fmt(p.kmVer, 1)} km${n ? desnivel(p.dmais, p.dmenos) : ''}</td>`
+      + (b ? `<td>${mini(p.i, b.i)}</td><td class="prox"><b>${fmt(b.kmVer - p.kmVer, 1)} km</b>${desnivel(b.dmais - p.dmais, b.dmenos - p.dmenos)}</td>` : '<td></td><td class="prox"><b>Chegada</b></td>')
       + (dia => `<td class="carril"><span style="color:${faixaCeu(minutos)}" title="${dia ? 'De dia' : 'De noite'}" role="img" aria-label="${dia ? 'De dia' : 'De noite'}">${dia ? ICONES.sol : ICONES.lua}</span></td>`)(minutos >= SOL.nascer && minutos < SOL.por)
       + `<td class="num">${hora(minutos)}${estado}</td><td class="barreira">${p.barreira ? hora(p.barreira) : ''}</td>`
       + `<td><span class="icones">${p.servicos.map(s => `<span title="${SERVICOS[s].nome}">${ICONES[s]}</span>`).join('')}</span></td></tr>`;
   });
   document.getElementById('corpo-tabela').innerHTML = h;
-  if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent === 'Próximo abastecimento'); if (th) th.textContent = 'Até à chegada'; }
+  if (!PONTOS.some(p => p.tipo === 'abastecimento')) { const th = [...document.querySelectorAll('thead th')].find(t => t.textContent.replace(/\s+/g, '') === 'Próximoabastecimento'); if (th) th.innerHTML = 'Até à<br>chegada'; }
 }
 const alvo = document.getElementById('tempo-alvo');
 alvo.addEventListener('input', () => { E.alvo = +alvo.value; document.getElementById('tempo-alvo-txt').textContent = duracao(E.alvo); desenharTabela(); desenharPerfil(); desenharLuz(); desenharSubidas(); if (E.ponto) abrirPonto(E.ponto); });
