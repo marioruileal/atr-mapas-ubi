@@ -2020,7 +2020,8 @@ new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
-// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Mapa» (Mapbox, abre por omissão), «Trilhos» (CyclOSM), «Curvas de nível» (OpenTopoMap) e «Foto aérea», todos ligados à origem (nomes e ordem de 10-11-2026).
+// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Mapa» (Mapbox), «Trilhos» (CyclOSM), «Curvas de nível» (OpenTopoMap) e «Foto aérea», todos ligados à origem (nomes e ordem de 10-11-2026).
+// Abertura (pedido do Mário, 10-11-2026): na «Foto aérea», com zoom na meta; «Ver tudo» mostra o percurso inteiro. Se a fotografia não chegar, passa sozinho para o «Mapa».
 // «Mapa» (Mapbox Outdoors, pedido de 07-11-2026; chamou-se «Exterior» e «Paisagem», e a chave no código continua a ser `exterior`): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
 // O antigo fundo desenhado por nós (que se chamava «Mapa», chave `mapa`) saiu a 05-11-2026. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
 // e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
@@ -2035,6 +2036,7 @@ window.MAPA = (() => {
   const LIB = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js';
   const [oeste, sul, este, norte] = CFG.mapa.limites;
   const OSM = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  const ZOOM_META = 18; // abertura: a meta de perto (cerca de 0,47 m por ponto do ecrã)
   const MAR_FOTO = '#09151e'; // mar da fotografia aérea de 2024 (medido no Faial, ao lado do mar pintado)
   const cadaCamada = (c, f) => c.eachLayer ? c.eachLayer(f) : f(c); // a fotografia é um grupo (três ilhas); os outros fundos são uma camada só
   const ORTOS = [['fai', [[38.505608, -28.859913], [38.652148, -28.572409]]], ['pic', [[38.330149, -28.56609], [38.613722, -28.008211]]],
@@ -2169,9 +2171,11 @@ window.MAPA = (() => {
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
     // nomes pelo que cada fundo mostra (decisões do Mário, 08-11-2026; «Trilhos» em vez de «Caminhos»), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
-    // abre no «Mapa» (o do Mapbox; decisão do Mário, 08-11-2026); sem a chave do Mapbox, nas «Curvas de nível»
-    // nomes e ordem de 10-11-2026 («Sim, muda»): «Mapa» (era «Paisagem») em primeiro, porque é o que abre; «Foto aérea» (era «Fotografia aérea»)
-    const INICIAL = outros.exterior ? 'exterior' : 'relevo';
+    // abre na «Foto aérea» (pedido do Mário, 10-11-2026; até aí abria no «Mapa», decisão de 08-11-2026);
+    // sem a fotografia, no «Mapa» (o do Mapbox) e, sem a chave do Mapbox, nas «Curvas de nível»
+    // nomes e ordem de 10-11-2026 («Sim, muda»): «Mapa» (era «Paisagem») em primeiro; «Foto aérea» (era «Fotografia aérea»)
+    const RESERVA = outros.exterior ? 'exterior' : 'relevo';
+    const INICIAL = foto ? 'foto' : RESERVA;
     const FUNDOS = [['exterior', outros.exterior, 'Mapa', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
       ['trilhos', outros.trilhos, 'Trilhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
       ['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
@@ -2206,7 +2210,8 @@ window.MAPA = (() => {
 
     painel = document.createElement('div'); painel.className = 'painel-mapa';
     painel.innerHTML = `<div class="segmentos" role="group" aria-label="Fundo do mapa">${FUNDOS.map(([k, , nome, ajuda]) => `<button type="button" data-fundo="${k}" aria-pressed="${k === INICIAL}" title="${nome}: ${ajuda}">${nome}</button>`).join('')}</div>`
-      + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`;
+      + `<button type="button" class="chip" data-setas aria-pressed="true">Setas</button><button type="button" class="chip" data-km aria-pressed="true">Km</button>`
+      + `<button type="button" class="chip" data-tudo title="Mostrar o percurso inteiro">Ver tudo</button>`;
     L.DomEvent.disableClickPropagation(painel); L.DomEvent.disableScrollPropagation(painel);
     caixa.appendChild(painel);
     painel.querySelectorAll('[data-fundo]').forEach(b => b.addEventListener('click', () => { mudarFundo(b.dataset.fundo); ajudaFundo(b.title); }));
@@ -2215,12 +2220,20 @@ window.MAPA = (() => {
     function ajudaFundo(texto) { ajuda.textContent = texto; ajuda.hidden = false; clearTimeout(ajudaFundo.t); ajudaFundo.t = setTimeout(() => { ajuda.hidden = true; }, 4000); }
     painel.querySelector('[data-setas]').addEventListener('click', ev => { setas = !setas; ev.currentTarget.setAttribute('aria-pressed', setas); visibilidade(); });
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
+    painel.querySelector('[data-tudo]').addEventListener('click', () => mapa.fitBounds(L.latLngBounds(P.map(ll)), { padding: [30, 30] }));
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
     const pedido = ({ paisagem: 'exterior', caminhos: 'trilhos', curvas: 'relevo' })[(location.hash.match(/^#(\w+)/) || [])[1]] || (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
     // decisão do Mário (05-11-2026): sem o antigo fundo desenhado por nós (chave `mapa`); `#mapa` abre o fundo inicial
-    mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : INICIAL);
+    const escolhido = pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : null;
+    // abre com zoom na meta (pedido do Mário, 10-11-2026); o sítio fica escolhido antes do fundo, para só se pedirem as imagens desse sítio
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
-    if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
+    if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]); else mapa.setView(ll(P[P.length - 1]), ZOOM_META, { animate: false });
+    mudarFundo(escolhido || INICIAL);
+    // se a fotografia não chegar em 8 s (há redes que a travam), a abertura passa sozinha para o fundo de reserva; quem a escolheu de propósito fica com o aviso
+    if (!escolhido && INICIAL === 'foto') {
+      let chegou = false; cadaCamada(foto, c => c.once('tileload', () => { chegou = true; }));
+      setTimeout(() => { if (!chegou && fundo === 'foto') mudarFundo(RESERVA); }, 8000);
+    }
   }
 
   // abre-se sozinho quando o mapa chega perto do ecrã
