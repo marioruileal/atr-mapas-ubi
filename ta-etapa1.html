@@ -924,8 +924,166 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		}
 	}
 
+
+/* ---------- Organização em separadores (relatório 68 §15) ----------
+   Camada por cima da página: abertura curta, quatro separadores, pontos em cartões no telemóvel,
+   o tempo sempre à mão. Não tira nada do que a página já tinha (decisão 97). */
+
+/* enquanto a camada não arruma a página, o conteúdo espera; se o código falhar, aparece ao fim de 4 s */
+.org:not([data-sep]) main { visibility: hidden; animation: org-espera 0s 4s forwards }
+@keyframes org-espera { to { visibility: visible } }
+
+/* --- abertura curta --- */
+.org .abertura .largura { padding-block: 14px 20px; gap: 8px }
+.org-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px }
+.org-topo .marca-topo { padding: 0 }
+.org-topo .marca-topo img { width: clamp(150px, 26vw, 220px) }
+.org-inscrever { flex: none; padding: 9px 16px; border-radius: var(--org-raio, 999px); background: var(--prova, var(--turquesa)); color: var(--prova-texto, #fff); font-weight: 700; font-size: 13px; letter-spacing: var(--org-espaco, 0); text-transform: var(--org-caixa, none); text-decoration: none; white-space: nowrap }
+.org-inscrever:hover { filter: brightness(1.08) }
+.org .abertura h1 { font-size: clamp(26px, 4vw, 40px); margin: 0 }
+.org .abertura .icone-prova { width: clamp(40px, 6vw, 52px) }
+.org .abertura .sub { font-size: 16px; margin: 0; max-width: 72ch }
+.org .ficha { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 6px }
+.org .ficha div { padding: 8px 10px; align-content: start }
+.org .ficha dt { font-size: 10.5px; letter-spacing: .05em; line-height: 1.25 }
+.org .ficha dd { font-size: 16px; line-height: 1.25 }
+.org .ficha dd small { display: block; font-size: 11px }
+.org .abertura .oficial { font-size: 12px }
+.org-mais { display: none }
+@media (min-width: 900px) {
+  .org .abertura .largura { padding-block: 16px 24px; gap: 10px }
+  .org .ficha { grid-template-columns: repeat(8, minmax(0, 1fr)) }
+  .org .ficha div { padding: 10px 12px }
+  .org .ficha dd { font-size: 18px }
+}
+@media (max-width: 719px) {
+  .org .abertura .sub { font-size: 15px }
+  .org .org-curta:not(.org-aberta) .sub { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden }
+  .org .org-curta:not(.org-aberta) .oficial { display: none }
+  .org-mais { display: inline-block; justify-self: start; margin: -4px 0 0; padding: 4px 0; background: none; border: 0; color: #fff; font: inherit; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer }
+  /* o ícone da prova fica ao lado do nome, em vez de ocupar uma linha só para ele */
+  .org .abertura h1:has(.icone-prova) { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: center }
+  .org .abertura h1 .icone-prova { grid-row: 1 / span 2; align-self: start; margin-top: 2px }
+  .org .abertura h1:has(.icone-prova) .sigla { justify-self: start; margin: 0 }
+  .org .ficha div { padding: 7px 8px }
+  .org .ficha dt { font-size: 10px; letter-spacing: .03em }
+  .org .ficha dd { font-size: 15px }
+  .org .ficha dd small { font-size: 10.5px }
+}
+
+/* --- separadores --- */
+.org .submenu { z-index: 1100; min-height: 46px; box-shadow: 0 2px 10px rgba(0, 0, 0, .06) }
+.org .submenu .largura { overflow: visible; gap: 0; align-items: stretch }
+.org .submenu a { display: none }
+.org-seps { display: flex; flex: 1 1 auto; min-width: 0 }
+.org-seps button { flex: 1 1 auto; appearance: none; background: none; border: 0; border-bottom: 3px solid transparent; margin: 0; padding: 13px 4px 10px; font: inherit; font-size: 13px; font-weight: 700; letter-spacing: var(--org-espaco, 0); text-transform: var(--org-caixa, none); color: var(--texto-2); white-space: nowrap; cursor: pointer }
+.org-seps button:hover { color: var(--texto) }
+.org-seps button[aria-selected="true"] { color: var(--texto); border-bottom-color: var(--prova, var(--turquesa)) }
+.org-seps button:focus-visible { outline: 2px solid var(--turquesa); outline-offset: -2px }
+@media (max-width: 359px) { .org-seps button { font-size: 11.5px; letter-spacing: 0; padding-inline: 2px } }
+@media (min-width: 720px) { .org-seps { flex: 0 1 auto } .org-seps button { flex: 0 0 auto; font-size: 14px; padding: 14px 16px 11px } }
+@media (min-width: 1180px) { .org.org-topo-fora .submenu a.inscrever { display: block; align-self: center; margin-left: 18px; padding: 8px 14px; border: 0; border-radius: var(--org-raio, 999px); background: var(--prova, var(--turquesa)); color: var(--prova-texto, #fff); font-size: 13px } }
+
+.org-painel:not(.ativo) { height: 0; overflow: hidden; visibility: hidden }
+.org-painel:not(.ativo)::before { content: ""; display: block; height: 8px }
+
+/* --- secções mais arrumadas --- */
+.org section { padding-block: 26px 6px; scroll-margin-top: 64px }
+.org .org-painel > section:first-child { padding-top: 20px }
+.org section h2 { font-size: 21px; line-height: 1.2; margin: 0 0 10px; display: flex; align-items: center; gap: 10px }
+.org section h2::before { content: ""; flex: none; width: 6px; height: 20px; background: var(--prova, var(--turquesa)); border-radius: var(--org-raio, 3px) }
+.org .lead { font-size: 15px; margin-bottom: 14px }
+.org-ajuda { margin: 0 0 12px }
+.org-ajuda summary { display: inline-flex; align-items: center; gap: 7px; padding: 3px 0; cursor: pointer; color: var(--turquesa); font-size: 13.5px; font-weight: 600; list-style: none }
+.org-ajuda summary::-webkit-details-marker { display: none }
+.org-ajuda summary::before { content: "?"; display: inline-grid; place-items: center; width: 17px; height: 17px; border: 1.5px solid currentColor; border-radius: 50%; font-size: 11px; font-weight: 700; line-height: 1 }
+.org-ajuda[open] summary::before { content: "×"; font-size: 13px }
+.org-ajuda .lead { margin: 6px 0 0 }
+.org .rodape { padding-block: 24px 40px }
+/* a assinatura do rodapé nunca passa da largura do ecrã */
+.org .assinatura img { max-width: 100%; object-fit: contain; object-position: left center }
+@media (max-width: 719px) {
+  .org section { padding-block: 22px 4px }
+  .org .tracos { gap: 10px }
+  .org .traco { padding: 12px 14px; gap: 4px }
+  .org .traco .num { font-size: 22px }
+  /* o perfil ocupa a largura toda do telemóvel */
+  .org #percurso .painel { margin-inline: -16px; padding: 12px; border-inline: 0; border-radius: 0 !important }
+  .org #perfil { height: 300px }
+}
+
+/* --- o tempo sempre à mão: em baixo no telemóvel, na barra dos separadores no computador --- */
+@media screen {
+  .org .barra-tempo, .org .barra-tempo[hidden] { display: none }
+  .org[data-sep="percurso"] .barra-tempo, .org[data-sep="plano"] .barra-tempo { display: flex }
+  .org .barra-tempo { flex-wrap: nowrap; align-items: center; gap: 8px 20px }
+  .org .barra-tempo .passo { display: grid; grid-template-columns: 34px minmax(3.6em, auto) 34px; column-gap: 4px; align-items: center }
+  .org .barra-tempo .passo .rot { grid-column: 2; grid-row: 1; text-align: center; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; color: var(--texto-2) }
+  .org .barra-tempo .passo output { grid-column: 2; grid-row: 2; min-width: 0; font-size: 17px; line-height: 1.15; font-weight: 700 }
+  .org .barra-tempo .passo button { grid-row: 1 / 3; width: 34px; height: 34px; border-radius: var(--org-raio, 999px) }
+  .org .barra-tempo .passo button:first-of-type { grid-column: 1 }
+  .org .barra-tempo .passo button:last-of-type { grid-column: 3 }
+}
+@media screen and (max-width: 999px) {
+  .org .barra-tempo { position: fixed; left: 0; right: 0; bottom: 0; transform: none; max-width: none; box-sizing: border-box; justify-content: space-evenly; padding: 7px max(10px, env(safe-area-inset-right, 0px)) calc(7px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px)); border-width: 1px 0 0; border-radius: 0 !important; box-shadow: 0 -4px 16px rgba(0, 0, 0, .12) }
+  /* com a régua do tempo à vista, a barra de baixo não faz falta */
+  .org[data-sep="plano"].org-alvo-a-vista .barra-tempo { display: none }
+  .org[data-sep="percurso"] body, .org[data-sep="plano"] body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)) }
+}
+@media screen and (min-width: 1000px) {
+  .org .barra-tempo { position: static; transform: none; max-width: none; align-self: center; margin-left: auto; padding: 0; border: 0; background: none; box-shadow: none }
+  .org .barra-tempo .passo button { width: 30px; height: 30px; font-size: 18px }
+  .org .barra-tempo .passo { grid-template-columns: 30px minmax(3.6em, auto) 30px }
+  /* com a régua do tempo à vista, o tempo não se repete na faixa (fica o lugar guardado, para nada saltar) */
+  .org[data-sep="plano"].org-alvo-a-vista .barra-tempo { visibility: hidden }
+}
+
+/* --- pontos e horários: no telemóvel, um cartão por ponto, com a hora e a barreira sempre à vista --- */
+@media (max-width: 719px) {
+  .org #pontos .tabela-caixa { overflow: visible; border: 0; border-radius: 0 !important; background: none }
+  .org #pontos table { display: block; min-width: 0; font-size: 14px }
+  .org #pontos thead { display: none }
+  .org #pontos tbody { display: block }
+  .org #pontos tbody tr { display: grid; grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1fr) auto; grid-template-areas: "luz nome nome hora" "luz dist alt barr" "luz perf prox prox" "luz serv serv serv"; gap: 8px 10px; margin-top: -1px; padding: 12px 12px 12px 8px; background: var(--cartao); border: 1px solid var(--linha-2) }
+  .org #pontos tbody tr[hidden] { display: none }
+  .org #pontos tbody td { display: block; min-width: 0; padding: 0 !important; border: 0; width: auto }
+  .org #pontos tbody td:empty { display: none }
+  .org #pontos tbody td::before { display: block; font-family: var(--f-corpo); font-size: 10px; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2); line-height: 1.5 }
+  .org #pontos td:nth-child(1) { grid-area: nome; font-size: 15.5px; line-height: 1.25 }
+  .org #pontos td.nome .linha { display: inline }
+  .org #pontos td.nome small { margin-top: 2px; font-size: 12.5px }
+  .org #pontos td:nth-child(2) { grid-area: alt }
+  .org #pontos td:nth-child(2)::before { content: "Altitude" }
+  .org #pontos td:nth-child(3) { grid-area: dist }
+  .org #pontos td:nth-child(3)::before { content: "Distância" }
+  .org #pontos td:nth-child(3) .peq, .org #pontos td.prox .peq { display: inline; margin-right: 6px }
+  .org #pontos td:nth-child(3) .peq:first-of-type::before, .org #pontos td.prox .peq:first-of-type::before { content: ""; display: block }
+  .org #pontos td:nth-child(4) { grid-area: perf; align-self: end }
+  .org #pontos td:nth-child(4) svg { display: block; width: 100%; max-width: 140px; height: 40px }
+  .org #pontos td.prox { grid-area: prox }
+  .org #pontos td.prox::before { content: var(--org-prox, "Próximo abastecimento") }
+  .org #pontos td:empty + td.prox { grid-column: 2 / -1 }
+  .org #pontos td:empty + td.prox::before { content: none }
+  .org #pontos td.carril { grid-area: luz; position: relative; align-self: stretch }
+  .org #pontos td.carril::after { content: ""; position: absolute; left: 50%; top: 26px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--linha-2) }
+  .org #pontos tr:last-child td.carril::after { content: none }
+  .org #pontos td:nth-child(7) { grid-area: hora; text-align: right; font-size: 21px; font-weight: 700; line-height: 1.15; white-space: nowrap }
+  .org #pontos td:nth-child(7)::before { content: "A minha hora" }
+  .org #pontos td:nth-child(7) .sai { font-weight: 400; margin-top: 2px }
+  .org #pontos td:nth-child(7) .estado { display: table; margin: 4px 0 0 auto; font-weight: 400; white-space: nowrap }
+  .org #pontos td.barreira { grid-area: barr; text-align: right; font-size: 15px; font-weight: 700 }
+  .org #pontos td.barreira::before { content: "Barreira" }
+  .org #pontos td:nth-child(9) { grid-area: serv }
+  .org #pontos .alvo { gap: 8px 12px }
+  .org #pontos .alvo input[type=range] { max-width: none }
+  /* barreiras apertadas: os números passam para baixo do nome, para o nome não partir em três linhas */
+  .org .aperto-lista li { grid-template-columns: 8px minmax(0, 1fr); gap: 2px 12px; padding: 10px 12px }
+  .org .aperto-lista .aperto-cor { grid-row: 1 / span 2; width: 8px }
+  .org .aperto-lista .num { grid-column: 2; text-align: left; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px }
+}
 </style><style>.botao{display:inline-block;padding:10px 18px;border-radius:999px;background:var(--turquesa);color:#fff;font-weight:600;text-decoration:none}</style>
 
+<script>document.documentElement.classList.add("org")</script>
 <header class="abertura">
   <div class="largura">
     <span class="etiqueta">Triangle Adventure 2027 · Etapa 1 de 3 · Ilha do Pico</span>
@@ -976,7 +1134,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="percurso" aria-labelledby="t-percurso">
   <div class="largura">
     <h2 id="t-percurso">O percurso</h2>
-    <p class="lead">Passa o rato ou o dedo pelo perfil. Arrasta sobre ele, ou usa as pegas por baixo, para ver um troço em pormenor. Duplo clique repõe a etapa inteira. A zona cinzenta é a parte que fazes de noite, com o tempo que escolhes em «Pontos e horários».</p>
+    <p class="lead">Passa o rato ou o dedo pelo perfil. Arrasta sobre ele, ou usa as pegas por baixo, para ver um troço em pormenor. Duplo clique repõe a etapa inteira. A zona cinzenta é a parte que fazes de noite, com o tempo que escolhes em «O meu plano».</p>
     <div class="painel">
       <div class="servicos" id="servicos"><span>Serviços</span></div>
       <div class="linha-controlos">
@@ -993,7 +1151,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <svg id="perfil" role="img" aria-label="Perfil de altitude da etapa"></svg>
         <div class="dica" id="dica" hidden></div>
       </div>
-      <p class="legenda-horas" id="legenda-horas">Por cima de cada ponto, <b>a tua hora</b>, com o tempo que escolhes em «Pontos e horários»<span class="so-barreiras">; por baixo dela, a vermelho, <b>a barreira</b>. A tua hora fica verde com folga, amarela com menos de 20 minutos e vermelha fora da barreira</span>. Em cada troço, os km, a subida e o tempo que levas.</p>
+      <p class="legenda-horas" id="legenda-horas">Por cima de cada ponto, <b>a tua hora</b>, com o tempo que escolhes em «O meu plano»<span class="so-barreiras">; por baixo dela, a vermelho, <b>a barreira</b>. A tua hora fica verde com folga, amarela com menos de 20 minutos e vermelha fora da barreira</span>. Em cada troço, os km, a subida e o tempo que levas.</p>
       <div class="navegador">
         <div class="mini" id="mini" aria-label="Escolher um troço">
           <svg id="mini-svg" preserveAspectRatio="none" viewBox="0 0 100 56" aria-hidden="true"></svg>
@@ -1068,7 +1226,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="subidas" aria-labelledby="t-subidas">
   <div class="largura">
     <h2 id="t-subidas">Subidas e descidas</h2>
-    <p class="lead">As maiores do percurso, com o nome do sítio; em «Ver todas» estão todas as que têm 100 m de desnível ou mais. A categoria segue a regra do Strava: comprimento × inclinação média. A hora muda com o tempo que escolhes em «Pontos e horários».</p>
+    <p class="lead">As maiores do percurso, com o nome do sítio; em «Ver todas» estão todas as que têm 100 m de desnível ou mais. A categoria segue a regra do Strava: comprimento × inclinação média. A hora muda com o tempo que escolhes em «O meu plano».</p>
     <div class="tracos" id="lista-subidas"></div>
   </div>
 </section>
@@ -2015,6 +2173,128 @@ window.MAPA = (() => {
     marcar(i) { if (!mapa || !cursor) return; if (i == null) { cursor.remove(); return; } cursor.setLatLng(ll(P[i])).addTo(mapa); },
     atualizar() { if (mapa && percurso) desenharPercurso(); }
   };
+})();
+
+// ---------- organização em separadores (relatório 68 §15) ----------
+// Camada por cima da página: arruma as secções em quatro separadores, encurta a abertura,
+// põe o tempo sempre à mão e guarda as instruções atrás de «Como usar». Não tira nada (decisão 97).
+;(function () {
+  const raiz = document.documentElement;
+  const main = document.querySelector('main');
+  const submenu = document.querySelector('.submenu');
+  const cab = document.querySelector('.abertura .largura');
+  const faixa = submenu && submenu.querySelector('.largura');
+  if (!main || !faixa || !cab) { raiz.classList.remove('org'); return; }
+  raiz.classList.add('org');
+  const el = (tag, attrs, texto) => { const e = document.createElement(tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (texto != null) e.textContent = texto; return e; };
+
+  // ----- abertura curta: marca e «Inscrever-me» na mesma linha; no telemóvel, a descrição abre com «Ler mais»
+  const topo = el('div', { class: 'org-topo' });
+  const marca = cab.querySelector('.marca-topo') || cab.querySelector('.etiqueta');
+  if (marca) topo.append(marca);
+  if (document.getElementById('inscricao')) topo.append(el('a', { class: 'org-inscrever', href: '#inscricao' }, 'Inscrever-me'));
+  cab.prepend(topo);
+  const sub = cab.querySelector('.sub');
+  if (sub) {
+    const mais = el('button', { type: 'button', class: 'org-mais', 'aria-expanded': 'false' }, 'Ler mais');
+    mais.addEventListener('click', () => { const aberta = cab.classList.toggle('org-aberta'); mais.setAttribute('aria-expanded', aberta); mais.textContent = aberta ? 'Ler menos' : 'Ler mais'; });
+    sub.after(mais);
+    cab.classList.add('org-curta');
+  }
+
+  // o «Inscrever-me» da faixa dos separadores só aparece quando o de cima já saiu do ecrã (nunca dois ao mesmo tempo)
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => raiz.classList.toggle('org-topo-fora', !e.isIntersecting))).observe(topo);
+
+  // ----- quatro separadores
+  const tProva = document.getElementById('t-historia');
+  const SEPS = [
+    ['percurso', 'Percurso', ['#percurso', '#subidas', '#relogio'], ''],
+    ['plano', 'O meu plano', ['#pontos'], 'pontos'],
+    ['prova', tProva ? tProva.textContent.trim() : 'A prova', ['section[aria-labelledby="t-tracos"]', '#historia', '#ilha', '#strava'], 'historia'],
+    ['dia', 'O dia', ['#dia', '#regras'], 'dia'],
+  ];
+  const lista = el('div', { class: 'org-seps', role: 'tablist', 'aria-label': 'Partes da página' });
+  const caixa = el('div', { class: 'org-paineis' });
+  const paineis = {}, botoes = {}, ancora = {}, ordem = [];
+  for (const [id, nome, sels, anc] of SEPS) {
+    const secs = sels.map(s => main.querySelector(s)).filter(Boolean);
+    if (!secs.length) continue;
+    const p = el('div', { class: 'org-painel', id: 'sep-' + id, role: 'tabpanel', 'aria-labelledby': 'tab-' + id, 'data-sep': id });
+    const b = el('button', { type: 'button', role: 'tab', id: 'tab-' + id, 'aria-controls': 'sep-' + id, 'aria-selected': 'false', tabindex: '-1', 'data-sep': id }, nome);
+    paineis[id] = p; botoes[id] = b; ancora[id] = anc; ordem.push(id);
+    caixa.append(p); lista.append(b);
+  }
+  if (!ordem.length) { raiz.classList.remove('org'); return; }
+  main.prepend(caixa);
+  for (const [id, , sels] of SEPS) if (paineis[id]) sels.forEach(s => { const sec = main.querySelector(s); if (sec && sec.parentNode !== paineis[id]) paineis[id].append(sec); });
+  faixa.prepend(lista);
+
+  function ativar(id) {
+    if (!paineis[id] || raiz.dataset.sep === id) return;
+    raiz.dataset.sep = id;
+    for (const k of ordem) { const a = k === id; paineis[k].classList.toggle('ativo', a); botoes[k].setAttribute('aria-selected', a); botoes[k].tabIndex = a ? 0 : -1; }
+    window.dispatchEvent(new Event('resize'));
+  }
+  function escolher(id) {
+    ativar(id);
+    try { history.replaceState(null, '', ancora[id] ? '#' + ancora[id] : location.pathname + location.search); } catch (e) {}
+    // se a página já ia para baixo dos separadores, volta ao cimo do separador novo
+    const y = Math.round(main.getBoundingClientRect().top + scrollY - submenu.offsetHeight);
+    if (scrollY > y) scrollTo(0, y);
+  }
+  lista.addEventListener('click', ev => { const b = ev.target.closest('[role=tab]'); if (b) escolher(b.dataset.sep); });
+  lista.addEventListener('keydown', ev => {
+    const i = ordem.indexOf(raiz.dataset.sep);
+    const j = ev.key === 'ArrowRight' ? (i + 1) % ordem.length : ev.key === 'ArrowLeft' ? (i + ordem.length - 1) % ordem.length : ev.key === 'Home' ? 0 : ev.key === 'End' ? ordem.length - 1 : -1;
+    if (j < 0) return;
+    ev.preventDefault(); escolher(ordem[j]); botoes[ordem[j]].focus();
+  });
+
+  // ----- ligações antigas e partilhadas continuam a dar ao sítio certo (#pontos, #relogio, #tempo=…, fundo do mapa)
+  const HASH_MAPA = /^#(mapa|relevo|trilhos|exterior|foto|paisagem|caminhos|curvas)(?![\w-])|^#@/;
+  function destino(h) {
+    if (!h || h.length < 2) return null;
+    if (/tempo=|paragem=/.test(h)) return { sep: 'plano' };
+    if (HASH_MAPA.test(h)) return { sep: 'percurso' };
+    let alvo = null;
+    try { alvo = document.getElementById(decodeURIComponent(h.slice(1))); } catch (e) {}
+    if (!alvo) return null;
+    const p = alvo.closest('.org-painel');
+    return { sep: p ? p.dataset.sep : null, alvo };
+  }
+  const ini = destino(location.hash);
+  ativar(ini && ini.sep && paineis[ini.sep] ? ini.sep : ordem[0]);
+  if (ini && ini.alvo && ini.alvo !== paineis[ordem[0]].firstElementChild) setTimeout(() => ini.alvo.scrollIntoView(), 0);
+  addEventListener('hashchange', () => { const d = destino(location.hash); if (!d) return; if (d.sep) ativar(d.sep); if (d.alvo) d.alvo.scrollIntoView(); });
+  document.addEventListener('click', ev => {
+    const a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a) return;
+    const d = destino(a.getAttribute('href'));
+    if (d && d.sep) ativar(d.sep);
+  }, true);
+
+  // ----- instruções guardadas atrás de uma pergunta: quem precisa abre, quem já sabe não as lê outra vez
+  [['#percurso', 'Como usar o perfil e o mapa'], ['#pontos', 'Como se calculam as horas'], ['#subidas', 'Como ler as subidas']].forEach(([s, rotulo]) => {
+    const lead = document.querySelector(s + ' > .largura > .lead');
+    if (!lead) return;
+    const d = el('details', { class: 'org-ajuda' });
+    d.append(el('summary', {}, rotulo));
+    lead.before(d); d.append(lead);
+  });
+
+  // ----- cartões dos pontos no telemóvel: o rótulo do troço seguinte vem do cabeçalho da tabela
+  const thProx = document.querySelector('#pontos thead th[colspan]');
+  const tabela = document.querySelector('#pontos table');
+  if (thProx && tabela) tabela.style.setProperty('--org-prox', JSON.stringify(thProx.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()));
+
+  // ----- o tempo sempre à mão: a barra passa para a faixa dos separadores e é a camada que decide quando aparece
+  const barra = document.querySelector('.barra-tempo');
+  if (barra) {
+    faixa.insertBefore(barra, faixa.querySelector('a.inscrever'));
+    const regua = document.getElementById('tempo-alvo');
+    const caixaAlvo = regua && regua.closest('.alvo');
+    if (caixaAlvo && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => raiz.classList.toggle('org-alvo-a-vista', e.isIntersecting))).observe(caixaAlvo);
+  }
 })();
 </script>
 </body></html>
