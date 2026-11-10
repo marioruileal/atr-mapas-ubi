@@ -2020,11 +2020,11 @@ new ResizeObserver(() => desenharPerfil()).observe(caixaPerfil);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { desenharPerfil(); desenharTabela(); });
 
 // ---------- mapa do percurso (Leaflet, plano) ----------
-// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Curvas de nível» (OpenTopoMap), «Trilhos» (CyclOSM), «Paisagem» (Mapbox, abre por omissão) e «Fotografia aérea», todos ligados à origem.
-// «Exterior» (Mapbox Outdoors, pedido de 07-11-2026): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
-// O antigo fundo «Mapa» saiu. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
+// Fundos (decisão do Mário, 05-11-2026; nomes e abertura de 08-11-2026): «Mapa» (Mapbox, abre por omissão), «Trilhos» (CyclOSM), «Curvas de nível» (OpenTopoMap) e «Foto aérea», todos ligados à origem (nomes e ordem de 10-11-2026).
+// «Mapa» (Mapbox Outdoors, pedido de 07-11-2026; chamou-se «Exterior» e «Paisagem», e a chave no código continua a ser `exterior`): só aparece quando a página traz a chave do Mapbox (CFG.mapa.exterior), com o logótipo e os créditos que o Mapbox exige.
+// O antigo fundo desenhado por nós (que se chamava «Mapa», chave `mapa`) saiu a 05-11-2026. Dos nossos ficheiros pequenos (pasta CFG.mapa.pasta) ficam o contorno da ilha, por baixo de tudo,
 // e os caminhos e os nomes dos lugares, desenhados por cima da fotografia aérea.
-// Fundo «Fotografia aérea»: ligada diretamente ao serviço da IDE Açores (WMS), com a definição toda; nada fica guardado por nós.
+// Fundo «Foto aérea»: ligada diretamente ao serviço da IDE Açores (WMS), com a definição toda; nada fica guardado por nós.
 // Vêm juntas as fotografias do Faial, do Pico e de São Jorge. O mar sem fotografia vem transparente (WebP; PNG se o WebP falhar) e o mar de baixo fica da cor
 // do mar da fotografia (MAR_FOTO, medida nas imagens de 2024), para o mar ser todo igual (pedido do Mário, 08-11-2026).
 // O Leaflet carrega-se quando o mapa está perto de aparecer no ecrã; até lá, ou se falhar, fica o traçado em SVG.
@@ -2068,7 +2068,7 @@ window.MAPA = (() => {
   }
 
   // caminhos do OpenStreetMap: c = 0 estrada (p = 1 principal), 1 caminho rural, 2 ou mais trilho
-  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // as Curvas de nível, os Trilhos e a Paisagem já trazem caminhos e nomes
+  const nosso = () => fundo === 'mapa' || fundo === 'foto'; // o Mapa (Mapbox), os Trilhos e as Curvas de nível já trazem caminhos e nomes
   function estiloCaminho(f) {
     if (!nosso()) return { opacity: 0 };
     const zz = z(), sobreFoto = fundo === 'foto', c = f.properties.c, p = f.properties.p === 1;
@@ -2169,12 +2169,13 @@ window.MAPA = (() => {
     }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
     // nomes pelo que cada fundo mostra (decisões do Mário, 08-11-2026; «Trilhos» em vez de «Caminhos»), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
-    // abre na «Paisagem» (decisão do Mário, 08-11-2026); sem a chave do Mapbox, nas «Curvas de nível»
+    // abre no «Mapa» (o do Mapbox; decisão do Mário, 08-11-2026); sem a chave do Mapbox, nas «Curvas de nível»
+    // nomes e ordem de 10-11-2026 («Sim, muda»): «Mapa» (era «Paisagem») em primeiro, porque é o que abre; «Foto aérea» (era «Fotografia aérea»)
     const INICIAL = outros.exterior ? 'exterior' : 'relevo';
-    const FUNDOS = [['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
+    const FUNDOS = [['exterior', outros.exterior, 'Mapa', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
       ['trilhos', outros.trilhos, 'Trilhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
-      ['exterior', outros.exterior, 'Paisagem', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
-      ['foto', foto, 'Fotografia aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores']].filter(f => f[1]);
+      ['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
+      ['foto', foto, 'Foto aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores']].filter(f => f[1]);
     // o WebP da fotografia não vem na lista do serviço: se falhar, passa a PNG (também transparente, mais pesado) sem avisar
     FUNDOS.forEach(([k, c, nome, , origem]) => cadaCamada(c, x => x.on('tileerror', ev => { if (x.wmsParams && /webp/i.test(ev.tile.src)) { if (x.wmsParams.format !== 'image/png') x.setParams({ format: 'image/png' }); return; } if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); })));
     const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
@@ -2216,7 +2217,7 @@ window.MAPA = (() => {
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
     const pedido = ({ paisagem: 'exterior', caminhos: 'trilhos', curvas: 'relevo' })[(location.hash.match(/^#(\w+)/) || [])[1]] || (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
-    // decisão do Mário (05-11-2026): sem o fundo «Mapa»
+    // decisão do Mário (05-11-2026): sem o antigo fundo desenhado por nós (chave `mapa`); `#mapa` abre o fundo inicial
     mudarFundo(pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : INICIAL);
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
     if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]);
