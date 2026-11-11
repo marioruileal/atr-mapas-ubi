@@ -1337,7 +1337,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </main>
 
 <footer class="largura rodape">
-  Distâncias e desníveis oficiais: Trace de Trail. Percursos de 2026, que se mantêm em 2027. Pontos, barreiras, programa e material: racebook do Triangle Adventure 2026, com as datas de 2027. Mapas: © contribuidores do OpenStreetMap, OpenTopoMap (CC-BY-SA), CyclOSM, © Mapbox e Ortofotomapa 2024 © Governo dos Açores (SRAAC), CC BY 4.0. © Azores Trail Run.
+  Distâncias e desníveis oficiais: Trace de Trail. Percursos de 2026, que se mantêm em 2027. Pontos, barreiras, programa e material: racebook do Triangle Adventure 2026, com as datas de 2027. Mapas: © contribuidores do OpenStreetMap, OpenTopoMap (CC-BY-SA), CyclOSM, © Mapbox e Ortofotomapa 2024 © Governo dos Açores (SRAAC), CC BY 4.0. No Faial: Carta Militar de Portugal 1:25 000 (levantamento de 1955) © Exército Português. © Azores Trail Run.
 </footer>
 
 <dialog id="dlg-plano" aria-labelledby="t-plano" class="plano">
@@ -2047,6 +2047,8 @@ window.MAPA = (() => {
       mudarFundo.espera = setTimeout(() => { if (!chegou && fundo === 'foto') avisar('A fotografia aérea está a demorar a chegar do serviço da IDE Açores. Se estás na rede interna do Governo dos Açores, o navegador não a deixa carregar aqui; fora dessa rede funciona. Entretanto, escolhe outro fundo.'); }, 12000);
     }
     Object.entries(outros).forEach(([k, c]) => { if (k === qual) c.addTo(mapa); else c.remove(); });
+    // a Carta de 1955 só tem pormenor até ao zoom 16: mais perto fica desfocada, por isso afasta até lá
+    if (qual === 'carta' && mapa.getZoom() > CFG.mapa.carta.zoom[1]) mapa.setZoom(CFG.mapa.carta.zoom[1], { animate: false });
     mar.setStyle({ fillColor: sobreFoto ? MAR_FOTO : cor('--mar') }); // com a fotografia, o mar sem fotografia fica da cor do mar dela
     terra.setStyle({ fillColor: cor('--terra') }); // a ilha fica sempre por baixo: se um fundo de fora não chegar, vê-se a ilha
     agua.setStyle({ fillOpacity: qual === 'mapa' ? 1 : 0 });
@@ -2111,6 +2113,13 @@ window.MAPA = (() => {
         return c;
       }));
     }
+    // «Carta de 1955» (pedido do Mário, 11-11-2026): a Carta Militar 1:25 000 do Faial, mosaicos nossos (carta1955.py), só nas páginas do Faial.
+    // Até ao zoom 16 tem o pormenor da digitalização; daí para cima só aumenta. No mar há mosaicos que não existem: não é erro.
+    if (CFG.mapa.carta) {
+      const C = CFG.mapa.carta, [o, s, e, n] = C.limites;
+      outros.carta = L.tileLayer(new URL(C.pasta, location.href).href + '{z}/{x}/{y}.webp', { minNativeZoom: C.zoom[0], maxNativeZoom: C.zoom[1], maxZoom: 19,
+        bounds: L.latLngBounds([[s, o], [n, e]]), attribution: C.credito });
+    }
     // se um fundo de fora não chegar (sem rede, serviço em baixo, ou uma página que não deixa entrar imagens de fora), diz-se em vez de ficar em branco
     // nomes pelo que cada fundo mostra (decisões do Mário, 08-11-2026; «Trilhos» em vez de «Caminhos»), com uma frase de ajuda; as chaves (relevo, trilhos, exterior, foto) ficam iguais nos endereços
     // abre na «Foto aérea» (pedido do Mário, 10-11-2026; até aí abria no «Mapa», decisão de 08-11-2026);
@@ -2121,9 +2130,10 @@ window.MAPA = (() => {
     const FUNDOS = [['exterior', outros.exterior, 'Mapa', 'mato, pastagens, povoações e caminhos, com a sombra do relevo.', 'do Mapbox'],
       ['trilhos', outros.trilhos, 'Trilhos', 'estradas, caminhos de terra e trilhos, bem marcados.', 'do CyclOSM'],
       ['relevo', outros.relevo, 'Curvas de nível', 'linhas de altitude e sombra das encostas.', 'do OpenTopoMap'],
-      ['foto', foto, 'Foto aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores']].filter(f => f[1]);
+      ['foto', foto, 'Foto aérea', 'imagem de 2024 da IDE Açores, com os caminhos por cima.', 'do serviço da IDE Açores'],
+      ['carta', outros.carta, 'Carta de 1955', 'Carta Militar do Exército: caminhos, muros e casas de há 70 anos, antes da erupção dos Capelinhos.', 'do nosso servidor']].filter(f => f[1]);
     // o WebP da fotografia não vem na lista do serviço: se falhar, passa a PNG (também transparente, mais pesado) sem avisar
-    FUNDOS.forEach(([k, c, nome, , origem]) => cadaCamada(c, x => x.on('tileerror', ev => { if (x.wmsParams && /webp/i.test(ev.tile.src)) { if (x.wmsParams.format !== 'image/png') x.setParams({ format: 'image/png' }); return; } if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); })));
+    FUNDOS.filter(f => f[0] !== 'carta').forEach(([k, c, nome, , origem]) => cadaCamada(c, x => x.on('tileerror', ev => { if (x.wmsParams && /webp/i.test(ev.tile.src)) { if (x.wmsParams.format !== 'image/png') x.setParams({ format: 'image/png' }); return; } if (fundo === k) avisar(`O fundo «${nome}» não carregou. Vem diretamente ${origem}: tenta mais tarde ou escolhe outro fundo.`); })));
     const json = n => window.MAPA_DADOS?.[n] ? Promise.resolve(window.MAPA_DADOS[n]) : fetch(base + n).then(r => r.json()); // a cópia local traz os ficheiros dentro
     json('terra.geojson').then(g => terra.addData(g));
     json('agua.geojson').then(g => agua.addData(g));
@@ -2164,9 +2174,9 @@ window.MAPA = (() => {
     painel.querySelector('[data-km]').addEventListener('click', ev => { marcasKm = !marcasKm; ev.currentTarget.setAttribute('aria-pressed', marcasKm); visibilidade(); });
     painel.querySelector('[data-tudo]').addEventListener('click', () => mapa.fitBounds(L.latLngBounds(P.map(ll)), { padding: [30, 30] }));
     // endereço com #foto abre já com a fotografia; #foto@lat,lon,zoom abre nesse sítio
-    const pedido = ({ paisagem: 'exterior', caminhos: 'trilhos', curvas: 'relevo' })[(location.hash.match(/^#(\w+)/) || [])[1]] || (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto)/) || [])[1];
+    const pedido = ({ paisagem: 'exterior', caminhos: 'trilhos', curvas: 'relevo', 1955: 'carta' })[(location.hash.match(/^#(\w+)/) || [])[1]] || (location.hash.match(/^#(mapa|relevo|trilhos|exterior|foto|carta)/) || [])[1];
     // decisão do Mário (05-11-2026): sem o antigo fundo desenhado por nós (chave `mapa`); `#mapa` abre o fundo inicial
-    const escolhido = pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) ? pedido : null;
+    const escolhido = pedido && pedido !== 'mapa' && (pedido !== 'foto' || foto) && (pedido !== 'exterior' || outros.exterior) && (pedido !== 'carta' || outros.carta) ? pedido : null;
     // abre com zoom na meta (pedido do Mário, 10-11-2026); o sítio fica escolhido antes do fundo, para só se pedirem as imagens desse sítio
     const sitio = location.hash.match(/@(-?[\d.]+),(-?[\d.]+),(\d+)/);
     if (sitio) mapa.setView([+sitio[1], +sitio[2]], +sitio[3]); else mapa.setView(ll(P[P.length - 1]), ZOOM_META, { animate: false });
@@ -2181,7 +2191,7 @@ window.MAPA = (() => {
   // abre-se sozinho quando o mapa chega perto do ecrã
   const vigia = new IntersectionObserver(ent => { if (ent.some(e => e.isIntersecting)) { vigia.disconnect(); abrir(); } }, { rootMargin: '400px' });
   vigia.observe(caixa);
-  if (/^#(relevo|trilhos|exterior|foto|paisagem|caminhos|curvas)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
+  if (/^#(relevo|trilhos|exterior|foto|paisagem|caminhos|curvas|carta|1955)/.test(location.hash)) setTimeout(() => caixa.scrollIntoView({ block: 'center' }), 300);
 
   return {
     marcar(i) { if (!mapa || !cursor) return; if (i == null) { cursor.remove(); return; } cursor.setLatLng(ll(P[i])).addTo(mapa); },
